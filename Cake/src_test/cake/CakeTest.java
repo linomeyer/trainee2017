@@ -11,7 +11,7 @@ public class CakeTest {
 	private static final int NOT_RELEVANT_VALUE = 0;
 
 	@Test
-	public void getPiecesTest() throws Exception {
+	public void getPieces() throws Exception {
 		Cake schwarzwelder = new Cake(NOT_RELEVANT_VALUE);
 		assertThat(schwarzwelder.getRest(), is(new Fraction(1)));
 	}
