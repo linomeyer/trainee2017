@@ -51,7 +51,7 @@ public class Cake{
 		return rest;
 	}
 	
-	int getWeight(){
+	int currentWeight(){
 		return startWeightInGramm * rest.getCounter() / rest.getDenominator();
 	}
 	
