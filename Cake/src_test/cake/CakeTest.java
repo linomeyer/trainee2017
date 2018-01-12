@@ -17,7 +17,7 @@ public class CakeTest {
 	}
 	
 	@Test
-	public void cutPieceTest() throws Exception {
+	public void cutPiece() throws Exception {
 		Cake schwarzwelder = new Cake(NOT_RELEVANT_VALUE);
 		schwarzwelder.cut(1, 5);
 		assertThat(schwarzwelder.getRemovedPiece(), is(new Fraction(1, 5)));
