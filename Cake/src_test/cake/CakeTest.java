@@ -26,7 +26,7 @@ public class CakeTest {
 	}
 	
 	@Test
-	public void moreCakeTest() throws Exception {
+	public void moreCake() throws Exception {
 		Cake schwarzwelder = new Cake(NOT_RELEVANT_VALUE);
 		Cake zitronenkuchen = new Cake(NOT_RELEVANT_VALUE);
 		schwarzwelder.cut(1, 2);
