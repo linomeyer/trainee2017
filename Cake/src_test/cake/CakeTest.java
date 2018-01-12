@@ -11,13 +11,13 @@ public class CakeTest {
 	private static final int NOT_RELEVANT_VALUE = 0;
 
 	@Test
-	public void getPiecesTest() throws Exception {
+	public void getPieces() throws Exception {
 		Cake schwarzwelder = new Cake(NOT_RELEVANT_VALUE);
 		assertThat(schwarzwelder.getRest(), is(new Fraction(1)));
 	}
 	
 	@Test
-	public void cutPieceTest() throws Exception {
+	public void cutPiece() throws Exception {
 		Cake schwarzwelder = new Cake(NOT_RELEVANT_VALUE);
 		schwarzwelder.cut(1, 5);
 		assertThat(schwarzwelder.getRemovedPiece(), is(new Fraction(1, 5)));
