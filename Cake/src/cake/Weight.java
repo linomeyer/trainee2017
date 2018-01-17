@@ -8,6 +8,12 @@ public class Weight {
 	public Weight() {
 
 	}
+	
+	public Weight(Weight weight) {
+		amount = weight.getAmount();
+		unit = weight.getUnit();
+		factorToGramm = weight.getFactorToGramm();
+	}
 
 	/**
 	 * Usable units: g, kg, t
@@ -15,20 +21,7 @@ public class Weight {
 	public Weight(int amount, String unit) {
 		this.unit = unit;
 		this.amount = amount;
-
-		switch (unit) {
-		case "g":
-			factorToGramm = 1;
-
-			break;
-		case "kg":
-			factorToGramm = 1000;
-			break;
-		case "t":
-			factorToGramm = 1000000;
-		default:
-			break;
-		}
+		calculateFactorToGramm();
 	}
 
 	@Override
@@ -62,7 +55,12 @@ public class Weight {
 		return res;
 	}
 	
-	private void decideUnit() {
+	void toGramm() {
+		unit = "g";
+		amount *= factorToGramm;
+	}
+	
+	void decideUnit() {
 		amount *= factorToGramm;
 		unit = "g";
 		
@@ -91,9 +89,31 @@ public class Weight {
 
 	void setUnit(String unit) {
 		this.unit = unit;
+		calculateFactorToGramm();
 	}
 
 	void setAmount(int amount) {
 		this.amount = amount;
+	}
+	
+	void set(Weight weight) {
+		amount = weight.getAmount();
+		unit = weight.getUnit();
+		factorToGramm = weight.getFactorToGramm();
+	}
+	
+	void calculateFactorToGramm() {
+		switch (unit) {
+		case "g":
+			factorToGramm = 1;
+			break;
+		case "kg":
+			factorToGramm = 1000;
+			break;
+		case "t":
+			factorToGramm = 1000000;
+		default:
+			break;
+		}
 	}
 }
