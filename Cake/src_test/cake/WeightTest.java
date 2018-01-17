@@ -15,7 +15,7 @@ public class WeightTest {
 	}
 	
 	@Test
-	public void testName() throws Exception {
+	public void weightWithUnit_addWeightWithUnit() throws Exception {
 		Weight weightKg = new Weight(1, "kg");
 		Weight weightG = new Weight(500,"g");
 		
@@ -24,4 +24,13 @@ public class WeightTest {
 		assertThat(res.toString(), is("1500g"));
 	}
 
+	@Test
+	public void weightWithUnit_subtractWeightWithUnit() throws Exception {
+		Weight weightKg = new Weight(1, "kg");
+		Weight weightG = new Weight(500,"g");
+		
+		Weight res = weightKg.subtract(weightG);
+		
+		assertThat(res.toString(), is("500g"));
+	}
 }
