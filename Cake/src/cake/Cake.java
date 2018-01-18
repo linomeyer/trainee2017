@@ -14,7 +14,7 @@ public class Cake {
 	 * Creates new Cake with a weight
 	 */
 	public Cake(Weight weight) {
-		this.startWeight.set(weight);
+		this.startWeight = weight;	/*before: this.startWeight.set(weight);*/
 	}
 
 	public Fraction getRemovedPiece() {
