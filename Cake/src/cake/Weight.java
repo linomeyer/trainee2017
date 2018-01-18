@@ -16,7 +16,7 @@ public class Weight {
 	}
 
 	/**
-	 * Usable units: g, kg, t  
+	 * Usable units: g, kg, t
 	 */
 	public Weight(int amount, String unit) {
 		this.unit = unit;
