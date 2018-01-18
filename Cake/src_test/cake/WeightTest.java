@@ -11,7 +11,7 @@ public class WeightTest {
 	public void weightAndUnit_getWeightWithUnit() {
 		Weight weight = new Weight(500, "g");
 		
-		assertThat(weight.toString(), is("500g"));
+		assertThat(weight, is(new Weight(500,"g")));
 	}
 	
 	@Test
@@ -21,7 +21,7 @@ public class WeightTest {
 		
 		Weight res = weightKg.add(weightG);
 		
-		assertThat(res.toString(), is("1500g"));
+		assertThat(res, is(new Weight(1500, "g")));
 	}
 
 	@Test
@@ -31,6 +31,16 @@ public class WeightTest {
 		
 		Weight res = weightKg.subtract(weightG);
 		
-		assertThat(res.toString(), is("500g"));
+		assertThat(res, is(new Weight(500, "g")));
+	}
+	
+	@Test
+	public void twoSimilarWeights_compareThem_booleanTrue() throws Exception {
+		Weight weightA = new Weight(500, "g");
+		Weight weightB = new Weight(500, "g");
+		
+		boolean areTheyTheSame = weightA.equals(weightB);
+		
+		assertThat(areTheyTheSame, is(true));
 	}
 }

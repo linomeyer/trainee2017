@@ -58,20 +58,41 @@ public class Weight {
 	void toGramm() {
 		unit = "g";
 		amount *= factorToGramm;
+		factorToGramm = 1;
 	}
 	
 	void decideUnit() {
-		amount *= factorToGramm;
-		unit = "g";
+		toGramm();
 		
 		if (amount % 1000000 == 0) {
 			unit = "t";
 			amount /= 1000000;
+			factorToGramm = 1000000;
 		} else {
 			if (amount % 1000 == 0) {
 				unit = "kg";
 				amount /= 1000;
+				factorToGramm = 1000;
 			}
+		}
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		Weight other = (Weight)obj;
+		return this.equals(other);
+	}
+	
+	boolean equals(Weight weight) {
+		Weight a = new Weight(this);
+		Weight b = new Weight(weight);
+		a.toGramm();
+		b.toGramm();
+		if(a.getAmount() == b.getAmount()) {
+			return true;
+		}else {
+			return false;
 		}
 	}
 
