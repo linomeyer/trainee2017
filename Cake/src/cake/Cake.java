@@ -1,20 +1,21 @@
 package cake;
 
 public class Cake {
-	Weight startWeight;
-	Fraction rest = new Fraction(1);
+	private final Weight startWeight;
+	private Fraction rest = new Fraction(1);
 
 	/**
 	 * Creates new Cake without weight
 	 */
 	public Cake() {
+		this.startWeight = new Weight();
 	}
 
 	/**
 	 * Creates new Cake with a weight
 	 */
 	public Cake(Weight weight) {
-		this.startWeight = weight;	/*before: this.startWeight.set(weight);*/
+		this.startWeight = weight;
 	}
 
 	public Fraction getRemovedPiece() {
