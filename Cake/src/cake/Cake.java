@@ -15,12 +15,7 @@ public class Cake {
 	 * Creates new Cake with a weight
 	 */
 	public Cake(Weight weight) {
-		this.startWeight = weight;
-	}
-	
-	void changeStartWeight(Weight weight) {
-		
-		this.startWeight.setAmount(500);
+		this.startWeight = new Weight(weight);
 	}
 
 	public Fraction getRemovedPiece() {
@@ -30,11 +25,13 @@ public class Cake {
 
 	public Weight getRemovedWeight() {
 		Fraction removedPieces = new Fraction(getRemovedPiece());
-		Weight removedWeight = new Weight(startWeight);
-
-		removedWeight.toGramm();
-		removedWeight.setAmount(removedWeight.getAmount() * removedPieces.getCounter() / removedPieces.getDenominator());
-		removedWeight.calculateFactorToGramm();
+		Weight removedWeight = startWeight.toGramm();
+		int removedAmount;
+		
+		removedAmount = removedWeight.getAmount() * removedPieces.getCounter() / removedPieces.getDenominator();
+		
+		removedWeight = new Weight(removedAmount, "g");
+		removedWeight = removedWeight.decideUnit();
 
 		return removedWeight;
 	}
@@ -51,17 +48,17 @@ public class Cake {
 	}
 
 	public Weight cut(Weight weight) {
-		Weight weightInGramm = new Weight(weight);
-		weightInGramm.toGramm();
-		Weight startWeightInGramm = new Weight(startWeight);
-		startWeightInGramm.toGramm();
+		Weight weightInGramm = weight.toGramm();
+		Weight startWeightInGramm = startWeight.toGramm();
 
 		Fraction piece = new Fraction(weightInGramm.getAmount(), startWeightInGramm.getAmount());
 		piece.shorten();
 		piece = cut(piece);
 
 		Weight cuttedWeight = new Weight(startWeightInGramm);
-		cuttedWeight.setAmount(startWeightInGramm.getAmount() * piece.getCounter() / piece.getDenominator());
+		cuttedWeight = new Weight(startWeightInGramm.getAmount() * piece.getCounter() / piece.getDenominator(), "g");
+		cuttedWeight = cuttedWeight.decideUnit();
+		
 		return cuttedWeight;
 	}
 
@@ -72,9 +69,9 @@ public class Cake {
 	Weight currentWeight() {
 		Weight currentWeight = new Weight(startWeight);
 
-		currentWeight.toGramm();
-		currentWeight.setAmount(currentWeight.getAmount() * rest.getCounter() / rest.getDenominator());
-		currentWeight.calculateFactorToGramm();
+		currentWeight = currentWeight.toGramm();
+		currentWeight = new Weight(currentWeight.getAmount() * rest.getCounter() / rest.getDenominator(), "g");
+		currentWeight = currentWeight.decideUnit();
 
 		return currentWeight;
 	}

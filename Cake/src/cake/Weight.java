@@ -2,10 +2,11 @@ package cake;
 
 public class Weight {
 	private final String unit;
-	private int amount;
+	private final int amount;
 	private final int factorToGramm;
 
 	public Weight() {
+		this.amount = 0;
 		this.unit = "g";
 		this.factorToGramm = 1;
 	}
@@ -38,7 +39,7 @@ public class Weight {
 
 		Weight res = new Weight(amountA + amountB, "g");
 
-		res.decideUnit();
+		res = res.decideUnit();
 
 		return res;
 	}
@@ -51,7 +52,7 @@ public class Weight {
 
 		Weight res = new Weight(amountA - amountB, "g");
 
-		res.decideUnit();
+		res = res.decideUnit();
 
 		return res;
 	}
@@ -103,10 +104,6 @@ public class Weight {
 
 	int getFactorToGramm() {
 		return factorToGramm;
-	}
-
-	void setAmount(int amount) {
-		this.amount = amount;
 	}
 
 	int calculateFactorToGramm() {
