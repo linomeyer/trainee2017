@@ -1,14 +1,15 @@
 package cake;
 
 public class Weight {
-	String unit;
-	int amount;
-	int factorToGramm;
+	private final String unit;
+	private int amount;
+	private final int factorToGramm;
 
 	public Weight() {
-
+		this.unit = "g";
+		this.factorToGramm = 1;
 	}
-	
+
 	public Weight(Weight weight) {
 		amount = weight.getAmount();
 		unit = weight.getUnit();
@@ -21,7 +22,7 @@ public class Weight {
 	public Weight(int amount, String unit) {
 		this.unit = unit;
 		this.amount = amount;
-		calculateFactorToGramm();
+		this.factorToGramm = calculateFactorToGramm();
 	}
 
 	@Override
@@ -38,10 +39,10 @@ public class Weight {
 		Weight res = new Weight(amountA + amountB, "g");
 
 		res.decideUnit();
-		
+
 		return res;
 	}
-	
+
 	public Weight subtract(Weight weight) {
 		int amountA, amountB;
 
@@ -51,47 +52,43 @@ public class Weight {
 		Weight res = new Weight(amountA - amountB, "g");
 
 		res.decideUnit();
-		
+
 		return res;
 	}
-	
-	void toGramm() {
-		unit = "g";
-		amount *= factorToGramm;
-		factorToGramm = 1;
+
+	Weight toGramm() {
+		return new Weight(amount * factorToGramm, "g");
 	}
-	
-	void decideUnit() {
-		toGramm();
-		
-		if (amount % 1000000 == 0) {
-			unit = "t";
-			amount /= 1000000;
-			factorToGramm = 1000000;
+
+	Weight decideUnit() {
+		Weight weightInGramm = toGramm();
+
+		int amount = weightInGramm.getAmount();
+		if (amount % 1_000_000 == 0) {
+			return new Weight(amount / 1_000_000, "t");
 		} else {
 			if (amount % 1000 == 0) {
-				unit = "kg";
-				amount /= 1000;
-				factorToGramm = 1000;
+				return new Weight(amount / 1000, "kg");
 			}
 		}
+		return weightInGramm;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
-		Weight other = (Weight)obj;
+		Weight other = (Weight) obj;
 		return this.equals(other);
 	}
-	
+
 	boolean equals(Weight weight) {
 		Weight a = new Weight(this);
 		Weight b = new Weight(weight);
 		a.toGramm();
 		b.toGramm();
-		if(a.getAmount() == b.getAmount()) {
+		if (a.getAmount() == b.getAmount()) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
@@ -108,33 +105,21 @@ public class Weight {
 		return factorToGramm;
 	}
 
-	void setUnit(String unit) {
-		this.unit = unit;
-		calculateFactorToGramm();
-	}
-
 	void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
-	void set(Weight weight) {
-		amount = weight.getAmount();
-		unit = weight.getUnit();
-		factorToGramm = weight.getFactorToGramm();
-	}
-	
-	void calculateFactorToGramm() {
+
+	int calculateFactorToGramm() {
 		switch (unit) {
 		case "g":
-			factorToGramm = 1;
-			break;
+			return 1;
 		case "kg":
-			factorToGramm = 1000;
-			break;
+			return 1000;
 		case "t":
-			factorToGramm = 1000000;
+			return 1_000_000;
 		default:
 			break;
 		}
+		return 0;
 	}
 }
