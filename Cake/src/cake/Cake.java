@@ -8,14 +8,14 @@ public class Cake {
 	 * Creates new Cake without weight
 	 */
 	public Cake() {
-		this.startWeight = new Weight();
+		this.startWeight = new WeightGramm();
 	}
 
 	/**
 	 * Creates new Cake with a weight
 	 */
 	public Cake(Weight weight) {
-		this.startWeight = new Weight(weight);
+		this.startWeight = weight;
 	}
 
 	public Fraction getRemovedPiece() {
@@ -25,7 +25,7 @@ public class Cake {
 
 	public Weight getRemovedWeight() {
 		Fraction removedPieces = new Fraction(getRemovedPiece());
-		Weight removedWeight = startWeight.toGramm();
+		Weight removedWeight = startWeight.toMiliGramm();
 		int removedAmount;
 		
 		removedAmount = removedWeight.getAmount() * removedPieces.getCounter() / removedPieces.getDenominator();
@@ -48,8 +48,8 @@ public class Cake {
 	}
 
 	public Weight cut(Weight weight) {
-		Weight weightInGramm = weight.toGramm();
-		Weight startWeightInGramm = startWeight.toGramm();
+		Weight weightInGramm = weight.toMiliGramm();
+		Weight startWeightInGramm = startWeight.toMiliGramm();
 
 		Fraction piece = new Fraction(weightInGramm.getAmount(), startWeightInGramm.getAmount());
 		piece.shorten();
@@ -69,7 +69,7 @@ public class Cake {
 	Weight currentWeight() {
 		Weight currentWeight = new Weight(startWeight);
 
-		currentWeight = currentWeight.toGramm();
+		currentWeight = currentWeight.toMiliGramm();
 		currentWeight = new Weight(currentWeight.getAmount() * rest.getCounter() / rest.getDenominator(), "g");
 		currentWeight = currentWeight.decideUnit();
 
