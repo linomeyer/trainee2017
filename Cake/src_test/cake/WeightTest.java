@@ -51,29 +51,40 @@ public class WeightTest {
 		Weight weightG = weightKg.toMiliGramm(); 
 		
 		assertThat(weightG.getUnit(), is("mg"));
-		assertThat(weightG.getAmount(), is(5_000_000));
-		assertThat(weightG.getFactorToMiliGramm(), is(1));
+		assertThat(weightG.getAmount(), is(5_000_000L));
+		assertThat(weightG.getFactorToMiliGramm(), is(1L));
 	}
 	
 	@Test
-	public void weightInKg_decideUnit_weightInTonnes() throws Exception {
-		Weight weightKg = new WeightKG(5000);
+	public void weightInGramm_decideUnit_weightInKG() throws Exception {
+		Weight weightGramm = new WeightGramm(5000L);
 		
-		Weight weightTonnes = weightKg.decideUnit();
+		Weight weightKG = weightGramm.decideUnit();
 		
-		assertThat(weightTonnes.getUnit(), is("t"));
-		assertThat(weightTonnes.getAmount(), is(5));
-		assertThat(weightTonnes.getFactorToMiliGramm(), is(1_000_000_000));
+		assertThat(weightKG.getUnit(), is("kg"));
+		assertThat(weightKG.getAmount(), is(5L));
+		assertThat(weightKG.getFactorToMiliGramm(), is(1_000_000L));
+	}
+	
+	@Test
+	public void weightInMiliGramm_decideUnit_weightInTonns() throws Exception {
+		Weight weightMiliGramm = new WeightMiliGramm(5_000_000_000L);
+		
+		Weight weightGramm = weightMiliGramm.decideUnit();
+		
+		assertThat(weightGramm.getUnit(), is("t"));
+		assertThat(weightGramm.getAmount(), is(5L));
+		assertThat(weightGramm.getFactorToMiliGramm(), is(1_000_000_000L));
 	}
 	
 	@Test
 	public void weightInGramm_decideUnit_weightInGramm() throws Exception {
-		Weight weightInGramm1 = new WeightGramm(500);
+		Weight weightInGramm1 = new WeightGramm(500L);
 		
 		Weight weightInGramm2 = weightInGramm1.decideUnit();
 		
 		assertThat(weightInGramm2.getUnit(), is("g"));
-		assertThat(weightInGramm2.getAmount(), is(500));
-		assertThat(weightInGramm2.getFactorToMiliGramm(), is(1_000));
+		assertThat(weightInGramm2.getAmount(), is(500L));
+		assertThat(weightInGramm2.getFactorToMiliGramm(), is(1_000L));
 	}
 }

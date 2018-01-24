@@ -26,7 +26,7 @@ public class Cake {
 	public Weight getRemovedWeight() {
 		Fraction removedPieces = new Fraction(getRemovedPiece());
 		Weight removedWeight = startWeight.toMiliGramm();
-		int removedAmount;
+		long removedAmount;
 		
 		removedAmount = removedWeight.getAmount() * removedPieces.getCounter() / removedPieces.getDenominator();
 		

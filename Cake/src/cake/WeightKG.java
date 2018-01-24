@@ -6,7 +6,7 @@ public class WeightKG extends Weight{
 		super(0, "kg", 1_000_000);
 	}
 
-	public WeightKG(int amount) {
+	public WeightKG(long amount) {
 		super(amount, "kg",1_000_000);
 		// TODO Auto-generated constructor stub
 	}

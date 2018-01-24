@@ -5,7 +5,7 @@ public class WeightMiliGramm extends Weight{
 		// TODO Auto-generated constructor stub
 		super(0, "mg", 1);
 	}
-	WeightMiliGramm(int amount) {
+	WeightMiliGramm(long amount) {
 		super(amount, "mg", 1);
 	}
 }

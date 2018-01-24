@@ -2,8 +2,8 @@ package cake;
 
 public abstract class Weight {
 	private final String unit;
-	private final int amount;
-	private final int factorToMiliGramm;
+	private final long amount;
+	private final long factorToMiliGramm;
 
 	/*
 	 * public Weight() { this.amount = 0; this.unit = "g"; this.factorToGramm = 1; }
@@ -13,7 +13,7 @@ public abstract class Weight {
 	 * 
 	 * /** Usable units: g, kg, t
 	 */
-	public Weight(int amount, String unit, int factorToMiliGramm) {
+	public Weight(long amount, String unit, long factorToMiliGramm) {
 		this.unit = unit;
 		this.amount = amount;
 		this.factorToMiliGramm = factorToMiliGramm;
@@ -25,7 +25,7 @@ public abstract class Weight {
 	}
 
 	public Weight add(Weight weight) {
-		int amountA, amountB;
+		long amountA, amountB;
 
 		amountA = this.amount * factorToMiliGramm;
 		amountB = weight.getAmount() * weight.getFactorToMiliGramm();
@@ -38,7 +38,7 @@ public abstract class Weight {
 	}
 
 	public Weight subtract(Weight weight) {
-		int amountA, amountB;
+		long amountA, amountB;
 
 		amountA = this.amount * factorToMiliGramm;
 		amountB = weight.getAmount() * weight.getFactorToMiliGramm();
@@ -57,7 +57,7 @@ public abstract class Weight {
 	Weight decideUnit() {
 		Weight weightInMiliGramm = toMiliGramm();
 
-		int amount = weightInMiliGramm.getAmount();
+		long amount = weightInMiliGramm.getAmount();
 		if (amount % 1_000_000_000 == 0) {
 			return new WeightTonns(amount / 1_000_000_000);
 		} else {
@@ -68,8 +68,8 @@ public abstract class Weight {
 					return new WeightGramm(amount / 1_000);
 				}
 			}
+			return weightInMiliGramm;
 		}
-		return weightInMiliGramm;
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public abstract class Weight {
 		}
 	}
 
-	int getAmount() {
+	long getAmount() {
 		return amount;
 	}
 
@@ -97,7 +97,7 @@ public abstract class Weight {
 		return unit;
 	}
 
-	int getFactorToMiliGramm() {
+	long getFactorToMiliGramm() {
 		return factorToMiliGramm;
 	}
 	/*
