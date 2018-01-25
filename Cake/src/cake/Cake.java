@@ -30,7 +30,7 @@ public class Cake {
 		
 		removedAmount = removedWeight.getAmount() * removedPieces.getCounter() / removedPieces.getDenominator();
 		
-		removedWeight = new Weight(removedAmount, "g");
+		removedWeight = new WeightMiliGramm(removedAmount);
 		removedWeight = removedWeight.decideUnit();
 
 		return removedWeight;
@@ -48,15 +48,15 @@ public class Cake {
 	}
 
 	public Weight cut(Weight weight) {
-		Weight weightInGramm = weight.toMiliGramm();
-		Weight startWeightInGramm = startWeight.toMiliGramm();
+		Weight weightInMiliGramm = weight.toMiliGramm();
+		Weight startWeightInMiliGramm = startWeight.toMiliGramm();
 
-		Fraction piece = new Fraction(weightInGramm.getAmount(), startWeightInGramm.getAmount());
+		Fraction piece = new Fraction(weightInMiliGramm.getAmount(), startWeightInMiliGramm.getAmount());
 		piece.shorten();
 		piece = cut(piece);
 
-		Weight cuttedWeight = new Weight(startWeightInGramm);
-		cuttedWeight = new Weight(startWeightInGramm.getAmount() * piece.getCounter() / piece.getDenominator(), "g");
+		Weight cuttedWeight = new WeightMiliGramm(startWeightInMiliGramm.getAmount());
+		cuttedWeight = new WeightMiliGramm(startWeightInMiliGramm.getAmount() * piece.getCounter() / piece.getDenominator());
 		cuttedWeight = cuttedWeight.decideUnit();
 		
 		return cuttedWeight;
@@ -67,10 +67,10 @@ public class Cake {
 	}
 
 	Weight currentWeight() {
-		Weight currentWeight = new Weight(startWeight);
+		Weight currentWeight = new WeightMiliGramm(startWeight.getAmount() * startWeight.getFactorToMiliGramm());
 
 		currentWeight = currentWeight.toMiliGramm();
-		currentWeight = new Weight(currentWeight.getAmount() * rest.getCounter() / rest.getDenominator(), "g");
+		currentWeight = new WeightMiliGramm(currentWeight.getAmount() * rest.getCounter() / rest.getDenominator());
 		currentWeight = currentWeight.decideUnit();
 
 		return currentWeight;

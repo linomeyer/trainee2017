@@ -87,4 +87,15 @@ public class WeightTest {
 		assertThat(weightInGramm2.getAmount(), is(500L));
 		assertThat(weightInGramm2.getFactorToMiliGramm(), is(1_000L));
 	}
+	
+	@Test
+	public void weightInMiligramm_decideUnit_weightInPound() throws Exception {
+		Weight weightInMiliGramm = new WeightMiliGramm(907_184);
+		
+		Weight weightInPound = weightInMiliGramm.decideUnit();
+		
+		assertThat(weightInPound.getUnit(), is("lb"));
+		assertThat(weightInPound.getAmount(), is(2L));
+		assertThat(weightInPound.getFactorToMiliGramm(), is(453_592L));
+	}
 }

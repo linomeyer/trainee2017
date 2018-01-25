@@ -1,8 +1,8 @@
 package cake;
 
 public class Fraction {
-	private int counter;
-	private int denominator;
+	private long counter;
+	private long denominator;
 
 	/**
 	 * Creates new Fraction with initial size 0/1
@@ -12,12 +12,12 @@ public class Fraction {
 		denominator = 1;
 	}
 
-	Fraction(int counter) {
+	Fraction(long counter) {
 		this.counter = counter;
 		denominator = 1;
 	}
 
-	Fraction(int counter, int denominator) {
+	Fraction(long counter, long denominator) {
 		this.counter = counter;
 		this.denominator = denominator;
 	}
@@ -27,11 +27,11 @@ public class Fraction {
 		denominator = fraction.getDenominator();
 	}
 
-	int getCounter() {
+	long getCounter() {
 		return counter;
 	}
 
-	int getDenominator() {
+	long getDenominator() {
 		return denominator;
 	}
 
@@ -40,16 +40,16 @@ public class Fraction {
 		this.denominator = fraction.getDenominator();
 	}
 	
-	void set(int counter, int denominator) {
+	void set(long counter, long denominator) {
 		this.counter = counter;
 		this.denominator = denominator;
 	}
 	
-	void setCounter(int counter) {
+	void setCounter(long counter) {
 		this.counter = counter;
 	}
 
-	void setDenominator(int denominator) {
+	void setDenominator(long denominator) {
 		this.denominator = denominator;
 	}
 
@@ -58,7 +58,7 @@ public class Fraction {
 	}
 
 	void shorten() {
-		int m, n, r;
+		long m, n, r;
 		m = Math.abs(counter);
 		n = Math.abs(denominator);
 		r = m % n;
@@ -131,7 +131,7 @@ public class Fraction {
 		return (double) counter / denominator;
 	}
 
-	void expand(int value) {
+	void expand(long value) {
 		counter *= value;
 		denominator *= value;
 	}

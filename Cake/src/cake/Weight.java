@@ -60,16 +60,17 @@ public abstract class Weight {
 		long amount = weightInMiliGramm.getAmount();
 		if (amount % 1_000_000_000 == 0) {
 			return new WeightTonns(amount / 1_000_000_000);
-		} else {
-			if (amount % 1_000_000 == 0) {
-				return new WeightKG(amount / 1_000_000);
-			} else {
-				if (amount % 1_000 == 0) {
-					return new WeightGramm(amount / 1_000);
-				}
-			}
-			return weightInMiliGramm;
 		}
+		if (amount % 1_000_000 == 0) {
+			return new WeightKG(amount / 1_000_000);
+		}
+		if (amount % 453_592 == 0) {
+			return new WeightPound(amount / 453_592);
+		}
+		if (amount % 1_000 == 0) {
+			return new WeightGramm(amount / 1_000);
+		}
+		return weightInMiliGramm;
 	}
 
 	@Override

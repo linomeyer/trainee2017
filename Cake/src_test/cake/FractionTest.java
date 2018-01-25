@@ -12,22 +12,22 @@ public class FractionTest {
 	@Test
 	public void createFactureValueIs0() {
 		Fraction fracture = new Fraction();
-		assertThat(fracture.getCounter(), is(0));
-		assertThat(fracture.getDenominator(), is(1));
+		assertThat(fracture.getCounter(), is(0L));
+		assertThat(fracture.getDenominator(), is(1L));
 	}
 
 	@Test
 	public void createFactureValueIs1() {
 		Fraction fracture = new Fraction(1);
-		assertThat(fracture.getCounter(), is(1));
-		assertThat(fracture.getDenominator(), is(1));
+		assertThat(fracture.getCounter(), is(1L));
+		assertThat(fracture.getDenominator(), is(1L));
 	}
 
 	@Test
 	public void createFactureValueIs1_2() {
 		Fraction fracture = new Fraction(1, 2);
-		assertThat(fracture.getCounter(), is(1));
-		assertThat(fracture.getDenominator(), is(2));
+		assertThat(fracture.getCounter(), is(1L));
+		assertThat(fracture.getDenominator(), is(2L));
 		assertThat(fracture.toString(), is("1/2"));
 	}
 	
@@ -90,8 +90,8 @@ public class FractionTest {
 		
 		Fraction result = fracture.add(add);
 		
-		assertThat(result.getCounter(), is(3));
-		assertThat(result.getDenominator(), is(2));
+		assertThat(result.getCounter(), is(3L));
+		assertThat(result.getDenominator(), is(2L));
 	}
 	
 	@Test
@@ -100,8 +100,8 @@ public class FractionTest {
 		
 		fracture.expand(3);
 		
-		assertThat(fracture.getCounter(), is(9));
-		assertThat(fracture.getDenominator(), is(12));
+		assertThat(fracture.getCounter(), is(9L));
+		assertThat(fracture.getDenominator(), is(12L));
 	}
 
 	@Test
