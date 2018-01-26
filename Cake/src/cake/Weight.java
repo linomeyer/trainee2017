@@ -4,6 +4,7 @@ public abstract class Weight {
 	private final String unit;
 	private final long amount;
 	private final long factorToMiliGramm;
+	public static final Weight NO_WEIGHT = new WeightGramm(0);
 
 	/*
 	 * public Weight() { this.amount = 0; this.unit = "g"; this.factorToGramm = 1; }

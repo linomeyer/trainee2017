@@ -8,7 +8,7 @@ public class Cake {
 	 * Creates new Cake without weight
 	 */
 	public Cake() {
-		this.startWeight = new WeightGramm();
+		this.startWeight = Weight.NO_WEIGHT;
 	}
 
 	/**
@@ -27,9 +27,9 @@ public class Cake {
 		Fraction removedPieces = new Fraction(getRemovedPiece());
 		Weight removedWeight = startWeight.toMiliGramm();
 		long removedAmount;
-		
+
 		removedAmount = removedWeight.getAmount() * removedPieces.getCounter() / removedPieces.getDenominator();
-		
+
 		removedWeight = new WeightMiliGramm(removedAmount);
 		removedWeight = removedWeight.convertIntoHighestPossibleUnit();
 
@@ -56,9 +56,10 @@ public class Cake {
 		piece = cut(piece);
 
 		Weight cuttedWeight = new WeightMiliGramm(startWeightInMiliGramm.getAmount());
-		cuttedWeight = new WeightMiliGramm(startWeightInMiliGramm.getAmount() * piece.getCounter() / piece.getDenominator());
+		cuttedWeight = new WeightMiliGramm(
+				startWeightInMiliGramm.getAmount() * piece.getCounter() / piece.getDenominator());
 		cuttedWeight = cuttedWeight.convertIntoHighestPossibleUnit();
-		
+
 		return cuttedWeight;
 	}
 
