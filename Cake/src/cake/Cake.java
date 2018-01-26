@@ -31,7 +31,7 @@ public class Cake {
 		removedAmount = removedWeight.getAmount() * removedPieces.getCounter() / removedPieces.getDenominator();
 		
 		removedWeight = new WeightMiliGramm(removedAmount);
-		removedWeight = removedWeight.decideUnit();
+		removedWeight = removedWeight.convertIntoHighestPossibleUnit();
 
 		return removedWeight;
 	}
@@ -57,7 +57,7 @@ public class Cake {
 
 		Weight cuttedWeight = new WeightMiliGramm(startWeightInMiliGramm.getAmount());
 		cuttedWeight = new WeightMiliGramm(startWeightInMiliGramm.getAmount() * piece.getCounter() / piece.getDenominator());
-		cuttedWeight = cuttedWeight.decideUnit();
+		cuttedWeight = cuttedWeight.convertIntoHighestPossibleUnit();
 		
 		return cuttedWeight;
 	}
@@ -71,7 +71,7 @@ public class Cake {
 
 		currentWeight = currentWeight.toMiliGramm();
 		currentWeight = new WeightMiliGramm(currentWeight.getAmount() * rest.getCounter() / rest.getDenominator());
-		currentWeight = currentWeight.decideUnit();
+		currentWeight = currentWeight.convertIntoHighestPossibleUnit();
 
 		return currentWeight;
 	}

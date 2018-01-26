@@ -32,7 +32,7 @@ public abstract class Weight {
 
 		Weight res = new WeightMiliGramm(amountA + amountB);
 
-		res = res.decideUnit();
+		res = res.convertIntoHighestPossibleUnit();
 
 		return res;
 	}
@@ -45,7 +45,7 @@ public abstract class Weight {
 
 		Weight res = new WeightMiliGramm(amountA - amountB);
 
-		res = res.decideUnit();
+		res = res.convertIntoHighestPossibleUnit();
 
 		return res;
 	}
@@ -54,7 +54,7 @@ public abstract class Weight {
 		return new WeightMiliGramm(amount * factorToMiliGramm);
 	}
 
-	Weight decideUnit() {
+	Weight convertIntoHighestPossibleUnit() {
 		Weight weightInMiliGramm = toMiliGramm();
 
 		long amount = weightInMiliGramm.getAmount();

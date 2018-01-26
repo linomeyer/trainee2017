@@ -56,46 +56,46 @@ public class WeightTest {
 	}
 	
 	@Test
-	public void weightInGramm_decideUnit_weightInKG() throws Exception {
-		Weight weightGramm = new WeightGramm(5000L);
+	public void weightInGramm_convertIntoHighestPossibleUnit_weightInKG() throws Exception {
+		Weight weight = new WeightGramm(5000L);
 		
-		Weight weightKG = weightGramm.decideUnit();
+		Weight convertedWeight = weight.convertIntoHighestPossibleUnit();
 		
-		assertThat(weightKG.getUnit(), is("kg"));
-		assertThat(weightKG.getAmount(), is(5L));
-		assertThat(weightKG.getFactorToMiliGramm(), is(1_000_000L));
+		assertThat(convertedWeight.getUnit(), is("kg"));
+		assertThat(convertedWeight.getAmount(), is(5L));
+		assertThat(convertedWeight.getFactorToMiliGramm(), is(1_000_000L));
 	}
 	
 	@Test
-	public void weightInMiliGramm_decideUnit_weightInTonns() throws Exception {
-		Weight weightMiliGramm = new WeightMiliGramm(5_000_000_000L);
+	public void weightInMiliGramm_convertIntoHighestPossibleUnit_weightInTonns() throws Exception {
+		Weight weight = new WeightMiliGramm(5_000_000_000L);
 		
-		Weight weightGramm = weightMiliGramm.decideUnit();
+		Weight convertedWeight = weight.convertIntoHighestPossibleUnit();
 		
-		assertThat(weightGramm.getUnit(), is("t"));
-		assertThat(weightGramm.getAmount(), is(5L));
-		assertThat(weightGramm.getFactorToMiliGramm(), is(1_000_000_000L));
+		assertThat(convertedWeight.getUnit(), is("t"));
+		assertThat(convertedWeight.getAmount(), is(5L));
+		assertThat(convertedWeight.getFactorToMiliGramm(), is(1_000_000_000L));
 	}
 	
 	@Test
-	public void weightInGramm_decideUnit_weightInGramm() throws Exception {
-		Weight weightInGramm1 = new WeightGramm(500L);
+	public void weightInGramm_convertIntoHighestPossibleUnit_weightInGramm() throws Exception {
+		Weight weight = new WeightGramm(500L);
 		
-		Weight weightInGramm2 = weightInGramm1.decideUnit();
+		Weight convertedWeight = weight.convertIntoHighestPossibleUnit();
 		
-		assertThat(weightInGramm2.getUnit(), is("g"));
-		assertThat(weightInGramm2.getAmount(), is(500L));
-		assertThat(weightInGramm2.getFactorToMiliGramm(), is(1_000L));
+		assertThat(convertedWeight.getUnit(), is("g"));
+		assertThat(convertedWeight.getAmount(), is(500L));
+		assertThat(convertedWeight.getFactorToMiliGramm(), is(1_000L));
 	}
 	
 	@Test
-	public void weightInMiligramm_decideUnit_weightInPound() throws Exception {
-		Weight weightInMiliGramm = new WeightMiliGramm(907_184);
+	public void weightInMiligramm_convertIntoHighestPossibleUnit_weightInPound() throws Exception {
+		Weight weight = new WeightMiliGramm(907_184);
 		
-		Weight weightInPound = weightInMiliGramm.decideUnit();
+		Weight convertedWeight = weight.convertIntoHighestPossibleUnit();
 		
-		assertThat(weightInPound.getUnit(), is("lb"));
-		assertThat(weightInPound.getAmount(), is(2L));
-		assertThat(weightInPound.getFactorToMiliGramm(), is(453_592L));
+		assertThat(convertedWeight.getUnit(), is("lb"));
+		assertThat(convertedWeight.getAmount(), is(2L));
+		assertThat(convertedWeight.getFactorToMiliGramm(), is(453_592L));
 	}
 }
