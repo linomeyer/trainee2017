@@ -6,10 +6,10 @@ import org.junit.Test;
 public class VocalCounterTest {
 
   @Test
-  public void test() throws Exception {
-    String word = "HALLO MEIN NAME IST KISAN";
+  public void string_countVocals_numberOfVocals() throws Exception {
+    String sentence = "HALLO MEIN NAME IST KISAN";
 
-    int vocalCounter = VocalCounter.count(word);
+    int vocalCounter = VocalCounter.count(sentence);
 
     assertThat(vocalCounter, is(9));
   }
