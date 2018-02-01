@@ -13,7 +13,18 @@ public class InputTimer {
 
     Duration duration = Duration.between(startTime, endTime);
     Long millis = duration.toMillis() - duration.getSeconds() * 1000;
+    Long seconds = duration.getSeconds() - duration.toMinutes() * 60;
 
+    if (input.equals(correctAnswer)) {
+      JOptionPane.showMessageDialog(null,
+          "Fehlerfrei! " + duration.toMinutes() + " Minuten, " + seconds + " Sekunden, " + millis + " Milisekunden");
+    } else {
+      JOptionPane.showMessageDialog(null, "Es hat noch " + mistakeCounter(input, correctAnswer) + " Fehler! "
+          + duration.toMinutes() + " Minuten, " + seconds + " Sekunden, " + millis + " Milisekunden");
+    }
+  }
+
+  public static int mistakeCounter(String input, String correctAnswer) {
     int amountOfMistakes = 0;
     for (int x = 0; x < input.length(); x++) {
       if (input.charAt(x) == correctAnswer.charAt(x)) {
@@ -23,13 +34,6 @@ public class InputTimer {
     }
     // If input is shorter than the correctAnswer add mistakes
     amountOfMistakes += correctAnswer.length() - input.length();
-
-    if (input.equals(correctAnswer)) {
-      JOptionPane.showMessageDialog(null, "Fehlerfrei! " + duration.toMinutes() + " Minuten, " + duration.getSeconds()
-          + " Sekunden, " + millis + " Milisekunden");
-    } else {
-      JOptionPane.showMessageDialog(null, "Es hat noch " + amountOfMistakes + " Fehler! " + duration.toMinutes()
-          + " Minuten, " + duration.getSeconds() + " Sekunden, " + millis + " Milisekunden");
-    }
+    return amountOfMistakes;
   }
 }
