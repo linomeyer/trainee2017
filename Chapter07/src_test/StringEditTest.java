@@ -8,7 +8,7 @@ public class StringEditTest {
   public void testName() throws Exception {
     String sentence = "Mein Name ist Kisan";
 
-    String vocalRemover = StringEdit.remove(sentence);
+    String vocalRemover = StringEdit.removeVocals(sentence);
 
     assertThat(vocalRemover, is("M__n N_m_ _st K_s_n"));
   }
@@ -35,12 +35,4 @@ public class StringEditTest {
     assertThat(sortedStrings[2], is("Luca"));
   }
 
-  @Test
-  public void string_countVocals_numberOfVocals() throws Exception {
-    String sentence = "HALLO MEIN NAME IST KISAN";
-
-    int vocalCounter = StringEdit.count(sentence);
-
-    assertThat(vocalCounter, is(9));
-  }
 }
