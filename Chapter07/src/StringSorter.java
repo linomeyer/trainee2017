@@ -1,10 +1,4 @@
-public class StringEdit {
-
-  public static String reverse(String sentence) {
-    StringBuilder stringBuilder = new StringBuilder(sentence);
-    stringBuilder.reverse();
-    return stringBuilder.toString();
-  }
+public class StringSorter {
 
   public static String[] sort(String x, String y, String z) {
     String[] sortedString = { "", "", "" };
@@ -42,27 +36,4 @@ public class StringEdit {
     return sortedString;
   }
 
-  public static String removeVocals(String sentence) {
-    int length = sentence.length();
-    StringBuilder vocalsRemoved = new StringBuilder(sentence);
-    sentence = sentence.toLowerCase();
-
-    for (int x = 0; x < length; x++) {
-      switch (sentence.charAt(x)) {
-      case 'a':
-      case 'e':
-      case 'i':
-      case 'o':
-      case 'u':
-      case 'ä':
-      case 'ö':
-      case 'ü':
-        vocalsRemoved.setCharAt(x, '_');
-        break;
-      default:
-        break;
-      }
-    }
-    return vocalsRemoved.toString();
-  }
 }
