@@ -9,8 +9,8 @@ public class StringReverserTest {
   public void string_reverse_stringBackwards() {
     String sentence = "Hallo ich heisse Kisan";
 
-    String backwardsSentence = StringReverser.reverse(sentence);
+    String sentenceBackwards = StringReverser.reverse(sentence);
 
-    assertThat(backwardsSentence, is("nasiK essieh hci ollaH"));
+    assertThat(sentenceBackwards, is("nasiK essieh hci ollaH"));
   }
 }

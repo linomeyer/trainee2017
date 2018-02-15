@@ -2,8 +2,8 @@
 public class StringReverser {
 
   public static String reverse(String sentence) {
-    StringBuilder stringBuilder = new StringBuilder(sentence);
-    stringBuilder.reverse();
-    return stringBuilder.toString();
+    StringBuilder reversedString = new StringBuilder(sentence);
+    reversedString.reverse();
+    return reversedString.toString();
   }
 }

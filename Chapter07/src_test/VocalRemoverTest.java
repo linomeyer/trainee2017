@@ -9,8 +9,8 @@ public class VocalRemoverTest {
   public void string_removeVocals_stringWithoutVocals() throws Exception {
     String sentence = "Mein Name ist Kisan";
 
-    String vocalRemover = VocalRemover.remove(sentence);
+    String sentenceWithoutVocals = VocalRemover.remove(sentence);
 
-    assertThat(vocalRemover, is("Mn Nm st Ksn"));
+    assertThat(sentenceWithoutVocals, is("Mn Nm st Ksn"));
   }
 }
