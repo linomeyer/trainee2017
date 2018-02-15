@@ -1,39 +1,23 @@
 public class StringSorter {
 
-  public static String[] sort(String x, String y, String z) {
-    String[] sortedString = { "", "", "" };
+  public static String[] sort(String[] strings) {
+    int lenght = strings.length;
+    String[] sortedStrings = strings;
 
-    if (x.compareTo(y) < 0 && x.compareTo(z) < 0) {
-      sortedString[0] = x;
-    } else {
-      if (x.compareTo(y) < 0 || x.compareTo(z) < 0) {
-        sortedString[1] = x;
-      } else {
-        sortedString[2] = x;
+    for (int x = 0; x < lenght; x++) {
+      for (int y = 0; y < lenght - 1; y++) {
+        int z = y + 1;
+        String stringOfY = sortedStrings[y];
+        String stringOfZ = sortedStrings[z];
+        if (stringOfY.compareTo(stringOfZ) > 0) {
+          sortedStrings[y] = stringOfZ;
+          sortedStrings[z] = stringOfY;
+        }
       }
+
     }
 
-    if (y.compareTo(x) < 0 && y.compareTo(z) < 0) {
-      sortedString[0] = y;
-    } else {
-      if (y.compareTo(x) < 0 || y.compareTo(z) < 0) {
-        sortedString[1] = y;
-      } else {
-        sortedString[2] = y;
-      }
-    }
-
-    if (z.compareTo(y) < 0 && z.compareTo(x) < 0) {
-      sortedString[0] = z;
-    } else {
-      if (z.compareTo(y) < 0 || z.compareTo(x) < 0) {
-        sortedString[1] = z;
-      } else {
-        sortedString[2] = z;
-      }
-    }
-
-    return sortedString;
+    return sortedStrings;
   }
 
 }

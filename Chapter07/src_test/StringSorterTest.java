@@ -7,12 +7,9 @@ public class StringSorterTest {
 
   @Test
   public void threeStrings_sort_threeStringsSorted() throws Exception {
-    String str1 = "Lino";
-    String str2 = "Lars";
-    String str3 = "Luca";
-    String[] strings = { str1, str2, str3 };
+    String[] words = { "Lino", "Lars", "Luca" };
 
-    String[] sortedStrings = StringSorter.sort(strings);
+    String[] sortedStrings = StringSorter.sort(words);
 
     assertThat(sortedStrings[0], is("Lars"));
     assertThat(sortedStrings[1], is("Lino"));
@@ -20,15 +17,10 @@ public class StringSorterTest {
   }
 
   @Test
-  public void fiveStrings_sort_threeStringsSorted() throws Exception {
-    String str1 = "Silvan";
-    String str2 = "Lars";
-    String str3 = "Reto";
-    String str4 = "Luca";
-    String str5 = "Lino";
-    String[] strings = { str1, str2, str3, str4, str5 };
+  public void fiveStrings_sort_fiveStringsSorted() throws Exception {
+    String[] words = { "Silvan", "Lars", "Reto", "Luca", "Lino" };
 
-    String[] sortedStrings = StringSorter.sort(strings);
+    String[] sortedStrings = StringSorter.sort(words);
 
     assertThat(sortedStrings[0], is("Lars"));
     assertThat(sortedStrings[1], is("Lino"));
