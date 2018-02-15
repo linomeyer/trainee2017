@@ -2,20 +2,25 @@
 public class NumberConverter {
 
   /**
-   * Return String with arrays in different number systems: [0] = dec [1] = bin
-   * [2] = hex
+   * Return String with arrays in different number systems: [0] = bin; [1] =
+   * octal; [2] = decimal; [3] hex
    */
   public static String[] convert(int number) {
-    String[] convertedNumbers = { "", "", "" };
-    convertedNumbers[0] = Integer.toString(number);
-    convertedNumbers[1] = Integer.toBinaryString(number);
-    convertedNumbers[2] = Integer.toHexString(number);
-    convertedNumbers[2] = convertedNumbers[2].toUpperCase();
+    String[] convertedNumbers = { "", "", "", "" };
+    convertedNumbers[0] = Integer.toBinaryString(number);
+    convertedNumbers[1] = Integer.toOctalString(number);
+    convertedNumbers[2] = Integer.toString(number);
+    convertedNumbers[3] = Integer.toHexString(number);
+    convertedNumbers[3] = convertedNumbers[3].toUpperCase();
     return convertedNumbers;
   }
 
-  public static String[] convert(String hexNumber) {
-    int decimalNumber = Integer.parseInt(hexNumber, 16);
+  /**
+   * Return String with arrays in different number systems: [0] = bin; [1] =
+   * octal; [2] = decimal; [3] hex
+   */
+  public static String[] convert(String number, int format) {
+    int decimalNumber = Integer.parseInt(number, format);
     return convert(decimalNumber);
   }
 
