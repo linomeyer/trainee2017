@@ -5,23 +5,32 @@ import javax.swing.JOptionPane;
 
 public class InputTimer {
   public static void main(String[] args) {
-    String correctAnswer = "Fischers Fritz fischt frische Fische";
+    int addedMistakes = 0;
+    for (int x = 0; x < 5; x++) {
+      String[] correctAnswer = { "Fischers Fritz fischt frische Fische",
+          "Wenn Schnecken an Schnecken schlecken, merken Schnecken zu ihrem Schrecken, dass Schnecken nicht schmecken",
+          "Es ist verboten einem toten auf dem boden liegenden Kojoten mit den Pfoten die Hoden zu verknoten",
+          "Esel essen Nesseln nicht, Nesseln essen Esel nicht",
+          "Blaukraut bleibt Blaukraut und Brautkleid bleibt Brautkleid" };
 
-    Instant startTime = Instant.now();
-    String input = JOptionPane.showInputDialog("Geben Sie folgenden Satz ein: \n Fischers Fritz fischt frische Fische");
-    Instant endTime = Instant.now();
+      Instant startTime = Instant.now();
+      String input = JOptionPane.showInputDialog(correctAnswer[x]);
+      Instant endTime = Instant.now();
 
-    Duration duration = Duration.between(startTime, endTime);
-    Long millis = duration.toMillis() - duration.getSeconds() * 1000;
-    Long seconds = duration.getSeconds() - duration.toMinutes() * 60;
+      Duration duration = Duration.between(startTime, endTime);
+      Long millis = duration.toMillis() - duration.getSeconds() * 1000;
+      Long seconds = duration.getSeconds() - duration.toMinutes() * 60;
 
-    if (input.equals(correctAnswer)) {
-      JOptionPane.showMessageDialog(null,
-          "Fehlerfrei! " + duration.toMinutes() + " Minuten, " + seconds + " Sekunden, " + millis + " Milisekunden");
-    } else {
-      JOptionPane.showMessageDialog(null, "Es hat noch " + mistakeCounter(input, correctAnswer) + " Fehler! "
-          + duration.toMinutes() + " Minuten, " + seconds + " Sekunden, " + millis + " Milisekunden");
+      if (input.equals(correctAnswer[x])) {
+        JOptionPane.showMessageDialog(null,
+            "Fehlerfrei! " + duration.toMinutes() + " Minuten, " + seconds + " Sekunden, " + millis + " Milisekunden");
+      } else {
+        JOptionPane.showMessageDialog(null, "Es hat noch " + mistakeCounter(input, correctAnswer[x]) + " Fehler! "
+            + duration.toMinutes() + " Minuten, " + seconds + " Sekunden, " + millis + " Milisekunden");
+      }
+      addedMistakes += mistakeCounter(input, correctAnswer[x]);
     }
+    JOptionPane.showMessageDialog(null, "Fehler insgesammt: " + addedMistakes);
   }
 
   public static int mistakeCounter(String input, String correctAnswer) {
