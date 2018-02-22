@@ -1,10 +1,13 @@
 package tech.bison.tranee17.chapter09;
 
+import java.time.LocalTime;
+
 import javax.swing.JOptionPane;
 
 public class Time {
   public static void main(String[] args) {
-    String time;
+    LocalTime time = LocalTime.now();
+    String message = "";
     int hours;
     int minutes;
 
@@ -14,19 +17,22 @@ public class Time {
     try {
       hours = Integer.parseInt(strHours);
       minutes = Integer.parseInt(strMinutes);
-      time = "Ihre Uhrzeit ist " + hours + ":" + minutes + " Uhr!";
-      if (hours <= 0 || hours > 24) {
-        throw new TimeFormatException("Falsche Stundeneingabe!");
-      } else {
-        if (minutes <= 0 || minutes > 60) {
-          throw new TimeFormatException("Falsche Minuteneingabe!");
-        }
+      time = LocalTime.of(hours, minutes);
+      if (hours < 0 || hours > 24 || minutes < 0 || minutes > 60) {
+        throw new TimeFormatException("Falsche Zeiteingabe!");
       }
     } catch (TimeFormatException e) {
-      time = e.getMessage();
+      message = e.getMessage();
+      JOptionPane.showMessageDialog(null, message);
     } catch (NumberFormatException e) {
-      time = "Die Eingabe war ungültig.";
+      message = "Etwas stimmt mit den Zahlen nicht: \n" + e.getMessage();
+      JOptionPane.showMessageDialog(null, message);
+    } catch (Exception e) {
+      message = "Etwas stimmt nicht: \n" + e.getMessage();
+      JOptionPane.showMessageDialog(null, message);
     }
-    JOptionPane.showMessageDialog(null, time);
+    if (message.equals("")) {
+      JOptionPane.showMessageDialog(null, "Ihre Zeit ist " + time.toString() + " Uhr");
+    }
   }
 }
