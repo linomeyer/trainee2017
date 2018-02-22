@@ -15,10 +15,14 @@ public class Time {
       hours = Integer.parseInt(strHours);
       minutes = Integer.parseInt(strMinutes);
       time = "Ihre Uhrzeit ist " + hours + ":" + minutes + " Uhr!";
+      if (hours <= 0 && hours > 24 && minutes <= 0 && minutes > 60) {
+        throw new TimeFormatException("Falsche Zeiteingabe!");
+      }
+    } catch (TimeFormatException e) {
+      time = e.getMessage();
     } catch (NumberFormatException e) {
       time = "Die Eingabe war ungültig.";
     }
-
     JOptionPane.showMessageDialog(null, time);
   }
 }
