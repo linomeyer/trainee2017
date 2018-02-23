@@ -33,4 +33,15 @@ public class TimeTest {
     }
     assertThat(exceptionMessage, is("Ungültige Minuteneingabe!"));
   }
+
+  @Test
+  public void timeWithInvalidNumbersOfMinuteAndHour_catchException_timeFormatException() throws Exception {
+    String exceptionMessage = "";
+    try {
+      new Time(-3, 60);
+    } catch (Exception e) {
+      exceptionMessage = e.getMessage();
+    }
+    assertThat(exceptionMessage, is("Ungültige Zeiteingabe!"));
+  }
 }

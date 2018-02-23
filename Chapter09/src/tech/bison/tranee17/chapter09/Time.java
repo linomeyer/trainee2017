@@ -6,13 +6,12 @@ public class Time {
   private final LocalTime time;
 
   public Time(int hours, int minutes) throws Exception {
-    if (hours < 0 || hours > 23) {
+    if ((minutes < 0 || minutes > 59) && (hours < 0 || hours > 23))
+      throw new TimeFormatException("Ungültige Zeiteingabe!");
+    if (hours < 0 || hours > 23)
       throw new TimeFormatException("Ungültige Stundeneingabe!");
-    } else {
-      if (minutes < 0 || minutes > 59) {
-        throw new TimeFormatException("Ungültige Minuteneingabe!");
-      }
-    }
+    if (minutes < 0 || minutes > 59)
+      throw new TimeFormatException("Ungültige Minuteneingabe!");
 
     time = LocalTime.of(hours, minutes);
   }
