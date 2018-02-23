@@ -18,8 +18,13 @@ public class TimeJOptionPane {
       hours = Integer.parseInt(strHours);
       minutes = Integer.parseInt(strMinutes);
       time = LocalTime.of(hours, minutes);
-      if (hours < 0 || hours > 24 || minutes < 0 || minutes > 60) {
-        throw new TimeFormatException("Falsche Zeiteingabe!");
+
+      if (hours < 0 || hours > 24) {
+        throw new TimeFormatException("Falsche Stundeneingabe!");
+      } else {
+        if (minutes < 0 || minutes > 60) {
+          throw new TimeFormatException("Falsche Minuteneingabe!");
+        }
       }
     } catch (TimeFormatException e) {
       message = e.getMessage();
