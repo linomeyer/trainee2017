@@ -1,0 +1,36 @@
+package tech.bison.tranee17.chapter09;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
+
+public class TimeTest {
+  @Test
+  public void time_toString_timeFormat() throws Exception {
+    Time time = new Time(0, 2);
+    assertThat(time.toString(), is("00:02"));
+  }
+
+  @Test
+  public void timeWithInvalidNumberOfHour_catchException_timeFormatException() throws Exception {
+    String exceptionMessage = "";
+    try {
+      Time time = new Time(24, 05);
+    } catch (Exception e) {
+      exceptionMessage = e.getMessage();
+    }
+    assertThat(exceptionMessage, is("Ungültige Uhrzeit!"));
+  }
+
+  @Test
+  public void timeWithInvalidNumberOfMinute_catchException_timeFormatException() throws Exception {
+    String exceptionMessage = "";
+    try {
+      Time time = new Time(23, -1);
+    } catch (Exception e) {
+      exceptionMessage = e.getMessage();
+    }
+    assertThat(exceptionMessage, is("Ungültige Uhrzeit!"));
+  }
+}
