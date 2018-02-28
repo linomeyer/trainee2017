@@ -3,8 +3,9 @@ import java.time.Instant;
 
 import javax.swing.JOptionPane;
 
-public class InputTimer {
+public class TongueBreaker {
   public static void main(String[] args) {
+    Instant startTimeOfProgramm = Instant.now();
     int addedMistakes = 0;
     for (int x = 0; x < 5; x++) {
       String[] correctAnswer = { "Fischers Fritz fischt frische Fische",
@@ -18,8 +19,8 @@ public class InputTimer {
       Instant endTime = Instant.now();
 
       Duration duration = Duration.between(startTime, endTime);
-      Long millis = duration.toMillis() - duration.getSeconds() * 1000;
-      Long seconds = duration.getSeconds() - duration.toMinutes() * 60;
+      long millis = duration.toMillis() - duration.getSeconds() * 1000;
+      long seconds = duration.getSeconds() - duration.toMinutes() * 60;
 
       if (input.equals(correctAnswer[x])) {
         JOptionPane.showMessageDialog(null,
@@ -31,6 +32,24 @@ public class InputTimer {
       addedMistakes += mistakeCounter(input, correctAnswer[x]);
     }
     JOptionPane.showMessageDialog(null, "Fehler insgesammt: " + addedMistakes);
+    Instant endTimeOfProgramm = Instant.now();
+    Duration durationOfProgramm = Duration.between(startTimeOfProgramm, endTimeOfProgramm);
+    long millisOfProgramm = durationOfProgramm.toMillis() - durationOfProgramm.getSeconds() * 1000;
+    long secondsOfProgramm = durationOfProgramm.getSeconds() - durationOfProgramm.toMinutes() * 60;
+
+    if (durationOfProgramm.toMinutes() <= 1 && durationOfProgramm.getSeconds() <= 20 && addedMistakes <= 5) {
+      JOptionPane.showMessageDialog(null,
+          "Wow!!!, du hast für alle Wortwitze zusammen nur " + durationOfProgramm.toMinutes() + " Minuten, "
+              + secondsOfProgramm + " Sekunden und " + millisOfProgramm + " Milisekunden gebraucht!");
+    } else if (durationOfProgramm.toMinutes() < 2 && addedMistakes <= 10) {
+      JOptionPane.showMessageDialog(null,
+          "Nicht schlecht, du hast für alle Wortwitze zusammen " + durationOfProgramm.toMinutes() + " Minuten, "
+              + secondsOfProgramm + " Sekunden und " + millisOfProgramm + " Milisekunden gebraucht.");
+    } else {
+      JOptionPane.showMessageDialog(null,
+          "Das kannst du besser, du hast für alle Wortwitze zusammen ganze " + durationOfProgramm.toMinutes()
+              + " Minuten, " + secondsOfProgramm + " Sekunden und " + millisOfProgramm + " Milisekunden gebraucht...");
+    }
   }
 
   public static int mistakeCounter(String input, String correctAnswer) {
