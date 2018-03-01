@@ -31,8 +31,8 @@ public class TongueBreaker {
       }
       addedMistakes += mistakeCounter(input, correctAnswer[x]);
     }
-    JOptionPane.showMessageDialog(null, "Fehler insgesammt: " + addedMistakes);
     Instant endTimeOfProgramm = Instant.now();
+    JOptionPane.showMessageDialog(null, "Fehler insgesammt: " + addedMistakes);
     Duration durationOfProgramm = Duration.between(startTimeOfProgramm, endTimeOfProgramm);
     long millisOfProgramm = durationOfProgramm.toMillis() - durationOfProgramm.getSeconds() * 1000;
     long secondsOfProgramm = durationOfProgramm.getSeconds() - durationOfProgramm.toMinutes() * 60;
