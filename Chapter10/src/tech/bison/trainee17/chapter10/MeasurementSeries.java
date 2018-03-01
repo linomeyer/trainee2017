@@ -38,4 +38,10 @@ public class MeasurementSeries {
     }
     return lowestValue;
   }
+
+  public double[] changeValue(int index, double replaceValue) {
+    values[index] = replaceValue;
+    return values;
+
+  }
 }
