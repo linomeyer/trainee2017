@@ -17,6 +17,10 @@ public class TimeTest {
     String exceptionMessage = "";
     try {
       new Time(24, 05);
+    } catch (TimeFormatException e) {
+      exceptionMessage = e.getMessage();
+    } catch (NumberFormatException e) {
+      exceptionMessage = e.getMessage();
     } catch (Exception e) {
       exceptionMessage = e.getMessage();
     }
@@ -28,6 +32,10 @@ public class TimeTest {
     String exceptionMessage = "";
     try {
       new Time(23, -1);
+    } catch (TimeFormatException e) {
+      exceptionMessage = e.getMessage();
+    } catch (NumberFormatException e) {
+      exceptionMessage = e.getMessage();
     } catch (Exception e) {
       exceptionMessage = e.getMessage();
     }
@@ -39,6 +47,10 @@ public class TimeTest {
     String exceptionMessage = "";
     try {
       new Time(-3, 60);
+    } catch (TimeFormatException e) {
+      exceptionMessage = e.getMessage();
+    } catch (NumberFormatException e) {
+      exceptionMessage = e.getMessage();
     } catch (Exception e) {
       exceptionMessage = e.getMessage();
     }
