@@ -29,9 +29,11 @@ public class TimeJOptionPane {
     } catch (TimeFormatException e) {
       exceptionMessage = e.getMessage();
       JOptionPane.showMessageDialog(null, exceptionMessage);
+
     } catch (NumberFormatException e) {
       exceptionMessage = "Falsches Zahlenformat: \n" + e.getMessage();
       JOptionPane.showMessageDialog(null, exceptionMessage);
+
     } catch (Exception e) {
       exceptionMessage = "Ungültige eingabe: \n" + e.getMessage();
       JOptionPane.showMessageDialog(null, exceptionMessage);
