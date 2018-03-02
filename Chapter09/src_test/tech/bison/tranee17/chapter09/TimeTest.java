@@ -7,9 +7,28 @@ import org.junit.Test;
 
 public class TimeTest {
   @Test
-  public void time_toString_timeFormat() throws Exception {
-    Time time = new Time(0, 2);
-    assertThat(time.toString(), is("00:02"));
+  public void validTime_toString_inTimeFormat() throws Exception {
+    Time time = new Time(23, 59);
+
+    assertThat(time.toString(), is("23:59"));
+  }
+
+  @Test
+  public void validTime_catchExceptions_noException() throws Exception {
+    String exceptionMessage = "";
+    try {
+      Time time = new Time(0, 0);
+      assertThat(time.toString(), is("00:00"));
+
+    } catch (TimeFormatException e) {
+      exceptionMessage = e.getMessage();
+    } catch (NumberFormatException e) {
+      exceptionMessage = e.getMessage();
+    } catch (Exception e) {
+      exceptionMessage = e.getMessage();
+    }
+
+    assertThat(exceptionMessage, is(""));
   }
 
   @Test
