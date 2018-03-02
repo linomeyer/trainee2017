@@ -30,4 +30,10 @@ public class Contact {
     return firstName + " " + lastName + "\n" + address + "\n" + postalCode + " " + place + "\n" + email + "\n"
         + phoneNumber;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    obj = (Contact) obj;
+    return this.toString().equals(obj.toString());
+  }
 }
