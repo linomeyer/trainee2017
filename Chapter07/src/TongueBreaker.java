@@ -34,6 +34,7 @@ public class TongueBreaker {
     Instant endTimeOfProgramm = Instant.now();
     JOptionPane.showMessageDialog(null, "Fehler insgesammt: " + addedMistakes);
     Duration durationOfProgramm = Duration.between(startTimeOfProgramm, endTimeOfProgramm);
+
     long millisOfProgramm = durationOfProgramm.toMillis() - durationOfProgramm.getSeconds() * 1000;
     long secondsOfProgramm = durationOfProgramm.getSeconds() - durationOfProgramm.toMinutes() * 60;
 
@@ -41,11 +42,15 @@ public class TongueBreaker {
       JOptionPane.showMessageDialog(null,
           "Wow!!!, du hast für alle Wortwitze zusammen nur " + durationOfProgramm.toMinutes() + " Minuten, "
               + secondsOfProgramm + " Sekunden und " + millisOfProgramm + " Milisekunden gebraucht!");
-    } else if (durationOfProgramm.toMinutes() < 2 && addedMistakes <= 10) {
+    }
+
+    else if (durationOfProgramm.toMinutes() < 2 && addedMistakes <= 10) {
       JOptionPane.showMessageDialog(null,
           "Nicht schlecht, du hast für alle Wortwitze zusammen " + durationOfProgramm.toMinutes() + " Minuten, "
               + secondsOfProgramm + " Sekunden und " + millisOfProgramm + " Milisekunden gebraucht.");
-    } else {
+    }
+
+    else {
       JOptionPane.showMessageDialog(null,
           "Das kannst du besser, du hast für alle Wortwitze zusammen ganze " + durationOfProgramm.toMinutes()
               + " Minuten, " + secondsOfProgramm + " Sekunden und " + millisOfProgramm + " Milisekunden gebraucht...");

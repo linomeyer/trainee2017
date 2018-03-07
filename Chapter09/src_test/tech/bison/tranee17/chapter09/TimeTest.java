@@ -14,7 +14,7 @@ public class TimeTest {
   }
 
   @Test
-  public void validTime_catchExceptions_noException() throws Exception {
+  public void validTime_catchException_noException() throws Exception {
     String exceptionMessage = "";
     try {
       Time time = new Time(0, 0);

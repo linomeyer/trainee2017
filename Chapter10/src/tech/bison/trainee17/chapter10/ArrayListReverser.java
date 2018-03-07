@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class ArrayListReverser {
 
-  public static void reverse(ArrayList arrayList) {
+  public static <E> void reverse(ArrayList<E> arrayList) {
     int length = arrayList.size();
-    ArrayList reversedArrayList = arrayList;
-    arrayList = new ArrayList(reversedArrayList);
+    ArrayList<E> reversedArrayList = arrayList;
+    arrayList = new ArrayList<E>(reversedArrayList);
     reversedArrayList.clear();
     for (int x = length - 1; x >= 0; x--) {
       reversedArrayList.add(arrayList.get(x));

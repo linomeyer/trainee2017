@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class ContactListTest {
   @Test
-  public void contact_addToContactList_contactListWithContact() throws Exception {
+  public void contact_addContactToContactList_contactListWithContact() throws Exception {
     Contact lino = new Contact("Lino", "Meyer", "Eichenstrasse 11", "6023", "Rothenburg", "lino.meyer@bluewin.ch",
         "+41 76 558 20 90");
     ContactList contactList = new ContactList();
@@ -58,8 +58,6 @@ public class ContactListTest {
     contactList.editPostalCode(2, "8302");
     contactList.editPlace(2, "Kloten");
     contactList.editPhoneNumber(2, "+41 32 380 32 38");
-
-    lars = new Contact("A380", "A320", "Flughafen 16d", "8302", "Kloten", "a380a320@gmail.com", "+41 32 380 32 38");
 
     assertThat(contactList.get(2), is(lars));
 
