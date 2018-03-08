@@ -7,7 +7,7 @@ public class Time {
 
   public Time(int hours, int minutes) throws Exception {
     if ((minutes < 0 || minutes > 59) && (hours < 0 || hours > 23))
-      throw new TimeFormatException("Ungültige Zeiteingabe!");
+      throw new TimeFormatException("Ungültige Stunden- und Minuteneingabe");
     if (hours < 0 || hours > 23)
       throw new TimeFormatException("Ungültige Stundeneingabe!");
     if (minutes < 0 || minutes > 59)
