@@ -9,14 +9,14 @@ import org.junit.Test;
 
 public class SetShoppingListTest {
   @Test
-  public void createShoppingList_addValues_notSameValues() throws Exception {
+  public void shoppingList_addValues_noDuplicatedValues() throws Exception {
     HashSet<String> shoppingList = new HashSet<String>();
 
     shoppingList.add("lemon");
     shoppingList.add("apple");
     shoppingList.add("banana");
     shoppingList.add("apple");
-    shoppingList.add("strwaberry");
+    shoppingList.add("strawberry");
 
     assertThat(shoppingList.size(), is(4));
     assertThat(shoppingList.contains("lemon"), is(true));
