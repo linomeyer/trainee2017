@@ -1,4 +1,4 @@
-package tech.bison.trainee17.ArrayListSetMap;
+package tech.bison.trainee17.collections;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
