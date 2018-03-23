@@ -10,6 +10,7 @@ import org.junit.Test;
 public class SetShoppingListTest {
   @Test
   public void shoppingList_addValues_noDuplicatedValues() throws Exception {
+
     HashSet<String> shoppingList = new HashSet<String>();
 
     shoppingList.add("lemon");
