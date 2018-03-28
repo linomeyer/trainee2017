@@ -14,21 +14,18 @@ public class King extends Figures {
     int xMovement = xEnd - xStart;
     int yMovement = yEnd - yStart;
 
-    return isAMove(xMovement, yMovement) && isAValidMove(xMovement, yMovement);
+    return isAValidMove(xMovement, yMovement);
   }
 
   private boolean isAValidMove(int xMovement, int yMovement) {
-    if (xMovement <= 1 && xMovement >= -1 && yMovement <= 1 && yMovement >= -1) {
-      return true;
-    }
-    return false;
-  }
-
-  private boolean isAMove(int xMovement, int yMovement) {
     if (xMovement == 0 && yMovement == 0) {
       return false;
+    } else {
+      if (xMovement <= 1 && xMovement >= -1 && yMovement <= 1 && yMovement >= -1) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
 
   public int letterConverter(String letter) {
