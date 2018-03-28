@@ -12,7 +12,7 @@ public class ListQuiz {
         "literature" };
     ArrayList<Question> corectAnswers = new ArrayList<Question>();
 
-    for (int i = 0; i <= amountOfCcorrectAnswers; i++) {
+    for (int i = 0; i <= amountOfCcorrectAnswers - 1; i++) {
       corectAnswers.add(new Question(questions[i], wins[i]));
     }
     return corectAnswers;
