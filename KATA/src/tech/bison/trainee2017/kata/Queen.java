@@ -1,6 +1,6 @@
 package tech.bison.trainee2017.kata;
 
-public class King extends Figure {
+public class Queen extends Figure {
 
   public boolean move(String startPosition, String endPosition) {
 
@@ -20,11 +20,11 @@ public class King extends Figure {
     if (!super.isAMove(xMovement, yMovement)) {
       return false;
     } else {
-      if (xMovement <= 1 && xMovement >= -1 && yMovement <= 1 && yMovement >= -1) {
-        return true;
+      if (xMovement != 0 && yMovement != 0) {
+        return Math.abs(xMovement) == Math.abs(yMovement);
       }
     }
-    return false;
+    return true;
   }
 
 }

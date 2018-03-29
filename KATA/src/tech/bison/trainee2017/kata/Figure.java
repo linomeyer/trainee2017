@@ -1,6 +1,6 @@
 package tech.bison.trainee2017.kata;
 
-public class Figures {
+public class Figure {
   static boolean isInField(Position position) {
     if (position.x < 1 || position.x > 8 || position.y == 10) {
       return false;
@@ -14,4 +14,5 @@ public class Figures {
     }
     return true;
   }
+
 }
