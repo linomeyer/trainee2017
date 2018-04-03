@@ -16,7 +16,16 @@ public class KnightTest {
   }
 
   @Test
-  public void knight_invalidMovement_invalidMove() throws Exception {
+  public void knight_validMovementWithMinusValue_validMove() throws Exception {
+    Knight knight = new Knight();
+
+    boolean validMove = knight.move("8b", "6a");
+
+    assertThat(validMove, is(true));
+  }
+
+  @Test
+  public void knight_horizontalMovement_invalidMove() throws Exception {
     Knight knight = new Knight();
 
     boolean validMove = knight.move("1b", "3b");
@@ -25,11 +34,12 @@ public class KnightTest {
   }
 
   @Test
-  public void knight_validMovement2_validMove() throws Exception {
+  public void knight_verticalMovement_validMove() throws Exception {
     Knight knight = new Knight();
 
-    boolean validMove = knight.move("8b", "6a");
+    boolean validMove = knight.move("2c", "2e");
 
-    assertThat(validMove, is(true));
+    assertThat(validMove, is(false));
   }
+
 }
