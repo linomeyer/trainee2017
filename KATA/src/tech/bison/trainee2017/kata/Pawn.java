@@ -15,14 +15,14 @@ public class Pawn extends Figure {
     return isAValidMove(xMovement, yMovement, start.x, end.x);
   }
 
-  private boolean isAValidMove(int xMovement, int yMovement, int startOfX, int endOfX) {
+  private boolean isAValidMove(int xMovement, int yMovement, int xOfStartPosition, int xOfEndPosition) {
     if (!super.isAMove(xMovement, yMovement)) {
       return false;
     } else {
       if (yMovement != 0) {
         return false;
       }
-      if ((startOfX == 2 || startOfX == 6) && endOfX == 4) {
+      if ((xOfStartPosition == 2 && xOfEndPosition == 4) || (xOfStartPosition == 7 && xOfEndPosition == 5)) {
         return true;
       } else {
         if (Math.abs(xMovement) == 1) {
