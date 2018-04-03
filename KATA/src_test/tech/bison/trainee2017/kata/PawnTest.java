@@ -33,4 +33,21 @@ public class PawnTest {
     assertThat(validMove, is(false));
   }
 
+  @Test
+  public void Pawn_horizontalMovementMoreThanAllowed_invalidMove() throws Exception {
+    Pawn pawn = new Pawn();
+
+    boolean validMove = pawn.move("2c", "5c");
+
+    assertThat(validMove, is(false));
+  }
+
+  @Test
+  public void Pawn_diagonalMovement_invalidMove() throws Exception {
+    Pawn pawn = new Pawn();
+
+    boolean validMove = pawn.move("3d", "5b");
+
+    assertThat(validMove, is(false));
+  }
 }
