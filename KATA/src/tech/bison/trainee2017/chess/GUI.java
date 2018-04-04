@@ -42,10 +42,21 @@ public class GUI {
         repeat = false;
         break;
       }
+
+    } catch (NullPointerException e) {
+      JOptionPane.showMessageDialog(null,
+          "Bitte schliessen Sie nicht das Fenster.\nBitte drücken Sie ENTER um zu beenden.");
+    } catch (NumberFormatException e) {
+      JOptionPane.showMessageDialog(null,
+          "Es wurde ein ungültiger Wert eingegeben!\nAchten sie darauf, dass sie bei der Position,zuerst\nden Buchstaben und dann die Zahl eingeben! Beispiel: c4");
+    } catch (StringIndexOutOfBoundsException e) {
+      JOptionPane.showMessageDialog(null,
+          "Es wurden keine Werte eingegebn.\nBitte geben Sie in alle Felder Werte ein.");
     } catch (Exception e) {
       JOptionPane.showMessageDialog(null,
-          "Es wurde ein ungültiger Wert eingegeben!\nAchten sie darauf, dass sie zuerst den Buchstaben und\ndann die Zahl eingeben! Beispiel: c4");
+          "Es ist ein Fehler aufgetreten!\nEr wird bald behoben.\nBesten Dank für ihr Verständnis.");
     }
+
     if (repeat) {
       main(null);
     }
