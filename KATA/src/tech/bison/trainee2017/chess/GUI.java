@@ -45,16 +45,17 @@ public class GUI {
   private static void farmer() {
     String collorOfFarmer = JOptionPane
         .showInputDialog("Welche Farbe hat der Bauer?\n" + "w = weiss\n" + "s = schwarz");
-    if (collorOfFarmer.toLowerCase() == "w") {
+    switch (collorOfFarmer.toLowerCase()) {
+    case "w":
       validMove = whiteFarmer.move(getStartPosition(), getEndPosition());
       output("Weisser Bauer", whiteFarmer.start, whiteFarmer.end);
-    } else {
-      if (collorOfFarmer.toLowerCase() == "s") {
-        validMove = blackFarmer.move(getStartPosition(), getEndPosition());
-        output("Schwarzer Bauer", blackFarmer.start, blackFarmer.end);
-      } else {
-        farmer();
-      }
+      break;
+    case "s":
+      validMove = blackFarmer.move(getStartPosition(), getEndPosition());
+      output("Schwarzer Bauer", blackFarmer.start, blackFarmer.end);
+      break;
+    default:
+      farmer();
     }
   }
 
