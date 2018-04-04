@@ -1,6 +1,7 @@
-package tech.bison.trainee2017.kata;
+package tech.bison.trainee2017.chess;
 
-public class Runner extends Figure {
+public class King extends Figure {
+
   public boolean move(String startPosition, String endPosition) {
     boolean move = super.move(startPosition, endPosition);
     return isAValidMove() && move;
@@ -10,8 +11,8 @@ public class Runner extends Figure {
     if (!super.isAMove(yMovement, xMovement)) {
       return false;
     } else {
-      if (xMovement != 0 && yMovement != 0) {
-        return Math.abs(yMovement) == Math.abs(xMovement);
+      if (xMovement <= 1 && xMovement >= -1 && yMovement <= 1 && yMovement >= -1) {
+        return true;
       }
     }
     return false;

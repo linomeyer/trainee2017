@@ -1,11 +1,12 @@
-package tech.bison.trainee2017.kata;
+package tech.bison.trainee2017.chess;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import tech.bison.trainee2017.kata.Farmer;
+import tech.bison.trainee2017.chess.Farmer;
+import tech.bison.trainee2017.chess.WhiteFarmer;
 
 public class WhiteFarmerTest {
   @Test
