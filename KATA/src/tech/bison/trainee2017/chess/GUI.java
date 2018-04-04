@@ -22,7 +22,7 @@ public class GUI {
       tower();
       break;
     case "s":
-      springer();
+      horse();
       break;
     case "l":
       runner();
@@ -37,6 +37,7 @@ public class GUI {
       farmer();
       break;
     default:
+      main(null);
       break;
     }
   }
@@ -45,39 +46,59 @@ public class GUI {
     String collorOfFarmer = JOptionPane
         .showInputDialog("Welche Farbe hat der Bauer?\n" + "w = weiss\n" + "s = schwarz");
     if (collorOfFarmer.toLowerCase() == "w") {
-      validMove = whiteFarmer.move(getStartAndEndPosition()[0], getStartAndEndPosition()[1]);
+      validMove = whiteFarmer.move(getStartPosition(), getEndPosition());
+      output("Weisser Bauer", whiteFarmer.start, whiteFarmer.end);
     } else {
       if (collorOfFarmer.toLowerCase() == "s") {
-        validMove = blackFarmer.move(getStartAndEndPosition()[0], getStartAndEndPosition()[1]);
+        validMove = blackFarmer.move(getStartPosition(), getEndPosition());
+        output("Schwarzer Bauer", blackFarmer.start, blackFarmer.end);
+      } else {
+        farmer();
       }
     }
   }
 
   private static void king() {
-    getStartAndEndPosition();
+    validMove = king.move(getStartPosition(), getEndPosition());
+    output("König", king.start, king.end);
   }
 
   private static void queen() {
-    getStartAndEndPosition();
+    validMove = queen.move(getStartPosition(), getEndPosition());
+    output("Königin", queen.start, queen.end);
   }
 
   private static void runner() {
-    getStartAndEndPosition();
+    validMove = runner.move(getStartPosition(), getEndPosition());
+    output("Läufer", runner.start, runner.end);
   }
 
-  private static void springer() {
-    getStartAndEndPosition();
+  private static void horse() {
+    validMove = horse.move(getStartPosition(), getEndPosition());
+    output("Springer", horse.start, horse.end);
   }
 
   private static void tower() {
-    getStartAndEndPosition();
+    validMove = tower.move(getStartPosition(), getEndPosition());
+    output("Turm", tower.start, tower.end);
   }
 
-  private static String[] getStartAndEndPosition() {
-    String[] position = new String[2];
-    position[0] = JOptionPane.showInputDialog("Geben Sie die Startposition ein: ");
-    position[1] = JOptionPane.showInputDialog("Geben Sie die Endposition ein: ");
+  private static String getStartPosition() {
+    return JOptionPane.showInputDialog("Geben Sie die Startposition ein: ");
+  }
 
-    return position;
+  private static String getEndPosition() {
+    return JOptionPane.showInputDialog("Geben Sie die Endposition ein: ");
+  }
+
+  private static void output(String figureName, Position start, Position end) {
+    if (validMove) {
+      JOptionPane.showMessageDialog(null, "Der Zug mit der Figur " + figureName + " vom Feld " + start.getPosition()
+          + " auf das Feld " + end.getPosition() + " ist gültig.");
+    } else {
+      JOptionPane.showMessageDialog(null, "Der Zug mit der Figur " + figureName + " vom Feld " + start.getPosition()
+          + " auf das Feld " + end.getPosition() + " ist nicht gültig.");
+    }
+
   }
 }
