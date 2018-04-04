@@ -5,8 +5,6 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import tech.bison.trainee2017.chess.Queen;
-
 public class QueenTest {
   @Test
   public void queen_startAndEndPosition_validMove() throws Exception {
@@ -21,7 +19,7 @@ public class QueenTest {
   public void queen_startAndEndPositionAreSimilar_invalidMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.move("c3", "c2");
+    boolean validMove = queen.move("c3", "c3");
 
     assertThat(validMove, is(false));
   }
