@@ -1,22 +1,22 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.kata;
 
-public class BlackFarmer extends Farmer {
+public class WhiteFarmer extends Farmer {
   public boolean move(String startPosition, String endPosition) {
     boolean move = super.move(startPosition, endPosition);
     return isAValidMove() && move;
   }
 
   private boolean isAValidMove() {
-    if (!super.isAMove(xMovement, yMovement)) {
+    if (!super.isAMove(yMovement, xMovement)) {
       return false;
     } else {
-      if (yMovement != 0) {
+      if (xMovement != 0) {
         return false;
       }
-      if (start.x == 7 && end.x == 5) {
+      if (start.y == 2 && end.y == 4) {
         return true;
       } else {
-        if (xMovement == -1) {
+        if (yMovement == 1) {
           return true;
         }
       }

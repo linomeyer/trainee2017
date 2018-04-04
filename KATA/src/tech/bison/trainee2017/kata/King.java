@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.kata;
 
 public class King extends Figure {
 
@@ -8,7 +8,7 @@ public class King extends Figure {
   }
 
   private boolean isAValidMove() {
-    if (!super.isAMove(xMovement, yMovement)) {
+    if (!super.isAMove(yMovement, xMovement)) {
       return false;
     } else {
       if (xMovement <= 1 && xMovement >= -1 && yMovement <= 1 && yMovement >= -1) {

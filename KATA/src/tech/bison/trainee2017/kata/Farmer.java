@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.kata;
 
 public abstract class Farmer extends Figure {
   protected boolean move(String startPosition, String endPosition) {

@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.kata;
 
 public abstract class Figure {
   Position start;
@@ -22,7 +22,7 @@ public abstract class Figure {
   }
 
   static boolean isInField(Position position) {
-    if (position.x < 1 || position.x > 8 || position.y == 10) {
+    if (position.y < 1 || position.y > 8 || position.x == 10) {
       return false;
     }
     return true;

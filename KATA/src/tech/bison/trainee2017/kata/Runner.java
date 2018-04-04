@@ -1,20 +1,20 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.kata;
 
-public class Tower extends Figure {
+public class Runner extends Figure {
   public boolean move(String startPosition, String endPosition) {
     boolean move = super.move(startPosition, endPosition);
     return isAValidMove() && move;
   }
 
   private boolean isAValidMove() {
-    if (!super.isAMove(xMovement, yMovement)) {
+    if (!super.isAMove(yMovement, xMovement)) {
       return false;
     } else {
       if (xMovement != 0 && yMovement != 0) {
-        return false;
+        return Math.abs(yMovement) == Math.abs(xMovement);
       }
     }
-    return true;
+    return false;
   }
 
 }
