@@ -43,7 +43,8 @@ public class GUI {
         break;
       }
     } catch (Exception e) {
-      JOptionPane.showMessageDialog(null, "Es wurde ein ungültiger Wert eingegeben!");
+      JOptionPane.showMessageDialog(null,
+          "Es wurde ein ungültiger Wert eingegeben!\nAchten sie darauf, dass sie zuerst den Buchstaben und\ndann die Zahl eingeben! Beispiel: c4");
     }
     if (repeat) {
       main(null);
@@ -93,11 +94,13 @@ public class GUI {
   }
 
   private static String getStartPosition() {
-    return JOptionPane.showInputDialog("Geben Sie die Startposition ein: ");
+    return JOptionPane.showInputDialog(
+        "Geben Sie die Startposition ein [z.B. c4]:\nEs werden nur die ersten beiden Stellen beachtet! ");
   }
 
   private static String getEndPosition() {
-    return JOptionPane.showInputDialog("Geben Sie die Endposition ein: ");
+    return JOptionPane.showInputDialog(
+        "Geben Sie die Endposition ein [z.B. d6]:\nEs werden nur die ersten beiden Stellen beachtet! ");
   }
 
   private static void output(String figureName, Position start, Position end) {
