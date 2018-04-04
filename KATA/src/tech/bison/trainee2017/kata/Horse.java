@@ -7,7 +7,7 @@ public class Horse extends Figure {
   }
 
   private boolean isAValidMove() {
-    if (!super.isAMove(xMovement, yMovement)) {
+    if (!super.isAMove(yMovement, xMovement)) {
       return false;
     } else {
       if ((Math.abs(xMovement) == 2 && Math.abs(yMovement) == 1)

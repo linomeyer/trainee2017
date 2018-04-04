@@ -7,16 +7,16 @@ public class BlackFarmer extends Farmer {
   }
 
   private boolean isAValidMove() {
-    if (!super.isAMove(xMovement, yMovement)) {
+    if (!super.isAMove(yMovement, xMovement)) {
       return false;
     } else {
-      if (yMovement != 0) {
+      if (xMovement != 0) {
         return false;
       }
-      if (start.x == 7 && end.x == 5) {
+      if (start.y == 7 && end.y == 5) {
         return true;
       } else {
-        if (xMovement == -1) {
+        if (yMovement == -1) {
           return true;
         }
       }

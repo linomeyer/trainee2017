@@ -7,16 +7,16 @@ public class WhiteFarmer extends Farmer {
   }
 
   private boolean isAValidMove() {
-    if (!super.isAMove(xMovement, yMovement)) {
+    if (!super.isAMove(yMovement, xMovement)) {
       return false;
     } else {
-      if (yMovement != 0) {
+      if (xMovement != 0) {
         return false;
       }
-      if (start.x == 2 && end.x == 4) {
+      if (start.y == 2 && end.y == 4) {
         return true;
       } else {
-        if (xMovement == 1) {
+        if (yMovement == 1) {
           return true;
         }
       }

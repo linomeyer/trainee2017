@@ -7,10 +7,10 @@ public class Tower extends Figure {
   }
 
   private boolean isAValidMove() {
-    if (!super.isAMove(xMovement, yMovement)) {
+    if (!super.isAMove(yMovement, xMovement)) {
       return false;
     } else {
-      if (xMovement != 0 && yMovement != 0) {
+      if (yMovement != 0 && xMovement != 0) {
         return false;
       }
     }

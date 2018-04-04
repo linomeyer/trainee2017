@@ -8,11 +8,11 @@ public class Queen extends Figure {
   }
 
   private boolean isAValidMove() {
-    if (!super.isAMove(xMovement, yMovement)) {
+    if (!super.isAMove(yMovement, xMovement)) {
       return false;
     } else {
-      if (xMovement != 0 && yMovement != 0) {
-        return Math.abs(xMovement) == Math.abs(yMovement);
+      if (yMovement != 0 && xMovement != 0) {
+        return Math.abs(yMovement) == Math.abs(xMovement);
       }
     }
     return true;
