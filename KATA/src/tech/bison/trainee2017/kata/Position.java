@@ -9,6 +9,11 @@ public class Position {
     y = letterConverter(position.charAt(1) + "");
   }
 
+  public Position(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+
   private int letterConverter(String letter) {
     String lowerCaseLetter = letter.toLowerCase();
     switch (lowerCaseLetter) {
@@ -58,10 +63,10 @@ public class Position {
 
   }
 
-  public String get() {
+  public String getPosition() {
     String position = "";
     position += x;
     position += numberConverter(y);
-    return "";
+    return position;
   }
 }
