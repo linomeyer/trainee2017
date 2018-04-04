@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.kata;
+package tech.bison.trainee2017.chess;
 
 public class Tower extends Figure {
   public boolean move(String startPosition, String endPosition) {

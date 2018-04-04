@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.kata;
+package tech.bison.trainee2017.chess;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -11,7 +11,7 @@ public class BlackFarmerTest {
   public void blackFarmer_horizontalMovement_validMove() throws Exception {
     Farmer farmer = new BlackFarmer();
 
-    boolean validMove = farmer.move("5b", "4b");
+    boolean validMove = farmer.move("b5", "b4");
 
     assertThat(validMove, is(true));
   }
@@ -20,7 +20,7 @@ public class BlackFarmerTest {
   public void blackFarmer_movementFromStartPosition_validMove() throws Exception {
     Farmer farmer = new BlackFarmer();
 
-    boolean validMove = farmer.move("7d", "5d");
+    boolean validMove = farmer.move("d7", "d5");
 
     assertThat(validMove, is(true));
   }
@@ -29,7 +29,7 @@ public class BlackFarmerTest {
   public void blackFarmer_movementFromStartPositionOfWhiteFarmer_invalidMove() throws Exception {
     Farmer farmer = new BlackFarmer();
 
-    boolean validMove = farmer.move("2b", "4b");
+    boolean validMove = farmer.move("b2", "b4");
 
     assertThat(validMove, is(false));
   }
@@ -38,7 +38,7 @@ public class BlackFarmerTest {
   public void blackFarmer_verticalMovement_invalidMove() throws Exception {
     Farmer farmer = new BlackFarmer();
 
-    boolean validMove = farmer.move("5c", "5d");
+    boolean validMove = farmer.move("c5", "d5");
 
     assertThat(validMove, is(false));
   }
@@ -47,7 +47,7 @@ public class BlackFarmerTest {
   public void blackFarmer_horizontalMovementMoreThanAllowed_invalidMove() throws Exception {
     Farmer farmer = new BlackFarmer();
 
-    boolean validMove = farmer.move("5c", "2c");
+    boolean validMove = farmer.move("c5", "c2");
 
     assertThat(validMove, is(false));
   }
@@ -56,7 +56,7 @@ public class BlackFarmerTest {
   public void blackFarmer_diagonalMovement_invalidMove() throws Exception {
     Farmer farmer = new BlackFarmer();
 
-    boolean validMove = farmer.move("3d", "5b");
+    boolean validMove = farmer.move("d3", "b5");
 
     assertThat(validMove, is(false));
   }
@@ -65,7 +65,7 @@ public class BlackFarmerTest {
   public void blackFarmer_horizontalMovementInFalseDirection_invalidMove() throws Exception {
     Farmer farmer = new BlackFarmer();
 
-    boolean validMove = farmer.move("3c", "4c");
+    boolean validMove = farmer.move("c3", "c4");
 
     assertThat(validMove, is(false));
   }

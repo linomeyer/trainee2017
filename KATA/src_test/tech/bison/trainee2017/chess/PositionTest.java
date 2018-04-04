@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.kata;
+package tech.bison.trainee2017.chess;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

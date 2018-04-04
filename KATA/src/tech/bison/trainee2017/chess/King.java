@@ -1,6 +1,7 @@
-package tech.bison.trainee2017.kata;
+package tech.bison.trainee2017.chess;
 
-public class WhiteFarmer extends Farmer {
+public class King extends Figure {
+
   public boolean move(String startPosition, String endPosition) {
     boolean move = super.move(startPosition, endPosition);
     return isAValidMove() && move;
@@ -10,17 +11,11 @@ public class WhiteFarmer extends Farmer {
     if (!super.isAMove(xMovement, yMovement)) {
       return false;
     } else {
-      if (yMovement != 0) {
-        return false;
-      }
-      if (start.x == 2 && end.x == 4) {
+      if (xMovement <= 1 && xMovement >= -1 && yMovement <= 1 && yMovement >= -1) {
         return true;
-      } else {
-        if (xMovement == 1) {
-          return true;
-        }
       }
     }
     return false;
   }
+
 }

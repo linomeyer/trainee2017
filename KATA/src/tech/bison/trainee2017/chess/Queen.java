@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.kata;
+package tech.bison.trainee2017.chess;
 
 public class Queen extends Figure {
 

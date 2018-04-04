@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.kata;
+package tech.bison.trainee2017.chess;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -10,7 +10,7 @@ public class HorseTest {
   public void knight_validMovement_validMove() throws Exception {
     Horse knight = new Horse();
 
-    boolean validMove = knight.move("1b", "3c");
+    boolean validMove = knight.move("b1", "c3");
 
     assertThat(validMove, is(true));
   }
@@ -19,7 +19,7 @@ public class HorseTest {
   public void knight_validMovementWithMinusValue_validMove() throws Exception {
     Horse knight = new Horse();
 
-    boolean validMove = knight.move("8b", "6a");
+    boolean validMove = knight.move("b8", "a6");
 
     assertThat(validMove, is(true));
   }
@@ -28,7 +28,7 @@ public class HorseTest {
   public void knight_horizontalMovement_invalidMove() throws Exception {
     Horse knight = new Horse();
 
-    boolean validMove = knight.move("1b", "3b");
+    boolean validMove = knight.move("b1", "b3");
 
     assertThat(validMove, is(false));
   }
@@ -37,7 +37,7 @@ public class HorseTest {
   public void knight_verticalMovement_validMove() throws Exception {
     Horse knight = new Horse();
 
-    boolean validMove = knight.move("2c", "2e");
+    boolean validMove = knight.move("c2", "e2");
 
     assertThat(validMove, is(false));
   }

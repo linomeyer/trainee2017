@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.kata;
+package tech.bison.trainee2017.chess;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -10,7 +10,7 @@ public class QueenTest {
   public void queen_startAndEndPosition_validMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.move("2c", "3d");
+    boolean validMove = queen.move("c2", "d3");
 
     assertThat(validMove, is(true));
   }
@@ -19,7 +19,7 @@ public class QueenTest {
   public void queen_startAndEndPositionAreSimilar_invalidMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.move("2c", "2c");
+    boolean validMove = queen.move("c3", "c2");
 
     assertThat(validMove, is(false));
   }
@@ -28,7 +28,7 @@ public class QueenTest {
   public void queen_startAndEndPositionOutOfField_invalidMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.move("8h", "9i");
+    boolean validMove = queen.move("h8", "i9");
 
     assertThat(validMove, is(false));
   }
@@ -37,7 +37,7 @@ public class QueenTest {
   public void queen_movementIsntHorizontalVerticalOrDiagonal_invalidMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.move("2c", "8d");
+    boolean validMove = queen.move("c2", "d8");
 
     assertThat(validMove, is(false));
   }

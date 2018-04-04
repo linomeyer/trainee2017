@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.kata;
+package tech.bison.trainee2017.chess;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -11,7 +11,7 @@ public class TowerTest {
   public void tower_verticalMovement_validMove() throws Exception {
     Tower tower = new Tower();
 
-    boolean validMove = tower.move("2c", "2e");
+    boolean validMove = tower.move("c2", "e2");
 
     assertThat(validMove, is(true));
   }
@@ -20,7 +20,7 @@ public class TowerTest {
   public void tower_horizontalMovement_validMove() throws Exception {
     Tower tower = new Tower();
 
-    boolean validMove = tower.move("2c", "4c");
+    boolean validMove = tower.move("c2", "c4");
 
     assertThat(validMove, is(true));
   }
@@ -29,7 +29,7 @@ public class TowerTest {
   public void tower_startAndEndPositionAreSimilar_invalidMove() throws Exception {
     Tower tower = new Tower();
 
-    boolean validMove = tower.move("2c", "2c");
+    boolean validMove = tower.move("c2", "c2");
 
     assertThat(validMove, is(false));
   }
@@ -38,7 +38,7 @@ public class TowerTest {
   public void tower_startAndEndPositionOutOfField_invalidMove() throws Exception {
     Tower tower = new Tower();
 
-    boolean validMove = tower.move("8h", "9i");
+    boolean validMove = tower.move("h8", "i9");
 
     assertThat(validMove, is(false));
   }
@@ -47,7 +47,7 @@ public class TowerTest {
   public void tower_movementIsDiagonal_invalidMove() throws Exception {
     Tower tower = new Tower();
 
-    boolean validMove = tower.move("2c", "4e");
+    boolean validMove = tower.move("c2", "e4");
 
     assertThat(validMove, is(false));
   }
