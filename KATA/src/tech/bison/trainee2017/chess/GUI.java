@@ -45,7 +45,7 @@ public class GUI {
 
     } catch (NullPointerException e) {
       JOptionPane.showMessageDialog(null,
-          "Bitte schliessen Sie nicht das Fenster.\nBitte drücken Sie ENTER um zu beenden.");
+          "Bitte schliessen Sie nicht das Fenster.\nBitte drücken Sie zweimal ENTER um zu beenden.");
     } catch (NumberFormatException e) {
       JOptionPane.showMessageDialog(null,
           "Es wurde ein ungültiger Wert eingegeben!\nAchten sie darauf, dass sie bei der Position,zuerst\nden Buchstaben und dann die Zahl eingeben! Beispiel: c4");
