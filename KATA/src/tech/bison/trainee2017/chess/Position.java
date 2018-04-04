@@ -5,11 +5,11 @@ public class Position {
   final int y;
 
   public Position(String position) {
-    y = Integer.parseInt(position.charAt(0) + "");
-    x = letterConverter(position.charAt(1) + "");
+    y = Integer.parseInt(position.charAt(1) + "");
+    x = letterConverter(position.charAt(0) + "");
   }
 
-  public Position(int y, int x) {
+  public Position(int x, int y) {
     this.x = x;
     this.y = y;
   }
@@ -65,8 +65,8 @@ public class Position {
 
   public String getPosition() {
     String position = "";
-    position += y;
     position += numberConverter(x);
+    position += y;
     return position;
   }
 }
