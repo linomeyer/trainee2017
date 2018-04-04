@@ -5,10 +5,10 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class KnightTest {
+public class HorseTest {
   @Test
   public void knight_validMovement_validMove() throws Exception {
-    Knight knight = new Knight();
+    Horse knight = new Horse();
 
     boolean validMove = knight.move("1b", "3c");
 
@@ -17,7 +17,7 @@ public class KnightTest {
 
   @Test
   public void knight_validMovementWithMinusValue_validMove() throws Exception {
-    Knight knight = new Knight();
+    Horse knight = new Horse();
 
     boolean validMove = knight.move("8b", "6a");
 
@@ -26,7 +26,7 @@ public class KnightTest {
 
   @Test
   public void knight_horizontalMovement_invalidMove() throws Exception {
-    Knight knight = new Knight();
+    Horse knight = new Horse();
 
     boolean validMove = knight.move("1b", "3b");
 
@@ -35,7 +35,7 @@ public class KnightTest {
 
   @Test
   public void knight_verticalMovement_validMove() throws Exception {
-    Knight knight = new Knight();
+    Horse knight = new Horse();
 
     boolean validMove = knight.move("2c", "2e");
 

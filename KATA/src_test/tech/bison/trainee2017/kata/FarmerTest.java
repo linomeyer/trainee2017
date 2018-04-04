@@ -5,10 +5,10 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-public class PawnTest {
+public class FarmerTest {
   @Test
   public void Pawn_movementFromStartPosition_validMove() throws Exception {
-    Pawn pawn = new Pawn();
+    Farmer pawn = new Farmer();
 
     boolean validMove = pawn.move("2b", "4b");
 
@@ -17,7 +17,7 @@ public class PawnTest {
 
   @Test
   public void Pawn_horizontalMovement_validMove() throws Exception {
-    Pawn pawn = new Pawn();
+    Farmer pawn = new Farmer();
 
     boolean validMove = pawn.move("3b", "4b");
 
@@ -26,7 +26,7 @@ public class PawnTest {
 
   @Test
   public void Pawn_verticalMovement_invalidMove() throws Exception {
-    Pawn pawn = new Pawn();
+    Farmer pawn = new Farmer();
 
     boolean validMove = pawn.move("5c", "5d");
 
@@ -35,7 +35,7 @@ public class PawnTest {
 
   @Test
   public void Pawn_horizontalMovementMoreThanAllowed_invalidMove() throws Exception {
-    Pawn pawn = new Pawn();
+    Farmer pawn = new Farmer();
 
     boolean validMove = pawn.move("2c", "5c");
 
@@ -44,7 +44,7 @@ public class PawnTest {
 
   @Test
   public void Pawn_diagonalMovement_invalidMove() throws Exception {
-    Pawn pawn = new Pawn();
+    Farmer pawn = new Farmer();
 
     boolean validMove = pawn.move("3d", "5b");
 

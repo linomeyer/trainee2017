@@ -9,7 +9,7 @@ public class Position {
     y = letterConverter(position.charAt(1) + "");
   }
 
-  public int letterConverter(String letter) {
+  private int letterConverter(String letter) {
     String lowerCaseLetter = letter.toLowerCase();
     switch (lowerCaseLetter) {
     case "a":
@@ -29,7 +29,39 @@ public class Position {
     case "h":
       return 8;
     default:
-      return 10;
+      return 10; // 10 = invalid move
     }
+
+  }
+
+  private String numberConverter(int number) {
+    switch (number) {
+    case 1:
+      return "A";
+    case 2:
+      return "B";
+    case 3:
+      return "C";
+    case 4:
+      return "D";
+    case 5:
+      return "E";
+    case 6:
+      return "F";
+    case 7:
+      return "G";
+    case 8:
+      return "H";
+    default:
+      return "*";
+    }
+
+  }
+
+  public String get() {
+    String position = "";
+    position += x;
+    position += numberConverter(y);
+    return "";
   }
 }
