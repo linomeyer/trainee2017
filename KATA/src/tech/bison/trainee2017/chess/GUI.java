@@ -13,32 +13,40 @@ public class GUI {
   static boolean validMove;
 
   public static void main(String[] args) {
+    boolean repeat = true;
 
-    String eingabe = JOptionPane.showInputDialog("Mit welcher Figur wollen Sie fahren?\n" + "t = Turm\n"
-        + "s = Springer\n" + "l = Läufer\n" + "q = Königin\n" + "k = König\n" + "b = Bauer");
-
-    switch (eingabe.toLowerCase()) {
-    case "t":
-      tower();
-      break;
-    case "s":
-      horse();
-      break;
-    case "l":
-      runner();
-      break;
-    case "q":
-      queen();
-      break;
-    case "k":
-      king();
-      break;
-    case "b":
-      farmer();
-      break;
-    default:
+    String eingabe = JOptionPane.showInputDialog(
+        "Mit welcher Figur wollen Sie fahren?\n" + "t = Turm\n" + "s = Springer\n" + "l = Läufer\n" + "q = Königin\n"
+            + "k = König\n" + "b = Bauer\n" + "Bei allen anderen Eingaben schliesst sich das Programm");
+    try {
+      switch (eingabe.toLowerCase()) {
+      case "t":
+        tower();
+        break;
+      case "s":
+        horse();
+        break;
+      case "l":
+        runner();
+        break;
+      case "q":
+        queen();
+        break;
+      case "k":
+        king();
+        break;
+      case "b":
+        farmer();
+        break;
+      default:
+        repeat = false;
+        break;
+      }
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(null, "Es wurde ein ungültiger Wert eingegeben!");
+    }
+    if (repeat) {
       main(null);
-      break;
     }
   }
 
