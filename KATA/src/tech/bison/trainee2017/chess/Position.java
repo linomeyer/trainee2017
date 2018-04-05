@@ -4,7 +4,7 @@ public class Position {
   final int x;
   final int y;
 
-  public Position(String position) {
+  public Position(String position) throws OutOfFieldException {
     y = Integer.parseInt(position.charAt(1) + "");
     x = letterConverter(position.charAt(0) + "");
   }
@@ -14,9 +14,8 @@ public class Position {
     this.y = y;
   }
 
-  private int letterConverter(String letter) {
-    String lowerCaseLetter = letter.toLowerCase();
-    switch (lowerCaseLetter) {
+  static int letterConverter(String letter) throws OutOfFieldException {
+    switch (letter.toLowerCase()) {
     case "a":
       return 1;
     case "b":
@@ -34,12 +33,12 @@ public class Position {
     case "h":
       return 8;
     default:
-      return 10; // 10 = invalid move
+      throw new OutOfFieldException(); // 10 = invalid move
     }
 
   }
 
-  private String numberConverter(int number) {
+  static String numberConverter(int number) throws OutOfFieldException {
     switch (number) {
     case 1:
       return "A";
@@ -58,15 +57,24 @@ public class Position {
     case 8:
       return "H";
     default:
-      return "*";
+      throw new OutOfFieldException();
     }
 
   }
 
-  public String getPosition() {
+  public String getPosition() throws OutOfFieldException {
     String position = "";
     position += numberConverter(x);
     position += y;
     return position;
+  }
+
+  @Override
+  public String toString() {
+    try {
+      return getPosition();
+    } catch (OutOfFieldException e) {
+      return Integer.toString(x) + y;
+    }
   }
 }

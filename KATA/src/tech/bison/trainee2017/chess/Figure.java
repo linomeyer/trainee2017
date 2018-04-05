@@ -6,7 +6,7 @@ public abstract class Figure {
   int xMovement;
   int yMovement;
 
-  protected boolean move(String startPosition, String endPosition) {
+  protected boolean move(String startPosition, String endPosition) throws OutOfFieldException {
 
     start = new Position(startPosition);
     end = new Position(endPosition);

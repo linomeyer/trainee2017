@@ -3,8 +3,12 @@ package tech.bison.trainee2017.chess;
 public class Queen extends Figure {
 
   public boolean move(String startPosition, String endPosition) {
-    boolean move = super.move(startPosition, endPosition);
-    return isAValidMove() && move;
+    try {
+      boolean move = super.move(startPosition, endPosition);
+      return isAValidMove() && move;
+    } catch (OutOfFieldException e) {
+      return false;
+    }
   }
 
   private boolean isAValidMove() {
