@@ -15,9 +15,8 @@ public class GUI {
   public static void main(String[] args) {
     boolean repeat = true;
 
-    String eingabe = JOptionPane.showInputDialog(
-        "Mit welcher Figur wollen Sie fahren?\n" + "t = Turm\n" + "s = Springer\n" + "l = Läufer\n" + "q = Königin\n"
-            + "k = König\n" + "b = Bauer\n" + "Bei allen anderen Eingaben schliesst sich das Programm");
+    String eingabe = JOptionPane.showInputDialog("Mit welcher Figur wollen Sie fahren?\n" + "t = Turm\n"
+        + "s = Springer\n" + "l = Läufer\n" + "q = Königin\n" + "k = König\n" + "b = Bauer\n" + "c = Programm beenden");
     try {
       switch (eingabe.toLowerCase()) {
       case "t":
@@ -38,14 +37,16 @@ public class GUI {
       case "b":
         farmer();
         break;
-      default:
+      case "c":
         repeat = false;
+        break;
+      default:
         break;
       }
 
     } catch (NullPointerException e) {
       JOptionPane.showMessageDialog(null,
-          "Bitte schliessen Sie nicht das Fenster.\nBitte drücken Sie zweimal ENTER um zu beenden.");
+          "Bitte schliessen Sie nicht das Fenster.\nGeben Sie \"c\" in das Eingabefeld ein und drücken Sie ENTER");
     } catch (NumberFormatException e) {
       JOptionPane.showMessageDialog(null,
           "Es wurde ein ungültiger Wert eingegeben!\nAchten sie darauf, dass sie bei der Position,zuerst\nden Buchstaben und dann die Zahl eingeben! Beispiel: c4");
