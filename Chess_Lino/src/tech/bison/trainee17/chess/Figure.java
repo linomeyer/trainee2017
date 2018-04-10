@@ -1,6 +1,9 @@
 package tech.bison.trainee17.chess;
 
 public class Figure {
+  /**
+   * Enumerator with states black and white
+   */
   public enum color {
     black, white
   }

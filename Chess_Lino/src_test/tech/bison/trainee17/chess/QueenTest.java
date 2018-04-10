@@ -17,6 +17,16 @@ public class QueenTest extends Figure {
   }
 
   @Test
+  public void whiteQueen_sameStartAndEndPosition_invalidMoveSameStartPosition() throws Exception {
+    Queen whiteQueen = new Queen(color.white);
+
+    boolean validMove = whiteQueen.move("1e");
+
+    assertThat(validMove, is(true));
+    assertThat(whiteQueen.startPosition.getStringPosition(), is("1e"));
+  }
+
+  @Test
   public void whiteQueen_invalidStringInput_invalidMoveSameStartPosition() throws Exception {
     Queen whiteQueen = new Queen(color.white);
 

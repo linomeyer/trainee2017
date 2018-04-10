@@ -1,12 +1,24 @@
 package tech.bison.trainee17.chess;
 
-public class Queen extends Figure {
+public class Tower extends Figure {
 
-  public Queen(color colors) {
+  public Tower(color colors, int numberOfFigure) throws InvalidMovementException {
     if (colors == color.white) {
-      startPosition = new Position("1d");
+      if (numberOfFigure == 1) {
+        startPosition = new Position("1a");
+      } else if (numberOfFigure == 2) {
+        startPosition = new Position("1h");
+      } else {
+        throw new InvalidMovementException();
+      }
     } else if (colors == color.black) {
-      startPosition = new Position("8d");
+      if (numberOfFigure == 1) {
+        startPosition = new Position("8a");
+      } else if (numberOfFigure == 2) {
+        startPosition = new Position("8h");
+      } else {
+        throw new InvalidMovementException();
+      }
     }
   }
 
@@ -28,7 +40,7 @@ public class Queen extends Figure {
       return false;
     } else {
       if (yMovement != 0 && xMovement != 0) {
-        return Math.abs(yMovement) == Math.abs(xMovement);
+        return false;
       }
     }
     return true;

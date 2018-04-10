@@ -3,7 +3,6 @@ package tech.bison.trainee17.chess;
 public class King extends Figure {
 
   public King(color colors) {
-    super();
     if (colors == color.white) {
       startPosition = new Position("1e");
     } else if (colors == color.black) {
@@ -19,7 +18,7 @@ public class King extends Figure {
         return true;
       }
       return false;
-    } catch (InvalidMovementException e) {
+    } catch (Exception e) {
       return false;
     }
   }

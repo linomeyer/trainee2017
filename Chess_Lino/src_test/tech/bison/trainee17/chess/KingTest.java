@@ -29,6 +29,16 @@ public class KingTest {
   }
 
   @Test
+  public void blackKing_sameStartAndEndPosition_invalidMoveSameStartPosition() throws InvalidMovementException {
+    King blackKing = new King(color.black);
+
+    boolean validMove = blackKing.move("8e");
+
+    assertThat(validMove, is(false));
+    assertThat(blackKing.startPosition.getStringPosition(), is("8e"));
+  }
+
+  @Test
   public void whiteKing_moveIsOutOfField_invalidMoveSameStartPosition() throws InvalidMovementException {
     King whiteKing = new King(color.white);
 
