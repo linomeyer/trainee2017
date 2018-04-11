@@ -2,22 +2,18 @@ package tech.bison.trainee17.chess;
 
 public class Jumper extends Figure {
 
-  public Jumper(color colors, int numberOfFigure) throws InvalidMovementException {
+  public Jumper(color colors, int numberOfFigure) {
     if (colors == color.white) {
       if (numberOfFigure == 1) {
         startPosition = new Position("1b");
       } else if (numberOfFigure == 2) {
         startPosition = new Position("1g");
-      } else {
-        throw new InvalidMovementException();
       }
     } else if (colors == color.black) {
       if (numberOfFigure == 1) {
         startPosition = new Position("8b");
       } else if (numberOfFigure == 2) {
         startPosition = new Position("8g");
-      } else {
-        throw new InvalidMovementException();
       }
     }
   }

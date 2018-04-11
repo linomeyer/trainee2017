@@ -2,22 +2,18 @@ package tech.bison.trainee17.chess;
 
 public class Runner extends Figure {
 
-  public Runner(color colors, int numberOfFigure) throws InvalidMovementException {
+  public Runner(color colors, int numberOfFigure) {
     if (colors == color.white) {
       if (numberOfFigure == 1) {
         startPosition = new Position("1c");
       } else if (numberOfFigure == 2) {
         startPosition = new Position("1f");
-      } else {
-        throw new InvalidMovementException();
       }
     } else if (colors == color.black) {
       if (numberOfFigure == 1) {
         startPosition = new Position("8c");
       } else if (numberOfFigure == 2) {
         startPosition = new Position("8f");
-      } else {
-        throw new InvalidMovementException();
       }
     }
   }

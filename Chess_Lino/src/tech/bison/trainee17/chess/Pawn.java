@@ -1,7 +1,7 @@
 package tech.bison.trainee17.chess;
 
 public class Pawn extends Figure {
-  public Pawn(color colors, int numberOfFigure) throws InvalidMovementException {
+  public Pawn(color colors, int numberOfFigure) {
     positionOfPawn(colors, numberOfFigure);
   }
 
@@ -35,7 +35,7 @@ public class Pawn extends Figure {
     return false;
   }
 
-  private void positionOfPawn(color colors, int numberOfFigure) throws InvalidMovementException {
+  private void positionOfPawn(color colors, int numberOfFigure) {
     if (colors == color.white) {
       switch (numberOfFigure) {
       case 1:
@@ -63,7 +63,8 @@ public class Pawn extends Figure {
         startPosition = new Position("2h");
         break;
       default:
-        throw new InvalidMovementException();
+        System.err.println("falsche Position");
+        break;
       }
 
     } else if (colors == color.black) {
@@ -93,7 +94,8 @@ public class Pawn extends Figure {
         startPosition = new Position("7h");
         break;
       default:
-        throw new InvalidMovementException();
+        System.err.println("falsche Position");
+        break;
       }
     }
   }

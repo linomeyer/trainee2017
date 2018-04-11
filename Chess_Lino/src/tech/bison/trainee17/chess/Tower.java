@@ -2,22 +2,18 @@ package tech.bison.trainee17.chess;
 
 public class Tower extends Figure {
 
-  public Tower(color colors, int numberOfFigure) throws InvalidMovementException {
+  public Tower(color colors, int numberOfFigure) {
     if (colors == color.white) {
       if (numberOfFigure == 1) {
         startPosition = new Position("1a");
       } else if (numberOfFigure == 2) {
         startPosition = new Position("1h");
-      } else {
-        throw new InvalidMovementException();
       }
     } else if (colors == color.black) {
       if (numberOfFigure == 1) {
         startPosition = new Position("8a");
       } else if (numberOfFigure == 2) {
         startPosition = new Position("8h");
-      } else {
-        throw new InvalidMovementException();
       }
     }
   }
