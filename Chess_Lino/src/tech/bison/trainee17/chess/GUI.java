@@ -76,6 +76,7 @@ public class GUI {
       if (numberOfOption == 0) {
         validMove = PlayField.blackTower1.move(getEndPosition(PlayField.blackTower1.startPosition));
         isMoveValid("Turm", PlayField.blackTower1.endPosition);
+
       } else if (numberOfOption == 1) {
         validMove = PlayField.blackTower2.move(getEndPosition(PlayField.blackTower2.startPosition));
         isMoveValid("Turm", PlayField.blackTower2.endPosition);

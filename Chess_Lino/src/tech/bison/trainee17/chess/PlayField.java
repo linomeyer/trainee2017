@@ -46,5 +46,4 @@ public class PlayField {
   public static Pawn blackPawnF = new Pawn(color.black, 6);
   public static Pawn blackPawnG = new Pawn(color.black, 7);
   public static Pawn blackPawnH = new Pawn(color.black, 8);
-
 }
