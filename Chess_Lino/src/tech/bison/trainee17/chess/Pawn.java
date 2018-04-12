@@ -1,8 +1,11 @@
 package tech.bison.trainee17.chess;
 
 public class Pawn extends Figure {
+  public color colors;
+
   public Pawn(color colors, int numberOfFigure) {
     positionOfPawn(colors, numberOfFigure);
+    this.colors = colors;
   }
 
   public boolean move(String endPosition) {
@@ -28,7 +31,9 @@ public class Pawn extends Figure {
       if (startPosition.x == 2 && endPosition.x == 4 || startPosition.x == 7 && endPosition.x == 5) {
         return true;
       }
-      if (Math.abs(xMovement) == 1) {
+      if (colors == color.black && xMovement == -1) {
+        return true;
+      } else if (colors == color.white && xMovement == 1) {
         return true;
       }
     }
