@@ -1,2 +1,2 @@
 # trainee2017
-Übungs-Repository
+You don't want to read me 
