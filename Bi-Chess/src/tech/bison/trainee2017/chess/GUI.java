@@ -46,13 +46,7 @@ public class GUI {
           break;
         }
 
-      } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(null,
-            "Es wurde ein ungültiger Wert eingegeben!\nAchten sie darauf, dass sie bei der Position,zuerst\nden Buchstaben und dann die Zahl eingeben! Beispiel: c4");
-      } catch (StringIndexOutOfBoundsException e) {
-        JOptionPane.showMessageDialog(null,
-            "Es wurden keine Werte eingegebn.\nBitte geben Sie in alle Felder Werte ein.");
-      } catch (StoppedByUserException e) {
+      }catch (StoppedByUserException e) {
 
       } catch (Exception e) {
         JOptionPane.showMessageDialog(null,
