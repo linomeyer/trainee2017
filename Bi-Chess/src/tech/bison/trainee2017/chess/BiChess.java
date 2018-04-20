@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 import org.junit.runner.notification.StoppedByUserException;
 
-public class GUI {
+public class BiChess {
   static WhiteFarmer whiteFarmer = new WhiteFarmer();
   static BlackFarmer blackFarmer = new BlackFarmer();
   static Tower tower = new Tower();
@@ -46,11 +46,11 @@ public class GUI {
           break;
         }
 
-      }catch (StoppedByUserException e) {
+      } catch (StoppedByUserException e) {
 
       } catch (Exception e) {
         JOptionPane.showMessageDialog(null,
-            "Es ist ein Fehler aufgetreten!\nEr wird bald behoben.\nBesten Dank für ihr Verständnis.");
+            "Es ist ein Fehler aufgetreten!\nEr wird bald behoben.\nBesten Dank für Ihr Verständnis.");
       }
     }
 
