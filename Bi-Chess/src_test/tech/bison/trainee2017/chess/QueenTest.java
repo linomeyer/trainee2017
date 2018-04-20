@@ -10,7 +10,7 @@ public class QueenTest {
   public void queen_startAndEndPosition_validMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.move("c2", "d3");
+    boolean validMove = queen.isAValidMove("c2", "d3");
 
     assertThat(validMove, is(true));
   }
@@ -19,7 +19,7 @@ public class QueenTest {
   public void queen_startAndEndPositionAreSimilar_invalidMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.move("c3", "c3");
+    boolean validMove = queen.isAValidMove("c3", "c3");
 
     assertThat(validMove, is(false));
   }
@@ -28,7 +28,7 @@ public class QueenTest {
   public void queen_startAndEndPositionOutOfField_invalidMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.move("h8", "i9");
+    boolean validMove = queen.isAValidMove("h8", "i9");
 
     assertThat(validMove, is(false));
   }
@@ -37,7 +37,7 @@ public class QueenTest {
   public void queen_movementIsntHorizontalVerticalOrDiagonal_invalidMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.move("c2", "d8");
+    boolean validMove = queen.isAValidMove("c2", "d8");
 
     assertThat(validMove, is(false));
   }

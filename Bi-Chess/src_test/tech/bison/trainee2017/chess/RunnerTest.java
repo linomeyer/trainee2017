@@ -12,7 +12,7 @@ public class RunnerTest {
   public void runner_movementIsDiagonal_validMove() throws Exception {
     Runner runner = new Runner();
 
-    boolean validMove = runner.move("c2", "e4");
+    boolean validMove = runner.isAValidMove("c2", "e4");
 
     assertThat(validMove, is(true));
   }
@@ -21,7 +21,7 @@ public class RunnerTest {
   public void runner_verticalMovement_invalidMove() throws Exception {
     Runner runner = new Runner();
 
-    boolean validMove = runner.move("b2", "d2");
+    boolean validMove = runner.isAValidMove("b2", "d2");
 
     assertThat(validMove, is(false));
   }
@@ -30,7 +30,7 @@ public class RunnerTest {
   public void runner_horizontalMovement_invalidMove() throws Exception {
     Runner runner = new Runner();
 
-    boolean validMove = runner.move("c2", "c5");
+    boolean validMove = runner.isAValidMove("c2", "c5");
 
     assertThat(validMove, is(false));
   }
@@ -39,7 +39,7 @@ public class RunnerTest {
   public void runner_startAndEndPositionAreSimilar_invalidMove() throws Exception {
     Runner runner = new Runner();
 
-    boolean validMove = runner.move("c2", "c2");
+    boolean validMove = runner.isAValidMove("c2", "c2");
 
     assertThat(validMove, is(false));
   }
@@ -48,7 +48,7 @@ public class RunnerTest {
   public void runner_startAndEndPositionOutOfField_invalidMove() throws Exception {
     Runner runner = new Runner();
 
-    boolean validMove = runner.move("h8", "i9");
+    boolean validMove = runner.isAValidMove("h8", "i9");
 
     assertThat(validMove, is(false));
   }

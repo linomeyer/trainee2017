@@ -12,7 +12,7 @@ public class HorseTest {
   public void knight_validMovement_validMove() throws Exception {
     Horse knight = new Horse();
 
-    boolean validMove = knight.move("b1", "c3");
+    boolean validMove = knight.isAValidMove("b1", "c3");
 
     assertThat(validMove, is(true));
   }
@@ -21,7 +21,7 @@ public class HorseTest {
   public void knight_validMovementWithMinusValue_validMove() throws Exception {
     Horse knight = new Horse();
 
-    boolean validMove = knight.move("b8", "a6");
+    boolean validMove = knight.isAValidMove("b8", "a6");
 
     assertThat(validMove, is(true));
   }
@@ -30,7 +30,7 @@ public class HorseTest {
   public void knight_horizontalMovement_invalidMove() throws Exception {
     Horse knight = new Horse();
 
-    boolean validMove = knight.move("b1", "b3");
+    boolean validMove = knight.isAValidMove("b1", "b3");
 
     assertThat(validMove, is(false));
   }
@@ -39,7 +39,7 @@ public class HorseTest {
   public void knight_verticalMovement_validMove() throws Exception {
     Horse knight = new Horse();
 
-    boolean validMove = knight.move("c2", "e2");
+    boolean validMove = knight.isAValidMove("c2", "e2");
 
     assertThat(validMove, is(false));
   }

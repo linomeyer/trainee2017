@@ -13,7 +13,7 @@ public class TowerTest {
   public void tower_verticalMovement_validMove() throws Exception {
     Tower tower = new Tower();
 
-    boolean validMove = tower.move("c2", "e2");
+    boolean validMove = tower.isAValidMove("c2", "e2");
 
     assertThat(validMove, is(true));
   }
@@ -22,7 +22,7 @@ public class TowerTest {
   public void tower_horizontalMovement_validMove() throws Exception {
     Tower tower = new Tower();
 
-    boolean validMove = tower.move("c2", "c4");
+    boolean validMove = tower.isAValidMove("c2", "c4");
 
     assertThat(validMove, is(true));
   }
@@ -31,7 +31,7 @@ public class TowerTest {
   public void tower_startAndEndPositionAreSimilar_invalidMove() throws Exception {
     Tower tower = new Tower();
 
-    boolean validMove = tower.move("c2", "c2");
+    boolean validMove = tower.isAValidMove("c2", "c2");
 
     assertThat(validMove, is(false));
   }
@@ -40,7 +40,7 @@ public class TowerTest {
   public void tower_startAndEndPositionOutOfField_invalidMove() throws Exception {
     Tower tower = new Tower();
 
-    boolean validMove = tower.move("h8", "i9");
+    boolean validMove = tower.isAValidMove("h8", "i9");
 
     assertThat(validMove, is(false));
   }
@@ -49,7 +49,7 @@ public class TowerTest {
   public void tower_movementIsDiagonal_invalidMove() throws Exception {
     Tower tower = new Tower();
 
-    boolean validMove = tower.move("c2", "e4");
+    boolean validMove = tower.isAValidMove("c2", "e4");
 
     assertThat(validMove, is(false));
   }

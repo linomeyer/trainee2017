@@ -5,7 +5,11 @@ public class Position {
   final int y;
 
   public Position(String position) throws OutOfFieldException {
-    y = Integer.parseInt(position.charAt(1) + "");
+    try {
+      y = Integer.parseInt(position.charAt(1) + "");
+    } catch (NumberFormatException e) {
+      throw new OutOfFieldException();
+    }
     x = letterConverter(position.charAt(0) + "");
   }
 

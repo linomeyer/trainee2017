@@ -60,11 +60,11 @@ public class BiChess {
     int collorOfFarmer = options("Farbe wählen", "Welche Farbe hat der Bauer?", new String[] { "Weiss", "Schwarz" });
     switch (collorOfFarmer) {
     case 0:
-      validMove = whiteFarmer.move(getStartPosition(), getEndPosition());
+      validMove = whiteFarmer.isAValidMove(getStartPosition(), getEndPosition());
       output("Weisser Bauer", whiteFarmer.start, whiteFarmer.end);
       break;
     case 1:
-      validMove = blackFarmer.move(getStartPosition(), getEndPosition());
+      validMove = blackFarmer.isAValidMove(getStartPosition(), getEndPosition());
       output("Schwarzer Bauer", blackFarmer.start, blackFarmer.end);
       break;
     default:
@@ -73,27 +73,27 @@ public class BiChess {
   }
 
   private static void king() throws StoppedByUserException, OutOfFieldException {
-    validMove = king.move(getStartPosition(), getEndPosition());
+    validMove = king.isAValidMove(getStartPosition(), getEndPosition());
     output("König", king.start, king.end);
   }
 
   private static void queen() throws StoppedByUserException, OutOfFieldException {
-    validMove = queen.move(getStartPosition(), getEndPosition());
+    validMove = queen.isAValidMove(getStartPosition(), getEndPosition());
     output("Königin", queen.start, queen.end);
   }
 
   private static void runner() throws StoppedByUserException, OutOfFieldException {
-    validMove = runner.move(getStartPosition(), getEndPosition());
+    validMove = runner.isAValidMove(getStartPosition(), getEndPosition());
     output("Läufer", runner.start, runner.end);
   }
 
   private static void horse() throws StoppedByUserException, OutOfFieldException {
-    validMove = horse.move(getStartPosition(), getEndPosition());
+    validMove = horse.isAValidMove(getStartPosition(), getEndPosition());
     output("Springer", horse.start, horse.end);
   }
 
   private static void tower() throws StoppedByUserException, OutOfFieldException {
-    validMove = tower.move(getStartPosition(), getEndPosition());
+    validMove = tower.isAValidMove(getStartPosition(), getEndPosition());
     output("Turm", tower.start, tower.end);
   }
 

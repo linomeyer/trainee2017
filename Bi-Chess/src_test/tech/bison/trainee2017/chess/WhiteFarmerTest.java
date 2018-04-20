@@ -13,7 +13,7 @@ public class WhiteFarmerTest {
   public void whiteFarmer_horizontalMovement_validMove() throws Exception {
     Farmer farmer = new WhiteFarmer();
 
-    boolean validMove = farmer.move("e3", "e4");
+    boolean validMove = farmer.isAValidMove("e3", "e4");
 
     assertThat(validMove, is(true));
   }
@@ -22,7 +22,7 @@ public class WhiteFarmerTest {
   public void whiteFarmer_movementFromStartPosition_validMove() throws Exception {
     Farmer farmer = new WhiteFarmer();
 
-    boolean validMove = farmer.move("a2", "a4");
+    boolean validMove = farmer.isAValidMove("a2", "a4");
 
     assertThat(validMove, is(true));
   }
@@ -31,7 +31,7 @@ public class WhiteFarmerTest {
   public void whiteFarmer_movementFromStartPositionOfBlackFarmer_invalidMove() throws Exception {
     Farmer farmer = new WhiteFarmer();
 
-    boolean validMove = farmer.move("f7", "f5");
+    boolean validMove = farmer.isAValidMove("f7", "f5");
 
     assertThat(validMove, is(false));
   }
@@ -40,7 +40,7 @@ public class WhiteFarmerTest {
   public void whiteFarmer_verticalMovement_invalidMove() throws Exception {
     Farmer farmer = new WhiteFarmer();
 
-    boolean validMove = farmer.move("c5", "d5");
+    boolean validMove = farmer.isAValidMove("c5", "d5");
 
     assertThat(validMove, is(false));
   }
@@ -49,7 +49,7 @@ public class WhiteFarmerTest {
   public void whiteFarmer_horizontalMovementMoreThanAllowed_invalidMove() throws Exception {
     Farmer farmer = new WhiteFarmer();
 
-    boolean validMove = farmer.move("c2", "c5");
+    boolean validMove = farmer.isAValidMove("c2", "c5");
 
     assertThat(validMove, is(false));
   }
@@ -58,7 +58,7 @@ public class WhiteFarmerTest {
   public void whiteFarmer_diagonalMovement_invalidMove() throws Exception {
     Farmer farmer = new WhiteFarmer();
 
-    boolean validMove = farmer.move("d3", "b5");
+    boolean validMove = farmer.isAValidMove("d3", "b5");
 
     assertThat(validMove, is(false));
   }
@@ -67,7 +67,7 @@ public class WhiteFarmerTest {
   public void whiteFarmer_horizontalMovementInFalseDirection_invalidMove() throws Exception {
     Farmer farmer = new WhiteFarmer();
 
-    boolean validMove = farmer.move("c5", "c4");
+    boolean validMove = farmer.isAValidMove("c5", "c4");
 
     assertThat(validMove, is(false));
   }

@@ -3,9 +3,14 @@ package tech.bison.trainee2017.chess;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class PositionTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
   public void chessPosition_createPosition_haveXAndYInNummber() throws Exception {
     Position position = new Position("f5");
@@ -19,5 +24,17 @@ public class PositionTest {
     Position position = new Position(5, 3);
 
     assertThat(position.getPosition(), is("E3"));
+  }
+
+  @Test
+  public void charPositionOutOfField_createPosition_outOfFieldException() throws Exception {
+    thrown.expect(OutOfFieldException.class);
+    new Position("i9");
+  }
+
+  @Test
+  public void numberPositionIsAChar_createPosition_throwsInvalidPositionException() throws Exception {
+    thrown.expect(OutOfFieldException.class);
+    new Position("ha");
   }
 }

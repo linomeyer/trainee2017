@@ -1,8 +1,8 @@
 package tech.bison.trainee2017.chess;
 
 public class BlackFarmer extends Farmer {
-  public boolean move(String startPosition, String endPosition) throws OutOfFieldException {
-    boolean move = super.move(startPosition, endPosition);
+  public boolean isAValidMove(String startPosition, String endPosition) throws OutOfFieldException {
+    boolean move = super.isAValidMove(startPosition, endPosition);
     return isAValidMove() && move;
   }
 

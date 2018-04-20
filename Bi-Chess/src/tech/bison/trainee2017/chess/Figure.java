@@ -1,30 +1,20 @@
 package tech.bison.trainee2017.chess;
 
-public abstract class Figure {
+public class Figure {
   Position start;
   Position end;
   int xMovement;
   int yMovement;
 
-  protected boolean move(String startPosition, String endPosition) throws OutOfFieldException {
+  @Deprecated
+  protected boolean isAValidMove(String startPosition, String endPosition) throws OutOfFieldException {
 
     start = new Position(startPosition);
     end = new Position(endPosition);
 
-    if (!isInField(end) || !isInField(start)) {
-      return false;
-    }
-
     xMovement = end.x - start.x;
     yMovement = end.y - start.y;
 
-    return true;
-  }
-
-  static boolean isInField(Position position) {
-    if (position.y < 1 || position.y > 8 || position.x == 10) {
-      return false;
-    }
     return true;
   }
 
@@ -33,6 +23,16 @@ public abstract class Figure {
       return false;
     }
     return true;
+  }
+
+  public Movement calculateMovement(String startPosition, String endPosition) throws OutOfFieldException {
+    Position start = new Position(startPosition);
+    Position end = new Position(endPosition);
+
+    int xMovement = end.x - start.x;
+    int yMovement = end.y - start.y;
+
+    return new Movement(xMovement, yMovement);
   }
 
 }
