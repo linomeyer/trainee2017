@@ -5,7 +5,7 @@ public class Tower extends Figure {
     try {
       boolean move = super.isAValidMove(startPosition, endPosition);
       return isAValidMove() && move;
-    } catch (OutOfFieldException e) {
+    } catch (InvalidPositionException e) {
       return false;
     }
   }

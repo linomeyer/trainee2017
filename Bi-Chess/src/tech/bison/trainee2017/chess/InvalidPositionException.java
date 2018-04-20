@@ -1,6 +1,6 @@
 package tech.bison.trainee2017.chess;
 
-public class OutOfFieldException extends Exception {
+public class InvalidPositionException extends Exception {
 
   /**
    * 

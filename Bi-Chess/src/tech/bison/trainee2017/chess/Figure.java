@@ -7,7 +7,7 @@ public class Figure {
   int yMovement;
 
   @Deprecated
-  protected boolean isAValidMove(String startPosition, String endPosition) throws OutOfFieldException {
+  protected boolean isAValidMove(String startPosition, String endPosition) throws InvalidPositionException {
 
     start = new Position(startPosition);
     end = new Position(endPosition);
@@ -25,7 +25,7 @@ public class Figure {
     return true;
   }
 
-  public Movement calculateMovement(String startPosition, String endPosition) throws OutOfFieldException {
+  public Movement calculateMovement(String startPosition, String endPosition) throws InvalidPositionException {
     Position start = new Position(startPosition);
     Position end = new Position(endPosition);
 

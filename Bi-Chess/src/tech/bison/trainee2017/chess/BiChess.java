@@ -56,7 +56,7 @@ public class BiChess {
 
   }
 
-  private static void farmer() throws StoppedByUserException, OutOfFieldException {
+  private static void farmer() throws StoppedByUserException, InvalidPositionException {
     int collorOfFarmer = options("Farbe wählen", "Welche Farbe hat der Bauer?", new String[] { "Weiss", "Schwarz" });
     switch (collorOfFarmer) {
     case 0:
@@ -72,27 +72,27 @@ public class BiChess {
     }
   }
 
-  private static void king() throws StoppedByUserException, OutOfFieldException {
+  private static void king() throws StoppedByUserException, InvalidPositionException {
     validMove = king.isAValidMove(getStartPosition(), getEndPosition());
     output("König", king.start, king.end);
   }
 
-  private static void queen() throws StoppedByUserException, OutOfFieldException {
+  private static void queen() throws StoppedByUserException, InvalidPositionException {
     validMove = queen.isAValidMove(getStartPosition(), getEndPosition());
     output("Königin", queen.start, queen.end);
   }
 
-  private static void runner() throws StoppedByUserException, OutOfFieldException {
+  private static void runner() throws StoppedByUserException, InvalidPositionException {
     validMove = runner.isAValidMove(getStartPosition(), getEndPosition());
     output("Läufer", runner.start, runner.end);
   }
 
-  private static void horse() throws StoppedByUserException, OutOfFieldException {
+  private static void horse() throws StoppedByUserException, InvalidPositionException {
     validMove = horse.isAValidMove(getStartPosition(), getEndPosition());
     output("Springer", horse.start, horse.end);
   }
 
-  private static void tower() throws StoppedByUserException, OutOfFieldException {
+  private static void tower() throws StoppedByUserException, InvalidPositionException {
     validMove = tower.isAValidMove(getStartPosition(), getEndPosition());
     output("Turm", tower.start, tower.end);
   }
@@ -108,7 +108,7 @@ public class BiChess {
 
       return position.getPosition();
 
-    } catch (OutOfFieldException e) {
+    } catch (InvalidPositionException e) {
       if (yesNoInput("Zurück zum Start?", "Wollen Sie zurück zum Start?")) {
         throw new StoppedByUserException();
       } else {
@@ -127,7 +127,7 @@ public class BiChess {
   }
 
   private static void output(String figureName, Position start, Position end)
-      throws StoppedByUserException, OutOfFieldException {
+      throws StoppedByUserException, InvalidPositionException {
     if (validMove) {
       JOptionPane.showMessageDialog(null, "Der Zug mit der Figur " + figureName + " vom Feld " + start.getPosition()
           + " auf das Feld " + end.getPosition() + " ist gültig.");

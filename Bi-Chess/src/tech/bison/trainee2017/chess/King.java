@@ -6,7 +6,7 @@ public class King extends Figure {
     try {
       Movement calculateMovement = calculateMovement(startPosition, endPosition);
       return isAValidMove(calculateMovement);
-    } catch (OutOfFieldException e) {
+    } catch (InvalidPositionException e) {
       return false;
     }
   }

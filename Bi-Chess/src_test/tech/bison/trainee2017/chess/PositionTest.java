@@ -28,13 +28,13 @@ public class PositionTest {
 
   @Test
   public void charPositionOutOfField_createPosition_outOfFieldException() throws Exception {
-    thrown.expect(OutOfFieldException.class);
+    thrown.expect(InvalidPositionException.class);
     new Position("i9");
   }
 
   @Test
   public void numberPositionIsAChar_createPosition_throwsInvalidPositionException() throws Exception {
-    thrown.expect(OutOfFieldException.class);
+    thrown.expect(InvalidPositionException.class);
     new Position("ha");
   }
 }
