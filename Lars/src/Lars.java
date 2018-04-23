@@ -23,8 +23,9 @@ public class Lars {
           Thread.sleep(larsFrequenz);
         }
       } catch (Exception e) {
-        if (eingabe.toLowerCase().equals("lars")) {
-          ausgabeText = "Du hast voll larsisch gequatscht. Aber Lars braucht eine Angabe!\nWie lange soll Lars zwischen dem larsen larsen? xD (Frequenz in ms)";
+        if (eingabe.toLowerCase().equals("lars") || eingabe.toLowerCase().equals("larsen") || eingabe.toLowerCase().equals("larsisch")) {
+        	System.err.println("Du hast nicht korrekt gelarst!");
+          ausgabeText = "Du hast voll larsisch gequatscht oder? Aber Lars braucht eine Angabe!\nWie lange soll Lars zwischen dem larsen larsen? xD (Frequenz in ms)";
         } else {
           System.err.println("Es ist ein unerwarteter Lars aufgetreten!");
           ausgabeText = "Es ist ein unerwarteter Lars aufgetreten!\nWie lange soll Lars zwischen dem larsen larsen? xD (Frequenz in ms)";
