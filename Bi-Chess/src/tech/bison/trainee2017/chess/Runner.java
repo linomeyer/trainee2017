@@ -3,19 +3,19 @@ package tech.bison.trainee2017.chess;
 public class Runner extends Figure {
   public boolean isAValidMove(String startPosition, String endPosition) {
     try {
-      boolean move = super.isAValidMove(startPosition, endPosition);
-      return isAValidMove() && move;
+      Movement calculateMovement = calculateMovement(startPosition, endPosition);
+      return isAValidMove(calculateMovement);
     } catch (InvalidPositionException e) {
       return false;
     }
   }
 
-  private boolean isAValidMove() {
-    if (!super.isAMove(yMovement, xMovement)) {
+  private boolean isAValidMove(Movement movement) {
+    if (!super.isAMove(movement.y, movement.x)) {
       return false;
     } else {
-      if (xMovement != 0 && yMovement != 0) {
-        return Math.abs(yMovement) == Math.abs(xMovement);
+      if (movement.x != 0 && movement.y != 0) {
+        return Math.abs(movement.y) == Math.abs(movement.x);
       }
     }
     return false;

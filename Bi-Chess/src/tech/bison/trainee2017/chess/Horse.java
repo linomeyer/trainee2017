@@ -3,19 +3,19 @@ package tech.bison.trainee2017.chess;
 public class Horse extends Figure {
   public boolean isAValidMove(String startPosition, String endPosition) {
     try {
-      boolean move = super.isAValidMove(startPosition, endPosition);
-      return isAValidMove() && move;
+      Movement calculateMovement = calculateMovement(startPosition, endPosition);
+      return isAValidMove(calculateMovement);
     } catch (InvalidPositionException e) {
       return false;
     }
   }
 
-  private boolean isAValidMove() {
-    if (!super.isAMove(yMovement, xMovement)) {
+  private boolean isAValidMove(Movement movement) {
+    if (!super.isAMove(movement.y, movement.x)) {
       return false;
     } else {
-      if ((Math.abs(xMovement) == 2 && Math.abs(yMovement) == 1)
-          || (Math.abs(xMovement) == 1 && Math.abs(yMovement) == 2)) {
+      if ((Math.abs(movement.x) == 2 && Math.abs(movement.y) == 1)
+          || (Math.abs(movement.x) == 1 && Math.abs(movement.y) == 2)) {
         return true;
       }
     }

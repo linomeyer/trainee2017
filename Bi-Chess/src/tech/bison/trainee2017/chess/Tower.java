@@ -3,18 +3,18 @@ package tech.bison.trainee2017.chess;
 public class Tower extends Figure {
   public boolean isAValidMove(String startPosition, String endPosition) {
     try {
-      boolean move = super.isAValidMove(startPosition, endPosition);
-      return isAValidMove() && move;
+      Movement calculateMovement = calculateMovement(startPosition, endPosition);
+      return isAValidMove(calculateMovement);
     } catch (InvalidPositionException e) {
       return false;
     }
   }
 
-  private boolean isAValidMove() {
-    if (!super.isAMove(yMovement, xMovement)) {
+  private boolean isAValidMove(Movement movement) {
+    if (!super.isAMove(movement.y, movement.x)) {
       return false;
     } else {
-      if (yMovement != 0 && xMovement != 0) {
+      if (movement.y != 0 && movement.x != 0) {
         return false;
       }
     }

@@ -3,24 +3,24 @@ package tech.bison.trainee2017.chess;
 public class WhiteFarmer extends Farmer {
   public boolean isAValidMove(String startPosition, String endPosition) {
     try {
-      boolean move = super.isAValidMove(startPosition, endPosition);
-      return isAValidMove() && move;
+      Movement calculateMovement = calculateMovement(startPosition, endPosition);
+      return isAValidMove(calculateMovement);
     } catch (InvalidPositionException e) {
       return false;
     }
   }
 
-  private boolean isAValidMove() {
-    if (!super.isAMove(yMovement, xMovement)) {
+  private boolean isAValidMove(Movement movement) {
+    if (!super.isAMove(movement.y, movement.x)) {
       return false;
     } else {
-      if (xMovement != 0) {
+      if (movement.x != 0) {
         return false;
       }
-      if (start.y == 2 && end.y == 4) {
+      if (movement.startPosition.y == 2 && movement.endPosition.y == 4) {
         return true;
       } else {
-        if (yMovement == 1) {
+        if (movement.y == 1) {
           return true;
         }
       }

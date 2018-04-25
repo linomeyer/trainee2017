@@ -1,22 +1,26 @@
 package tech.bison.trainee2017.chess;
 
 public class BlackFarmer extends Farmer {
-  public boolean isAValidMove(String startPosition, String endPosition) throws InvalidPositionException {
-    boolean move = super.isAValidMove(startPosition, endPosition);
-    return isAValidMove() && move;
+  public boolean isAValidMove(String startPosition, String endPosition) {
+    try {
+      Movement calculateMovement = calculateMovement(startPosition, endPosition);
+      return isAValidMove(calculateMovement);
+    } catch (InvalidPositionException e) {
+      return false;
+    }
   }
 
-  private boolean isAValidMove() {
-    if (!super.isAMove(yMovement, xMovement)) {
+  private boolean isAValidMove(Movement movement) {
+    if (!super.isAMove(movement.y, movement.x)) {
       return false;
     } else {
-      if (xMovement != 0) {
+      if (movement.x != 0) {
         return false;
       }
-      if (start.y == 7 && end.y == 5) {
+      if (movement.startPosition.y == 7 && movement.endPosition.y == 5) {
         return true;
       } else {
-        if (yMovement == -1) {
+        if (movement.y == -1) {
           return true;
         }
       }

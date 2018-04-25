@@ -5,13 +5,10 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import tech.bison.trainee2017.chess.Farmer;
-import tech.bison.trainee2017.chess.WhiteFarmer;
-
 public class WhiteFarmerTest {
   @Test
   public void whiteFarmer_horizontalMovement_validMove() throws Exception {
-    Farmer farmer = new WhiteFarmer();
+    WhiteFarmer farmer = new WhiteFarmer();
 
     boolean validMove = farmer.isAValidMove("e3", "e4");
 
@@ -20,7 +17,7 @@ public class WhiteFarmerTest {
 
   @Test
   public void whiteFarmer_movementFromStartPosition_validMove() throws Exception {
-    Farmer farmer = new WhiteFarmer();
+    WhiteFarmer farmer = new WhiteFarmer();
 
     boolean validMove = farmer.isAValidMove("a2", "a4");
 
@@ -29,7 +26,7 @@ public class WhiteFarmerTest {
 
   @Test
   public void whiteFarmer_movementFromStartPositionOfBlackFarmer_invalidMove() throws Exception {
-    Farmer farmer = new WhiteFarmer();
+    WhiteFarmer farmer = new WhiteFarmer();
 
     boolean validMove = farmer.isAValidMove("f7", "f5");
 
@@ -38,7 +35,7 @@ public class WhiteFarmerTest {
 
   @Test
   public void whiteFarmer_verticalMovement_invalidMove() throws Exception {
-    Farmer farmer = new WhiteFarmer();
+    WhiteFarmer farmer = new WhiteFarmer();
 
     boolean validMove = farmer.isAValidMove("c5", "d5");
 
@@ -47,7 +44,7 @@ public class WhiteFarmerTest {
 
   @Test
   public void whiteFarmer_horizontalMovementMoreThanAllowed_invalidMove() throws Exception {
-    Farmer farmer = new WhiteFarmer();
+    WhiteFarmer farmer = new WhiteFarmer();
 
     boolean validMove = farmer.isAValidMove("c2", "c5");
 
@@ -56,7 +53,7 @@ public class WhiteFarmerTest {
 
   @Test
   public void whiteFarmer_diagonalMovement_invalidMove() throws Exception {
-    Farmer farmer = new WhiteFarmer();
+    WhiteFarmer farmer = new WhiteFarmer();
 
     boolean validMove = farmer.isAValidMove("d3", "b5");
 
@@ -65,7 +62,7 @@ public class WhiteFarmerTest {
 
   @Test
   public void whiteFarmer_horizontalMovementInFalseDirection_invalidMove() throws Exception {
-    Farmer farmer = new WhiteFarmer();
+    WhiteFarmer farmer = new WhiteFarmer();
 
     boolean validMove = farmer.isAValidMove("c5", "c4");
 
