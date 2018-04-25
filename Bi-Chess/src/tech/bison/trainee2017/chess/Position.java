@@ -55,24 +55,24 @@ public class Position {
 
   }
 
-  static String numberConverter(int number) throws InvalidPositionException {
+  static char numberConverter(int number) throws InvalidPositionException {
     switch (number) {
     case 1:
-      return "A";
+      return 'A';
     case 2:
-      return "B";
+      return 'B';
     case 3:
-      return "C";
+      return 'C';
     case 4:
-      return "D";
+      return 'D';
     case 5:
-      return "E";
+      return 'E';
     case 6:
-      return "F";
+      return 'F';
     case 7:
-      return "G";
+      return 'G';
     case 8:
-      return "H";
+      return 'H';
     default:
       throw new InvalidPositionException();
     }
