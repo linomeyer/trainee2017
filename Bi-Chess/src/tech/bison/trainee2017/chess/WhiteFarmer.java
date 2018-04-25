@@ -10,7 +10,7 @@ public class WhiteFarmer extends Farmer {
       if (movement.x != 0) {
         return false;
       }
-      if (movement.startPosition.y == 2 && movement.endPosition.y == 4) {
+      if (movement.start.y == 2 && movement.end.y == 4) {
         return true;
       } else {
         if (movement.y == 1) {

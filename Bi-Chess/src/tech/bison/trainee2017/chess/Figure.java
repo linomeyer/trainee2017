@@ -25,11 +25,4 @@ public class Figure {
     return false;
   }
 
-  public Movement calculateMovement(String startPosition, String endPosition) throws InvalidPositionException {
-    Position start = new Position(startPosition);
-    Position end = new Position(endPosition);
-
-    return new Movement(start, end);
-  }
-
 }

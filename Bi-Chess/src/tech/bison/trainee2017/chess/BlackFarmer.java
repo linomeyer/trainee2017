@@ -10,7 +10,7 @@ public class BlackFarmer extends Farmer {
       if (movement.x != 0) {
         return false;
       }
-      if (movement.startPosition.y == 7 && movement.endPosition.y == 5) {
+      if (movement.start.y == 7 && movement.end.y == 5) {
         return true;
       } else {
         if (movement.y == -1) {
