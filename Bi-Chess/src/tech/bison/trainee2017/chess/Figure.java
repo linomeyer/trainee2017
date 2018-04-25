@@ -6,7 +6,7 @@ public class Figure {
   int xMovement;
   int yMovement;
 
-  static boolean isAMove(int xMovement, int yMovement) {
+  protected static boolean isAMove(int xMovement, int yMovement) {
     if (xMovement == 0 && yMovement == 0) {
       return false;
     }
