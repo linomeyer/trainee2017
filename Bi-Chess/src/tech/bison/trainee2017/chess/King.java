@@ -11,12 +11,12 @@ public class King extends Figure {
     }
   }
 
-  private boolean isAValidMove(Movement calculateMovement) {
-    if (!super.isAMove(calculateMovement.y, calculateMovement.x)) {
+  private boolean isAValidMove(Movement calculatedMovement) {
+    if (!super.isAMove(calculatedMovement.y, calculatedMovement.x)) {
       return false;
     } else {
-      if (calculateMovement.x <= 1 && calculateMovement.x >= -1 && calculateMovement.y <= 1
-          && calculateMovement.y >= -1) {
+      if (calculatedMovement.x <= 1 && calculatedMovement.x >= -1 && calculatedMovement.y <= 1
+          && calculatedMovement.y >= -1) {
         return true;
       }
     }
