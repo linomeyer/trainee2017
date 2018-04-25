@@ -37,4 +37,16 @@ public class PositionTest {
     thrown.expect(InvalidPositionException.class);
     new Position("ha");
   }
+
+  @Test
+  public void charPositionIsANumber_createPosition_throwsInvalidPositionException() throws Exception {
+    thrown.expect(InvalidPositionException.class);
+    new Position("79");
+  }
+
+  @Test
+  public void numberPositionIsHigherThanEight_createPosition_throwsInvalidPositionException() throws Exception {
+    thrown.expect(InvalidPositionException.class);
+    new Position("h9");
+  }
 }

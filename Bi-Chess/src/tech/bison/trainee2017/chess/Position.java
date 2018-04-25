@@ -5,12 +5,12 @@ public class Position {
   final int y;
 
   public Position(String position) throws InvalidPositionException {
+    y = yPositionConverter(position.charAt(1));
     try {
-      y = Integer.parseInt(position.charAt(1) + "");
     } catch (NumberFormatException e) {
       throw new InvalidPositionException();
     }
-    x = letterConverter(position.charAt(0) + "");
+    x = letterConverter(position.charAt(0));
   }
 
   public Position(int x, int y) {
@@ -18,23 +18,36 @@ public class Position {
     this.y = y;
   }
 
-  static int letterConverter(String letter) throws InvalidPositionException {
-    switch (letter.toLowerCase()) {
-    case "a":
+  private int yPositionConverter(char letter) throws InvalidPositionException {
+    try {
+      int y = Integer.parseInt(String.valueOf(letter));
+      if (y > 0 && y < 9) {
+        return y;
+      } else {
+        throw new InvalidPositionException();
+      }
+    } catch (NumberFormatException e) {
+      throw new InvalidPositionException();
+    }
+  }
+
+  static int letterConverter(char letter) throws InvalidPositionException {
+    switch (Character.toLowerCase(letter)) {
+    case 'a':
       return 1;
-    case "b":
+    case 'b':
       return 2;
-    case "c":
+    case 'c':
       return 3;
-    case "d":
+    case 'd':
       return 4;
-    case "e":
+    case 'e':
       return 5;
-    case "f":
+    case 'f':
       return 6;
-    case "g":
+    case 'g':
       return 7;
-    case "h":
+    case 'h':
       return 8;
     default:
       throw new InvalidPositionException(); // 10 = invalid move
