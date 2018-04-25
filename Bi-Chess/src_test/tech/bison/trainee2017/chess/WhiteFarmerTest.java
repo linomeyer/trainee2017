@@ -7,65 +7,75 @@ import org.junit.Test;
 
 public class WhiteFarmerTest {
   @Test
-  public void whiteFarmer_horizontalMovement_validMove() throws Exception {
-    WhiteFarmer farmer = new WhiteFarmer();
+  public void WhiteFarmer_isAllowedToMoveOneUp_validMove() throws Exception {
+    WhiteFarmer WhiteFarmer = new WhiteFarmer();
 
-    boolean validMove = farmer.isAValidMove("e3", "e4");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void whiteFarmer_movementFromStartPosition_validMove() throws Exception {
-    WhiteFarmer farmer = new WhiteFarmer();
-
-    boolean validMove = farmer.isAValidMove("a2", "a4");
+    boolean validMove = WhiteFarmer.isAValidMove("a4", "a5");
 
     assertThat(validMove, is(true));
   }
 
   @Test
-  public void whiteFarmer_movementFromStartPositionOfBlackFarmer_invalidMove() throws Exception {
-    WhiteFarmer farmer = new WhiteFarmer();
+  public void WhiteFarmer_isAllowedToMoveOneUpFromStartPosition_validMove() throws Exception {
+    WhiteFarmer WhiteFarmer = new WhiteFarmer();
 
-    boolean validMove = farmer.isAValidMove("f7", "f5");
+    boolean validMove = WhiteFarmer.isAValidMove("c2", "c3");
+
+    assertThat(validMove, is(true));
+  }
+
+  @Test
+  public void WhiteFarmer_isAllowedToMoveTwoUpFromStartPosition_validMove() throws Exception {
+    WhiteFarmer WhiteFarmer = new WhiteFarmer();
+
+    boolean validMove = WhiteFarmer.isAValidMove("h2", "h4");
+
+    assertThat(validMove, is(true));
+  }
+
+  @Test
+  public void WhiteFarmer_isAllowedToMoveOneLeft_invalidMove() throws Exception {
+    WhiteFarmer WhiteFarmer = new WhiteFarmer();
+
+    boolean validMove = WhiteFarmer.isAValidMove("d4", "c4");
 
     assertThat(validMove, is(false));
   }
 
   @Test
-  public void whiteFarmer_verticalMovement_invalidMove() throws Exception {
-    WhiteFarmer farmer = new WhiteFarmer();
+  public void WhiteFarmer_isAllowedToMoveOneRight_invalidMove() throws Exception {
+    WhiteFarmer WhiteFarmer = new WhiteFarmer();
 
-    boolean validMove = farmer.isAValidMove("c5", "d5");
-
-    assertThat(validMove, is(false));
-  }
-
-  @Test
-  public void whiteFarmer_horizontalMovementMoreThanAllowed_invalidMove() throws Exception {
-    WhiteFarmer farmer = new WhiteFarmer();
-
-    boolean validMove = farmer.isAValidMove("c2", "c5");
+    boolean validMove = WhiteFarmer.isAValidMove("g8", "h8");
 
     assertThat(validMove, is(false));
   }
 
   @Test
-  public void whiteFarmer_diagonalMovement_invalidMove() throws Exception {
-    WhiteFarmer farmer = new WhiteFarmer();
+  public void WhiteFarmer_isAllowedToMoveOneDiagonal_invalidMove() throws Exception {
+    WhiteFarmer WhiteFarmer = new WhiteFarmer();
 
-    boolean validMove = farmer.isAValidMove("d3", "b5");
+    boolean validMove = WhiteFarmer.isAValidMove("a3", "b4");
 
     assertThat(validMove, is(false));
   }
 
   @Test
-  public void whiteFarmer_horizontalMovementInFalseDirection_invalidMove() throws Exception {
-    WhiteFarmer farmer = new WhiteFarmer();
+  public void WhiteFarmer_isAllowedToMoveTwoUp_invalidMove() throws Exception {
+    WhiteFarmer WhiteFarmer = new WhiteFarmer();
 
-    boolean validMove = farmer.isAValidMove("c5", "c4");
+    boolean validMove = WhiteFarmer.isAValidMove("d5", "d7");
 
     assertThat(validMove, is(false));
   }
+
+  @Test
+  public void WhiteFarmer_isAllowedToMoveOneDown_invalidMove() throws Exception {
+    WhiteFarmer WhiteFarmer = new WhiteFarmer();
+
+    boolean validMove = WhiteFarmer.isAValidMove("d4", "d3");
+
+    assertThat(validMove, is(false));
+  }
+
 }
