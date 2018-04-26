@@ -49,4 +49,16 @@ public class PositionTest {
     thrown.expect(InvalidPositionException.class);
     new Position("h9");
   }
+
+  @Test
+  public void xPositionIsNotInField_createPostion_throwsInvalidPositionException() throws Exception {
+    thrown.expect(InvalidPositionException.class);
+    new Position(9, 3);
+  }
+
+  @Test
+  public void yPositionIsNotInField_createPostion_throwsInvalidPositionException() throws Exception {
+    thrown.expect(InvalidPositionException.class);
+    new Position(7, -1);
+  }
 }

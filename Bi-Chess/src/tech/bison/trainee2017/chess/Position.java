@@ -5,27 +5,21 @@ public class Position {
   final int y;
 
   public Position(String position) throws InvalidPositionException {
-    y = yPositionConverter(position.charAt(1));
-    try {
-    } catch (NumberFormatException e) {
+    this(letterConverter(position.charAt(0)), yPositionConverter(position.charAt(1)));
+  }
+
+  public Position(int x, int y) throws InvalidPositionException {
+    if (x > 0 && x < 9 && y > 0 && y < 9) {
+      this.x = x;
+      this.y = y;
+    } else {
       throw new InvalidPositionException();
     }
-    x = letterConverter(position.charAt(0));
   }
 
-  public Position(int x, int y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  private int yPositionConverter(char letter) throws InvalidPositionException {
+  private static int yPositionConverter(char letter) throws InvalidPositionException {
     try {
-      int y = Integer.parseInt(String.valueOf(letter));
-      if (y > 0 && y < 9) {
-        return y;
-      } else {
-        throw new InvalidPositionException();
-      }
+      return Integer.parseInt(String.valueOf(letter));
     } catch (NumberFormatException e) {
       throw new InvalidPositionException();
     }

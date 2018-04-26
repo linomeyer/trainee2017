@@ -1,7 +1,7 @@
 package tech.bison.trainee2017.chess;
 
 public class Figure {
-  protected boolean isAValidMove(String startPostition, String endPosition) {
+  public boolean isAValidMove(String startPostition, String endPosition) {
     try {
       return isAValidMove(new Position(startPostition), new Position(endPosition));
     } catch (InvalidPositionException e) {
@@ -9,7 +9,7 @@ public class Figure {
     }
   }
 
-  protected boolean isAValidMove(Position start, Position end) {
+  public boolean isAValidMove(Position start, Position end) {
     Movement calculateMovement = new Movement(start, end);
     return isAValidMove(calculateMovement);
   }
