@@ -1,9 +1,9 @@
 package tech.bison.trainee2017.chess;
 
-public class Figure {
-  public boolean isAValidMove(String startPostition, String endPosition) {
+public abstract class Figure {
+  public boolean isAValidMove(String startPosition, String endPosition) {
     try {
-      return isAValidMove(new Position(startPostition), new Position(endPosition));
+      return isAValidMove(new Position(startPosition), new Position(endPosition));
     } catch (InvalidPositionException e) {
       return false;
     }
@@ -14,11 +14,9 @@ public class Figure {
     return isAValidMove(calculateMovement);
   }
 
-  protected boolean isAValidMove(Movement movement) {
-    return false;
-  }
+  protected abstract boolean isAValidMove(Movement movement);
 
-  protected static boolean isAMove(int xMovement, int yMovement) {
+  protected boolean isAMove(int xMovement, int yMovement) {
     if (xMovement == 0 && yMovement == 0) {
       return false;
     }
