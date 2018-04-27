@@ -31,8 +31,8 @@ public class ExampleTest {
   }
 
   /*
-   * Die andere Möglichkeit ist es die Parameter mit einer Notation Parameter und
-   * einem Index zuzuweisen.
+   * Die andere Möglichkeit ist es die Parameter mit einer Notation
+   * Parameter(Index) zuzuweisen.
    */
 
   // @Parameter(0)
