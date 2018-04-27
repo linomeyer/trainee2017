@@ -95,4 +95,13 @@ public class HorseTest {
 
     assertThat(validMove, is(false));
   }
+
+  @Test
+  public void horse_isAllowedToMoveOneDownAndOneLeft_invalidMove() throws Exception {
+    Horse horse = new Horse();
+
+    boolean validMove = horse.isAValidMove("D5", "C4");
+
+    assertThat(validMove, is(false));
+  }
 }
