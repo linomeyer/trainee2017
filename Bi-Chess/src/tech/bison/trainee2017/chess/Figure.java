@@ -14,15 +14,15 @@ public class Figure {
     return isAValidMove(calculateMovement);
   }
 
+  protected boolean isAValidMove(Movement movement) {
+    return false;
+  }
+
   protected static boolean isAMove(int xMovement, int yMovement) {
     if (xMovement == 0 && yMovement == 0) {
       return false;
     }
     return true;
-  }
-
-  protected boolean isAValidMove(Movement movement) {
-    return false;
   }
 
 }
