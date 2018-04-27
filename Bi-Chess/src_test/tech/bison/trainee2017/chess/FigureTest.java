@@ -25,12 +25,21 @@ public class FigureTest {
   }
 
   @Test
-  public void figure_moveNothing_isAMove() throws Exception {
+  public void figure_dontMove_isNotAMove() throws Exception {
     Figure figure = new TestFigure();
 
     boolean isAMove = figure.isAMove(0, 0);
 
     assertThat(isAMove, is(false));
+  }
+
+  @Test
+  public void figure_moveOutOfField_invalidMove() throws Exception {
+    Figure figure = new TestFigure();
+
+    boolean isAValidMove = figure.isAValidMove("h8", "h9");
+
+    assertThat(isAValidMove, is(false));
   }
 
   class TestFigure extends Figure {
@@ -41,8 +50,4 @@ public class FigureTest {
     }
   }
 
-  @Test
-  public void testIsAValidMoveStringString() throws Exception {
-    throw new RuntimeException("not yet implemented");
-  }
 }
