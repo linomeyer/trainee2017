@@ -7,6 +7,42 @@ import org.junit.Test;
 
 public class RunnerTest {
   @Test
+  public void runner_isAllowedToMoveDiagonalUpAndRight_validMove() throws Exception {
+    Runner runner = new Runner();
+
+    boolean validMove = runner.isAValidMove("d3", "h7");
+
+    assertThat(validMove, is(true));
+  }
+
+  @Test
+  public void runner_isAllowedToMoveDiagonalDownAndRight_validMove() throws Exception {
+    Runner runner = new Runner();
+
+    boolean validMove = runner.isAValidMove("a8", "h1");
+
+    assertThat(validMove, is(true));
+  }
+
+  @Test
+  public void runner_isAllowedToMoveDiagonalDownAndLeft_validMove() throws Exception {
+    Runner runner = new Runner();
+
+    boolean validMove = runner.isAValidMove("b4", "a3");
+
+    assertThat(validMove, is(true));
+  }
+
+  @Test
+  public void runner_isAllowedToMoveDiagonalUpAndLeft_validMove() throws Exception {
+    Runner runner = new Runner();
+
+    boolean validMove = runner.isAValidMove("g5", "e7");
+
+    assertThat(validMove, is(true));
+  }
+
+  @Test
   public void runner_isAllowedToMoveOneUp_invalidMove() throws Exception {
     Runner runner = new Runner();
 
@@ -38,42 +74,6 @@ public class RunnerTest {
     Runner runner = new Runner();
 
     boolean validMove = runner.isAValidMove("e8", "d8");
-
-    assertThat(validMove, is(false));
-  }
-
-  @Test
-  public void runner_isAllowedToMoveOneDiagonal_validMove() throws Exception {
-    Runner runner = new Runner();
-
-    boolean validMove = runner.isAValidMove("a2", "b3");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void runner_isAllowedToMoveSevenDiagonal_validMove() throws Exception {
-    Runner runner = new Runner();
-
-    boolean validMove = runner.isAValidMove("a8", "h1");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void runner_isAllowedToMoveSevenUp_invalidMove() throws Exception {
-    Runner runner = new Runner();
-
-    boolean validMove = runner.isAValidMove("a1", "a8");
-
-    assertThat(validMove, is(false));
-  }
-
-  @Test
-  public void runner_isAllowedToMoveTwoLeft_invalidMove() throws Exception {
-    Runner runner = new Runner();
-
-    boolean validMove = runner.isAValidMove("h5", "a5");
 
     assertThat(validMove, is(false));
   }

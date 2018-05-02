@@ -10,16 +10,7 @@ public class WhiteFarmerTest {
   public void whiteFarmer_isAllowedToMoveOneUp_validMove() throws Exception {
     WhiteFarmer whiteFarmer = new WhiteFarmer();
 
-    boolean validMove = whiteFarmer.isAValidMove("a4", "a5");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void whiteFarmer_isAllowedToMoveOneUpFromStartPosition_validMove() throws Exception {
-    WhiteFarmer whiteFarmer = new WhiteFarmer();
-
-    boolean validMove = whiteFarmer.isAValidMove("c2", "c3");
+    boolean validMove = whiteFarmer.isAValidMove("f7", "f8");
 
     assertThat(validMove, is(true));
   }
@@ -28,7 +19,7 @@ public class WhiteFarmerTest {
   public void whiteFarmer_isAllowedToMoveTwoUpFromStartPosition_validMove() throws Exception {
     WhiteFarmer whiteFarmer = new WhiteFarmer();
 
-    boolean validMove = whiteFarmer.isAValidMove("h2", "h4");
+    boolean validMove = whiteFarmer.isAValidMove("a2", "a4");
 
     assertThat(validMove, is(true));
   }

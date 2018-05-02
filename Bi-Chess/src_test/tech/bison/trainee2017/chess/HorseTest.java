@@ -10,7 +10,7 @@ public class HorseTest {
   public void horse_isAllowedToMoveTwoUpAndOneRight_validMove() throws Exception {
     Horse horse = new Horse();
 
-    boolean validMove = horse.isAValidMove("D5", "E7");
+    boolean validMove = horse.isAValidMove("f2", "g4");
 
     assertThat(validMove, is(true));
   }
@@ -19,7 +19,7 @@ public class HorseTest {
   public void horse_isAllowedToMoveTwoUpAndOneLeft_validMove() throws Exception {
     Horse horse = new Horse();
 
-    boolean validMove = horse.isAValidMove("D5", "C7");
+    boolean validMove = horse.isAValidMove("d4", "c6");
 
     assertThat(validMove, is(true));
   }
@@ -28,7 +28,7 @@ public class HorseTest {
   public void horse_isAllowedToMoveTwoRightAndOneUp_validMove() throws Exception {
     Horse horse = new Horse();
 
-    boolean validMove = horse.isAValidMove("D5", "F6");
+    boolean validMove = horse.isAValidMove("c5", "e6");
 
     assertThat(validMove, is(true));
   }
@@ -37,7 +37,7 @@ public class HorseTest {
   public void horse_isAllowedToMoveTwoRightAndOneDown_validMove() throws Exception {
     Horse horse = new Horse();
 
-    boolean validMove = horse.isAValidMove("D5", "F4");
+    boolean validMove = horse.isAValidMove("b8", "d7");
 
     assertThat(validMove, is(true));
   }
@@ -46,7 +46,7 @@ public class HorseTest {
   public void horse_isAllowedToMoveTwoDownAndOneRight_validMove() throws Exception {
     Horse horse = new Horse();
 
-    boolean validMove = horse.isAValidMove("D5", "E3");
+    boolean validMove = horse.isAValidMove("b5", "c3");
 
     assertThat(validMove, is(true));
   }
@@ -55,7 +55,7 @@ public class HorseTest {
   public void horse_isAllowedToMoveTwoDownAndOneLeft_validMove() throws Exception {
     Horse horse = new Horse();
 
-    boolean validMove = horse.isAValidMove("D5", "C3");
+    boolean validMove = horse.isAValidMove("g3", "f1");
 
     assertThat(validMove, is(true));
   }
@@ -64,7 +64,7 @@ public class HorseTest {
   public void horse_isAllowedToMoveTwoLeftAndOneUp_validMove() throws Exception {
     Horse horse = new Horse();
 
-    boolean validMove = horse.isAValidMove("D5", "B6");
+    boolean validMove = horse.isAValidMove("g1", "e2");
 
     assertThat(validMove, is(true));
   }
@@ -73,7 +73,7 @@ public class HorseTest {
   public void horse_isAllowedToMoveTwoLeftAndOneDown_validMove() throws Exception {
     Horse horse = new Horse();
 
-    boolean validMove = horse.isAValidMove("D5", "B4");
+    boolean validMove = horse.isAValidMove("h5", "f4");
 
     assertThat(validMove, is(true));
   }
