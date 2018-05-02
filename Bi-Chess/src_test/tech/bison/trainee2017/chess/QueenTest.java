@@ -7,73 +7,73 @@ import org.junit.Test;
 
 public class QueenTest {
   @Test
-  public void queen_isAllowedToMoveSevenUp_validMove() throws Exception {
+  public void queen_isAllowedToMoveUp_validMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.isAValidMove("a1", "a8");
+    boolean validMove = queen.isAValidMove("e7", "e8");
 
     assertThat(validMove, is(true));
   }
 
   @Test
-  public void queen_isAllowedToMoveSevenDown_validMove() throws Exception {
+  public void queen_isAllowedToMoveDown_validMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.isAValidMove("h8", "h1");
+    boolean validMove = queen.isAValidMove("h6", "h1");
 
     assertThat(validMove, is(true));
   }
 
   @Test
-  public void queen_isAllowedToMoveSevenLeft_validMove() throws Exception {
+  public void queen_isAllowedToMoveLeft_validMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.isAValidMove("h5", "a5");
+    boolean validMove = queen.isAValidMove("g1", "c1");
 
     assertThat(validMove, is(true));
   }
 
   @Test
-  public void queen_isAllowedToMoveSevenRight_validMove() throws Exception {
+  public void queen_isAllowedToMoveRight_validMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.isAValidMove("a2", "h2");
+    boolean validMove = queen.isAValidMove("e3", "g3");
 
     assertThat(validMove, is(true));
   }
 
   @Test
-  public void queen_isAllowedToMoveSevenDiagonal_validMove() throws Exception {
+  public void queen_isAllowedToMoveDiagonalUpAndRight_validMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.isAValidMove("a1", "h8");
+    boolean validMove = queen.isAValidMove("c3", "f6");
 
     assertThat(validMove, is(true));
   }
 
   @Test
-  public void queen_isAllowedToMoveOneUp_validMove() throws Exception {
+  public void queen_isAllowedToMoveDiagonalDownAndRight_validMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.isAValidMove("a1", "a2");
+    boolean validMove = queen.isAValidMove("b6", "e3");
 
     assertThat(validMove, is(true));
   }
 
   @Test
-  public void queen_isAllowedToMoveOneLeft_validMove() throws Exception {
+  public void queen_isAllowedToMoveDiagonalDownAndLeft_validMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.isAValidMove("c3", "b3");
+    boolean validMove = queen.isAValidMove("f7", "a2");
 
     assertThat(validMove, is(true));
   }
 
   @Test
-  public void queen_isAllowedToMoveOneDiagonal_validMove() throws Exception {
+  public void queen_isAllowedToMoveDiagonalUpAndLeft_validMove() throws Exception {
     Queen queen = new Queen();
 
-    boolean validMove = queen.isAValidMove("b3", "c4");
+    boolean validMove = queen.isAValidMove("c2", "b3");
 
     assertThat(validMove, is(true));
   }

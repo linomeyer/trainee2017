@@ -10,16 +10,7 @@ public class BlackFarmerTest {
   public void blackFarmer_isAllowedToMoveOneDown_validMove() throws Exception {
     BlackFarmer blackFarmer = new BlackFarmer();
 
-    boolean validMove = blackFarmer.isAValidMove("a6", "a5");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void blackFarmer_isAllowedToMoveOneDownFromStartPosition_validMove() throws Exception {
-    BlackFarmer blackFarmer = new BlackFarmer();
-
-    boolean validMove = blackFarmer.isAValidMove("c7", "c6");
+    boolean validMove = blackFarmer.isAValidMove("c5", "c4");
 
     assertThat(validMove, is(true));
   }

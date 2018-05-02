@@ -18,11 +18,14 @@ public class KingTest {
   @Parameters
   public static Collection<Object[]> data() {
     return Arrays.asList(new Object[][] {
-        { "a2", "a3" },
-        { "c3", "c2" },
-        { "e5", "f5" },
-        { "e8", "d8" },
-        { "a2", "b3" },
+        { "e1", "e2" },
+        { "b3", "c4" },
+        { "a8", "b8" },
+        { "g6", "h5" },
+        { "f5", "f4" },
+        { "d4", "c3" },
+        { "c4", "b4" },
+        { "e6", "d7" },
 
     });
   }
