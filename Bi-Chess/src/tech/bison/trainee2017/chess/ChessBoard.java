@@ -12,62 +12,39 @@ public class ChessBoard {
   }
 
   public void initializeBoard() {
-    try {
 
-      HashMap<Position, Figure> board = new HashMap<Position, Figure>();
-      board.put(new Position("A1"), new Tower(colors.WHITE));
-      board.put(new Position("H1"), new Tower(colors.WHITE));
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-      board.put();
-
-      Object[][] old_board = {
-
-          { new Tower(colors.WHITE), new Position("A1") }, { new Tower(colors.WHITE), new Position("H1") },
-          { new Tower(colors.BLACK), new Position("A8") }, { new Tower(colors.BLACK), new Position("H8") },
-          { new Horse(colors.WHITE), new Position("B1") }, { new Horse(colors.WHITE), new Position("G1") },
-          { "H", "G8" }, { "H", "H8" },
-          { "R", "C1" }, { "R", "F1" }, { "R", "C8" }, { "R", "F8" },
-
-          { "K", "E1" }, { "K", "E8" },
-          { "Q", "D1" }, { "Q", "D8" },
-
-          { "F", "A2" }, { "F", "B2" }, { "F", "C2" }, { "F", "D2" },
-          { "F", "E2" }, { "F", "F2" }, { "F", "G2" }, { "F", "H2" },
-
-          { "F", "A7" }, { "F", "B7" }, { "F", "C7" }, { "F", "D7" },
-          { "F", "E7" }, { "F", "F7" }, { "F", "G7" }, { "F", "H7" },
-      };
-
-      this.board = old_board;
-    } catch (InvalidPositionException e) {
-    }
+    HashMap<Position, Figure> board = new HashMap<Position, Figure>();
+    board.put(new Position("A1"), new Tower(colors.WHITE));
+    board.put(new Position("H1"), new Tower(colors.WHITE));
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put();
+    board.put(new Position("A2"), new WhiteFarmer());
+    board.put(new Position("B2"), new WhiteFarmer());
+    board.put(new Position("C2"), new WhiteFarmer());
+    board.put(new Position("D2"), new WhiteFarmer());
+    board.put(new Position("E2"), new WhiteFarmer());
+    board.put(new Position("F2"), new WhiteFarmer());
+    board.put(new Position("G2"), new WhiteFarmer());
+    board.put(new Position("A7"), new WhiteFarmer());
+    board.put(new Position("B7"), new BlackFarmer());
+    board.put(new Position("C7"), new BlackFarmer());
+    board.put(new Position("D7"), new BlackFarmer());
+    board.put(new Position("E7"), new BlackFarmer());
+    board.put(new Position("F7"), new BlackFarmer());
+    board.put(new Position("G7"), new BlackFarmer());
+    board.put(new Position("H7"), new BlackFarmer());
   }
 }
