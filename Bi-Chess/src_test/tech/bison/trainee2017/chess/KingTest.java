@@ -3,52 +3,41 @@ package tech.bison.trainee2017.chess;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
+@RunWith(Parameterized.class)
 public class KingTest {
-  @Test
-  public void king_isAllowedToMoveOneUp_validMove() throws Exception {
-    King king = new King();
 
-    boolean validMove = king.isAValidMove("a2", "a3");
+  @Parameters
+  public static Collection<Object[]> data() {
+    return Arrays.asList(new Object[][] {
+        { "a2", "a3" },
+        { "c3", "c2" },
+        { "e5", "f5" },
+        { "e8", "d8" },
+        { "a2", "b3" },
 
-    assertThat(validMove, is(true));
+    });
   }
 
-  @Test
-  public void king_isAllowedToMoveOneDown_validMove() throws Exception {
-    King king = new King();
+  @Parameter(0)
+  public String startPosition;
 
-    boolean validMove = king.isAValidMove("c3", "c2");
-
-    assertThat(validMove, is(true));
-  }
+  @Parameter(1)
+  public String endPosition;
 
   @Test
-  public void king_isAllowedToMoveOneRight_validMove() throws Exception {
+  public void king_isAllowedToMoveOneVerticalHorizontalOrDiagonal_validMove() {
     King king = new King();
 
-    boolean validMove = king.isAValidMove("e5", "f5");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void king_isAllowedToMoveOneLeft_validMove() throws Exception {
-    King king = new King();
-
-    boolean validMove = king.isAValidMove("e8", "d8");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void king_isAllowedToMoveOneDiagonal_validMove() throws Exception {
-    King king = new King();
-
-    boolean validMove = king.isAValidMove("a2", "b3");
-
-    assertThat(validMove, is(true));
+    assertThat(king.isAValidMove(startPosition, endPosition), is(true));
   }
 
   @Test
