@@ -46,7 +46,7 @@ public class KingTest {
     }
   }
 
-  public class KingNormalTests {
+  public static class KingNormalTests {
     @Test
     public void king_isAllowedToMoveTwoDiagonal_invalidMove() throws Exception {
       King king = new King();
