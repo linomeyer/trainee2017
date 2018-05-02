@@ -4,7 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,8 +16,8 @@ import org.junit.runners.Parameterized.Parameters;
 public class KingTest {
 
   @Parameters
-  public static Collection<Object[]> data() {
-    return Arrays.asList(new Object[][] {
+  public static List<String[]> data() {
+    return Arrays.asList(new String[][] {
         { "a2", "a3" },
         { "c3", "c2" },
         { "e5", "f5" },
