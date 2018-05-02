@@ -71,7 +71,8 @@ public class BiChess {
       output("Schwarzer Bauer", movement.start, movement.end, validMove);
       break;
     default:
-      farmer();
+      if (!yesNoInput("Zurück zum Start?", "Wollen Sie zurück zum Start?"))
+        farmer();
     }
   }
 
