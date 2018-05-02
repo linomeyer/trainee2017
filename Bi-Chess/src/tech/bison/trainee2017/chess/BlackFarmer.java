@@ -2,6 +2,10 @@ package tech.bison.trainee2017.chess;
 
 public class BlackFarmer extends Farmer {
 
+  public BlackFarmer() {
+    color = colors.BLACK;
+  }
+
   @Override
   protected boolean isAValidMove(Movement movement) {
     if (!super.isAMove(movement.y, movement.x)) {

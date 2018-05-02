@@ -2,6 +2,13 @@ package tech.bison.trainee2017.chess;
 
 public class Queen extends Figure {
 
+  public Queen() {
+  }
+
+  public Queen(colors color) {
+    this.color = color;
+  }
+
   @Override
   protected boolean isAValidMove(Movement movement) {
     if (!super.isAMove(movement.y, movement.x)) {

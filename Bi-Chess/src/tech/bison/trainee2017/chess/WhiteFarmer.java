@@ -1,6 +1,9 @@
 package tech.bison.trainee2017.chess;
 
 public class WhiteFarmer extends Farmer {
+  public WhiteFarmer() {
+    color = colors.WHITE;
+  }
 
   @Override
   protected boolean isAValidMove(Movement movement) {

@@ -1,6 +1,12 @@
 package tech.bison.trainee2017.chess;
 
 public abstract class Figure {
+  colors color;
+
+  public enum colors {
+    WHITE, BLACK
+  }
+
   public boolean isAValidMove(String startPosition, String endPosition) {
     try {
       return isAValidMove(new Position(startPosition), new Position(endPosition));
