@@ -5,11 +5,11 @@ import javax.swing.JOptionPane;
 import org.junit.runner.notification.StoppedByUserException;
 
 public class BiChess {
-  static WhitePawn whiteFarmer = new WhitePawn();
-  static BlackPawn blackFarmer = new BlackPawn();
-  static Rook tower = new Rook();
-  static Knight horse = new Knight();
-  static Bishop runner = new Bishop();
+  static WhitePawn whitePawn = new WhitePawn();
+  static BlackPawn blackPawn = new BlackPawn();
+  static Rook rook = new Rook();
+  static Knight knight = new Knight();
+  static Bishop bishop = new Bishop();
   static Queen queen = new Queen();
   static King king = new King();
   static boolean repeat = true;
@@ -23,13 +23,13 @@ public class BiChess {
       try {
         switch (input) {
         case 0:
-          tower();
+          rook();
           break;
         case 1:
-          horse();
+          knight();
           break;
         case 2:
-          runner();
+          bishop();
           break;
         case 3:
           queen();
@@ -38,7 +38,7 @@ public class BiChess {
           king();
           break;
         case 5:
-          farmer();
+          pawn();
           break;
         default:
           repeat = !yesNoInput("Beenden?", "Wollen Sie das Programm wirklich beenden?");
@@ -55,24 +55,24 @@ public class BiChess {
 
   }
 
-  private static void farmer() throws StoppedByUserException, InvalidSquareException {
+  private static void pawn() throws StoppedByUserException, InvalidSquareException {
     int collorOfFarmer = options("Farbe wählen", "Welche Farbe hat der Bauer?", new String[] { "Weiss", "Schwarz" });
     Movement movement;
     boolean validMove;
     switch (collorOfFarmer) {
     case 0:
       movement = getMovement();
-      validMove = whiteFarmer.isAValidMove(movement.start, movement.end);
+      validMove = whitePawn.isAValidMove(movement.start, movement.end);
       output("Weisser Bauer", movement.start, movement.end, validMove);
       break;
     case 1:
       movement = getMovement();
-      validMove = blackFarmer.isAValidMove(getStartPosition(), getEndPosition());
+      validMove = blackPawn.isAValidMove(getStartPosition(), getEndPosition());
       output("Schwarzer Bauer", movement.start, movement.end, validMove);
       break;
     default:
       if (!yesNoInput("Zurück zum Start?", "Wollen Sie zurück zum Start?"))
-        farmer();
+        pawn();
     }
   }
 
@@ -88,21 +88,21 @@ public class BiChess {
     output("Königin", movement.start, movement.end, validMove);
   }
 
-  private static void runner() throws StoppedByUserException, InvalidSquareException {
+  private static void bishop() throws StoppedByUserException, InvalidSquareException {
     Movement movement = getMovement();
-    boolean validMove = runner.isAValidMove(movement.start, movement.end);
+    boolean validMove = bishop.isAValidMove(movement.start, movement.end);
     output("Läufer", movement.start, movement.end, validMove);
   }
 
-  private static void horse() throws StoppedByUserException, InvalidSquareException {
+  private static void knight() throws StoppedByUserException, InvalidSquareException {
     Movement movement = getMovement();
-    boolean validMove = horse.isAValidMove(movement.start, movement.end);
+    boolean validMove = knight.isAValidMove(movement.start, movement.end);
     output("Springer", movement.start, movement.end, validMove);
   }
 
-  private static void tower() throws StoppedByUserException, InvalidSquareException {
+  private static void rook() throws StoppedByUserException, InvalidSquareException {
     Movement movement = getMovement();
-    boolean validMove = tower.isAValidMove(movement.start, movement.end);
+    boolean validMove = rook.isAValidMove(movement.start, movement.end);
     output("Turm", movement.start, movement.end, validMove);
   }
 
