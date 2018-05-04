@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Enclosed.class)
@@ -29,6 +30,19 @@ public class KnightTest {
           { "g1", "e2" },
           { "h5", "f4" }
       });
+    }
+
+    @Parameter(0)
+    public String startSquare;
+
+    @Parameter(1)
+    public String endSquare;
+
+    @Test
+    public void knight_isAllowedToMoveTwoAndOneInEachDirection_validMove() throws Exception {
+      Knight knight = new Knight();
+
+      assertThat(knight.isAValidMove(startSquare, endSquare), is(true));
     }
   }
 

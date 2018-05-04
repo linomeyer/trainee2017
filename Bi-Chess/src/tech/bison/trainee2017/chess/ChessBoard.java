@@ -74,7 +74,4 @@ public class ChessBoard {
     }
   }
 
-  public void initializeBoard() {
-
-  }
 }
