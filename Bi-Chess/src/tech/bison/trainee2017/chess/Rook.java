@@ -1,11 +1,11 @@
 package tech.bison.trainee2017.chess;
 
-public class Tower extends Figure {
+public class Rook extends Figure {
 
-  public Tower() {
+  public Rook() {
   }
 
-  public Tower(colors color) {
+  public Rook(colors color) {
     this.color = color;
   }
 

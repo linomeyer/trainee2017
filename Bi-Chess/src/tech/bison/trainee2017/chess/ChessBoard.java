@@ -15,10 +15,10 @@ public class ChessBoard {
 
     try {
       HashMap<Position, Figure> board = new HashMap<Position, Figure>();
-      board.put(new Position("A1"), new Tower(colors.WHITE));
-      board.put(new Position("H1"), new Tower(colors.WHITE));
-      board.put(new Position("A8"), new Tower(colors.BLACK));
-      board.put(new Position("H8"), new Tower(colors.BLACK));
+      board.put(new Position("A1"), new Rook(colors.WHITE));
+      board.put(new Position("H1"), new Rook(colors.WHITE));
+      board.put(new Position("A8"), new Rook(colors.BLACK));
+      board.put(new Position("H8"), new Rook(colors.BLACK));
 
       board.put(new Position("B1"), new Knight(colors.WHITE));
       board.put(new Position("G1"), new Knight(colors.WHITE));
