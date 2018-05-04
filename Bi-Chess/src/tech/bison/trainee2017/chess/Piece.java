@@ -1,6 +1,6 @@
 package tech.bison.trainee2017.chess;
 
-public abstract class Figure {
+public abstract class Piece {
   colors color;
 
   public enum colors {

@@ -2,10 +2,10 @@ package tech.bison.trainee2017.chess;
 
 import java.util.HashMap;
 
-import tech.bison.trainee2017.chess.Figure.colors;
+import tech.bison.trainee2017.chess.Piece.colors;
 
 public class ChessBoard {
-  public HashMap<Square, Figure> board;
+  public HashMap<Square, Piece> board;
 
   public ChessBoard() {
     initializeBoard();
@@ -14,7 +14,7 @@ public class ChessBoard {
   public void initializeBoard() {
 
     try {
-      HashMap<Square, Figure> board = new HashMap<Square, Figure>();
+      HashMap<Square, Piece> board = new HashMap<Square, Piece>();
       board.put(new Square("A1"), new Rook(colors.WHITE));
       board.put(new Square("H1"), new Rook(colors.WHITE));
       board.put(new Square("A8"), new Rook(colors.BLACK));

@@ -1,6 +1,6 @@
 package tech.bison.trainee2017.chess;
 
-public class Queen extends Figure {
+public class Queen extends Piece {
 
   public Queen() {
   }

@@ -1,6 +1,6 @@
 package tech.bison.trainee2017.chess;
 
-public class Rook extends Figure {
+public class Rook extends Piece {
 
   public Rook() {
   }

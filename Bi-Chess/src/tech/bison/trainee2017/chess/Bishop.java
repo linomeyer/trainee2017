@@ -1,6 +1,6 @@
 package tech.bison.trainee2017.chess;
 
-public class Bishop extends Figure {
+public class Bishop extends Piece {
 
   public Bishop() {
   }
