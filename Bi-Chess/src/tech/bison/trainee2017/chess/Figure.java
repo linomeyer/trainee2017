@@ -10,7 +10,7 @@ public abstract class Figure {
   public boolean isAValidMove(String startPosition, String endPosition) {
     try {
       return isAValidMove(new Square(startPosition), new Square(endPosition));
-    } catch (InvalidPositionException e) {
+    } catch (InvalidSquareException e) {
       return false;
     }
   }

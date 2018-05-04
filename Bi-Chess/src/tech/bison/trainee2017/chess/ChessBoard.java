@@ -54,7 +54,7 @@ public class ChessBoard {
       board.put(new Square("H7"), new BlackPawn());
 
       this.board = board;
-    } catch (InvalidPositionException e) {
+    } catch (InvalidSquareException e) {
     }
 
   }

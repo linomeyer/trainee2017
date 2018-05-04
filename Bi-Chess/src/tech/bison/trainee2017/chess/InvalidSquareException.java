@@ -1,6 +1,6 @@
 package tech.bison.trainee2017.chess;
 
-public class InvalidPositionException extends Exception {
+public class InvalidSquareException extends Exception {
 
   /**
    * 

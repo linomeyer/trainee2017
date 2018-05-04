@@ -55,7 +55,7 @@ public class BiChess {
 
   }
 
-  private static void farmer() throws StoppedByUserException, InvalidPositionException {
+  private static void farmer() throws StoppedByUserException, InvalidSquareException {
     int collorOfFarmer = options("Farbe wählen", "Welche Farbe hat der Bauer?", new String[] { "Weiss", "Schwarz" });
     Movement movement;
     boolean validMove;
@@ -76,31 +76,31 @@ public class BiChess {
     }
   }
 
-  private static void king() throws StoppedByUserException, InvalidPositionException {
+  private static void king() throws StoppedByUserException, InvalidSquareException {
     Movement movement = getMovement();
     boolean validMove = king.isAValidMove(movement.start, movement.end);
     output("König", movement.start, movement.end, validMove);
   }
 
-  private static void queen() throws StoppedByUserException, InvalidPositionException {
+  private static void queen() throws StoppedByUserException, InvalidSquareException {
     Movement movement = getMovement();
     boolean validMove = queen.isAValidMove(movement.start, movement.end);
     output("Königin", movement.start, movement.end, validMove);
   }
 
-  private static void runner() throws StoppedByUserException, InvalidPositionException {
+  private static void runner() throws StoppedByUserException, InvalidSquareException {
     Movement movement = getMovement();
     boolean validMove = runner.isAValidMove(movement.start, movement.end);
     output("Läufer", movement.start, movement.end, validMove);
   }
 
-  private static void horse() throws StoppedByUserException, InvalidPositionException {
+  private static void horse() throws StoppedByUserException, InvalidSquareException {
     Movement movement = getMovement();
     boolean validMove = horse.isAValidMove(movement.start, movement.end);
     output("Springer", movement.start, movement.end, validMove);
   }
 
-  private static void tower() throws StoppedByUserException, InvalidPositionException {
+  private static void tower() throws StoppedByUserException, InvalidSquareException {
     Movement movement = getMovement();
     boolean validMove = tower.isAValidMove(movement.start, movement.end);
     output("Turm", movement.start, movement.end, validMove);
@@ -118,7 +118,7 @@ public class BiChess {
 
       return position;
 
-    } catch (InvalidPositionException e) {
+    } catch (InvalidSquareException e) {
       if (yesNoInput("Zurück zum Start?", "Wollen Sie zurück zum Start?")) {
         throw new StoppedByUserException();
       } else {
@@ -141,7 +141,7 @@ public class BiChess {
   }
 
   private static void output(String figureName, Square start, Square end, boolean validMove)
-      throws StoppedByUserException, InvalidPositionException {
+      throws StoppedByUserException, InvalidSquareException {
     if (validMove) {
       JOptionPane.showMessageDialog(null, "Der Zug mit der Figur " + figureName + " vom Feld " + start.getPosition()
           + " auf das Feld " + end.getPosition() + " ist gültig.");

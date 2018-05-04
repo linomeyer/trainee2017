@@ -4,28 +4,28 @@ public class Square {
   final int x;
   final int y;
 
-  public Square(String position) throws InvalidPositionException {
+  public Square(String position) throws InvalidSquareException {
     this(letterConverter(position.charAt(0)), yPositionConverter(position.charAt(1)));
   }
 
-  public Square(int x, int y) throws InvalidPositionException {
+  public Square(int x, int y) throws InvalidSquareException {
     if (x > 0 && x < 9 && y > 0 && y < 9) {
       this.x = x;
       this.y = y;
     } else {
-      throw new InvalidPositionException();
+      throw new InvalidSquareException();
     }
   }
 
-  private static int yPositionConverter(char letter) throws InvalidPositionException {
+  private static int yPositionConverter(char letter) throws InvalidSquareException {
     try {
       return Integer.parseInt(String.valueOf(letter));
     } catch (NumberFormatException e) {
-      throw new InvalidPositionException();
+      throw new InvalidSquareException();
     }
   }
 
-  static int letterConverter(char letter) throws InvalidPositionException {
+  static int letterConverter(char letter) throws InvalidSquareException {
     switch (Character.toLowerCase(letter)) {
     case 'a':
       return 1;
@@ -44,12 +44,12 @@ public class Square {
     case 'h':
       return 8;
     default:
-      throw new InvalidPositionException(); // 10 = invalid move
+      throw new InvalidSquareException(); // 10 = invalid move
     }
 
   }
 
-  static char numberConverter(int number) throws InvalidPositionException {
+  static char numberConverter(int number) throws InvalidSquareException {
     switch (number) {
     case 1:
       return 'A';
@@ -68,12 +68,12 @@ public class Square {
     case 8:
       return 'H';
     default:
-      throw new InvalidPositionException();
+      throw new InvalidSquareException();
     }
 
   }
 
-  public String getPosition() throws InvalidPositionException {
+  public String getPosition() throws InvalidSquareException {
     String position = "";
     position += numberConverter(x);
     position += y;
@@ -84,7 +84,7 @@ public class Square {
   public String toString() {
     try {
       return getPosition();
-    } catch (InvalidPositionException e) {
+    } catch (InvalidSquareException e) {
       return Integer.toString(x) + y;
     }
   }

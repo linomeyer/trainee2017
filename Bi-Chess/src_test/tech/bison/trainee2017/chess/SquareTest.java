@@ -28,37 +28,37 @@ public class SquareTest {
 
   @Test
   public void charPositionOutOfField_createSquare_outOfFieldException() throws Exception {
-    thrown.expect(InvalidPositionException.class);
+    thrown.expect(InvalidSquareException.class);
     new Square("i9");
   }
 
   @Test
   public void numberSquareIsAChar_createSquare_throwsInvalidSquareException() throws Exception {
-    thrown.expect(InvalidPositionException.class);
+    thrown.expect(InvalidSquareException.class);
     new Square("ha");
   }
 
   @Test
   public void charSquareIsANumber_createSquare_throwsInvalidSquareException() throws Exception {
-    thrown.expect(InvalidPositionException.class);
+    thrown.expect(InvalidSquareException.class);
     new Square("79");
   }
 
   @Test
   public void numberSquareIsHigherThanEight_createSquare_throwsInvalidSquareException() throws Exception {
-    thrown.expect(InvalidPositionException.class);
+    thrown.expect(InvalidSquareException.class);
     new Square("h9");
   }
 
   @Test
   public void xSquareIsNotInField_createSquare_throwsInvalidSquareException() throws Exception {
-    thrown.expect(InvalidPositionException.class);
+    thrown.expect(InvalidSquareException.class);
     new Square(9, 3);
   }
 
   @Test
   public void ySquareIsNotInField_createSquare_throwsInvalidSquareException() throws Exception {
-    thrown.expect(InvalidPositionException.class);
+    thrown.expect(InvalidSquareException.class);
     new Square(7, -1);
   }
 }
