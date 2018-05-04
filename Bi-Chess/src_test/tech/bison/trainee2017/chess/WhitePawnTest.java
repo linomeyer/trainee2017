@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class WhitePawnTest {
   @Test
-  public void whiteFarmer_isAllowedToMoveOneUp_validMove() throws Exception {
+  public void whitePawn_isAllowedToMoveOneUp_validMove() throws Exception {
     WhitePawn whitePawn = new WhitePawn();
 
     boolean validMove = whitePawn.isAValidMove("f7", "f8");
@@ -16,7 +16,7 @@ public class WhitePawnTest {
   }
 
   @Test
-  public void whiteFarmer_isAllowedToMoveTwoUpFromStartPosition_validMove() throws Exception {
+  public void whitePawn_isAllowedToMoveTwoUpFromStartPosition_validMove() throws Exception {
     WhitePawn whitePawn = new WhitePawn();
 
     boolean validMove = whitePawn.isAValidMove("a2", "a4");
@@ -25,7 +25,7 @@ public class WhitePawnTest {
   }
 
   @Test
-  public void whiteFarmer_isAllowedToMoveOneLeft_invalidMove() throws Exception {
+  public void whitePawn_isAllowedToMoveOneLeft_invalidMove() throws Exception {
     WhitePawn whitePawn = new WhitePawn();
 
     boolean validMove = whitePawn.isAValidMove("d4", "c4");
@@ -34,7 +34,7 @@ public class WhitePawnTest {
   }
 
   @Test
-  public void whiteFarmer_isAllowedToMoveOneRight_invalidMove() throws Exception {
+  public void whitePawn_isAllowedToMoveOneRight_invalidMove() throws Exception {
     WhitePawn whitePawn = new WhitePawn();
 
     boolean validMove = whitePawn.isAValidMove("g8", "h8");
@@ -43,7 +43,7 @@ public class WhitePawnTest {
   }
 
   @Test
-  public void whiteFarmer_isAllowedToMoveOneDiagonal_invalidMove() throws Exception {
+  public void whitePawn_isAllowedToMoveOneDiagonal_invalidMove() throws Exception {
     WhitePawn whitePawn = new WhitePawn();
 
     boolean validMove = whitePawn.isAValidMove("a3", "b4");
@@ -52,7 +52,7 @@ public class WhitePawnTest {
   }
 
   @Test
-  public void whiteFarmer_isAllowedToMoveTwoUp_invalidMove() throws Exception {
+  public void whitePawn_isAllowedToMoveTwoUp_invalidMove() throws Exception {
     WhitePawn whitePawn = new WhitePawn();
 
     boolean validMove = whitePawn.isAValidMove("d5", "d7");
@@ -61,7 +61,7 @@ public class WhitePawnTest {
   }
 
   @Test
-  public void whiteFarmer_isAllowedToMoveOneDown_invalidMove() throws Exception {
+  public void whitePawn_isAllowedToMoveOneDown_invalidMove() throws Exception {
     WhitePawn whitePawn = new WhitePawn();
 
     boolean validMove = whitePawn.isAValidMove("d4", "d3");

@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class MovementTest {
   @Test
-  public void startAndEndPosition_createMovement_haveXAndYMovement() throws Exception {
+  public void startAndEndSquare_createMovement_haveXAndYMovement() throws Exception {
     Square start = new Square("A3");
     Square end = new Square("B5");
 

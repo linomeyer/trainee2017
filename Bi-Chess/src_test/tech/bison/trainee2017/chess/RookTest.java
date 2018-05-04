@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class RookTest {
   @Test
-  public void tower_isAllowedToMoveUp_validMove() throws Exception {
+  public void rook_isAllowedToMoveUp_validMove() throws Exception {
     Rook rook = new Rook();
 
     boolean validMove = rook.isAValidMove("e2", "e8");
@@ -16,7 +16,7 @@ public class RookTest {
   }
 
   @Test
-  public void tower_isAllowedToMoveDown_validMove() throws Exception {
+  public void rook_isAllowedToMoveDown_validMove() throws Exception {
     Rook rook = new Rook();
 
     boolean validMove = rook.isAValidMove("c7", "c4");
@@ -25,7 +25,7 @@ public class RookTest {
   }
 
   @Test
-  public void tower_isAllowedToMoveRight_validMove() throws Exception {
+  public void rook_isAllowedToMoveRight_validMove() throws Exception {
     Rook rook = new Rook();
 
     boolean validMove = rook.isAValidMove("b3", "c3");
@@ -34,7 +34,7 @@ public class RookTest {
   }
 
   @Test
-  public void tower_isAllowedToMoveLeft_validMove() throws Exception {
+  public void rook_isAllowedToMoveLeft_validMove() throws Exception {
     Rook rook = new Rook();
 
     boolean validMove = rook.isAValidMove("h8", "a8");
@@ -43,7 +43,7 @@ public class RookTest {
   }
 
   @Test
-  public void tower_isAllowedToMoveDiagonal_invalidMove() throws Exception {
+  public void rook_isAllowedToMoveDiagonal_invalidMove() throws Exception {
     Rook rook = new Rook();
 
     boolean validMove = rook.isAValidMove("a2", "b3");
@@ -52,7 +52,7 @@ public class RookTest {
   }
 
   @Test
-  public void tower_isAllowedToMoveWetherHorizontalVerticalOrDiagonal_invalidMove() throws Exception {
+  public void rook_isAllowedToMoveWetherHorizontalVerticalOrDiagonal_invalidMove() throws Exception {
     Rook rook = new Rook();
 
     boolean validMove = rook.isAValidMove("c2", "d4");

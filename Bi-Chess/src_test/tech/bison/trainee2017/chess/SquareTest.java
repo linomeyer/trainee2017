@@ -12,7 +12,7 @@ public class SquareTest {
   public ExpectedException thrown = ExpectedException.none();
 
   @Test
-  public void chessSquare_createSquare_haveXAndYInNummber() throws Exception {
+  public void square_createSquare_haveXAndYInNummber() throws Exception {
     Square square = new Square("f5");
 
     assertThat(square.x, is(6));
@@ -20,7 +20,7 @@ public class SquareTest {
   }
 
   @Test
-  public void chessSquareWithXAndY_getSquare_haveSquare() throws Exception {
+  public void squareWithXAndY_getSquare_haveSquare() throws Exception {
     Square square = new Square(5, 3);
 
     assertThat(square.getSquare(), is("E3"));
@@ -57,7 +57,7 @@ public class SquareTest {
   }
 
   @Test
-  public void ySquareIsNotInField_createSquare_throwsInvalidSquareException() throws Exception {
+  public void yPositionIsNotInField_createSquare_throwsInvalidSquareException() throws Exception {
     thrown.expect(InvalidSquareException.class);
     new Square(7, -1);
   }
