@@ -9,7 +9,7 @@ public class BiChess {
   static BlackFarmer blackFarmer = new BlackFarmer();
   static Tower tower = new Tower();
   static Horse horse = new Horse();
-  static Runner runner = new Runner();
+  static Bishop runner = new Bishop();
   static Queen queen = new Queen();
   static King king = new King();
   static boolean repeat = true;

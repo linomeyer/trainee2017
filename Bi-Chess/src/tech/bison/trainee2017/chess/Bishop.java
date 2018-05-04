@@ -1,11 +1,11 @@
 package tech.bison.trainee2017.chess;
 
-public class Runner extends Figure {
+public class Bishop extends Figure {
 
-  public Runner() {
+  public Bishop() {
   }
 
-  public Runner(colors color) {
+  public Bishop(colors color) {
     this.color = color;
   }
 

@@ -25,10 +25,10 @@ public class ChessBoard {
       board.put(new Position("B8"), new Horse(colors.BLACK));
       board.put(new Position("G8"), new Horse(colors.BLACK));
 
-      board.put(new Position("C1"), new Runner(colors.WHITE));
-      board.put(new Position("F1"), new Runner(colors.WHITE));
-      board.put(new Position("C8"), new Runner(colors.BLACK));
-      board.put(new Position("F8"), new Runner(colors.BLACK));
+      board.put(new Position("C1"), new Bishop(colors.WHITE));
+      board.put(new Position("F1"), new Bishop(colors.WHITE));
+      board.put(new Position("C8"), new Bishop(colors.BLACK));
+      board.put(new Position("F8"), new Bishop(colors.BLACK));
 
       board.put(new Position("D1"), new Queen(colors.WHITE));
       board.put(new Position("D8"), new Queen(colors.BLACK));
