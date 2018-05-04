@@ -18,7 +18,7 @@ public class KingTest {
 
   @RunWith(Parameterized.class)
   public static class KingParameterTests {
-    @Parameters
+    @Parameters(name = "{0}-{1}")
     public static List<String[]> data() {
       return Arrays.asList(new String[][] {
           { "e1", "e2" },
