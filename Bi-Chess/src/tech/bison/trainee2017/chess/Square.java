@@ -4,8 +4,8 @@ public class Square {
   final int x;
   final int y;
 
-  public Square(String position) throws InvalidSquareException {
-    this(letterConverter(position.charAt(0)), yPositionConverter(position.charAt(1)));
+  public Square(String square) throws InvalidSquareException {
+    this(letterConverter(square.charAt(0)), yPositionConverter(square.charAt(1)));
   }
 
   public Square(int x, int y) throws InvalidSquareException {

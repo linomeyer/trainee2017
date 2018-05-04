@@ -7,9 +7,9 @@ public abstract class Piece {
     WHITE, BLACK
   }
 
-  public boolean isAValidMove(String startPosition, String endPosition) {
+  public boolean isAValidMove(String startSquare, String endSquare) {
     try {
-      return isAValidMove(new Square(startPosition), new Square(endPosition));
+      return isAValidMove(new Square(startSquare), new Square(endSquare));
     } catch (InvalidSquareException e) {
       return false;
     }

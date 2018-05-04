@@ -7,12 +7,12 @@ public class Movement {
   public final int x;
   public final int y;
 
-  public Movement(Square startPosition, Square endPosition) {
-    this.start = startPosition;
-    this.end = endPosition;
+  public Movement(Square startSquare, Square endSquare) {
+    this.start = startSquare;
+    this.end = endSquare;
 
-    x = endPosition.x - startPosition.x;
-    y = endPosition.y - startPosition.y;
+    x = endSquare.x - startSquare.x;
+    y = endSquare.y - startSquare.y;
   }
 
 }
