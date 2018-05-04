@@ -9,13 +9,13 @@ public abstract class Figure {
 
   public boolean isAValidMove(String startPosition, String endPosition) {
     try {
-      return isAValidMove(new Position(startPosition), new Position(endPosition));
+      return isAValidMove(new Square(startPosition), new Square(endPosition));
     } catch (InvalidPositionException e) {
       return false;
     }
   }
 
-  public boolean isAValidMove(Position start, Position end) {
+  public boolean isAValidMove(Square start, Square end) {
     Movement calculateMovement = new Movement(start, end);
     return isAValidMove(calculateMovement);
   }

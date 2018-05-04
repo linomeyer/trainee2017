@@ -106,15 +106,15 @@ public class BiChess {
     output("Turm", movement.start, movement.end, validMove);
   }
 
-  private static Position getPosition(String positionName) {
+  private static Square getPosition(String positionName) {
     try {
       int x = 1 + options(positionName, "Geben Sie die " + positionName + " ein [z.B. C4]:",
           new String[] { "A", "B", "C", "D", "E", "F", "G", "H" });
-      Position.numberConverter(x);
+      Square.numberConverter(x);
       int y = 1
-          + options(positionName, "Geben Sie die " + positionName + " ein [z.B. C4]:\n" + Position.numberConverter(x),
+          + options(positionName, "Geben Sie die " + positionName + " ein [z.B. C4]:\n" + Square.numberConverter(x),
               new String[] { "1", "2", "3", "4", "5", "6", "7", "8" });
-      Position position = new Position(x, y);
+      Square position = new Square(x, y);
 
       return position;
 
@@ -128,11 +128,11 @@ public class BiChess {
 
   }
 
-  private static Position getStartPosition() {
+  private static Square getStartPosition() {
     return getPosition("Startposition");
   }
 
-  private static Position getEndPosition() {
+  private static Square getEndPosition() {
     return getPosition("Endposition");
   }
 
@@ -140,7 +140,7 @@ public class BiChess {
     return new Movement(getStartPosition(), getEndPosition());
   }
 
-  private static void output(String figureName, Position start, Position end, boolean validMove)
+  private static void output(String figureName, Square start, Square end, boolean validMove)
       throws StoppedByUserException, InvalidPositionException {
     if (validMove) {
       JOptionPane.showMessageDialog(null, "Der Zug mit der Figur " + figureName + " vom Feld " + start.getPosition()

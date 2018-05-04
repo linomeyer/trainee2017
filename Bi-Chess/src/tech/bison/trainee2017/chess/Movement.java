@@ -2,12 +2,12 @@ package tech.bison.trainee2017.chess;
 
 public class Movement {
 
-  public final Position start;
-  public final Position end;
+  public final Square start;
+  public final Square end;
   public final int x;
   public final int y;
 
-  public Movement(Position startPosition, Position endPosition) {
+  public Movement(Square startPosition, Square endPosition) {
     this.start = startPosition;
     this.end = endPosition;
 

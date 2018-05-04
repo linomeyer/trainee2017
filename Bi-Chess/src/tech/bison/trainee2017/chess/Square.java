@@ -1,14 +1,14 @@
 package tech.bison.trainee2017.chess;
 
-public class Position {
+public class Square {
   final int x;
   final int y;
 
-  public Position(String position) throws InvalidPositionException {
+  public Square(String position) throws InvalidPositionException {
     this(letterConverter(position.charAt(0)), yPositionConverter(position.charAt(1)));
   }
 
-  public Position(int x, int y) throws InvalidPositionException {
+  public Square(int x, int y) throws InvalidPositionException {
     if (x > 0 && x < 9 && y > 0 && y < 9) {
       this.x = x;
       this.y = y;

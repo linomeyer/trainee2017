@@ -8,8 +8,8 @@ import org.junit.Test;
 public class MovementTest {
   @Test
   public void startAndEndPosition_createMovement_haveXAndYMovement() throws Exception {
-    Position start = new Position("A3");
-    Position end = new Position("B5");
+    Square start = new Square("A3");
+    Square end = new Square("B5");
 
     Movement movement = new Movement(start, end);
 
