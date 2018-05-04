@@ -33,16 +33,16 @@ public class KingTest {
     }
 
     @Parameter(0)
-    public String startPosition;
+    public String startSquare;
 
     @Parameter(1)
-    public String endPosition;
+    public String endSquare;
 
     @Test
     public void king_isAllowedToMoveOneVerticalHorizontalOrDiagonal_validMove() {
       King king = new King();
 
-      assertThat(king.isAValidMove(startPosition, endPosition), is(true));
+      assertThat(king.isAValidMove(startSquare, endSquare), is(true));
     }
   }
 
