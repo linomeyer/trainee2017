@@ -8,7 +8,7 @@ public class BiChess {
   static WhitePawn whiteFarmer = new WhitePawn();
   static BlackPawn blackFarmer = new BlackPawn();
   static Tower tower = new Tower();
-  static Horse horse = new Horse();
+  static Knight horse = new Knight();
   static Bishop runner = new Bishop();
   static Queen queen = new Queen();
   static King king = new King();

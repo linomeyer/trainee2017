@@ -1,11 +1,11 @@
 package tech.bison.trainee2017.chess;
 
-public class Horse extends Figure {
+public class Knight extends Figure {
 
-  public Horse() {
+  public Knight() {
   }
 
-  public Horse(colors color) {
+  public Knight(colors color) {
     this.color = color;
   }
 
