@@ -3,8 +3,8 @@ package tech.bison.trainee2017.chess;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.awt.List;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
@@ -17,7 +17,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class BishopTest {
 
   @RunWith(Parameterized.class)
-  public static class BishopParameterTest {
+  public static class BishopValidTests {
     @Parameters(name = "{0}-{1}")
     public static List<String[]> data() {
       return Arrays.asList(new String[][] {
@@ -42,7 +42,7 @@ public class BishopTest {
     }
   }
 
-  public static class BishopNormalTest {
+  public static class BishopInvalidTests {
     @Test
     public void bishop_isAllowedToMoveOneUp_invalidMove() throws Exception {
       Bishop bishop = new Bishop();

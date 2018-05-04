@@ -3,105 +3,61 @@ package tech.bison.trainee2017.chess;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
+import org.junit.experimental.runners.Enclosed;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
+@RunWith(Enclosed.class)
 public class KnightTest {
-  @Test
-  public void knight_isAllowedToMoveTwoUpAndOneRight_validMove() throws Exception {
-    Knight knight = new Knight();
 
-    boolean validMove = knight.isAValidMove("f2", "g4");
-
-    assertThat(validMove, is(true));
+  @RunWith(Parameterized.class)
+  public static class KnightValidTest {
+    @Parameters(name = "{0}-{1}")
+    public static List<String[]> data() {
+      return Arrays.asList(new String[][] {
+          { "f2", "g4" },
+          { "d4", "c6" },
+          { "c5", "e6" },
+          { "b8", "d7" },
+          { "b5", "c3" },
+          { "g3", "f1" },
+          { "g1", "e2" },
+          { "h5", "f4" }
+      });
+    }
   }
 
-  @Test
-  public void knight_isAllowedToMoveTwoUpAndOneLeft_validMove() throws Exception {
-    Knight knight = new Knight();
+  public static class KnightInvalidTests {
+    @Test
+    public void knight_isAllowedToMoveTwoUpAndTwoRight_invalidMove() throws Exception {
+      Knight knight = new Knight();
 
-    boolean validMove = knight.isAValidMove("d4", "c6");
+      boolean validMove = knight.isAValidMove("D5", "F7");
 
-    assertThat(validMove, is(true));
-  }
+      assertThat(validMove, is(false));
+    }
 
-  @Test
-  public void knight_isAllowedToMoveTwoRightAndOneUp_validMove() throws Exception {
-    Knight knight = new Knight();
+    @Test
+    public void knight_isAllowedToMoveTwoDownAndTwoRight_invalidMove() throws Exception {
+      Knight knight = new Knight();
 
-    boolean validMove = knight.isAValidMove("c5", "e6");
+      boolean validMove = knight.isAValidMove("D5", "F3");
 
-    assertThat(validMove, is(true));
-  }
+      assertThat(validMove, is(false));
+    }
 
-  @Test
-  public void knight_isAllowedToMoveTwoRightAndOneDown_validMove() throws Exception {
-    Knight knight = new Knight();
+    @Test
+    public void knight_isAllowedToMoveOneDownAndOneLeft_invalidMove() throws Exception {
+      Knight knight = new Knight();
 
-    boolean validMove = knight.isAValidMove("b8", "d7");
+      boolean validMove = knight.isAValidMove("D5", "C4");
 
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void knight_isAllowedToMoveTwoDownAndOneRight_validMove() throws Exception {
-    Knight knight = new Knight();
-
-    boolean validMove = knight.isAValidMove("b5", "c3");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void knight_isAllowedToMoveTwoDownAndOneLeft_validMove() throws Exception {
-    Knight knight = new Knight();
-
-    boolean validMove = knight.isAValidMove("g3", "f1");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void knight_isAllowedToMoveTwoLeftAndOneUp_validMove() throws Exception {
-    Knight knight = new Knight();
-
-    boolean validMove = knight.isAValidMove("g1", "e2");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void knight_isAllowedToMoveTwoLeftAndOneDown_validMove() throws Exception {
-    Knight knight = new Knight();
-
-    boolean validMove = knight.isAValidMove("h5", "f4");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void knight_isAllowedToMoveTwoUpAndTwoRight_invalidMove() throws Exception {
-    Knight knight = new Knight();
-
-    boolean validMove = knight.isAValidMove("D5", "F7");
-
-    assertThat(validMove, is(false));
-  }
-
-  @Test
-  public void knight_isAllowedToMoveTwoDownAndTwoRight_invalidMove() throws Exception {
-    Knight knight = new Knight();
-
-    boolean validMove = knight.isAValidMove("D5", "F3");
-
-    assertThat(validMove, is(false));
-  }
-
-  @Test
-  public void knight_isAllowedToMoveOneDownAndOneLeft_invalidMove() throws Exception {
-    Knight knight = new Knight();
-
-    boolean validMove = knight.isAValidMove("D5", "C4");
-
-    assertThat(validMove, is(false));
+      assertThat(validMove, is(false));
+    }
   }
 }

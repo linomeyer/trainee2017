@@ -17,7 +17,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class KingTest {
 
   @RunWith(Parameterized.class)
-  public static class KingParameterTests {
+  public static class KingValidTests {
     @Parameters(name = "{0}-{1}")
     public static List<String[]> data() {
       return Arrays.asList(new String[][] {
@@ -46,7 +46,7 @@ public class KingTest {
     }
   }
 
-  public static class KingNormalTests {
+  public static class KingInvalidTests {
     @Test
     public void king_isAllowedToMoveTwoDiagonal_invalidMove() throws Exception {
       King king = new King();

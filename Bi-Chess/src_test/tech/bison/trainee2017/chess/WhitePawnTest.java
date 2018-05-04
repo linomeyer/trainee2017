@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class WhitePawnTest {
+
   @Test
   public void whitePawn_isAllowedToMoveOneUp_validMove() throws Exception {
     WhitePawn whitePawn = new WhitePawn();

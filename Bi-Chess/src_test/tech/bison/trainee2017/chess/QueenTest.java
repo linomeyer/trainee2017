@@ -3,87 +3,57 @@ package tech.bison.trainee2017.chess;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Test;
+import org.junit.experimental.runners.Enclosed;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
+@RunWith(Enclosed.class)
 public class QueenTest {
-  @Test
-  public void queen_isAllowedToMoveUp_validMove() throws Exception {
-    Queen queen = new Queen();
 
-    boolean validMove = queen.isAValidMove("e7", "e8");
+  @RunWith(Parameterized.class)
+  public static class QueenValidTests {
+    @Parameters(name = "{0}-{1}")
+    public static List<String[]> data() {
+      return Arrays.asList(new String[][] {
+          { "e7", "e8" },
+          { "h6", "h1" },
+          { "g1", "c1" },
+          { "e3", "g3" },
+          { "c3", "f6" },
+          { "b6", "e3" },
+          { "f7", "a2" },
+          { "c2", "b3" }
+      });
+    }
 
-    assertThat(validMove, is(true));
+    @Parameter(0)
+    public String startSquare;
+
+    @Parameter(1)
+    public String endSquare;
+
+    @Test
+    public void queen_isAllowedToMoveHorizontalVerticalAndDiagonal_validMove() throws Exception {
+      Queen queen = new Queen();
+
+      assertThat(queen.isAValidMove(startSquare, endSquare), is(true));
+    }
   }
 
-  @Test
-  public void queen_isAllowedToMoveDown_validMove() throws Exception {
-    Queen queen = new Queen();
+  public static class QueenInvalidTests {
+    @Test
+    public void queen_isAllowedToMoveWheterHorizontalVerticalorDiagonal_inValidMove() throws Exception {
+      Queen queen = new Queen();
 
-    boolean validMove = queen.isAValidMove("h6", "h1");
+      boolean validMove = queen.isAValidMove("h8", "b1");
 
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void queen_isAllowedToMoveLeft_validMove() throws Exception {
-    Queen queen = new Queen();
-
-    boolean validMove = queen.isAValidMove("g1", "c1");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void queen_isAllowedToMoveRight_validMove() throws Exception {
-    Queen queen = new Queen();
-
-    boolean validMove = queen.isAValidMove("e3", "g3");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void queen_isAllowedToMoveDiagonalUpAndRight_validMove() throws Exception {
-    Queen queen = new Queen();
-
-    boolean validMove = queen.isAValidMove("c3", "f6");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void queen_isAllowedToMoveDiagonalDownAndRight_validMove() throws Exception {
-    Queen queen = new Queen();
-
-    boolean validMove = queen.isAValidMove("b6", "e3");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void queen_isAllowedToMoveDiagonalDownAndLeft_validMove() throws Exception {
-    Queen queen = new Queen();
-
-    boolean validMove = queen.isAValidMove("f7", "a2");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void queen_isAllowedToMoveDiagonalUpAndLeft_validMove() throws Exception {
-    Queen queen = new Queen();
-
-    boolean validMove = queen.isAValidMove("c2", "b3");
-
-    assertThat(validMove, is(true));
-  }
-
-  @Test
-  public void queen_isAllowedToMoveWheterHorizontalVerticalorDiagonal_validMove() throws Exception {
-    Queen queen = new Queen();
-
-    boolean validMove = queen.isAValidMove("h8", "b1");
-
-    assertThat(validMove, is(false));
+      assertThat(validMove, is(false));
+    }
   }
 }
