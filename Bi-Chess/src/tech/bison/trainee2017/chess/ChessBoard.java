@@ -36,22 +36,22 @@ public class ChessBoard {
       board.put(new Position("E1"), new King(colors.WHITE));
       board.put(new Position("E8"), new King(colors.BLACK));
 
-      board.put(new Position("A2"), new WhiteFarmer());
-      board.put(new Position("B2"), new WhiteFarmer());
-      board.put(new Position("C2"), new WhiteFarmer());
-      board.put(new Position("D2"), new WhiteFarmer());
-      board.put(new Position("E2"), new WhiteFarmer());
-      board.put(new Position("F2"), new WhiteFarmer());
-      board.put(new Position("G2"), new WhiteFarmer());
-      board.put(new Position("H2"), new WhiteFarmer());
-      board.put(new Position("A7"), new WhiteFarmer());
-      board.put(new Position("B7"), new BlackFarmer());
-      board.put(new Position("C7"), new BlackFarmer());
-      board.put(new Position("D7"), new BlackFarmer());
-      board.put(new Position("E7"), new BlackFarmer());
-      board.put(new Position("F7"), new BlackFarmer());
-      board.put(new Position("G7"), new BlackFarmer());
-      board.put(new Position("H7"), new BlackFarmer());
+      board.put(new Position("A2"), new WhitePawn());
+      board.put(new Position("B2"), new WhitePawn());
+      board.put(new Position("C2"), new WhitePawn());
+      board.put(new Position("D2"), new WhitePawn());
+      board.put(new Position("E2"), new WhitePawn());
+      board.put(new Position("F2"), new WhitePawn());
+      board.put(new Position("G2"), new WhitePawn());
+      board.put(new Position("H2"), new WhitePawn());
+      board.put(new Position("A7"), new WhitePawn());
+      board.put(new Position("B7"), new BlackPawn());
+      board.put(new Position("C7"), new BlackPawn());
+      board.put(new Position("D7"), new BlackPawn());
+      board.put(new Position("E7"), new BlackPawn());
+      board.put(new Position("F7"), new BlackPawn());
+      board.put(new Position("G7"), new BlackPawn());
+      board.put(new Position("H7"), new BlackPawn());
 
       this.board = board;
     } catch (InvalidPositionException e) {

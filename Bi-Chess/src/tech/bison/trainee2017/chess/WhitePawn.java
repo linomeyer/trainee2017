@@ -1,7 +1,7 @@
 package tech.bison.trainee2017.chess;
 
-public class WhiteFarmer extends Farmer {
-  public WhiteFarmer() {
+public class WhitePawn extends Pawn {
+  public WhitePawn() {
     color = colors.WHITE;
   }
 
