@@ -143,11 +143,11 @@ public class BiChess {
   private static void output(String figureName, Square start, Square end, boolean validMove)
       throws StoppedByUserException, InvalidSquareException {
     if (validMove) {
-      JOptionPane.showMessageDialog(null, "Der Zug mit der Figur " + figureName + " vom Feld " + start.getPosition()
-          + " auf das Feld " + end.getPosition() + " ist gültig.");
+      JOptionPane.showMessageDialog(null, "Der Zug mit der Figur " + figureName + " vom Feld " + start.getSquare()
+          + " auf das Feld " + end.getSquare() + " ist gültig.");
     } else {
-      JOptionPane.showMessageDialog(null, "Der Zug mit der Figur " + figureName + " vom Feld " + start.getPosition()
-          + " auf das Feld " + end.getPosition() + " ist nicht gültig.");
+      JOptionPane.showMessageDialog(null, "Der Zug mit der Figur " + figureName + " vom Feld " + start.getSquare()
+          + " auf das Feld " + end.getSquare() + " ist nicht gültig.");
     }
 
   }

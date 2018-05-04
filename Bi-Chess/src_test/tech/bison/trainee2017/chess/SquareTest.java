@@ -23,7 +23,7 @@ public class SquareTest {
   public void chessSquareWithXAndY_getSquare_haveSquare() throws Exception {
     Square square = new Square(5, 3);
 
-    assertThat(square.getPosition(), is("E3"));
+    assertThat(square.getSquare(), is("E3"));
   }
 
   @Test

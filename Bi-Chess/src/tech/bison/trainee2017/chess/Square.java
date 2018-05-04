@@ -73,7 +73,7 @@ public class Square {
 
   }
 
-  public String getPosition() throws InvalidSquareException {
+  public String getSquare() throws InvalidSquareException {
     String position = "";
     position += numberConverter(x);
     position += y;
@@ -83,7 +83,7 @@ public class Square {
   @Override
   public String toString() {
     try {
-      return getPosition();
+      return getSquare();
     } catch (InvalidSquareException e) {
       return Integer.toString(x) + y;
     }
