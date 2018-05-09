@@ -5,8 +5,8 @@ import java.util.HashMap;
 import tech.bison.trainee2017.chess.Piece.colors;
 
 public class ChessBoard {
-  public HashMap<Square, Piece> whiteSideOfBoard;
-  public HashMap<Square, Piece> blackSideOfBoard;
+  private HashMap<Square, Piece> whiteSideOfBoard;
+  private HashMap<Square, Piece> blackSideOfBoard;
 
   public ChessBoard() {
     initializeWhiteSideOfBoard();
@@ -74,4 +74,11 @@ public class ChessBoard {
     }
   }
 
+  public HashMap<Square, Piece> getWhiteSideOfBoard() {
+    return whiteSideOfBoard;
+  }
+
+  public HashMap<Square, Piece> getBlackSideOfBoard() {
+    return blackSideOfBoard;
+  }
 }
