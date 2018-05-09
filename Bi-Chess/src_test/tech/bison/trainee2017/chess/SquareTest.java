@@ -57,7 +57,7 @@ public class SquareTest {
   }
 
   @Test
-  public void yPositionIsNotInField_createSquare_throwsInvalidSquareException() throws Exception {
+  public void ySquareIsNotInField_createSquare_throwsInvalidSquareException() throws Exception {
     thrown.expect(InvalidSquareException.class);
     new Square(7, -1);
   }
