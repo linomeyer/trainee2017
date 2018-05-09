@@ -71,7 +71,12 @@ public class Chessboard {
     return chessboard.get(square);
   }
 
-  public void movePiece(Movement movement) {
+  public void movePiece(Movement movement) throws InvalidMoveException {
+    for (Square square : movement.getWay()) {
+      if (chessboard.get(square) != null) {
+        throw new InvalidMoveException();
+      }
+    }
     Piece piece = chessboard.get(movement.start);
     chessboard.remove(movement.start);
     chessboard.put(movement.end, piece);
