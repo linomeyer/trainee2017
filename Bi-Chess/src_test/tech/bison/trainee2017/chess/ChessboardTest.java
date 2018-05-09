@@ -29,4 +29,9 @@ public class ChessboardTest {
     assertThat(chessboard.get(movement.start), is(nullValue()));
     assertThat(chessboard.get(movement.end), is(new WhitePawn()));
   }
+
+  @Test
+  public void testName() throws Exception {
+
+  }
 }
