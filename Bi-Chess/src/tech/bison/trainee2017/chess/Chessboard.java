@@ -4,16 +4,14 @@ import java.util.HashMap;
 
 import tech.bison.trainee2017.chess.Piece.colors;
 
-public class ChessBoard {
-  private HashMap<Square, Piece> whiteSideOfBoard;
-  private HashMap<Square, Piece> blackSideOfBoard;
+public class Chessboard {
+  private HashMap<Square, Piece> chessboard;
 
-  public ChessBoard() {
-    initializeWhiteSideOfBoard();
-    initializeBlackSideOfBoard();
+  public Chessboard() {
+    initializeChessboard();
   }
 
-  public void initializeBlackSideOfBoard() {
+  public void initializeChessboard() {
     HashMap<Square, Piece> board = new HashMap<Square, Piece>();
 
     try {
@@ -38,15 +36,6 @@ public class ChessBoard {
       board.put(new Square("G7"), new BlackPawn());
       board.put(new Square("H7"), new BlackPawn());
 
-      blackSideOfBoard = board;
-    } catch (InvalidSquareException e) {
-    }
-  }
-
-  public void initializeWhiteSideOfBoard() {
-    HashMap<Square, Piece> board = new HashMap<Square, Piece>();
-
-    try {
       board.put(new Square("A1"), new Rook(colors.WHITE));
       board.put(new Square("H1"), new Rook(colors.WHITE));
 
@@ -69,16 +58,22 @@ public class ChessBoard {
       board.put(new Square("G2"), new WhitePawn());
       board.put(new Square("H2"), new WhitePawn());
       board.put(new Square("A7"), new WhitePawn());
-      whiteSideOfBoard = board;
+      chessboard = board;
     } catch (InvalidSquareException e) {
     }
   }
 
-  public HashMap<Square, Piece> getWhiteSideOfBoard() {
-    return whiteSideOfBoard;
+  public HashMap<Square, Piece> getChessboard() {
+    return chessboard;
   }
 
-  public HashMap<Square, Piece> getBlackSideOfBoard() {
-    return blackSideOfBoard;
+  public Piece get(Square square) {
+    return chessboard.get(square);
+  }
+
+  public void movePiece(Movement movement) {
+    Piece piece = chessboard.get(movement.start);
+    chessboard.remove(movement.start);
+    chessboard.put(movement.end, piece);
   }
 }
