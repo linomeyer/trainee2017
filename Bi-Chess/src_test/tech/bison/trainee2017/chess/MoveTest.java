@@ -11,6 +11,6 @@ public class MoveTest {
     Chessboard chessboard = new Chessboard();
     Move.movePiece(chessboard, new Movement(new Square("A2"), new Square("A4")), null);
 
-    assertThat(chessboard.get(new Square("A4")), is(new WhitePawn()));
+    assertThat(chessboard.getPiece(new Square("A4")), is(new WhitePawn()));
   }
 }

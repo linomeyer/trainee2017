@@ -12,13 +12,13 @@ public class Move {
   public static Move movePiece(Chessboard chessboard, Movement movement, Move lastMove) throws InvalidMoveException {
     Square start = movement.start;
 
-    Piece pieceToMove = chessboard.get(start);
+    Piece pieceToMove = chessboard.getPiece(start);
 
     boolean isAValidMove = pieceToMove.isAValidMove(movement);
 
     if (isAValidMove) {
       try {
-        if (pieceToMove.color == chessboard.get(movement.end).color) {
+        if (pieceToMove.color == chessboard.getPiece(movement.end).color) {
           throw new InvalidMoveException();
         } else {
           chessboard.movePiece(movement);

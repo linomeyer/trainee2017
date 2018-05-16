@@ -67,18 +67,25 @@ public class Chessboard {
     return chessboard;
   }
 
-  public Piece get(Square square) {
+  /* Gets a Piece from Chessboard map with the Square as key */
+  public Piece getPiece(Square square) {
     return chessboard.get(square);
   }
 
-  public void movePiece(Movement movement) throws InvalidMoveException {
+  public Piece movePiece(Movement movement) throws InvalidMoveException {
     for (Square square : movement.getWay()) {
       if (chessboard.get(square) != null) {
         throw new InvalidMoveException();
       }
     }
     Piece piece = chessboard.get(movement.start);
-    chessboard.remove(movement.start);
-    chessboard.put(movement.end, piece);
+    Piece capturedPiece = chessboard.get(movement.end);
+    if (capturedPiece != null && piece.color == capturedPiece.color) {
+      throw new InvalidMoveException();
+    } else {
+      chessboard.remove(movement.start);
+      chessboard.put(movement.end, piece);
+    }
+    return capturedPiece;
   }
 }
