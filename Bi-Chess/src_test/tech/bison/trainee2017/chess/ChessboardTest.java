@@ -6,82 +6,127 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.experimental.runners.Enclosed;
 import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
+import org.junit.runners.Parameterized.Parameters;
 
 import tech.bison.trainee2017.chess.Piece.colors;
 
+@RunWith(Enclosed.class)
 public class ChessboardTest {
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
 
-  @Test
-  public void chessboard_getPieceWithSquare_piece() throws Exception {
-    Chessboard chessboard = new Chessboard();
+  @RunWith(Parameterized.class)
+  public static class ChessBoardJumpBehaviourTest {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
-    Piece gettedPiece = chessboard.getPiece(new Square("A1"));
+    @Parameters(name = "{0}")
+    public static Movement[] data() throws InvalidSquareException {
+      return new Movement[] {
+          new Movement(new Square("A1"), new Square("A5")),
+          new Movement(new Square("C1"), new Square("E3")),
+          new Movement(new Square("D1"), new Square("D3")),
+      };
+    }
 
-    assertThat(gettedPiece, is(new Rook(colors.WHITE)));
+    @Parameter(0)
+    public Movement movement;
+
+    @Test
+    public void chessBoard_movePiece_pieceCanNotJump() throws Exception {
+      thrown.expect(InvalidMoveException.class);
+      Chessboard chessboard = new Chessboard();
+      chessboard.movePiece(movement);
+    }
   }
 
-  @Test
-  public void chessboard_movePiece_pieceIsOnNewSquare() throws Exception {
-    Chessboard chessboard = new Chessboard();
+  public static class ChessboardNormalTest {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
-    Movement movement = new Movement(new Square("A2"), new Square("A4"));
+    @Test
+    public void chessboard_getPieceWithSquare_piece() throws Exception {
+      Chessboard chessboard = new Chessboard();
 
-    Piece capturedPiece = chessboard.movePiece(movement);
+      Piece gettedPiece = chessboard.getPiece(new Square("A1"));
 
-    assertThat(chessboard.getPiece(movement.start), is(nullValue()));
-    assertThat(capturedPiece, is(nullValue()));
-    assertThat(chessboard.getPiece(movement.end), is(new WhitePawn()));
-  }
+      assertThat(gettedPiece, is(new Rook(colors.WHITE)));
+    }
 
-  /* Parameterisierter Test für jede Figur die Theoretisch springen kann */
-  @Test
-  public void chessboard_movePiece_towerCanNotJump() throws Exception {
-    thrown.expect(InvalidMoveException.class);
-    Chessboard chessboard = new Chessboard();
+    @Test
+    public void chessboard_movePiece_pieceIsOnNewSquare() throws Exception {
+      Chessboard chessboard = new Chessboard();
 
-    Movement movement = new Movement(new Square("A1"), new Square("A5"));
+      Movement movement = new Movement(new Square("A2"), new Square("A4"));
 
-    chessboard.movePiece(movement);
-  }
+      Piece capturedPiece = chessboard.movePiece(movement);
 
-  @Test
-  public void chessBoard_movePiece_knightCanJump() throws Exception {
-    Chessboard chessboard = new Chessboard();
+      assertThat(chessboard.getPiece(movement.start), is(nullValue()));
+      assertThat(capturedPiece, is(nullValue()));
+      assertThat(chessboard.getPiece(movement.end), is(new WhitePawn()));
+    }
 
-    Movement movement = new Movement(new Square("B1"), new Square("A3"));
+    @Test
+    public void chessBoard_movePiece_knightCanJump() throws Exception {
+      Chessboard chessboard = new Chessboard();
 
-    Piece capturedPiece = chessboard.movePiece(movement);
+      Movement movement = new Movement(new Square("B1"), new Square("A3"));
 
-    assertThat(chessboard.getPiece(movement.start), is(nullValue()));
-    assertThat(chessboard.getPiece(movement.end), is(new Knight(colors.WHITE)));
-    assertThat(capturedPiece, is(nullValue()));
-  }
+      Piece capturedPiece = chessboard.movePiece(movement);
 
-  @Test
-  public void chessBoard_movePiece_whiteRookCapturesBlackPawn() throws Exception {
-    Chessboard chessboard = new Chessboard();
+      assertThat(chessboard.getPiece(movement.start), is(nullValue()));
+      assertThat(chessboard.getPiece(movement.end), is(new Knight(colors.WHITE)));
+      assertThat(capturedPiece, is(nullValue()));
+    }
 
-    Movement movement = new Movement(new Square("A2"), new Square("A4"));
-    chessboard.movePiece(movement);
-    movement = new Movement(new Square("A1"), new Square("A3"));
-    chessboard.movePiece(movement);
-    movement = new Movement(new Square("A3"), new Square("B3"));
-    chessboard.movePiece(movement);
-    movement = new Movement(new Square("B3"), new Square("B7"));
-    Piece capturedPiece = chessboard.movePiece(movement);
+    @Test
+    public void chessBoard_movePiece_whiteRookCapturesBlackPawn() throws Exception {
+      Chessboard chessboard = new Chessboard();
 
-    assertThat(capturedPiece, is(new BlackPawn()));
-  }
+      Movement movement = new Movement(new Square("A2"), new Square("A4"));
+      chessboard.movePiece(movement);
+      movement = new Movement(new Square("A1"), new Square("A3"));
+      chessboard.movePiece(movement);
+      movement = new Movement(new Square("A3"), new Square("B3"));
+      chessboard.movePiece(movement);
+      movement = new Movement(new Square("B3"), new Square("B7"));
+      Piece capturedPiece = chessboard.movePiece(movement);
 
-  @Test
-  public void chessBoard_movePiece_whiteRookCapturesWhitePawn() throws Exception {
-    thrown.expect(InvalidMoveException.class);
-    Chessboard chessboard = new Chessboard();
+      assertThat(capturedPiece, is(new BlackPawn()));
+    }
 
-    Movement movement = new Movement(new Square("A1"), new Square("A2"));
-    chessboard.movePiece(movement);
+    @Test
+    public void chessBoard_movePiece_whiteRookCapturesWhitePawn() throws Exception {
+      thrown.expect(InvalidMoveException.class);
+      Chessboard chessboard = new Chessboard();
+
+      Movement movement = new Movement(new Square("A1"), new Square("A2"));
+      chessboard.movePiece(movement);
+    }
+
+    @Test
+    public void chessBoard_movePiece_whitePawnCanNotJump() throws Exception {
+      thrown.expect(InvalidMoveException.class);
+      Chessboard chessboard = new Chessboard();
+
+      Movement movement = new Movement(new Square("B1"), new Square("C3"));
+      chessboard.movePiece(movement);
+      movement = new Movement(new Square("C2"), new Square("C4"));
+      chessboard.movePiece(movement);
+    }
+
+    @Test
+    public void chessBoard_movePiece_blackPawnCanNotJump() throws Exception {
+      thrown.expect(InvalidMoveException.class);
+      Chessboard chessboard = new Chessboard();
+
+      Movement movement = new Movement(new Square("g8"), new Square("f6"));
+      chessboard.movePiece(movement);
+      movement = new Movement(new Square("f7"), new Square("f5"));
+      chessboard.movePiece(movement);
+    }
   }
 }
