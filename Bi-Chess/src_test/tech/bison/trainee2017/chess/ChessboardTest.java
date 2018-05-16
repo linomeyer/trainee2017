@@ -31,7 +31,7 @@ public class ChessboardTest {
   }
 
   @Test
-  public void testName() throws Exception {
+  public void g() throws Exception {
 
   }
 }
