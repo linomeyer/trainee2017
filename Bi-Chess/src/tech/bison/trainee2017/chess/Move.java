@@ -11,6 +11,10 @@ public class Move {
     this.movement = movement;
   }
 
+  public static Move movePiece(Chessboard chessboard, Movement movement) throws InvalidMoveException {
+    return movePiece(chessboard, movement, null);
+  }
+
   public static Move movePiece(Chessboard chessboard, Movement movement, Move lastMove) throws InvalidMoveException {
     Square start = movement.start;
 

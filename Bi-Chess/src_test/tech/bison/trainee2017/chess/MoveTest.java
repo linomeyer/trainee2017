@@ -18,7 +18,7 @@ public class MoveTest {
   @Test
   public void piece_move_pieceIsOnANewSquare() throws Exception {
     Chessboard chessboard = new Chessboard();
-    Move.movePiece(chessboard, new Movement(new Square("A2"), new Square("A4")), null);
+    Move.movePiece(chessboard, new Movement(new Square("A2"), new Square("A4")));
 
     assertThat(chessboard.getPiece(new Square("A4")), is(new WhitePawn()));
   }
@@ -29,7 +29,7 @@ public class MoveTest {
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("A1"), new Square("A2"));
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
   }
 
   @Test
@@ -38,7 +38,7 @@ public class MoveTest {
 
     Movement movement = new Movement(new Square("B1"), new Square("A3"));
 
-    Move move = Move.movePiece(chessboard, movement, null);
+    Move move = Move.movePiece(chessboard, movement);
 
     assertThat(chessboard.getPiece(movement.start), is(nullValue()));
     assertThat(chessboard.getPiece(movement.end), is(new Knight(colors.WHITE)));
@@ -50,13 +50,13 @@ public class MoveTest {
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("A2"), new Square("A4"));
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
     movement = new Movement(new Square("A1"), new Square("A3"));
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
     movement = new Movement(new Square("A3"), new Square("B3"));
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
     movement = new Movement(new Square("B3"), new Square("B7"));
-    Move move = Move.movePiece(chessboard, movement, null);
+    Move move = Move.movePiece(chessboard, movement);
 
     assertThat(move.capturedPiece, is(new BlackPawn()));
   }
@@ -67,9 +67,9 @@ public class MoveTest {
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("B1"), new Square("C3")); // Knight is in the Way of the white Pawn
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
     movement = new Movement(new Square("C2"), new Square("C4"));
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
   }
 
   @Test
@@ -78,9 +78,9 @@ public class MoveTest {
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("g8"), new Square("f6")); // Move Knight in the Way of the black Pawn
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
     movement = new Movement(new Square("f7"), new Square("f5"));
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
   }
 
   @Test
@@ -89,7 +89,7 @@ public class MoveTest {
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("A1"), new Square("A5"));
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
   }
 
   @Test
@@ -98,7 +98,7 @@ public class MoveTest {
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("C1"), new Square("E3"));
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
   }
 
   @Test
@@ -107,7 +107,7 @@ public class MoveTest {
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("D8"), new Square("D2"));
-    Move.movePiece(chessboard, movement, null);
+    Move.movePiece(chessboard, movement);
   }
   /*
    * next gamerule to implement: Pawn can capture Pieces only diagonal
