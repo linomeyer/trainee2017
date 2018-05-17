@@ -67,7 +67,6 @@ public class Chessboard {
     return chessboard;
   }
 
-  /* Gets a Piece from Chessboard map with the Square as key */
   public Piece getPiece(Square square) {
     return chessboard.get(square);
   }

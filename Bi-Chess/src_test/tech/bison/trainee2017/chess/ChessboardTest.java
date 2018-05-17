@@ -19,9 +19,9 @@ public class ChessboardTest {
   public void chessboard_getPieceWithSquare_piece() throws Exception {
     Chessboard chessboard = new Chessboard();
 
-    Piece gettedPiece = chessboard.getPiece(new Square("A1"));
+    Piece pieceOnSquare = chessboard.getPiece(new Square("A1"));
 
-    assertThat(gettedPiece, is(new Rook(colors.WHITE)));
+    assertThat(pieceOnSquare, is(new Rook(colors.WHITE)));
   }
 
   @Test

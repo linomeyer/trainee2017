@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Enclosed.class)
@@ -42,10 +43,10 @@ public class MovementTest {
       });
     }
 
-    @org.junit.runners.Parameterized.Parameter(0)
+    @Parameter(0)
     public Movement movement;
 
-    @org.junit.runners.Parameterized.Parameter(1)
+    @Parameter(1)
     public List<Square> squares;
 
     @Test
@@ -57,7 +58,7 @@ public class MovementTest {
 
   public static class MovementNormalTest {
     @Test
-    public void startAndEndSquare_createMovement_haveXAndYMovement() throws Exception {
+    public void startAndEndSquare_newMovement_haveXAndYMovement() throws Exception {
       Square start = new Square("A3");
       Square end = new Square("B5");
 

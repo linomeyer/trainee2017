@@ -111,22 +111,18 @@ public class MoveTest {
   }
   /*
    * next gamerule to implement: Pawn can capture Pieces only diagonal
+   * 
+   * @Test public void chessBoard_movePawn_whitePawnCaptureBlackPawn() throws
+   * Exception { Chessboard chessboard = new Chessboard();
+   * 
+   * Movement movement = new Movement(new Square("A2"), new Square("A4"));
+   * Move.movePiece(chessboard, movement, null); movement = new Movement(new
+   * Square("B7"), new Square("B5")); Move.movePiece(chessboard, movement, null);
+   * movement = new Movement(new Square("A4"), new Square("B5")); Move move =
+   * Move.movePiece(chessboard, movement, null);
+   * 
+   * assertThat(chessboard.getPiece(movement.start), is(nullValue()));
+   * assertThat(chessboard.getPiece(movement.end), is(new WhitePawn()));
+   * assertThat(move.capturedPiece, is(new BlackPawn())); }
    */
-
-  // @Test
-  // public void chessBoard_movePawn_whitePawnCaptureBlackPawn() throws Exception
-  // {
-  // Chessboard chessboard = new Chessboard();
-  //
-  // Movement movement = new Movement(new Square("A2"), new Square("A4"));
-  // Move.movePiece(chessboard, movement, null);
-  // movement = new Movement(new Square("B7"), new Square("B5"));
-  // Move.movePiece(chessboard, movement, null);
-  // movement = new Movement(new Square("A4"), new Square("B5"));
-  // Move move = Move.movePiece(chessboard, movement, null);
-  //
-  // assertThat(chessboard.getPiece(movement.start), is(nullValue()));
-  // assertThat(chessboard.getPiece(movement.end), is(new WhitePawn()));
-  // assertThat(move.capturedPiece, is(new BlackPawn()));
-  // }
 }
