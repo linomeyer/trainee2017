@@ -128,5 +128,21 @@ public class ChessboardTest {
       movement = new Movement(new Square("f7"), new Square("f5"));
       chessboard.movePiece(movement);
     }
+
+    @Test
+    public void chessBoard_movePawn_whitePawnCaptureBlackPawn() throws Exception {
+      Chessboard chessboard = new Chessboard();
+
+      Movement movement = new Movement(new Square("A2"), new Square("A4"));
+      chessboard.movePiece(movement);
+      movement = new Movement(new Square("B7"), new Square("B5"));
+      chessboard.movePiece(movement);
+      movement = new Movement(new Square("A4"), new Square("B5"));
+      Piece capturedPiece = chessboard.movePiece(movement);
+
+      assertThat(chessboard.getPiece(movement.start), is(nullValue()));
+      assertThat(chessboard.getPiece(movement.end), is(new WhitePawn()));
+      assertThat(capturedPiece, is(new BlackPawn()));
+    }
   }
 }
