@@ -80,12 +80,8 @@ public class Chessboard {
     }
     Piece piece = chessboard.get(movement.start);
     Piece capturedPiece = chessboard.get(movement.end);
-    if (capturedPiece != null && piece.color == capturedPiece.color) {
-      throw new InvalidMoveException();
-    } else {
-      chessboard.remove(movement.start);
-      chessboard.put(movement.end, piece);
-    }
+    chessboard.remove(movement.start);
+    chessboard.put(movement.end, piece);
     return capturedPiece;
   }
 }

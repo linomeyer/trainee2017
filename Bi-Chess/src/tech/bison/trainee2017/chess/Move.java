@@ -2,10 +2,12 @@ package tech.bison.trainee2017.chess;
 
 public class Move {
   final Piece piece;
+  final Piece capturedPiece;
   final Movement movement;
 
-  private Move(Piece piece, Movement movement) {
+  private Move(Piece piece, Piece capturedPiece, Movement movement) {
     this.piece = piece;
+    this.capturedPiece = capturedPiece;
     this.movement = movement;
   }
 
@@ -21,12 +23,12 @@ public class Move {
         if (pieceToMove.color == chessboard.getPiece(movement.end).color) {
           throw new InvalidMoveException();
         } else {
-          chessboard.movePiece(movement);
-          return new Move(pieceToMove, movement);
+          Piece capturedPiece = chessboard.movePiece(movement);
+          return new Move(pieceToMove, capturedPiece, movement);
         }
       } catch (NullPointerException e) {
-        chessboard.movePiece(movement);
-        return new Move(pieceToMove, movement);
+        Piece capturedPiece = chessboard.movePiece(movement);
+        return new Move(pieceToMove, capturedPiece, movement);
       }
     } else {
       throw new InvalidMoveException();
