@@ -3,6 +3,7 @@ package tech.bison.trainee2017.chess;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import tech.bison.trainee2017.chess.MoveValidator.State;
@@ -23,7 +24,7 @@ public class ConsoleMain {
       if (input.equals("quit")) {
         repeat = false;
       } else {
-        State[] state = moveValidator.validate(input);
+        ArrayList<State> state = moveValidator.validate(input);
         for (State s : state) {
           System.out.println(states.get(s));
         }

@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -63,8 +64,8 @@ public class MoveValidatorTest {
       return Arrays.asList(new Object[][] {
           { "Rf3-f5", new State[] { State.OK } },
           { "qf3-f5", new State[] { State.UNKNOWN_PIECE } },
-          { "Rf3-f", new State[] { State.WRONG_LENGTH } },
-          { "rf3-f", new State[] { State.WRONG_LENGTH, State.UNKNOWN_PIECE } }
+          { "Rf3-f", new State[] { State.WRONG_LENGTH, State.INVALID_POSITION_SYNTAX } },
+          { "rf3-f", new State[] { State.WRONG_LENGTH, State.UNKNOWN_PIECE, State.INVALID_POSITION_SYNTAX } }
       });
     }
 
@@ -78,9 +79,10 @@ public class MoveValidatorTest {
     public void input_validate() throws Exception {
       MoveValidator moveValidator = new MoveValidator();
 
-      State[] validatedState = moveValidator.validate(input);
+      ArrayList<State> validatedState = moveValidator.validate(input);
+      State[] validatedStateAsArray = validatedState.toArray(new State[validatedState.size()]);
 
-      assertArrayEquals(validatedState, state);
+      assertArrayEquals(validatedStateAsArray, state);
 
     }
   }
