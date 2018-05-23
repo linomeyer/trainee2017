@@ -3,12 +3,15 @@ package tech.bison.trainee2017.chess;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 
 import tech.bison.trainee2017.chess.MoveValidator.State;
 
 public class ConsoleMain {
+  static final HashMap<State, String> states = new HashMap<State, String>();
 
   public static void main(String[] args) throws IOException {
+    initializeStates();
     boolean repeat = true;
     MoveValidator moveValidator = new MoveValidator();
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,18 +24,14 @@ public class ConsoleMain {
         repeat = false;
       } else {
         State state = moveValidator.validate(input);
-        switch (state) {
-        case OK:
-          System.out.println("Ihr Zug ist gültig");
-          break;
-        case UNKNOWN_PIECE:
-          System.out.println("Ihre eingegebene Figur gibt es nicht");
-          break;
-        case WRONG_LENGTH:
-          System.out.println("Ihre Eingabe hatte die falsche Länge");
-          break;
-        }
+        System.out.println(states.get(state));
       }
     }
+  }
+
+  private static void initializeStates() {
+    states.put(State.OK, "Ihr Zug ist gültig");
+    states.put(State.UNKNOWN_PIECE, "Ihre eingegebene Figur gibt es nicht");
+    states.put(State.WRONG_LENGTH, "Ihre Eingabe hatte die falsche Länge");
   }
 }
