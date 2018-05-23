@@ -8,11 +8,8 @@ public abstract class Piece {
   }
 
   public boolean isAValidMove(String startSquare, String endSquare) {
-    try {
-      return isAValidMove(new Square(startSquare), new Square(endSquare));
-    } catch (InvalidSquareException e) {
-      return false;
-    }
+    // Test basierte auf InvalidSquareException ...neu machen
+    return isAValidMove(new Square(startSquare), new Square(endSquare));
   }
 
   public boolean isAValidMove(Square start, Square end) {

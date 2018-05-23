@@ -68,7 +68,7 @@ public class MoveTest {
 
     Movement movement = new Movement(new Square("B1"), new Square("C3")); // Knight is in the Way of the white Pawn
     Move.movePiece(chessboard, movement);
-    movement = new Movement(new Square("C2"), new Square("C4"));
+    movement = new Movement(new Square("b2"), new Square("c4"));
     Move.movePiece(chessboard, movement);
   }
 
@@ -79,7 +79,7 @@ public class MoveTest {
 
     Movement movement = new Movement(new Square("g8"), new Square("f6")); // Move Knight in the Way of the black Pawn
     Move.movePiece(chessboard, movement);
-    movement = new Movement(new Square("f7"), new Square("f5"));
+    movement = new Movement(new Square("F7"), new Square("F5"));
     Move.movePiece(chessboard, movement);
   }
 
