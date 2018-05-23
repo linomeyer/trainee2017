@@ -25,4 +25,18 @@ public class SquareTest {
 
     assertThat(square.toString(), is("e3"));
   }
+
+  @Test
+  public void letter_letterNumberConverter_number() throws Exception {
+    int number = Square.letterNumberConverter('D');
+
+    assertThat(number, is(4));
+  }
+
+  @Test
+  public void number_letterNumberConverter_letter() throws Exception {
+    char letter = Square.letterNumberConverter(24);
+
+    assertThat(letter, is('x'));
+  }
 }

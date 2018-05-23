@@ -45,4 +45,35 @@ public class ChessboardTest {
     chessboard.addPiece(new Square("A2"), new Queen(colors.WHITE));
     chessboard.movePiece(new Movement(new Square("A2"), new Square("H2")));
   }
+
+  @Test
+  public void chessboardWith4x4Squares_addPiece_invalidSquareException() throws Exception {
+    thrown.expect(InvalidSquareException.class);
+
+    Chessboard chessboard = new Chessboard(4, 4);
+    chessboard.addPiece(new Square("A5"), new Queen(colors.WHITE));
+  }
+
+  @Test
+  public void chessboardWith8x8Squares_addPiece_OccupiedSquareException() throws Exception {
+    thrown.expect(OccupiedSquareException.class);
+
+    Chessboard chessboard = new Chessboard(8, 8);
+    chessboard.addPiece(new Square("A2"), new Queen(colors.WHITE));
+    chessboard.addPiece(new Square("A2"), new King(colors.WHITE));
+  }
+
+  @Test
+  public void chessboard_isAValidSquare_invalidSquare() throws Exception {
+    Chessboard chessboard = new Chessboard(2, 2);
+
+    assertThat(chessboard.isAValidSquare(new Square("c5")), is(false));
+  }
+
+  @Test
+  public void chessboard_isAValidSquare_validSquare() throws Exception {
+    Chessboard chessboard = new Chessboard(4, 4);
+
+    assertThat(chessboard.isAValidSquare(new Square("d3")), is(true));
+  }
 }
