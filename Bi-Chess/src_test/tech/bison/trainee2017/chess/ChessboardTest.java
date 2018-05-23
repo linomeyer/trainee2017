@@ -35,6 +35,14 @@ public class ChessboardTest {
     assertThat(chessboard.getPiece(movement.start), is(nullValue()));
     assertThat(capturedPiece, is(nullValue()));
     assertThat(chessboard.getPiece(movement.end), is(new WhitePawn()));
+  }
 
+  @Test
+  public void chessboardWith6x5Squares_movePiece_invalidSquareException() throws Exception {
+    thrown.expect(InvalidSquareException.class);
+
+    Chessboard chessboard = new Chessboard(6, 5);
+    chessboard.addPiece(new Square("A2"), new Queen(colors.WHITE));
+    chessboard.movePiece(new Movement(new Square("A2"), new Square("H2")));
   }
 }

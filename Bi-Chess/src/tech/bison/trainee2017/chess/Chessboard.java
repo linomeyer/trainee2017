@@ -5,13 +5,23 @@ import java.util.HashMap;
 import tech.bison.trainee2017.chess.Piece.colors;
 
 public class Chessboard {
-  private HashMap<Square, Piece> chessboard;
+  final int width;
+  final int length;
+  final private HashMap<Square, Piece> chessboard;
 
   public Chessboard() {
-    initializeChessboard();
+    width = 8;
+    length = 8;
+    chessboard = initializeChessboard();
   }
 
-  public void initializeChessboard() {
+  public Chessboard(int width, int length) {
+    this.width = width;
+    this.length = length;
+    chessboard = new HashMap<Square, Piece>();
+  }
+
+  public HashMap<Square, Piece> initializeChessboard() {
     HashMap<Square, Piece> board = new HashMap<Square, Piece>();
 
     board.put(new Square("H8"), new Rook(colors.BLACK));
@@ -56,7 +66,7 @@ public class Chessboard {
     board.put(new Square("G2"), new WhitePawn());
     board.put(new Square("H2"), new WhitePawn());
     board.put(new Square("A7"), new WhitePawn());
-    chessboard = board;
+    return board;
   }
 
   public HashMap<Square, Piece> getChessboard() {
@@ -67,16 +77,36 @@ public class Chessboard {
     return chessboard.get(square);
   }
 
-  public Piece movePiece(Movement movement) throws InvalidMoveException {
-    for (Square square : movement.getWay()) {
-      if (chessboard.get(square) != null) {
-        throw new InvalidMoveException();
+  public Piece movePiece(Movement movement) throws InvalidMoveException, InvalidSquareException {
+    if (isAValidSquare(movement.end)) {
+      for (Square square : movement.getWay()) {
+        if (chessboard.get(square) != null) {
+          throw new InvalidMoveException();
+        }
       }
+      Piece piece = chessboard.get(movement.start);
+      Piece capturedPiece = chessboard.get(movement.end);
+      chessboard.remove(movement.start);
+      chessboard.put(movement.end, piece);
+      return capturedPiece;
+    } else {
+      throw new InvalidSquareException();
     }
-    Piece piece = chessboard.get(movement.start);
-    Piece capturedPiece = chessboard.get(movement.end);
-    chessboard.remove(movement.start);
-    chessboard.put(movement.end, piece);
-    return capturedPiece;
+  }
+
+  public void addPiece(Square square, Piece piece) throws OccupiedSquareException, InvalidSquareException {
+    if (isAValidSquare(square)) {
+      if (chessboard.get(square) == null) {
+        chessboard.put(square, piece);
+      } else {
+        throw new OccupiedSquareException();
+      }
+    } else {
+      throw new InvalidSquareException();
+    }
+  }
+
+  public boolean isAValidSquare(Square square) {
+    return square.x <= width && square.x > 0 && square.y <= length && square.y > 0;
   }
 }
