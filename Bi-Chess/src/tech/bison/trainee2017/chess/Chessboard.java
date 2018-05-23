@@ -2,7 +2,7 @@ package tech.bison.trainee2017.chess;
 
 import java.util.HashMap;
 
-import tech.bison.trainee2017.chess.Piece.colors;
+import tech.bison.trainee2017.chess.Piece.Color;
 
 public class Chessboard {
   final int width;
@@ -24,17 +24,17 @@ public class Chessboard {
   public HashMap<Square, Piece> initializeChessboard() {
     HashMap<Square, Piece> board = new HashMap<Square, Piece>();
 
-    board.put(new Square("H8"), new Rook(colors.BLACK));
+    board.put(new Square("H8"), new Rook(Color.BLACK));
 
-    board.put(new Square("B8"), new Knight(colors.BLACK));
-    board.put(new Square("G8"), new Knight(colors.BLACK));
+    board.put(new Square("B8"), new Knight(Color.BLACK));
+    board.put(new Square("G8"), new Knight(Color.BLACK));
 
-    board.put(new Square("C8"), new Bishop(colors.BLACK));
-    board.put(new Square("F8"), new Bishop(colors.BLACK));
+    board.put(new Square("C8"), new Bishop(Color.BLACK));
+    board.put(new Square("F8"), new Bishop(Color.BLACK));
 
-    board.put(new Square("D8"), new Queen(colors.BLACK));
+    board.put(new Square("D8"), new Queen(Color.BLACK));
 
-    board.put(new Square("E8"), new King(colors.BLACK));
+    board.put(new Square("E8"), new King(Color.BLACK));
 
     board.put(new Square("B7"), new BlackPawn());
     board.put(new Square("C7"), new BlackPawn());
@@ -44,18 +44,18 @@ public class Chessboard {
     board.put(new Square("G7"), new BlackPawn());
     board.put(new Square("H7"), new BlackPawn());
 
-    board.put(new Square("A1"), new Rook(colors.WHITE));
-    board.put(new Square("H1"), new Rook(colors.WHITE));
+    board.put(new Square("A1"), new Rook(Color.WHITE));
+    board.put(new Square("H1"), new Rook(Color.WHITE));
 
-    board.put(new Square("B1"), new Knight(colors.WHITE));
-    board.put(new Square("G1"), new Knight(colors.WHITE));
+    board.put(new Square("B1"), new Knight(Color.WHITE));
+    board.put(new Square("G1"), new Knight(Color.WHITE));
 
-    board.put(new Square("C1"), new Bishop(colors.WHITE));
-    board.put(new Square("F1"), new Bishop(colors.WHITE));
+    board.put(new Square("C1"), new Bishop(Color.WHITE));
+    board.put(new Square("F1"), new Bishop(Color.WHITE));
 
-    board.put(new Square("D1"), new Queen(colors.WHITE));
+    board.put(new Square("D1"), new Queen(Color.WHITE));
 
-    board.put(new Square("E1"), new King(colors.WHITE));
+    board.put(new Square("E1"), new King(Color.WHITE));
 
     board.put(new Square("A2"), new WhitePawn());
     board.put(new Square("B2"), new WhitePawn());
@@ -110,4 +110,26 @@ public class Chessboard {
   public boolean isAValidSquare(Square square) {
     return square.x <= width && square.x > 0 && square.y <= length && square.y > 0;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Chessboard other = (Chessboard) obj;
+    if (chessboard == null) {
+      if (other.chessboard != null)
+        return false;
+    } else if (!chessboard.equals(other.chessboard))
+      return false;
+    if (length != other.length)
+      return false;
+    if (width != other.width)
+      return false;
+    return true;
+  }
+
 }

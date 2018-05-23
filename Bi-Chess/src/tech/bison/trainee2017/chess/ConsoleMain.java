@@ -36,5 +36,6 @@ public class ConsoleMain {
     states.put(State.OK, "Ihr Zug ist gültig");
     states.put(State.UNKNOWN_PIECE, "Ihre eingegebene Figur gibt es nicht");
     states.put(State.WRONG_LENGTH, "Ihre Eingabe hatte die falsche Länge");
+    states.put(State.INVALID_POSITION_SYNTAX, "Für die Positionen wurde eine falsche Syntax angewendet");
   }
 }

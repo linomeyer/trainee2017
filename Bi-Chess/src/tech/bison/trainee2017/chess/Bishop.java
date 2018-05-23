@@ -5,7 +5,7 @@ public class Bishop extends Piece {
   public Bishop() {
   }
 
-  public Bishop(colors color) {
+  public Bishop(Color color) {
     this.color = color;
   }
 

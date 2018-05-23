@@ -2,7 +2,7 @@ package tech.bison.trainee2017.chess;
 
 public class WhitePawn extends Pawn {
   public WhitePawn() {
-    color = colors.WHITE;
+    color = Color.WHITE;
   }
 
   @Override

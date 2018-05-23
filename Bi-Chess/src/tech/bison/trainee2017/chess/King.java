@@ -5,7 +5,7 @@ public class King extends Piece {
   public King() {
   }
 
-  public King(colors color) {
+  public King(Color color) {
     this.color = color;
   }
 

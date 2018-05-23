@@ -1,10 +1,10 @@
 package tech.bison.trainee2017.chess;
 
 public abstract class Piece {
-  colors color;
+  Color color;
   private int moveCounter = 0;
 
-  public enum colors {
+  public enum Color {
     WHITE, BLACK
   }
 

@@ -5,7 +5,7 @@ public class Rook extends Piece {
   public Rook() {
   }
 
-  public Rook(colors color) {
+  public Rook(Color color) {
     this.color = color;
   }
 

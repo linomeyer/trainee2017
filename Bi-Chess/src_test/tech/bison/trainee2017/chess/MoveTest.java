@@ -8,7 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import tech.bison.trainee2017.chess.Piece.colors;
+import tech.bison.trainee2017.chess.Piece.Color;
 
 public class MoveTest {
 
@@ -41,7 +41,7 @@ public class MoveTest {
     Move move = Move.movePiece(chessboard, movement);
 
     assertThat(chessboard.getPiece(movement.start), is(nullValue()));
-    assertThat(chessboard.getPiece(movement.end), is(new Knight(colors.WHITE)));
+    assertThat(chessboard.getPiece(movement.end), is(new Knight(Color.WHITE)));
     assertThat(move.capturedPiece, is(nullValue()));
   }
 

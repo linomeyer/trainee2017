@@ -5,7 +5,7 @@ public class Knight extends Piece {
   public Knight() {
   }
 
-  public Knight(colors color) {
+  public Knight(Color color) {
     this.color = color;
   }
 

@@ -5,7 +5,7 @@ public class Queen extends Piece {
   public Queen() {
   }
 
-  public Queen(colors color) {
+  public Queen(Color color) {
     this.color = color;
   }
 

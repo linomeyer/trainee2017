@@ -3,7 +3,7 @@ package tech.bison.trainee2017.chess;
 public class BlackPawn extends Pawn {
 
   public BlackPawn() {
-    color = colors.BLACK;
+    color = Color.BLACK;
   }
 
   @Override

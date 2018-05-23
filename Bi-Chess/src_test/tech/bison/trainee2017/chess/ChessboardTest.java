@@ -8,7 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import tech.bison.trainee2017.chess.Piece.colors;
+import tech.bison.trainee2017.chess.Piece.Color;
 
 public class ChessboardTest {
 
@@ -21,7 +21,7 @@ public class ChessboardTest {
 
     Piece pieceOnSquare = chessboard.getPiece(new Square("A1"));
 
-    assertThat(pieceOnSquare, is(new Rook(colors.WHITE)));
+    assertThat(pieceOnSquare, is(new Rook(Color.WHITE)));
   }
 
   @Test
@@ -42,7 +42,7 @@ public class ChessboardTest {
     thrown.expect(InvalidSquareException.class);
 
     Chessboard chessboard = new Chessboard(6, 5);
-    chessboard.addPiece(new Square("A2"), new Queen(colors.WHITE));
+    chessboard.addPiece(new Square("A2"), new Queen(Color.WHITE));
     chessboard.movePiece(new Movement(new Square("A2"), new Square("H2")));
   }
 
@@ -51,7 +51,7 @@ public class ChessboardTest {
     thrown.expect(InvalidSquareException.class);
 
     Chessboard chessboard = new Chessboard(4, 4);
-    chessboard.addPiece(new Square("A5"), new Queen(colors.WHITE));
+    chessboard.addPiece(new Square("A5"), new Queen(Color.WHITE));
   }
 
   @Test
@@ -59,8 +59,8 @@ public class ChessboardTest {
     thrown.expect(OccupiedSquareException.class);
 
     Chessboard chessboard = new Chessboard(8, 8);
-    chessboard.addPiece(new Square("A2"), new Queen(colors.WHITE));
-    chessboard.addPiece(new Square("A2"), new King(colors.WHITE));
+    chessboard.addPiece(new Square("A2"), new Queen(Color.WHITE));
+    chessboard.addPiece(new Square("A2"), new King(Color.WHITE));
   }
 
   @Test
