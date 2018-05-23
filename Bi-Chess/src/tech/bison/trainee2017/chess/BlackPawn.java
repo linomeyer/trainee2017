@@ -14,7 +14,7 @@ public class BlackPawn extends Pawn {
       if (movement.x != 0) {
         return false;
       }
-      if (movement.start.y == 7 && movement.end.y == 5) {
+      if (!hasMoved() && movement.y == -2) {
         return true;
       } else {
         if (movement.y == -1) {

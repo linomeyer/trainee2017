@@ -6,6 +6,9 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class WhitePawnTest {
+  public void setHasMovedFalse(WhitePawn whitePawn) {
+    whitePawn.incrementMoveCounter();
+  }
 
   @Test
   public void whitePawn_isAllowedToMoveOneUp_validMove() throws Exception {
@@ -56,6 +59,7 @@ public class WhitePawnTest {
   public void whitePawn_isAllowedToMoveTwoUp_invalidMove() throws Exception {
     WhitePawn whitePawn = new WhitePawn();
 
+    setHasMovedFalse(whitePawn);
     boolean validMove = whitePawn.isAValidMove("d5", "d7");
 
     assertThat(validMove, is(false));

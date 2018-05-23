@@ -2,6 +2,7 @@ package tech.bison.trainee2017.chess;
 
 public abstract class Piece {
   colors color;
+  private int moveCounter = 0;
 
   public enum colors {
     WHITE, BLACK
@@ -24,6 +25,18 @@ public abstract class Piece {
       return false;
     }
     return true;
+  }
+
+  public void incrementMoveCounter() {
+    moveCounter++;
+  }
+
+  public int getMoveCounter() {
+    return moveCounter;
+  }
+
+  public boolean hasMoved() {
+    return moveCounter > 0;
   }
 
   @Override

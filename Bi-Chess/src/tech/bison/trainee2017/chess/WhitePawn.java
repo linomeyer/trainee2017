@@ -13,7 +13,7 @@ public class WhitePawn extends Pawn {
       if (movement.x != 0) {
         return false;
       }
-      if (movement.start.y == 2 && movement.end.y == 4) {
+      if (!hasMoved() && movement.y == 2) {
         return true;
       } else {
         if (movement.y == 1) {

@@ -6,6 +6,10 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class BlackPawnTest {
+  public void setHasMovedFalse(BlackPawn blackPawn) {
+    blackPawn.incrementMoveCounter();
+  }
+
   @Test
   public void blackPawn_isAllowedToMoveOneDown_validMove() throws Exception {
     BlackPawn blackPawn = new BlackPawn();
@@ -55,6 +59,7 @@ public class BlackPawnTest {
   public void blackPawn_isAllowedToMoveTwoDown_invalidMove() throws Exception {
     BlackPawn blackPawn = new BlackPawn();
 
+    setHasMovedFalse(blackPawn);
     boolean validMove = blackPawn.isAValidMove("d4", "d2");
 
     assertThat(validMove, is(false));

@@ -88,6 +88,7 @@ public class Chessboard {
       Piece capturedPiece = chessboard.get(movement.end);
       chessboard.remove(movement.start);
       chessboard.put(movement.end, piece);
+      piece.incrementMoveCounter();
       return capturedPiece;
     } else {
       throw new InvalidSquareException();
