@@ -1,6 +1,7 @@
 package tech.bison.trainee2017.chess;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
@@ -60,9 +61,10 @@ public class MoveValidatorTest {
     @Parameters(name = "is {0} valid: {1}")
     public static List<Object[]> data() {
       return Arrays.asList(new Object[][] {
-          { "Rf3-f5", State.OK },
-          { "qf3-f5", State.UNKNOWN_PIECE },
-          { "Rf3-f", State.WRONG_LENGTH }
+          { "Rf3-f5", new State[] { State.OK } },
+          { "qf3-f5", new State[] { State.UNKNOWN_PIECE } },
+          { "Rf3-f", new State[] { State.WRONG_LENGTH } },
+          { "rf3-f", new State[] { State.WRONG_LENGTH, State.UNKNOWN_PIECE } }
       });
     }
 
@@ -70,15 +72,15 @@ public class MoveValidatorTest {
     public String input;
 
     @Parameter(1)
-    public State state;
+    public State[] state;
 
     @Test
     public void input_validate() throws Exception {
       MoveValidator moveValidator = new MoveValidator();
 
-      State validatedState = moveValidator.validate(input);
+      State[] validatedState = moveValidator.validate(input);
 
-      assertThat(validatedState, is(state));
+      assertArrayEquals(validatedState, state);
 
     }
   }

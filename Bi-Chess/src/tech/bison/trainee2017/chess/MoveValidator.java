@@ -24,14 +24,17 @@ public class MoveValidator {
     }
   }
 
-  public State validate(String input) {
+  public State[] validate(String input) {
     if (!validateLength(input)) {
-      return State.WRONG_LENGTH;
+      if (!validatePiece(input.charAt(0))) {
+        return new State[] { State.WRONG_LENGTH, State.UNKNOWN_PIECE };
+      }
+      return new State[] { State.WRONG_LENGTH };
     }
     if (!validatePiece(input.charAt(0))) {
-      return State.UNKNOWN_PIECE;
+      return new State[] { State.UNKNOWN_PIECE };
     }
-    return State.OK;
+    return new State[] { State.OK };
   }
 
 }

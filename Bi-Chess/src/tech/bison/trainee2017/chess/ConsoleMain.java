@@ -23,8 +23,10 @@ public class ConsoleMain {
       if (input.equals("quit")) {
         repeat = false;
       } else {
-        State state = moveValidator.validate(input);
-        System.out.println(states.get(state));
+        State[] state = moveValidator.validate(input);
+        for (State s : state) {
+          System.out.println(states.get(s));
+        }
       }
     }
   }
