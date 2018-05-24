@@ -1,10 +1,12 @@
 package tech.bison.trainee2017.chess;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import tech.bison.trainee2017.chess.Game.State;
 import tech.bison.trainee2017.chess.Piece.Color;
 
 public class GameTest {
@@ -23,6 +25,31 @@ public class GameTest {
     Game game = new Game(chessboard);
 
     assertThat(game.getChessboard(), is(chessboard));
+  }
+
+  @Test
+  public void defaultChessGame_movePiece_moveWasGeneratedAndPieceHasMoved() throws Exception {
+    Game game = new Game();
+
+    State state = game.movePiece(new Movement(new Square("b2"), new Square("b4")));
+
+    assertThat(game.getPiece(new Square("b4")), is(new WhitePawn()));
+    assertThat(game.getPiece(new Square("b2")), is(nullValue()));
+    assertThat(state, is(State.PIECE_MOVED));
+  }
+
+  @Test
+  public void customChessGame_whiteBishopCatchesBlackRook_getCapturedPiece() throws Exception {
+    Chessboard chessboard = new Chessboard(6, 6);
+    chessboard.addPiece(new Square("a1"), new Bishop(Color.WHITE));
+    chessboard.addPiece(new Square("b2"), new Rook(Color.BLACK));
+
+    Game game = new Game(chessboard);
+
+    State state = game.movePiece(new Movement(new Square("a1"), new Square("b2")));
+
+    assertThat(game.getLastMove().capturedPiece, is(new Rook(Color.BLACK)));
+    assertThat(state, is(State.PIECE_CATCHED));
   }
 
 }
