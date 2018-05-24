@@ -2,6 +2,7 @@ package tech.bison.trainee2017.chess;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Rule;
@@ -75,5 +76,18 @@ public class ChessboardTest {
     Chessboard chessboard = new Chessboard(4, 4);
 
     assertThat(chessboard.isAValidSquare(new Square("d3")), is(true));
+  }
+
+  @Test
+  public void customChessboard_addPieces_constituteAsArray() throws Exception {
+    Chessboard chessboard = new Chessboard(2, 2);
+
+    chessboard.addPiece(new Square("A1"), new BlackPawn());
+    chessboard.addPiece(new Square("B2"), new Bishop(Color.WHITE));
+
+    assertArrayEquals(chessboard.constituteAsArray(), new Piece[][] {
+        { new BlackPawn(), null },
+        { null, new Bishop(Color.WHITE) }
+    });
   }
 }

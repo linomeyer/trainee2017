@@ -2,9 +2,11 @@ package tech.bison.trainee2017.chess;
 
 import java.util.ArrayList;
 
-public class MoveValidator {
-  public enum State {
-    OK, WRONG_LENGTH, UNKNOWN_PIECE, INVALID_POSITION_SYNTAX
+public class InputValidator {
+  public Game game;
+
+  public enum ValidationState {
+    OK, WRONG_LENGTH, UNKNOWN_PIECE, INVALID_POSITION_SYNTAX, INVALID_CHESSBOARD_SIZE, INVALID_CHESSBOARD_SYNTAX
   }
 
   public boolean validateLength(String input) {
@@ -26,20 +28,20 @@ public class MoveValidator {
     }
   }
 
-  public ArrayList<State> validate(String input) {
-    ArrayList<State> states = new ArrayList<State>();
+  public ArrayList<ValidationState> validateMove(String input) {
+    ArrayList<ValidationState> states = new ArrayList<ValidationState>();
     if (!validateLength(input)) {
-      states.add(State.WRONG_LENGTH);
+      states.add(ValidationState.WRONG_LENGTH);
     }
     if (!validatePiece(input.charAt(0))) {
-      states.add(State.UNKNOWN_PIECE);
+      states.add(ValidationState.UNKNOWN_PIECE);
     }
     if (!validatePositions(input)) {
-      states.add(State.INVALID_POSITION_SYNTAX);
+      states.add(ValidationState.INVALID_POSITION_SYNTAX);
     }
 
     if (states.isEmpty()) {
-      states.add(State.OK);
+      states.add(ValidationState.OK);
     }
     return states;
 

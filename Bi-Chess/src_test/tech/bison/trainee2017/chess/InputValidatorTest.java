@@ -15,10 +15,10 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import tech.bison.trainee2017.chess.MoveValidator.State;
+import tech.bison.trainee2017.chess.InputValidator.ValidationState;
 
 @RunWith(Enclosed.class)
-public class MoveValidatorTest {
+public class InputValidatorTest {
 
   @RunWith(Parameterized.class)
   public static class MoveValidatorPieceTest {
@@ -48,7 +48,7 @@ public class MoveValidatorTest {
 
     @Test
     public void input_validatePiece() throws Exception {
-      MoveValidator moveValidator = new MoveValidator();
+      InputValidator moveValidator = new InputValidator();
 
       boolean validatedPiece = moveValidator.validatePiece(piece);
 
@@ -58,14 +58,14 @@ public class MoveValidatorTest {
   }
 
   @RunWith(Parameterized.class)
-  public static class MoveValidatorValidateTest {
+  public static class InputValidatorValidateMoveTest {
     @Parameters(name = "is {0} valid: {1}")
     public static List<Object[]> data() {
       return Arrays.asList(new Object[][] {
-          { "Rf3-f5", new State[] { State.OK } },
-          { "qf3-f5", new State[] { State.UNKNOWN_PIECE } },
-          { "Rf3-f", new State[] { State.WRONG_LENGTH, State.INVALID_POSITION_SYNTAX } },
-          { "rf3-f", new State[] { State.WRONG_LENGTH, State.UNKNOWN_PIECE, State.INVALID_POSITION_SYNTAX } }
+          { "Rf3-f5", new ValidationState[] { ValidationState.OK } },
+          { "qf3-f5", new ValidationState[] { ValidationState.UNKNOWN_PIECE } },
+          { "Rf3-f", new ValidationState[] { ValidationState.WRONG_LENGTH, ValidationState.INVALID_POSITION_SYNTAX } },
+          { "rf3-f", new ValidationState[] { ValidationState.WRONG_LENGTH, ValidationState.UNKNOWN_PIECE, ValidationState.INVALID_POSITION_SYNTAX } }
       });
     }
 
@@ -73,27 +73,27 @@ public class MoveValidatorTest {
     public String input;
 
     @Parameter(1)
-    public State[] state;
+    public ValidationState[] state;
 
     @Test
-    public void input_validate() throws Exception {
-      MoveValidator moveValidator = new MoveValidator();
+    public void input_validateMove() throws Exception {
+      InputValidator inputValidator = new InputValidator();
 
-      ArrayList<State> validatedState = moveValidator.validate(input);
-      State[] validatedStateAsArray = validatedState.toArray(new State[validatedState.size()]);
+      ArrayList<ValidationState> validatedState = inputValidator.validateMove(input);
+      ValidationState[] validatedStateAsArray = validatedState.toArray(new ValidationState[validatedState.size()]);
 
       assertArrayEquals(validatedStateAsArray, state);
 
     }
   }
 
-  public static class MoveValidatorNormalTest {
+  public static class InputValidatorNormalTest {
     @Test
     public void input_validateLength_true() throws Exception {
-      MoveValidator moveValidator = new MoveValidator();
+      InputValidator inputValidator = new InputValidator();
       String input = "PA2-A4";
 
-      boolean isLengthValid = moveValidator.validateLength(input);
+      boolean isLengthValid = inputValidator.validateLength(input);
 
       assertThat(isLengthValid, is(true));
     }

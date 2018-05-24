@@ -132,4 +132,14 @@ public class Chessboard {
     return true;
   }
 
+  public Piece[][] constituteAsArray() {
+    Piece[][] chessboard = new Piece[width][length];
+
+    for (int x = 0; x < width; x++) {
+      for (int y = 0; y < length; y++) {
+        chessboard[x][y] = this.chessboard.get(new Square(x + 1, y + 1));
+      }
+    }
+    return chessboard;
+  }
 }

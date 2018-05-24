@@ -6,7 +6,7 @@ public class Game {
   private final Chessboard chessboard;
   private final ArrayList<Move> moves;
 
-  public enum State {
+  public enum GameState {
     PIECE_MOVED, PIECE_CATCHED, INVALID_MOVE, INVALID_SQUARE
   }
 
@@ -24,18 +24,18 @@ public class Game {
     return chessboard;
   }
 
-  public State movePiece(Movement movement) {
+  public GameState movePiece(Movement movement) {
     try {
       moves.add(Move.movePiece(chessboard, movement));
       if (moves.get(moves.size() - 1).capturedPiece == null) {
-        return State.PIECE_MOVED;
+        return GameState.PIECE_MOVED;
       } else {
-        return State.PIECE_CATCHED;
+        return GameState.PIECE_CATCHED;
       }
     } catch (InvalidMoveException e) {
-      return State.INVALID_MOVE;
+      return GameState.INVALID_MOVE;
     } catch (InvalidSquareException e) {
-      return State.INVALID_SQUARE;
+      return GameState.INVALID_SQUARE;
     }
   }
 
@@ -46,5 +46,4 @@ public class Game {
   public Piece getPiece(Square square) {
     return chessboard.getPiece(square);
   }
-
 }
