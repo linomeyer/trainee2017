@@ -49,7 +49,7 @@ public class GameTest {
     GameState state = game.movePiece(new Movement(new Square("a1"), new Square("b2")));
 
     assertThat(game.getLastMove().capturedPiece, is(new Rook(Color.BLACK)));
-    assertThat(state, is(GameState.PIECE_CATCHED));
+    assertThat(state, is(GameState.PIECE_CAPTURED));
   }
 
 }

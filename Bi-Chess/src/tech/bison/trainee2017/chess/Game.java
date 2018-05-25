@@ -7,7 +7,7 @@ public class Game {
   private final ArrayList<Move> moves;
 
   public enum GameState {
-    PIECE_MOVED, PIECE_CATCHED, INVALID_MOVE, INVALID_SQUARE
+    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE
   }
 
   public Game() {
@@ -30,7 +30,7 @@ public class Game {
       if (moves.get(moves.size() - 1).capturedPiece == null) {
         return GameState.PIECE_MOVED;
       } else {
-        return GameState.PIECE_CATCHED;
+        return GameState.PIECE_CAPTURED;
       }
     } catch (InvalidMoveException e) {
       return GameState.INVALID_MOVE;

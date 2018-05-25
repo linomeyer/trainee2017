@@ -25,6 +25,7 @@ public class Chessboard {
     HashMap<Square, Piece> board = new HashMap<Square, Piece>();
 
     board.put(new Square("H8"), new Rook(Color.BLACK));
+    board.put(new Square("A8"), new Rook(Color.BLACK));
 
     board.put(new Square("B8"), new Knight(Color.BLACK));
     board.put(new Square("G8"), new Knight(Color.BLACK));
@@ -36,6 +37,7 @@ public class Chessboard {
 
     board.put(new Square("E8"), new King(Color.BLACK));
 
+    board.put(new Square("A7"), new BlackPawn());
     board.put(new Square("B7"), new BlackPawn());
     board.put(new Square("C7"), new BlackPawn());
     board.put(new Square("D7"), new BlackPawn());
@@ -65,7 +67,6 @@ public class Chessboard {
     board.put(new Square("F2"), new WhitePawn());
     board.put(new Square("G2"), new WhitePawn());
     board.put(new Square("H2"), new WhitePawn());
-    board.put(new Square("A7"), new WhitePawn());
     return board;
   }
 
