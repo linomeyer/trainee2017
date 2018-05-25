@@ -24,11 +24,11 @@ public class ConsoleMain {
     GameController gameController = new GameController();
 
     try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-      System.out.print(Messages.getString("ConsoleMain.0")); //$NON-NLS-1$
+      System.out.print(Messages.getString("createGame")); //$NON-NLS-1$
       String input = br.readLine();
       if (input.equals("c")) { //$NON-NLS-1$
         while (repeat) {
-          System.out.print(Messages.getString("ConsoleMain.2")); //$NON-NLS-1$
+          System.out.print(Messages.getString("createChessboard")); //$NON-NLS-1$
           input = br.readLine();
           validationState = gameController.createCustomGame(input);
           if (ValidationState.OK == validationState) {
@@ -42,7 +42,7 @@ public class ConsoleMain {
       repeat = true;
       while (repeat) {
         printChessboard(game);
-        System.out.print(Messages.getString("ConsoleMain.3")); //$NON-NLS-1$
+        System.out.print(Messages.getString("executeMove")); //$NON-NLS-1$
         input = br.readLine();
 
         if (input.equals("quit")) { //$NON-NLS-1$
@@ -67,18 +67,18 @@ public class ConsoleMain {
 
   private static void initializeStates() {
     validationStates.put(ValidationState.OK, Messages.validMove()); // $NON-NLS-1$
-    validationStates.put(ValidationState.UNKNOWN_PIECE, Messages.getString("ConsoleMain.7")); //$NON-NLS-1$
-    validationStates.put(ValidationState.WRONG_LENGTH, Messages.getString("ConsoleMain.8")); //$NON-NLS-1$
+    validationStates.put(ValidationState.UNKNOWN_PIECE, Messages.getString("unknownPiece")); //$NON-NLS-1$
+    validationStates.put(ValidationState.WRONG_LENGTH, Messages.getString("invalidInputLength")); //$NON-NLS-1$
     validationStates.put(ValidationState.INVALID_POSITION_SYNTAX,
-        Messages.getString("ConsoleMain.9")); //$NON-NLS-1$
+        Messages.getString("invalidPositionSyntax")); //$NON-NLS-1$
     validationStates.put(ValidationState.INVALID_CHESSBOARD_SIZE,
-        Messages.getString("ConsoleMain.10")); //$NON-NLS-1$
+        Messages.getString("invalidChessboardSize")); //$NON-NLS-1$
     validationStates.put(ValidationState.INVALID_CHESSBOARD_SYNTAX,
-        Messages.getString("ConsoleMain.11")); //$NON-NLS-1$
-    gameStates.put(GameState.INVALID_MOVE, Messages.getString("ConsoleMain.12")); //$NON-NLS-1$
-    gameStates.put(GameState.INVALID_SQUARE, Messages.getString("ConsoleMain.13")); //$NON-NLS-1$
-    gameStates.put(GameState.PIECE_CAPTURED, Messages.getString("ConsoleMain.14")); //$NON-NLS-1$
-    gameStates.put(GameState.PIECE_MOVED, Messages.getString("ConsoleMain.15")); //$NON-NLS-1$
+        Messages.getString("invalidChessboardSyntax")); //$NON-NLS-1$
+    gameStates.put(GameState.INVALID_MOVE, Messages.getString("invalidMove")); //$NON-NLS-1$
+    gameStates.put(GameState.INVALID_SQUARE, Messages.getString("invalidSquare")); //$NON-NLS-1$
+    gameStates.put(GameState.PIECE_CAPTURED, Messages.getString("pieceCaptured")); //$NON-NLS-1$
+    gameStates.put(GameState.PIECE_MOVED, Messages.getString("piecemoved")); //$NON-NLS-1$
   }
 
   private static void printChessboard(Game game) {
@@ -126,12 +126,11 @@ public class ConsoleMain {
       }
       System.out.println();
     }
-    System.out.print("    "); //$NON-NLS-1$
+    System.out.print("   "); //$NON-NLS-1$
     char width = 'A';
     for (int i = 0; i < chessboard.length; i++) {
       System.out.print(width++ + "  "); //$NON-NLS-1$
     }
     System.out.println("\n"); //$NON-NLS-1$
-
   }
 }
