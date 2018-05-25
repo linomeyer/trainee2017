@@ -112,15 +112,15 @@ public class Chessboard {
     return square.x <= width && square.x > 0 && square.y <= length && square.y > 0;
   }
 
-  public String printChessboard(Game game) {
-    Piece[][] chessboard = game.getChessboard().constituteAsArray();
+  public static String printChessboard(Chessboard chessboard) {
+    Piece[][] chessboardArray = chessboard.constituteAsArray();
     String printedChessboard = "";
 
     printedChessboard += "\n";
-    for (int y = chessboard[0].length - 1; y >= 0; y--) {
+    for (int y = chessboardArray[0].length - 1; y >= 0; y--) {
       printedChessboard += y + 1 + " |";//$NON-NLS-1$
-      for (int x = 0; x < chessboard.length; x++) {
-        Piece piece = chessboard[x][y];
+      for (int x = 0; x < chessboardArray.length; x++) {
+        Piece piece = chessboardArray[x][y];
         try {
           if (piece.color.equals(Color.WHITE)) {
             if (piece.getClass() == new WhitePawn().getClass()) {
@@ -159,7 +159,7 @@ public class Chessboard {
     }
     printedChessboard += "   "; //$NON-NLS-1$
     char width = 'A';
-    for (int i = 0; i < chessboard.length; i++) {
+    for (int i = 0; i < chessboardArray.length; i++) {
       printedChessboard += width++ + "  "; //$NON-NLS-1$
     }
     printedChessboard += "\n\n"; //$NON-NLS-1$
