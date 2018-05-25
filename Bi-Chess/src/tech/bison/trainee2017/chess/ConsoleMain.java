@@ -8,7 +8,6 @@ import java.util.HashMap;
 
 import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.InputValidator.ValidationState;
-import tech.bison.trainee2017.chess.Piece.Color;
 
 public class ConsoleMain {
   static final HashMap<ValidationState, String> validationStates = new HashMap<ValidationState, String>();
@@ -41,7 +40,7 @@ public class ConsoleMain {
       }
       repeat = true;
       while (repeat) {
-        printChessboard(game);
+        System.out.print(game.getChessboard().printChessboard(game));
         System.out.print(Messages.getString("executeMove")); //$NON-NLS-1$
         input = br.readLine();
 
@@ -79,58 +78,5 @@ public class ConsoleMain {
     gameStates.put(GameState.INVALID_SQUARE, Messages.getString("invalidSquare")); //$NON-NLS-1$
     gameStates.put(GameState.PIECE_CAPTURED, Messages.getString("pieceCaptured")); //$NON-NLS-1$
     gameStates.put(GameState.PIECE_MOVED, Messages.getString("piecemoved")); //$NON-NLS-1$
-  }
-
-  private static void printChessboard(Game game) {
-
-    Piece[][] chessboard = game.getChessboard().constituteAsArray();
-
-    System.out.println();
-    for (int y = chessboard[0].length - 1; y >= 0; y--) {
-      System.out.print(y + 1 + " |");//$NON-NLS-1$
-      for (int x = 0; x < chessboard.length; x++) {
-        Piece piece = chessboard[x][y];
-        try {
-          if (piece.color.equals(Color.WHITE)) {
-            if (piece.getClass() == new WhitePawn().getClass()) {
-              System.out.print("♟\u2004|"); //$NON-NLS-1$
-            } else if (piece.getClass() == new King().getClass()) {
-              System.out.print("♚\u2004|"); //$NON-NLS-1$
-            } else if (piece.getClass() == new Queen().getClass()) {
-              System.out.print("♛\u2004|"); //$NON-NLS-1$
-            } else if (piece.getClass() == new Rook().getClass()) {
-              System.out.print("♜\u2004|"); //$NON-NLS-1$
-            } else if (piece.getClass() == new Bishop().getClass()) {
-              System.out.print("♝\u2004|"); //$NON-NLS-1$
-            } else if (piece.getClass() == new Knight().getClass()) {
-              System.out.print("♞\u2004|"); //$NON-NLS-1$
-            }
-          } else if (piece.color.equals(Color.BLACK)) {
-            if (piece.getClass() == new BlackPawn().getClass()) {
-              System.out.print("♙\u2004|"); //$NON-NLS-1$
-            } else if (piece.getClass() == new King().getClass()) {
-              System.out.print("♔\u2004|"); //$NON-NLS-1$
-            } else if (piece.getClass() == new Queen().getClass()) {
-              System.out.print("♕\u2004|"); //$NON-NLS-1$
-            } else if (piece.getClass() == new Rook().getClass()) {
-              System.out.print("♖\u2004|"); //$NON-NLS-1$
-            } else if (piece.getClass() == new Bishop().getClass()) {
-              System.out.print("♗\u2004|"); //$NON-NLS-1$
-            } else if (piece.getClass() == new Knight().getClass()) {
-              System.out.print("♘\u2004|"); //$NON-NLS-1$
-            }
-          }
-        } catch (NullPointerException e) {
-          System.out.print("  |"); //$NON-NLS-1$
-        }
-      }
-      System.out.println();
-    }
-    System.out.print("   "); //$NON-NLS-1$
-    char width = 'A';
-    for (int i = 0; i < chessboard.length; i++) {
-      System.out.print(width++ + "  "); //$NON-NLS-1$
-    }
-    System.out.println("\n"); //$NON-NLS-1$
   }
 }

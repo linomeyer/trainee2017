@@ -112,6 +112,60 @@ public class Chessboard {
     return square.x <= width && square.x > 0 && square.y <= length && square.y > 0;
   }
 
+  public String printChessboard(Game game) {
+    Piece[][] chessboard = game.getChessboard().constituteAsArray();
+    String printedChessboard = "";
+
+    printedChessboard += "\n";
+    for (int y = chessboard[0].length - 1; y >= 0; y--) {
+      printedChessboard += y + 1 + " |";//$NON-NLS-1$
+      for (int x = 0; x < chessboard.length; x++) {
+        Piece piece = chessboard[x][y];
+        try {
+          if (piece.color.equals(Color.WHITE)) {
+            if (piece.getClass() == new WhitePawn().getClass()) {
+              printedChessboard += "♟\u2004|"; //$NON-NLS-1$
+            } else if (piece.getClass() == new King().getClass()) {
+              printedChessboard += "♚\u2004|"; //$NON-NLS-1$
+            } else if (piece.getClass() == new Queen().getClass()) {
+              printedChessboard += "♛\u2004|"; //$NON-NLS-1$
+            } else if (piece.getClass() == new Rook().getClass()) {
+              printedChessboard += "♜\u2004|"; //$NON-NLS-1$
+            } else if (piece.getClass() == new Bishop().getClass()) {
+              printedChessboard += "♝\u2004|"; //$NON-NLS-1$
+            } else if (piece.getClass() == new Knight().getClass()) {
+              printedChessboard += "♞\u2004|"; //$NON-NLS-1$
+            }
+          } else if (piece.color.equals(Color.BLACK)) {
+            if (piece.getClass() == new BlackPawn().getClass()) {
+              printedChessboard += "♙\u2004|"; //$NON-NLS-1$
+            } else if (piece.getClass() == new King().getClass()) {
+              printedChessboard += "♔\u2004|"; //$NON-NLS-1$
+            } else if (piece.getClass() == new Queen().getClass()) {
+              printedChessboard += "♕\u2004|"; //$NON-NLS-1$
+            } else if (piece.getClass() == new Rook().getClass()) {
+              printedChessboard += "♖\u2004|"; //$NON-NLS-1$
+            } else if (piece.getClass() == new Bishop().getClass()) {
+              printedChessboard += "♗\u2004|"; //$NON-NLS-1$
+            } else if (piece.getClass() == new Knight().getClass()) {
+              printedChessboard += "♘\u2004|"; //$NON-NLS-1$
+            }
+          }
+        } catch (NullPointerException e) {
+          printedChessboard += "  |"; //$NON-NLS-1$
+        }
+      }
+      printedChessboard += "\n";
+    }
+    printedChessboard += "   "; //$NON-NLS-1$
+    char width = 'A';
+    for (int i = 0; i < chessboard.length; i++) {
+      printedChessboard += width++ + "  "; //$NON-NLS-1$
+    }
+    printedChessboard += "\n\n"; //$NON-NLS-1$
+    return printedChessboard;
+  }
+
   @Override
   public boolean equals(Object obj) {
     if (this == obj)
