@@ -87,37 +87,37 @@ public class ConsoleMain {
 
     System.out.println();
     for (int y = chessboard[0].length - 1; y >= 0; y--) {
-      System.out.print(y + 1 + "  |"); //$NON-NLS-1$
+      System.out.print(y + 1 + " |");//$NON-NLS-1$
       for (int x = 0; x < chessboard.length; x++) {
         Piece piece = chessboard[x][y];
         try {
           if (piece.color.equals(Color.WHITE)) {
             if (piece.getClass() == new WhitePawn().getClass()) {
-              System.out.print("WP|"); //$NON-NLS-1$
+              System.out.print("♟\u2004|"); //$NON-NLS-1$
             } else if (piece.getClass() == new King().getClass()) {
-              System.out.print("♚|"); //$NON-NLS-1$
+              System.out.print("♚\u2004|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Queen().getClass()) {
-              System.out.print("WQ|"); //$NON-NLS-1$
+              System.out.print("♛\u2004|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Rook().getClass()) {
-              System.out.print("WR|"); //$NON-NLS-1$
+              System.out.print("♜\u2004|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Bishop().getClass()) {
-              System.out.print("WB|"); //$NON-NLS-1$
+              System.out.print("♝\u2004|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Knight().getClass()) {
-              System.out.print("WN|"); //$NON-NLS-1$
+              System.out.print("♞\u2004|"); //$NON-NLS-1$
             }
           } else if (piece.color.equals(Color.BLACK)) {
             if (piece.getClass() == new BlackPawn().getClass()) {
-              System.out.print("BP|"); //$NON-NLS-1$
+              System.out.print("♙\u2004|"); //$NON-NLS-1$
             } else if (piece.getClass() == new King().getClass()) {
-              System.out.print("BK|"); //$NON-NLS-1$
+              System.out.print("♔\u2004|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Queen().getClass()) {
-              System.out.print("BQ|"); //$NON-NLS-1$
+              System.out.print("♕\u2004|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Rook().getClass()) {
-              System.out.print("BR|"); //$NON-NLS-1$
+              System.out.print("♖\u2004|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Bishop().getClass()) {
-              System.out.print("BB|"); //$NON-NLS-1$
+              System.out.print("♗\u2004|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Knight().getClass()) {
-              System.out.print("BN|"); //$NON-NLS-1$
+              System.out.print("♘\u2004|"); //$NON-NLS-1$
             }
           }
         } catch (NullPointerException e) {
