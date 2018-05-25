@@ -123,6 +123,11 @@ public class Chessboard {
         Piece piece = chessboardArray[x][y];
         try {
           if (piece.color.equals(Color.WHITE)) {
+            /*
+             * Statt den ganzen if Methoden wäre es möglich, in der Figur eine
+             * getSymbol()-Methode zu implementieren, die dann das entsprechende Symbol
+             * (z.B. ♛ beim King) zurückgibt
+             */
             if (piece.getClass() == new WhitePawn().getClass()) {
               printedChessboard += "♟\u2004|"; //$NON-NLS-1$
             } else if (piece.getClass() == new King().getClass()) {

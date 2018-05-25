@@ -66,17 +66,17 @@ public class ConsoleMain {
 
   private static void initializeStates() {
     validationStates.put(ValidationState.OK, Messages.validMove()); // $NON-NLS-1$
-    validationStates.put(ValidationState.UNKNOWN_PIECE, Messages.getString("unknownPiece")); //$NON-NLS-1$
-    validationStates.put(ValidationState.WRONG_LENGTH, Messages.getString("invalidInputLength")); //$NON-NLS-1$
+    validationStates.put(ValidationState.UNKNOWN_PIECE, Messages.getString("UNKNOWN_PIECE")); //$NON-NLS-1$
+    validationStates.put(ValidationState.WRONG_LENGTH, Messages.getString("WRONG_LENGTH")); //$NON-NLS-1$
     validationStates.put(ValidationState.INVALID_POSITION_SYNTAX,
-        Messages.getString("invalidPositionSyntax")); //$NON-NLS-1$
+        Messages.getString("INVALID_POSITION_SYNTAX")); //$NON-NLS-1$
     validationStates.put(ValidationState.INVALID_CHESSBOARD_SIZE,
-        Messages.getString("invalidChessboardSize")); //$NON-NLS-1$
+        Messages.getString("INVALID_CHESSBOARD_SIZE")); //$NON-NLS-1$
     validationStates.put(ValidationState.INVALID_CHESSBOARD_SYNTAX,
-        Messages.getString("invalidChessboardSyntax")); //$NON-NLS-1$
-    gameStates.put(GameState.INVALID_MOVE, Messages.getString("invalidMove")); //$NON-NLS-1$
-    gameStates.put(GameState.INVALID_SQUARE, Messages.getString("invalidSquare")); //$NON-NLS-1$
-    gameStates.put(GameState.PIECE_CAPTURED, Messages.getString("pieceCaptured")); //$NON-NLS-1$
-    gameStates.put(GameState.PIECE_MOVED, Messages.getString("piecemoved")); //$NON-NLS-1$
+        Messages.getString("INVALID_CHESSBOARD_SYNTAX")); //$NON-NLS-1$
+    gameStates.put(GameState.INVALID_MOVE, Messages.getString("INVALID_MOVE")); //$NON-NLS-1$
+    gameStates.put(GameState.INVALID_SQUARE, Messages.getString("INVALID_SQUARE")); //$NON-NLS-1$
+    gameStates.put(GameState.PIECE_CAPTURED, Messages.getString("PIECE_CAPTURED")); //$NON-NLS-1$
+    gameStates.put(GameState.PIECE_MOVED, Messages.getString("PIECE_MOVED")); //$NON-NLS-1$
   }
 }
