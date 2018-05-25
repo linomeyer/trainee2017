@@ -14,7 +14,7 @@ public class ConsoleMain {
   static final HashMap<ValidationState, String> validationStates = new HashMap<ValidationState, String>();
   static final HashMap<GameState, String> gameStates = new HashMap<GameState, String>();
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) {
     initializeStates();
     boolean repeat = true;
     Game game = new Game();
@@ -22,60 +22,63 @@ public class ConsoleMain {
     GameState gameState;
     InputValidator inputValidator = new InputValidator();
     GameController gameController = new GameController();
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    System.out.print("Wollen Sie ein normales oder ein custom Spiel starten [n, c]? ");
-    String input = br.readLine();
-    if (input.equals("c")) {
-      while (repeat) {
-        System.out.print("Wie gross soll das Spielfeld sein [z.B. x,y | max 26,26]? ");
-        input = br.readLine();
-        validationState = gameController.createCustomGame(input);
-        if (ValidationState.OK == validationState) {
-          repeat = false;
-          game = gameController.game;
-        } else {
-          System.out.println(validationStates.get(validationState));
-        }
-      }
-    }
-    repeat = true;
-    while (repeat) {
-      printChessboard(game);
-      System.out.print("Zug ausführen: ");
-      input = br.readLine();
-
-      if (input.equals("quit")) {
-        repeat = false;
-      } else {
-        ArrayList<ValidationState> state = inputValidator.validateMove(input);
-        if (state.get(0).equals(ValidationState.OK)) {
-          Square[] squares = gameController.getSquares(input);
-          gameState = game.movePiece(new Movement(squares[0], squares[1]));
-          System.out.println("\n" + gameStates.get(gameState));
-        } else {
-          for (ValidationState s : state) {
-            System.out.println(validationStates.get(s));
+    try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+      System.out.print(Messages.getString("ConsoleMain.0")); //$NON-NLS-1$
+      String input = br.readLine();
+      if (input.equals("c")) { //$NON-NLS-1$
+        while (repeat) {
+          System.out.print(Messages.getString("ConsoleMain.2")); //$NON-NLS-1$
+          input = br.readLine();
+          validationState = gameController.createCustomGame(input);
+          if (ValidationState.OK == validationState) {
+            repeat = false;
+            game = gameController.game;
+          } else {
+            System.out.println(validationStates.get(validationState));
           }
         }
       }
+      repeat = true;
+      while (repeat) {
+        printChessboard(game);
+        System.out.print(Messages.getString("ConsoleMain.3")); //$NON-NLS-1$
+        input = br.readLine();
+
+        if (input.equals("quit")) { //$NON-NLS-1$
+          repeat = false;
+        } else {
+          ArrayList<ValidationState> state = inputValidator.validateMove(input);
+          if (state.get(0).equals(ValidationState.OK)) {
+            Square[] squares = gameController.getSquares(input);
+            gameState = game.movePiece(new Movement(squares[0], squares[1]));
+            System.out.println("\n" + gameStates.get(gameState)); //$NON-NLS-1$
+          } else {
+            for (ValidationState s : state) {
+              System.out.println(validationStates.get(s));
+            }
+          }
+        }
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
     }
   }
 
   private static void initializeStates() {
-    validationStates.put(ValidationState.OK, "Ihr Zug ist gültig");
-    validationStates.put(ValidationState.UNKNOWN_PIECE, "Ihre eingegebene Figur gibt es nicht");
-    validationStates.put(ValidationState.WRONG_LENGTH, "Ihre Eingabe hatte die falsche Länge");
+    validationStates.put(ValidationState.OK, Messages.validMove()); // $NON-NLS-1$
+    validationStates.put(ValidationState.UNKNOWN_PIECE, Messages.getString("ConsoleMain.7")); //$NON-NLS-1$
+    validationStates.put(ValidationState.WRONG_LENGTH, Messages.getString("ConsoleMain.8")); //$NON-NLS-1$
     validationStates.put(ValidationState.INVALID_POSITION_SYNTAX,
-        "Für die Positionen wurde eine falsche Syntax angewendet");
+        Messages.getString("ConsoleMain.9")); //$NON-NLS-1$
     validationStates.put(ValidationState.INVALID_CHESSBOARD_SIZE,
-        "Es wurde eine falsche Grösse für das Schachbrett eingegeben. Es ist maximal eine Grösse von 26x26 erlaubt.");
+        Messages.getString("ConsoleMain.10")); //$NON-NLS-1$
     validationStates.put(ValidationState.INVALID_CHESSBOARD_SYNTAX,
-        "Für die initialisierung des Schachbretts wurde eine falsche Syntax benutzt.");
-    gameStates.put(GameState.INVALID_MOVE, "Der Zug ist ungültig.");
-    gameStates.put(GameState.INVALID_SQUARE, "Die Position gibt es auf dem Schachbrett nicht.");
-    gameStates.put(GameState.PIECE_CAPTURED, "Es wurde eine Figur geschlagen.");
-    gameStates.put(GameState.PIECE_MOVED, "Die figur wurde bewegt.");
+        Messages.getString("ConsoleMain.11")); //$NON-NLS-1$
+    gameStates.put(GameState.INVALID_MOVE, Messages.getString("ConsoleMain.12")); //$NON-NLS-1$
+    gameStates.put(GameState.INVALID_SQUARE, Messages.getString("ConsoleMain.13")); //$NON-NLS-1$
+    gameStates.put(GameState.PIECE_CAPTURED, Messages.getString("ConsoleMain.14")); //$NON-NLS-1$
+    gameStates.put(GameState.PIECE_MOVED, Messages.getString("ConsoleMain.15")); //$NON-NLS-1$
   }
 
   private static void printChessboard(Game game) {
@@ -84,51 +87,51 @@ public class ConsoleMain {
 
     System.out.println();
     for (int y = chessboard[0].length - 1; y >= 0; y--) {
-      System.out.print(y + 1 + "  |");
+      System.out.print(y + 1 + "  |"); //$NON-NLS-1$
       for (int x = 0; x < chessboard.length; x++) {
         Piece piece = chessboard[x][y];
         try {
           if (piece.color.equals(Color.WHITE)) {
             if (piece.getClass() == new WhitePawn().getClass()) {
-              System.out.print("WP|");
+              System.out.print("WP|"); //$NON-NLS-1$
             } else if (piece.getClass() == new King().getClass()) {
-              System.out.print("WK|");
+              System.out.print("â™š|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Queen().getClass()) {
-              System.out.print("WQ|");
+              System.out.print("WQ|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Rook().getClass()) {
-              System.out.print("WR|");
+              System.out.print("WR|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Bishop().getClass()) {
-              System.out.print("WB|");
+              System.out.print("WB|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Knight().getClass()) {
-              System.out.print("WN|");
+              System.out.print("WN|"); //$NON-NLS-1$
             }
           } else if (piece.color.equals(Color.BLACK)) {
             if (piece.getClass() == new BlackPawn().getClass()) {
-              System.out.print("BP|");
+              System.out.print("BP|"); //$NON-NLS-1$
             } else if (piece.getClass() == new King().getClass()) {
-              System.out.print("BK|");
+              System.out.print("BK|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Queen().getClass()) {
-              System.out.print("BQ|");
+              System.out.print("BQ|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Rook().getClass()) {
-              System.out.print("BR|");
+              System.out.print("BR|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Bishop().getClass()) {
-              System.out.print("BB|");
+              System.out.print("BB|"); //$NON-NLS-1$
             } else if (piece.getClass() == new Knight().getClass()) {
-              System.out.print("BN|");
+              System.out.print("BN|"); //$NON-NLS-1$
             }
           }
         } catch (NullPointerException e) {
-          System.out.print("  |");
+          System.out.print("  |"); //$NON-NLS-1$
         }
       }
       System.out.println();
     }
-    System.out.print("    ");
+    System.out.print("    "); //$NON-NLS-1$
     char width = 'A';
     for (int i = 0; i < chessboard.length; i++) {
-      System.out.print(width++ + "  ");
+      System.out.print(width++ + "  "); //$NON-NLS-1$
     }
-    System.out.println("\n");
+    System.out.println("\n"); //$NON-NLS-1$
 
   }
 }

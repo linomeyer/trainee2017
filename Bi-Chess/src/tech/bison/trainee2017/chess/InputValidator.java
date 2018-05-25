@@ -56,7 +56,6 @@ public class InputValidator {
       Integer.parseInt(Character.toString(endPosition.charAt(1)));
       boolean checkPositions = startPosition.charAt(0) >= 'a' && startPosition.charAt(0) <= 'z'
           && endPosition.charAt(0) >= 'a' && endPosition.charAt(0) <= 'z';
-
       if (checkPositions) {
         return true;
       } else {
@@ -65,7 +64,5 @@ public class InputValidator {
     } catch (Exception e) {
       return false;
     }
-
   }
-
 }
