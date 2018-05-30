@@ -4,17 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.InputValidator.ValidationState;
 
 public class ConsoleMain {
-  static final HashMap<ValidationState, String> validationStates = new HashMap<ValidationState, String>();
-  static final HashMap<GameState, String> gameStates = new HashMap<GameState, String>();
 
   public static void main(String[] args) {
-    initializeStates();
     boolean repeat = true;
     Game game = new Game();
     ValidationState validationState;
@@ -27,14 +23,11 @@ public class ConsoleMain {
       String input = br.readLine();
       if (input.equals("c")) { //$NON-NLS-1$
         while (repeat) {
-          System.out.print(Messages.getString("createChessboard")); //$NON-NLS-1$
+          game = gameController.createCustomGame();
+          System.out.println(Messages.getString("addPiece"));
           input = br.readLine();
-          validationState = gameController.createCustomGame(input);
-          if (ValidationState.OK == validationState) {
+          if (input.equals("start")) {
             repeat = false;
-            game = gameController.game;
-          } else {
-            System.out.println(validationStates.get(validationState));
           }
         }
       }
@@ -51,10 +44,10 @@ public class ConsoleMain {
           if (state.get(0).equals(ValidationState.OK)) {
             Square[] squares = gameController.getSquares(input);
             gameState = game.movePiece(new Movement(squares[0], squares[1]));
-            System.out.println("\n" + gameStates.get(gameState)); //$NON-NLS-1$
+            System.out.println("\n" + Messages.getString(gameState.toString())); //$NON-NLS-1$
           } else {
             for (ValidationState s : state) {
-              System.out.println(validationStates.get(s));
+              System.out.println(Messages.getString(s.toString()));
             }
           }
         }
@@ -64,19 +57,4 @@ public class ConsoleMain {
     }
   }
 
-  private static void initializeStates() {
-    validationStates.put(ValidationState.OK, Messages.validMove()); // $NON-NLS-1$
-    validationStates.put(ValidationState.UNKNOWN_PIECE, Messages.getString("UNKNOWN_PIECE")); //$NON-NLS-1$
-    validationStates.put(ValidationState.WRONG_LENGTH, Messages.getString("WRONG_LENGTH")); //$NON-NLS-1$
-    validationStates.put(ValidationState.INVALID_POSITION_SYNTAX,
-        Messages.getString("INVALID_POSITION_SYNTAX")); //$NON-NLS-1$
-    validationStates.put(ValidationState.INVALID_CHESSBOARD_SIZE,
-        Messages.getString("INVALID_CHESSBOARD_SIZE")); //$NON-NLS-1$
-    validationStates.put(ValidationState.INVALID_CHESSBOARD_SYNTAX,
-        Messages.getString("INVALID_CHESSBOARD_SYNTAX")); //$NON-NLS-1$
-    gameStates.put(GameState.INVALID_MOVE, Messages.getString("INVALID_MOVE")); //$NON-NLS-1$
-    gameStates.put(GameState.INVALID_SQUARE, Messages.getString("INVALID_SQUARE")); //$NON-NLS-1$
-    gameStates.put(GameState.PIECE_CAPTURED, Messages.getString("PIECE_CAPTURED")); //$NON-NLS-1$
-    gameStates.put(GameState.PIECE_MOVED, Messages.getString("PIECE_MOVED")); //$NON-NLS-1$
-  }
 }

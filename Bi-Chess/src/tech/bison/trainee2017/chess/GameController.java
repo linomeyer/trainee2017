@@ -1,23 +1,10 @@
 package tech.bison.trainee2017.chess;
 
-import tech.bison.trainee2017.chess.InputValidator.ValidationState;
-
 public class GameController {
-  Game game = new Game();
 
-  public ValidationState createCustomGame(String input) {
-    try {
-      int indexOfComma = input.indexOf(',');
-      int x = Integer.parseInt(input.substring(0, indexOfComma));
-      int y = Integer.parseInt(input.substring(indexOfComma + 1, input.length()));
-      if (x > 26 || y > 26 || x < 1 || y < 1) {
-        return ValidationState.INVALID_CHESSBOARD_SIZE;
-      }
-      game = new Game(new Chessboard(x, y));
-      return ValidationState.OK;
-    } catch (Exception e) {
-      return ValidationState.INVALID_CHESSBOARD_SYNTAX;
-    }
+  public Game createCustomGame() {
+    Chessboard chessboard = new Chessboard(8, 8);
+    return new Game(chessboard);
   }
 
   public Square[] getSquares(String input) {

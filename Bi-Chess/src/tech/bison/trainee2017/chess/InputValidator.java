@@ -6,7 +6,7 @@ public class InputValidator {
   public Game game;
 
   public enum ValidationState {
-    OK, WRONG_LENGTH, UNKNOWN_PIECE, INVALID_POSITION_SYNTAX, INVALID_CHESSBOARD_SIZE, INVALID_CHESSBOARD_SYNTAX
+    OK, WRONG_LENGTH, UNKNOWN_PIECE, UNKNOWN_COLOR, INVALID_SQUARE_SYNTAX
   }
 
   public boolean validateLength(String input) {
@@ -33,13 +33,15 @@ public class InputValidator {
     if (!validateLength(input)) {
       states.add(ValidationState.WRONG_LENGTH);
     }
-    if (!validatePiece(input.charAt(0))) {
-      states.add(ValidationState.UNKNOWN_PIECE);
+    try {
+      if (!validatePiece(input.charAt(0))) {
+        states.add(ValidationState.UNKNOWN_PIECE);
+      }
+      if (!validatePositions(input)) {
+        states.add(ValidationState.INVALID_SQUARE_SYNTAX);
+      }
+    } catch (StringIndexOutOfBoundsException e) {
     }
-    if (!validatePositions(input)) {
-      states.add(ValidationState.INVALID_POSITION_SYNTAX);
-    }
-
     if (states.isEmpty()) {
       states.add(ValidationState.OK);
     }

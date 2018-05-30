@@ -64,8 +64,10 @@ public class InputValidatorTest {
       return Arrays.asList(new Object[][] {
           { "Rf3-f5", new ValidationState[] { ValidationState.OK } },
           { "qf3-f5", new ValidationState[] { ValidationState.UNKNOWN_PIECE } },
-          { "Rf3-f", new ValidationState[] { ValidationState.WRONG_LENGTH, ValidationState.INVALID_POSITION_SYNTAX } },
-          { "rf3-f", new ValidationState[] { ValidationState.WRONG_LENGTH, ValidationState.UNKNOWN_PIECE, ValidationState.INVALID_POSITION_SYNTAX } }
+          { "Rf3-f", new ValidationState[] { ValidationState.WRONG_LENGTH, ValidationState.INVALID_SQUARE_SYNTAX } },
+          { "rf3-f",
+              new ValidationState[] { ValidationState.WRONG_LENGTH, ValidationState.UNKNOWN_PIECE,
+                  ValidationState.INVALID_SQUARE_SYNTAX } }
       });
     }
 

@@ -22,10 +22,11 @@ public class GameControllerTest {
     @Parameters(name = "is {0} valid: {1}")
     public static List<Object[]> data() {
       return Arrays.asList(new Object[][] {
-          { "28,32", ValidationState.INVALID_CHESSBOARD_SIZE },
-          { "1-3", ValidationState.INVALID_CHESSBOARD_SYNTAX },
-          { "a,b", ValidationState.INVALID_CHESSBOARD_SYNTAX },
-          { "10,10", ValidationState.OK }
+          { "WRd4", ValidationState.OK },
+          { "Pa3", ValidationState.WRONG_LENGTH },
+          { "CNg8", ValidationState.UNKNOWN_COLOR },
+          { "WGe3", ValidationState.UNKNOWN_PIECE },
+          { "BKu7", ValidationState.INVALID_SQUARE_SYNTAX }
       });
     }
 
@@ -39,11 +40,8 @@ public class GameControllerTest {
     public void input_validateCustomGame() throws Exception {
       GameController inputValidator = new GameController();
 
-      assertThat(inputValidator.createCustomGame(input), is(state));
+      assertThat(inputValidator.createCustomGame(), is(state));
     }
   }
 
-  public static class GameControllerNormalTests {
-
-  }
 }

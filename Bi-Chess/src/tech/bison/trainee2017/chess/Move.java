@@ -15,23 +15,27 @@ public class Move {
       throws InvalidMoveException, InvalidSquareException {
     Square start = movement.start;
 
-    Piece pieceToMove = chessboard.getPiece(start);
+    try {
+      Piece pieceToMove = chessboard.getPiece(start);
 
-    boolean isAValidMove = pieceToMove.isAValidMove(movement);
+      boolean isAValidMove = pieceToMove.isAValidMove(movement);
 
-    if (isAValidMove) {
-      try {
-        if (pieceToMove.color == chessboard.getPiece(movement.end).color) {
-          throw new InvalidMoveException();
-        } else {
+      if (isAValidMove) {
+        try {
+          if (pieceToMove.color == chessboard.getPiece(movement.end).color) {
+            throw new InvalidMoveException();
+          } else {
+            Piece capturedPiece = chessboard.movePiece(movement);
+            return new Move(pieceToMove, capturedPiece, movement);
+          }
+        } catch (NullPointerException e) {
           Piece capturedPiece = chessboard.movePiece(movement);
           return new Move(pieceToMove, capturedPiece, movement);
         }
-      } catch (NullPointerException e) {
-        Piece capturedPiece = chessboard.movePiece(movement);
-        return new Move(pieceToMove, capturedPiece, movement);
+      } else {
+        throw new InvalidMoveException();
       }
-    } else {
+    } catch (NullPointerException e) {
       throw new InvalidMoveException();
     }
   }
