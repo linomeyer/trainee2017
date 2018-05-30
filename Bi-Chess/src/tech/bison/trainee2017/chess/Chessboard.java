@@ -169,4 +169,13 @@ public class Chessboard {
     }
     return chessboard;
   }
+
+  public Piece removePiece(Square square) {
+    Piece pieceToRemove = chessboard.get(square);
+
+    if (pieceToRemove != null) {
+      chessboard.remove(square);
+    }
+    return pieceToRemove;
+  }
 }

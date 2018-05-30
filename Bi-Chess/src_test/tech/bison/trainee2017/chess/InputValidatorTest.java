@@ -88,6 +88,40 @@ public class InputValidatorTest {
     }
   }
 
+  @RunWith(Parameterized.class)
+  public static class InputValidatorValidateAddPieceTest {
+    @Parameters(name = "is {0} valid: {1}")
+    public static List<Object[]> data() {
+      return Arrays.asList(new Object[][] {
+          { "BRf5", new ValidationState[] { ValidationState.OK } },
+          { "WPf", new ValidationState[] { ValidationState.WRONG_LENGTH } },
+          { "BKf5-h5", new ValidationState[] { ValidationState.WRONG_LENGTH } },
+          { "RMf4", new ValidationState[] { ValidationState.OK } },
+          { "WAg1", new ValidationState[] { ValidationState.UNKNOWN_PIECE } },
+          { "YKh4", new ValidationState[] { ValidationState.UNKNOWN_COLOR } },
+          { "ZT9h",
+              new ValidationState[] { ValidationState.UNKNOWN_PIECE, ValidationState.UNKNOWN_COLOR,
+                  ValidationState.INVALID_SQUARE_SYNTAX } }
+      });
+    }
+
+    @Parameter(0)
+    public String input;
+
+    @Parameter(1)
+    public ValidationState[] states;
+
+    @Test
+    public void input_validateAddPiece() throws Exception {
+      InputValidator inputValidator = new InputValidator();
+
+      ArrayList<ValidationState> validatedState = inputValidator.validateAddPiece(input);
+      ValidationState[] validatedStateAsArray = validatedState.toArray(new ValidationState[validatedState.size()]);
+
+      assertThat(validatedStateAsArray, is(states));
+    }
+  }
+
   public static class InputValidatorNormalTest {
     @Test
     public void input_validateLength_true() throws Exception {

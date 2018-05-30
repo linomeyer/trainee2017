@@ -126,4 +126,23 @@ public class ChessboardTest {
         "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
         "   A  B  C  D  E  F  G  H  \n\n"));
   }
+
+  @Test
+  public void chessboard_removePiece_pieceIsRemovedFromChessboard() throws Exception {
+    Chessboard chessboard = new Chessboard();
+
+    Piece removedPiece = chessboard.removePiece(new Square("A2"));
+
+    assertThat(removedPiece, is(new WhitePawn()));
+    assertThat(chessboard.getPiece(new Square("A2")), is(nullValue()));
+  }
+
+  @Test
+  public void chessboard_removePiece_pieceCouldNotBeRemoved() throws Exception {
+    Chessboard chessboard = new Chessboard();
+
+    Piece removedPiece = chessboard.removePiece(new Square("F4"));
+
+    assertThat(removedPiece, is(nullValue()));
+  }
 }

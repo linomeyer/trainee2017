@@ -64,15 +64,19 @@ public class InputValidator {
     if (!validateLength(input, 4)) {
       states.add(ValidationState.WRONG_LENGTH);
     }
-    if (!validatePiece(input.charAt(1))) {
-      states.add(ValidationState.UNKNOWN_PIECE);
-    }
-    if (!validateColor(input.charAt(0))) {
-      states.add(ValidationState.UNKNOWN_COLOR);
-    }
-    String square = input.substring(2, 4);
-    if (!validateSquare(square)) {
-      states.add(ValidationState.INVALID_SQUARE_SYNTAX);
+    if (states.isEmpty()) {
+      if (!input.substring(0, 2).equals("RM")) {
+        if (!validatePiece(input.charAt(1))) {
+          states.add(ValidationState.UNKNOWN_PIECE);
+        }
+        if (!validateColor(input.charAt(0))) {
+          states.add(ValidationState.UNKNOWN_COLOR);
+        }
+      }
+      String square = input.substring(2, 4);
+      if (!validateSquare(square)) {
+        states.add(ValidationState.INVALID_SQUARE_SYNTAX);
+      }
     }
     if (states.isEmpty()) {
       states.add(ValidationState.OK);
