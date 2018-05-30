@@ -108,4 +108,22 @@ public class ChessboardTest {
         "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
         "   A  B  C  D  E  F  G  H  \n\n"));
   }
+
+  @Test
+  public void chessboard_movePiece_printChessboard() throws Exception {
+    Game game = new Game();
+    game.movePiece(new Movement(new Square("A2"), new Square("A4")));
+    String printedChessboard = game.getChessboard().printChessboard();
+
+    assertThat(printedChessboard, is("\n" +
+        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
+        "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
+        "6 |  |  |  |  |  |  |  |  |\n" +
+        "5 |  |  |  |  |  |  |  |  |\n" +
+        "4 |♙ |  |  |  |  |  |  |  |\n" +
+        "3 |  |  |  |  |  |  |  |  |\n" +
+        "2 |  |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
+        "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
+        "   A  B  C  D  E  F  G  H  \n\n"));
+  }
 }
