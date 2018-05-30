@@ -9,8 +9,8 @@ public class InputValidator {
     OK, WRONG_LENGTH, UNKNOWN_PIECE, UNKNOWN_COLOR, INVALID_SQUARE_SYNTAX
   }
 
-  public boolean validateLength(String input) {
-    return input.length() == 6;
+  public boolean validateLength(String input, int length) {
+    return input.length() == length;
   }
 
   public boolean validatePiece(char piece) {
@@ -30,17 +30,18 @@ public class InputValidator {
 
   public ArrayList<ValidationState> validateMove(String input) {
     ArrayList<ValidationState> states = new ArrayList<ValidationState>();
-    if (!validateLength(input)) {
+    if (!validateLength(input, 6)) {
       states.add(ValidationState.WRONG_LENGTH);
     }
-    try {
+    if (states.isEmpty()) {
       if (!validatePiece(input.charAt(0))) {
         states.add(ValidationState.UNKNOWN_PIECE);
       }
-      if (!validatePositions(input)) {
+      String startPosition = input.substring(1, 3);
+      String endPosition = input.substring(4, 6);
+      if (!validateSquare(startPosition) || !validateSquare(endPosition)) {
         states.add(ValidationState.INVALID_SQUARE_SYNTAX);
       }
-    } catch (StringIndexOutOfBoundsException e) {
     }
     if (states.isEmpty()) {
       states.add(ValidationState.OK);
@@ -49,22 +50,37 @@ public class InputValidator {
 
   }
 
-  public boolean validatePositions(String input) {
+  public boolean validateSquare(String square) {
     try {
-      String startPosition = input.substring(1, 3);
-      String endPosition = input.substring(4, 6);
-
-      Integer.parseInt(Character.toString(startPosition.charAt(1)));
-      Integer.parseInt(Character.toString(endPosition.charAt(1)));
-      boolean checkPositions = startPosition.charAt(0) >= 'a' && startPosition.charAt(0) <= 'z'
-          && endPosition.charAt(0) >= 'a' && endPosition.charAt(0) <= 'z';
-      if (checkPositions) {
-        return true;
-      } else {
-        return false;
-      }
+      Integer.parseInt(Character.toString(square.charAt(1)));
+      return square.charAt(0) >= 'a' && square.charAt(0) <= 'z';
     } catch (Exception e) {
       return false;
     }
+  }
+
+  public ArrayList<ValidationState> validateAddPiece(String input) {
+    ArrayList<ValidationState> states = new ArrayList<ValidationState>();
+    if (!validateLength(input, 4)) {
+      states.add(ValidationState.WRONG_LENGTH);
+    }
+    if (!validatePiece(input.charAt(1))) {
+      states.add(ValidationState.UNKNOWN_PIECE);
+    }
+    if (!validateColor(input.charAt(0))) {
+      states.add(ValidationState.UNKNOWN_COLOR);
+    }
+    String square = input.substring(2, 4);
+    if (!validateSquare(square)) {
+      states.add(ValidationState.INVALID_SQUARE_SYNTAX);
+    }
+    if (states.isEmpty()) {
+      states.add(ValidationState.OK);
+    }
+    return states;
+  }
+
+  private boolean validateColor(char color) {
+    return color == 'W' || color == 'B';
   }
 }

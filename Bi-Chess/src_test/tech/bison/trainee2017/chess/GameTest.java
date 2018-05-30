@@ -52,4 +52,12 @@ public class GameTest {
     assertThat(state, is(GameState.PIECE_CAPTURED));
   }
 
+  @Test
+  public void customChessGame_addPieces_customChessGameWithPieces() throws Exception {
+    Game game = new Game(new Chessboard(8, 8));
+
+    GameState gameState = game.addPiece(new Square("a2"), new BlackPawn());
+
+    assertThat(gameState, is(GameState.PIECE_ADDED));
+  }
 }

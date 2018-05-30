@@ -13,7 +13,6 @@ public class ConsoleMain {
   public static void main(String[] args) {
     boolean repeat = true;
     Game game = new Game();
-    ValidationState validationState;
     GameState gameState;
     InputValidator inputValidator = new InputValidator();
     GameController gameController = new GameController();
