@@ -23,10 +23,17 @@ public class ConsoleMain {
       if (input.equals("c")) { //$NON-NLS-1$
         while (repeat) {
           game = gameController.createCustomGame();
-          System.out.println(Messages.getString("addPiece"));
+          System.out.println(Messages.getString("addPieces"));
           input = br.readLine();
+          ArrayList<ValidationState> states = inputValidator.validateAddPiece(input);
           if (input.equals("start")) {
             repeat = false;
+          } else if (states.get(0).equals(ValidationState.OK)) {
+            gameController.editPieces(game, input);
+          } else {
+            for (ValidationState validationState : states) {
+              System.out.println(Messages.getString(validationState.toString()));
+            }
           }
         }
       }

@@ -128,7 +128,7 @@ public class ChessboardTest {
   }
 
   @Test
-  public void chessboard_removePiece_pieceIsRemovedFromChessboard() throws Exception {
+  public void chessboard_removePiece_squareWasEmptyNoPieceRemoved() throws Exception {
     Chessboard chessboard = new Chessboard();
 
     Piece removedPiece = chessboard.removePiece(new Square("A2"));

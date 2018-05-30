@@ -7,7 +7,7 @@ public class Game {
   private final ArrayList<Move> moves;
 
   public enum GameState {
-    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE, PIECE_ADDED, SQUARE_OCCUPIED
+    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE, PIECE_ADDED, SQUARE_OCCUPIED, EMPTY_SQUARE, PIECE_REMOVED
   }
 
   public Game() {
@@ -56,6 +56,15 @@ public class Game {
       return GameState.INVALID_SQUARE;
     }
     return GameState.PIECE_ADDED;
+  }
+
+  public GameState removePiece(Square square) {
+    Piece removedPiece = chessboard.removePiece(square);
+
+    if (removedPiece == null) {
+      return GameState.EMPTY_SQUARE;
+    }
+    return GameState.PIECE_REMOVED;
   }
 
 }
