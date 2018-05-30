@@ -21,4 +21,13 @@ public class Knight extends Piece {
     }
     return false;
   }
+
+  @Override
+  protected char getSymbol() {
+    if (color.equals(Color.WHITE)) {
+      return '♘';
+    } else {
+      return '♞';
+    }
+  }
 }

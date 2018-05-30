@@ -90,4 +90,22 @@ public class ChessboardTest {
         { null, new Bishop(Color.WHITE) }
     });
   }
+
+  @Test
+  public void chesboard_printChessboard_stringWithPrintedChessboard() throws Exception {
+    Chessboard chessboard = new Chessboard();
+
+    String printedChessboard = chessboard.printChessboard();
+
+    assertThat(printedChessboard, is("\n" +
+        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
+        "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
+        "6 |  |  |  |  |  |  |  |  |\n" +
+        "5 |  |  |  |  |  |  |  |  |\n" +
+        "4 |  |  |  |  |  |  |  |  |\n" +
+        "3 |  |  |  |  |  |  |  |  |\n" +
+        "2 |♙ |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
+        "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
+        "   A  B  C  D  E  F  G  H  \n\n"));
+  }
 }

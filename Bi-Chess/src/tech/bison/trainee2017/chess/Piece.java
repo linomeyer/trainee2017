@@ -20,6 +20,8 @@ public abstract class Piece {
 
   protected abstract boolean isAValidMove(Movement movement);
 
+  protected abstract char getSymbol();
+
   protected boolean isAMove(int xMovement, int yMovement) {
     if (xMovement == 0 && yMovement == 0) {
       return false;

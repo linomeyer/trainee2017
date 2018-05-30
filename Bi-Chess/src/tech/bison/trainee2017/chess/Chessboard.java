@@ -112,8 +112,8 @@ public class Chessboard {
     return square.x <= width && square.x > 0 && square.y <= length && square.y > 0;
   }
 
-  public static String printChessboard(Chessboard chessboard) {
-    Piece[][] chessboardArray = chessboard.constituteAsArray();
+  public String printChessboard() {
+    Piece[][] chessboardArray = constituteAsArray();
     String printedChessboard = "";
 
     printedChessboard += "\n";
@@ -122,40 +122,7 @@ public class Chessboard {
       for (int x = 0; x < chessboardArray.length; x++) {
         Piece piece = chessboardArray[x][y];
         try {
-          if (piece.color.equals(Color.WHITE)) {
-            /*
-             * Statt den ganzen if Methoden wäre es möglich, in der Figur eine
-             * getSymbol()-Methode zu implementieren, die dann das entsprechende Symbol
-             * (z.B. ♛ beim King) zurückgibt
-             */
-            if (piece.getClass() == new WhitePawn().getClass()) {
-              printedChessboard += "♟\u2004|"; //$NON-NLS-1$
-            } else if (piece.getClass() == new King().getClass()) {
-              printedChessboard += "♚\u2004|"; //$NON-NLS-1$
-            } else if (piece.getClass() == new Queen().getClass()) {
-              printedChessboard += "♛\u2004|"; //$NON-NLS-1$
-            } else if (piece.getClass() == new Rook().getClass()) {
-              printedChessboard += "♜\u2004|"; //$NON-NLS-1$
-            } else if (piece.getClass() == new Bishop().getClass()) {
-              printedChessboard += "♝\u2004|"; //$NON-NLS-1$
-            } else if (piece.getClass() == new Knight().getClass()) {
-              printedChessboard += "♞\u2004|"; //$NON-NLS-1$
-            }
-          } else if (piece.color.equals(Color.BLACK)) {
-            if (piece.getClass() == new BlackPawn().getClass()) {
-              printedChessboard += "♙\u2004|"; //$NON-NLS-1$
-            } else if (piece.getClass() == new King().getClass()) {
-              printedChessboard += "♔\u2004|"; //$NON-NLS-1$
-            } else if (piece.getClass() == new Queen().getClass()) {
-              printedChessboard += "♕\u2004|"; //$NON-NLS-1$
-            } else if (piece.getClass() == new Rook().getClass()) {
-              printedChessboard += "♖\u2004|"; //$NON-NLS-1$
-            } else if (piece.getClass() == new Bishop().getClass()) {
-              printedChessboard += "♗\u2004|"; //$NON-NLS-1$
-            } else if (piece.getClass() == new Knight().getClass()) {
-              printedChessboard += "♘\u2004|"; //$NON-NLS-1$
-            }
-          }
+          printedChessboard += piece.getSymbol() + "\u2004|";
         } catch (NullPointerException e) {
           printedChessboard += "  |"; //$NON-NLS-1$
         }

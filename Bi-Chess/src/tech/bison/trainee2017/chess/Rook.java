@@ -21,4 +21,13 @@ public class Rook extends Piece {
     return true;
   }
 
+  @Override
+  protected char getSymbol() {
+    if (color.equals(Color.WHITE)) {
+      return '♖';
+    } else {
+      return '♜';
+    }
+  }
+
 }

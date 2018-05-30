@@ -1,4 +1,11 @@
 eclipse.preferences.version=1
+encoding//src/tech/bison/trainee2017/chess/Bishop.java=UTF-8
+encoding//src/tech/bison/trainee2017/chess/BlackPawn.java=UTF-8
 encoding//src/tech/bison/trainee2017/chess/Chessboard.java=UTF-8
 encoding//src/tech/bison/trainee2017/chess/ConsoleMain.java=UTF-8
+encoding//src/tech/bison/trainee2017/chess/King.java=UTF-8
+encoding//src/tech/bison/trainee2017/chess/Knight.java=UTF-8
+encoding//src/tech/bison/trainee2017/chess/Queen.java=UTF-8
+encoding//src/tech/bison/trainee2017/chess/Rook.java=UTF-8
+encoding//src/tech/bison/trainee2017/chess/WhitePawn.java=UTF-8
 encoding//src_test/tech/bison/trainee2017/chess/ChessboardTest.java=UTF-8

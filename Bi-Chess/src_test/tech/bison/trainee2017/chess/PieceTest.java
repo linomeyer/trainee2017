@@ -48,6 +48,11 @@ public class PieceTest {
     protected boolean isAValidMove(Movement movement) {
       return false;
     }
+
+    @Override
+    protected char getSymbol() {
+      return '0';
+    }
   }
 
 }

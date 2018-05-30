@@ -24,4 +24,9 @@ public class BlackPawn extends Pawn {
     }
     return false;
   }
+
+  @Override
+  protected char getSymbol() {
+    return '♟';
+  }
 }

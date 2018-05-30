@@ -40,7 +40,7 @@ public class ConsoleMain {
       }
       repeat = true;
       while (repeat) {
-        System.out.print(Chessboard.printChessboard(game.getChessboard()));
+        System.out.print(game.getChessboard().printChessboard());
         System.out.print(Messages.getString("executeMove")); //$NON-NLS-1$
         input = br.readLine();
 
