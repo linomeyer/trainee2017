@@ -21,15 +21,17 @@ public class ConsoleMain {
       System.out.print(Messages.getString("createGame")); //$NON-NLS-1$
       String input = br.readLine();
       if (input.equals("c")) { //$NON-NLS-1$
+        game = gameController.createCustomGame();
         while (repeat) {
-          game = gameController.createCustomGame();
-          System.out.println(Messages.getString("addPieces"));
+          System.out.println(game.getChessboard().printChessboard());
+          System.out.print(Messages.getString("editPieces"));
           input = br.readLine();
           ArrayList<ValidationState> states = inputValidator.validateAddPiece(input);
           if (input.equals("start")) {
             repeat = false;
           } else if (states.get(0).equals(ValidationState.OK)) {
-            gameController.editPieces(game, input);
+            gameState = gameController.editPieces(game, input);
+            System.out.println(Messages.getString(gameState.toString()));
           } else {
             for (ValidationState validationState : states) {
               System.out.println(Messages.getString(validationState.toString()));
@@ -39,7 +41,7 @@ public class ConsoleMain {
       }
       repeat = true;
       while (repeat) {
-        System.out.print(game.getChessboard().printChessboard());
+        System.out.println(game.getChessboard().printChessboard());
         System.out.print(Messages.getString("executeMove")); //$NON-NLS-1$
         input = br.readLine();
 

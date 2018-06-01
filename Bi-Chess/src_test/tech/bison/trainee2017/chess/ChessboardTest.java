@@ -106,7 +106,7 @@ public class ChessboardTest {
         "3 |  |  |  |  |  |  |  |  |\n" +
         "2 |♙ |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
         "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
-        "   A  B  C  D  E  F  G  H  \n\n"));
+        "   A  B  C  D  E  F  G  H  \n"));
   }
 
   @Test
@@ -124,7 +124,7 @@ public class ChessboardTest {
         "3 |  |  |  |  |  |  |  |  |\n" +
         "2 |  |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
         "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
-        "   A  B  C  D  E  F  G  H  \n\n"));
+        "   A  B  C  D  E  F  G  H  \n"));
   }
 
   @Test

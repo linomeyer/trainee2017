@@ -134,7 +134,7 @@ public class Chessboard {
     for (int i = 0; i < chessboardArray.length; i++) {
       printedChessboard += width++ + "  "; //$NON-NLS-1$
     }
-    printedChessboard += "\n\n"; //$NON-NLS-1$
+    printedChessboard += "\n"; //$NON-NLS-1$
     return printedChessboard;
   }
 

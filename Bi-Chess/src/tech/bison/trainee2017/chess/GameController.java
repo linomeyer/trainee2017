@@ -31,37 +31,31 @@ public class GameController {
   }
 
   private Piece getPiece(char color, char piece) {
+    Color pieceColor;
     if (color == 'B') {
-      switch (piece) {
-      case 'P':
-        return new BlackPawn();
-      case 'R':
-        return new Rook(Color.BLACK);
-      case 'N':
-        return new Knight(Color.BLACK);
-      case 'B':
-        return new Bishop(Color.BLACK);
-      case 'Q':
-        return new Queen(Color.BLACK);
-      case 'K':
-        return new King(Color.BLACK);
-      }
+      pieceColor = Color.BLACK;
     } else if (color == 'W') {
-      switch (piece) {
-      case 'P':
-        return new WhitePawn();
-      case 'R':
-        return new Rook(Color.WHITE);
-      case 'N':
-        return new Knight(Color.WHITE);
-      case 'B':
-        return new Bishop(Color.WHITE);
-      case 'Q':
-        return new Queen(Color.WHITE);
-      case 'K':
-        return new King(Color.WHITE);
-      }
+      pieceColor = Color.WHITE;
+    } else {
+      return null;
     }
-    return null;
+
+    switch (piece) {
+    case 'P':
+      return Pawn.createPawn(pieceColor);
+    case 'R':
+      return new Rook(pieceColor);
+    case 'N':
+      return new Knight(pieceColor);
+    case 'B':
+      return new Bishop(pieceColor);
+    case 'Q':
+      return new Queen(pieceColor);
+    case 'K':
+      return new King(pieceColor);
+    default:
+      return null;
+    }
+
   }
 }
