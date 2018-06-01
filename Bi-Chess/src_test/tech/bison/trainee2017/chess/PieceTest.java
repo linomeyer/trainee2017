@@ -50,7 +50,7 @@ public class PieceTest {
     }
 
     @Override
-    protected char getSymbol() {
+    public char getSymbol() {
       return '0';
     }
   }

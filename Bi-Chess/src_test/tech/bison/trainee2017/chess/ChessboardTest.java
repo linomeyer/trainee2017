@@ -2,7 +2,6 @@ package tech.bison.trainee2017.chess;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Rule;
@@ -76,55 +75,6 @@ public class ChessboardTest {
     Chessboard chessboard = new Chessboard(4, 4);
 
     assertThat(chessboard.isAValidSquare(new Square("d3")), is(true));
-  }
-
-  @Test
-  public void customChessboard_addPieces_constituteAsArray() throws Exception {
-    Chessboard chessboard = new Chessboard(2, 2);
-
-    chessboard.addPiece(new Square("A1"), new BlackPawn());
-    chessboard.addPiece(new Square("B2"), new Bishop(Color.WHITE));
-
-    assertArrayEquals(chessboard.constituteAsArray(), new Piece[][] {
-        { new BlackPawn(), null },
-        { null, new Bishop(Color.WHITE) }
-    });
-  }
-
-  @Test
-  public void chesboard_printChessboard_stringWithPrintedChessboard() throws Exception {
-    Chessboard chessboard = new Chessboard();
-
-    String printedChessboard = chessboard.printChessboard();
-
-    assertThat(printedChessboard, is("\n" +
-        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
-        "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
-        "6 |  |  |  |  |  |  |  |  |\n" +
-        "5 |  |  |  |  |  |  |  |  |\n" +
-        "4 |  |  |  |  |  |  |  |  |\n" +
-        "3 |  |  |  |  |  |  |  |  |\n" +
-        "2 |♙ |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
-        "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
-        "   A  B  C  D  E  F  G  H  \n"));
-  }
-
-  @Test
-  public void chessboard_movePiece_printChessboard() throws Exception {
-    Game game = new Game();
-    game.movePiece(new Movement(new Square("A2"), new Square("A4")));
-    String printedChessboard = game.getChessboard().printChessboard();
-
-    assertThat(printedChessboard, is("\n" +
-        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
-        "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
-        "6 |  |  |  |  |  |  |  |  |\n" +
-        "5 |  |  |  |  |  |  |  |  |\n" +
-        "4 |♙ |  |  |  |  |  |  |  |\n" +
-        "3 |  |  |  |  |  |  |  |  |\n" +
-        "2 |  |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
-        "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
-        "   A  B  C  D  E  F  G  H  \n"));
   }
 
   @Test

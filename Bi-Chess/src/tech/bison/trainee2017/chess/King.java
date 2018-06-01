@@ -22,7 +22,7 @@ public class King extends Piece {
   }
 
   @Override
-  protected char getSymbol() {
+  public char getSymbol() {
     if (color.equals(Color.WHITE)) {
       return '♔';
     } else {

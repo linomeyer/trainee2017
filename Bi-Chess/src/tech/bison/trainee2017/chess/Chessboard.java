@@ -5,8 +5,8 @@ import java.util.HashMap;
 import tech.bison.trainee2017.chess.Piece.Color;
 
 public class Chessboard {
-  final int width;
-  final int length;
+  public final int width;
+  public final int length;
   final private HashMap<Square, Piece> chessboard;
 
   public Chessboard() {
@@ -112,32 +112,6 @@ public class Chessboard {
     return square.x <= width && square.x > 0 && square.y <= length && square.y > 0;
   }
 
-  public String printChessboard() {
-    Piece[][] chessboardArray = constituteAsArray();
-    String printedChessboard = "";
-
-    printedChessboard += "\n";
-    for (int y = chessboardArray[0].length - 1; y >= 0; y--) {
-      printedChessboard += y + 1 + " |";//$NON-NLS-1$
-      for (int x = 0; x < chessboardArray.length; x++) {
-        Piece piece = chessboardArray[x][y];
-        try {
-          printedChessboard += piece.getSymbol() + "\u2004|";
-        } catch (NullPointerException e) {
-          printedChessboard += "  |"; //$NON-NLS-1$
-        }
-      }
-      printedChessboard += "\n";
-    }
-    printedChessboard += "   "; //$NON-NLS-1$
-    char width = 'A';
-    for (int i = 0; i < chessboardArray.length; i++) {
-      printedChessboard += width++ + "  "; //$NON-NLS-1$
-    }
-    printedChessboard += "\n"; //$NON-NLS-1$
-    return printedChessboard;
-  }
-
   @Override
   public boolean equals(Object obj) {
     if (this == obj)
@@ -157,17 +131,6 @@ public class Chessboard {
     if (width != other.width)
       return false;
     return true;
-  }
-
-  public Piece[][] constituteAsArray() {
-    Piece[][] chessboard = new Piece[width][length];
-
-    for (int x = 0; x < width; x++) {
-      for (int y = 0; y < length; y++) {
-        chessboard[x][y] = this.chessboard.get(new Square(x + 1, y + 1));
-      }
-    }
-    return chessboard;
   }
 
   public Piece removePiece(Square square) {

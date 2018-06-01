@@ -25,7 +25,7 @@ public class WhitePawn extends Pawn {
   }
 
   @Override
-  protected char getSymbol() {
+  public char getSymbol() {
     return '♙';
   }
 }

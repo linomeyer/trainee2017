@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.InputValidator.ValidationState;
+import tech.bison.trainee2017.console.ChessboardPrinter;
 
 public class ConsoleMain {
 
@@ -23,7 +24,7 @@ public class ConsoleMain {
       if (input.equals("c")) { //$NON-NLS-1$
         game = gameController.createCustomGame();
         while (repeat) {
-          System.out.println(game.getChessboard().printChessboard());
+          System.out.println(new ChessboardPrinter(game.getChessboard()).print());
           System.out.print(Messages.getString("editPieces"));
           input = br.readLine();
           ArrayList<ValidationState> states = inputValidator.validateAddPiece(input);
@@ -41,7 +42,7 @@ public class ConsoleMain {
       }
       repeat = true;
       while (repeat) {
-        System.out.println(game.getChessboard().printChessboard());
+        System.out.println(new ChessboardPrinter(game.getChessboard()).print());
         System.out.print(Messages.getString("executeMove")); //$NON-NLS-1$
         input = br.readLine();
 
