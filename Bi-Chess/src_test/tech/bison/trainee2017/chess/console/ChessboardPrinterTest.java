@@ -9,12 +9,11 @@ import org.junit.Test;
 import tech.bison.trainee2017.chess.Chessboard;
 import tech.bison.trainee2017.chess.Game;
 import tech.bison.trainee2017.chess.Movement;
-import tech.bison.trainee2017.chess.console.ChessboardPrinter;
+import tech.bison.trainee2017.chess.Square;
 import tech.bison.trainee2017.chess.pieces.Bishop;
 import tech.bison.trainee2017.chess.pieces.BlackPawn;
 import tech.bison.trainee2017.chess.pieces.Piece;
 import tech.bison.trainee2017.chess.pieces.Piece.Color;
-import tech.bison.trainee2017.chess.Square;
 
 public class ChessboardPrinterTest {
   @Test
@@ -40,7 +39,7 @@ public class ChessboardPrinterTest {
     String printedChessboard = chessboardPrinter.print();
 
     assertThat(printedChessboard, is("\n" +
-        "8 |♜ |♞ |�? |♛ |♚ |�? |♞ |♜ |\n" +
+        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
         "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
         "6 |  |  |  |  |  |  |  |  |\n" +
         "5 |  |  |  |  |  |  |  |  |\n" +
@@ -48,7 +47,8 @@ public class ChessboardPrinterTest {
         "3 |  |  |  |  |  |  |  |  |\n" +
         "2 |♙ |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
         "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
-        "   A  B  C  D  E  F  G  H  \n"));
+        "   A  B  C  D  E  F  G  H  \n" +
+        ""));
   }
 
   @Test // refactoring
@@ -59,7 +59,7 @@ public class ChessboardPrinterTest {
     String printedChessboard = chessboardPrinter.print();
 
     assertThat(printedChessboard, is("\n" +
-        "8 |♜ |♞ |�? |♛ |♚ |�? |♞ |♜ |\n" +
+        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
         "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
         "6 |  |  |  |  |  |  |  |  |\n" +
         "5 |  |  |  |  |  |  |  |  |\n" +
@@ -67,7 +67,8 @@ public class ChessboardPrinterTest {
         "3 |  |  |  |  |  |  |  |  |\n" +
         "2 |  |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
         "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
-        "   A  B  C  D  E  F  G  H  \n"));
+        "   A  B  C  D  E  F  G  H  \n" +
+        ""));
   }
 
 }
