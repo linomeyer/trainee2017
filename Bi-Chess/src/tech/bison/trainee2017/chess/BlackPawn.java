@@ -27,6 +27,6 @@ public class BlackPawn extends Pawn {
 
   @Override
   public char getSymbol() {
-    return '♟';
+    return '\u265F';
   }
 }

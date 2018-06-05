@@ -25,9 +25,9 @@ public class Knight extends Piece {
   @Override
   public char getSymbol() {
     if (color.equals(Color.WHITE)) {
-      return '♘';
+      return '\u2658';
     } else {
-      return '♞';
+      return '\u265E';
     }
   }
 }

@@ -24,9 +24,9 @@ public class Rook extends Piece {
   @Override
   public char getSymbol() {
     if (color.equals(Color.WHITE)) {
-      return '♖';
+      return '\u2656';
     } else {
-      return '♜';
+      return '\u265C';
     }
   }
 

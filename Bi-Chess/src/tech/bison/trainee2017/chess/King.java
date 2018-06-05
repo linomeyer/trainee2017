@@ -24,9 +24,9 @@ public class King extends Piece {
   @Override
   public char getSymbol() {
     if (color.equals(Color.WHITE)) {
-      return '♔';
+      return '\u2654';
     } else {
-      return '♚';
+      return '\u265A';
     }
   }
 }

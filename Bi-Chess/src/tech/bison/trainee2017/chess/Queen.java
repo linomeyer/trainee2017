@@ -24,9 +24,9 @@ public class Queen extends Piece {
   @Override
   public char getSymbol() {
     if (color.equals(Color.WHITE)) {
-      return '♕';
+      return '\u2655';
     } else {
-      return '♛';
+      return '\u265B';
     }
   }
 }

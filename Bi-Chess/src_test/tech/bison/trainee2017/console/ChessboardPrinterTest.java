@@ -30,7 +30,7 @@ public class ChessboardPrinterTest {
     });
   }
 
-  @Test
+  @Test // refactoring
   public void chesboard_printChessboard_stringWithPrintedChessboard() throws Exception {
     Chessboard chessboard = new Chessboard();
     ChessboardPrinter chessboardPrinter = new ChessboardPrinter(chessboard);
@@ -38,18 +38,18 @@ public class ChessboardPrinterTest {
     String printedChessboard = chessboardPrinter.print();
 
     assertThat(printedChessboard, is("\n" +
-        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
-        "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
+        "8 |\u265C |\u265E |\u265D |\u265B |\u265A |\u265D |\u265E |\u265C |\n" +
+        "7 |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\n" +
         "6 |  |  |  |  |  |  |  |  |\n" +
         "5 |  |  |  |  |  |  |  |  |\n" +
         "4 |  |  |  |  |  |  |  |  |\n" +
         "3 |  |  |  |  |  |  |  |  |\n" +
-        "2 |♙ |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
-        "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
+        "2 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\n" +
+        "1 |\u2656 |\u2658 |\u2657 |\u2655 |\u2654 |\u2657 |\u2658 |\u2656 |\n" +
         "   A  B  C  D  E  F  G  H  \n"));
   }
 
-  @Test
+  @Test // refactoring
   public void chessboard_movePiece_printChessboard() throws Exception {
     Game game = new Game();
     ChessboardPrinter chessboardPrinter = new ChessboardPrinter(game.getChessboard());
@@ -57,14 +57,14 @@ public class ChessboardPrinterTest {
     String printedChessboard = chessboardPrinter.print();
 
     assertThat(printedChessboard, is("\n" +
-        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
-        "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
+        "8 |\u265C |\u265E |\u265D |\u265B |\u265A |\u265D |\u265E |\u265C |\n" +
+        "7 |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\n" +
         "6 |  |  |  |  |  |  |  |  |\n" +
         "5 |  |  |  |  |  |  |  |  |\n" +
-        "4 |♙ |  |  |  |  |  |  |  |\n" +
+        "4 |\u2659 |  |  |  |  |  |  |  |\n" +
         "3 |  |  |  |  |  |  |  |  |\n" +
-        "2 |  |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
-        "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
+        "2 |  |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\n" +
+        "1 |\u2656 |\u2658 |\u2657 |\u2655 |\u2654 |\u2657 |\u2658 |\u2656 |\n" +
         "   A  B  C  D  E  F  G  H  \n"));
   }
 

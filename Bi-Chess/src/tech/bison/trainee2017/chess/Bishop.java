@@ -24,9 +24,9 @@ public class Bishop extends Piece {
   @Override
   public char getSymbol() {
     if (color.equals(Color.WHITE)) {
-      return '♗';
+      return '\u2657';
     } else {
-      return '♝';
+      return '\u265D';
     }
   }
 }
