@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.console;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;

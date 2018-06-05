@@ -1,11 +1,11 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.pieces;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import tech.bison.trainee2017.chess.Piece.Color;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class PawnTest {
   @Test

@@ -1,9 +1,11 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.pieces;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+
+import tech.bison.trainee2017.chess.pieces.BlackPawn;
 
 public class BlackPawnTest {
   public void setHasMovedFalse(BlackPawn blackPawn) {

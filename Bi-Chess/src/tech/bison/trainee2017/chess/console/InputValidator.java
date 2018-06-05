@@ -1,6 +1,8 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.console;
 
 import java.util.ArrayList;
+
+import tech.bison.trainee2017.chess.Game;
 
 public class InputValidator {
   public Game game;

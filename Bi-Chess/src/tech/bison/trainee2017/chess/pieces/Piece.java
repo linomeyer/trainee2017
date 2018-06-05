@@ -1,7 +1,10 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.pieces;
+
+import tech.bison.trainee2017.chess.Movement;
+import tech.bison.trainee2017.chess.Square;
 
 public abstract class Piece {
-  Color color;
+  public Color color;
   private int moveCounter = 0;
 
   public enum Color {
@@ -18,7 +21,7 @@ public abstract class Piece {
     return isAValidMove(calculateMovement);
   }
 
-  protected abstract boolean isAValidMove(Movement movement);
+  public abstract boolean isAValidMove(Movement movement);
 
   public abstract char getSymbol();
 

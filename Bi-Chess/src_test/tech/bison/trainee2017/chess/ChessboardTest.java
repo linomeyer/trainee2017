@@ -8,7 +8,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import tech.bison.trainee2017.chess.Piece.Color;
+import tech.bison.trainee2017.chess.pieces.King;
+import tech.bison.trainee2017.chess.pieces.Piece;
+import tech.bison.trainee2017.chess.pieces.Queen;
+import tech.bison.trainee2017.chess.pieces.Rook;
+import tech.bison.trainee2017.chess.pieces.WhitePawn;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class ChessboardTest {
 

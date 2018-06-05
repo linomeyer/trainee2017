@@ -1,9 +1,11 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.pieces;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+
+import tech.bison.trainee2017.chess.Movement;
 
 public class PieceTest {
   @Test
@@ -45,7 +47,7 @@ public class PieceTest {
   class TestFigure extends Piece {
 
     @Override
-    protected boolean isAValidMove(Movement movement) {
+    public boolean isAValidMove(Movement movement) {
       return false;
     }
 

@@ -2,7 +2,15 @@ package tech.bison.trainee2017.chess;
 
 import java.util.HashMap;
 
-import tech.bison.trainee2017.chess.Piece.Color;
+import tech.bison.trainee2017.chess.pieces.Bishop;
+import tech.bison.trainee2017.chess.pieces.BlackPawn;
+import tech.bison.trainee2017.chess.pieces.King;
+import tech.bison.trainee2017.chess.pieces.Knight;
+import tech.bison.trainee2017.chess.pieces.Piece;
+import tech.bison.trainee2017.chess.pieces.Queen;
+import tech.bison.trainee2017.chess.pieces.Rook;
+import tech.bison.trainee2017.chess.pieces.WhitePawn;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class Chessboard {
   public final int width;

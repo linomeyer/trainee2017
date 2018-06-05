@@ -8,7 +8,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import tech.bison.trainee2017.chess.Piece.Color;
+import tech.bison.trainee2017.chess.pieces.BlackPawn;
+import tech.bison.trainee2017.chess.pieces.Knight;
+import tech.bison.trainee2017.chess.pieces.WhitePawn;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class MoveTest {
 

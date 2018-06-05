@@ -1,4 +1,6 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.pieces;
+
+import tech.bison.trainee2017.chess.Movement;
 
 public class King extends Piece {
 
@@ -10,7 +12,7 @@ public class King extends Piece {
   }
 
   @Override
-  protected boolean isAValidMove(Movement movement) {
+  public boolean isAValidMove(Movement movement) {
     if (!super.isAMove(movement.y, movement.x)) {
       return false;
     } else {

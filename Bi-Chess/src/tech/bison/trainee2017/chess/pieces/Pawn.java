@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.pieces;
 
 public abstract class Pawn extends Piece {
   public static Pawn createPawn(Color color) {

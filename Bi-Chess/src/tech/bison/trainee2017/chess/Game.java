@@ -2,6 +2,8 @@ package tech.bison.trainee2017.chess;
 
 import java.util.ArrayList;
 
+import tech.bison.trainee2017.chess.pieces.Piece;
+
 public class Game {
   private final Chessboard chessboard;
   private final ArrayList<Move> moves;

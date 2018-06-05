@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.console;
+package tech.bison.trainee2017.chess.console;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertArrayEquals;
@@ -6,13 +6,14 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import tech.bison.trainee2017.chess.Bishop;
-import tech.bison.trainee2017.chess.BlackPawn;
 import tech.bison.trainee2017.chess.Chessboard;
 import tech.bison.trainee2017.chess.Game;
 import tech.bison.trainee2017.chess.Movement;
-import tech.bison.trainee2017.chess.Piece;
-import tech.bison.trainee2017.chess.Piece.Color;
+import tech.bison.trainee2017.chess.console.ChessboardPrinter;
+import tech.bison.trainee2017.chess.pieces.Bishop;
+import tech.bison.trainee2017.chess.pieces.BlackPawn;
+import tech.bison.trainee2017.chess.pieces.Piece;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 import tech.bison.trainee2017.chess.Square;
 
 public class ChessboardPrinterTest {
@@ -39,7 +40,7 @@ public class ChessboardPrinterTest {
     String printedChessboard = chessboardPrinter.print();
 
     assertThat(printedChessboard, is("\n" +
-        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
+        "8 |♜ |♞ |�? |♛ |♚ |�? |♞ |♜ |\n" +
         "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
         "6 |  |  |  |  |  |  |  |  |\n" +
         "5 |  |  |  |  |  |  |  |  |\n" +
@@ -58,7 +59,7 @@ public class ChessboardPrinterTest {
     String printedChessboard = chessboardPrinter.print();
 
     assertThat(printedChessboard, is("\n" +
-        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
+        "8 |♜ |♞ |�? |♛ |♚ |�? |♞ |♜ |\n" +
         "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
         "6 |  |  |  |  |  |  |  |  |\n" +
         "5 |  |  |  |  |  |  |  |  |\n" +

@@ -1,7 +1,17 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.console;
 
+import tech.bison.trainee2017.chess.Chessboard;
+import tech.bison.trainee2017.chess.Game;
+import tech.bison.trainee2017.chess.Square;
 import tech.bison.trainee2017.chess.Game.GameState;
-import tech.bison.trainee2017.chess.Piece.Color;
+import tech.bison.trainee2017.chess.pieces.Bishop;
+import tech.bison.trainee2017.chess.pieces.King;
+import tech.bison.trainee2017.chess.pieces.Knight;
+import tech.bison.trainee2017.chess.pieces.Pawn;
+import tech.bison.trainee2017.chess.pieces.Piece;
+import tech.bison.trainee2017.chess.pieces.Queen;
+import tech.bison.trainee2017.chess.pieces.Rook;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class GameController {
 

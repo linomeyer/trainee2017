@@ -1,4 +1,4 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.console;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertArrayEquals;
@@ -15,7 +15,8 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import tech.bison.trainee2017.chess.InputValidator.ValidationState;
+import tech.bison.trainee2017.chess.console.InputValidator;
+import tech.bison.trainee2017.chess.console.InputValidator.ValidationState;
 
 @RunWith(Enclosed.class)
 public class InputValidatorTest {

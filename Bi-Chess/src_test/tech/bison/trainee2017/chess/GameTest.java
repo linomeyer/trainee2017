@@ -7,7 +7,12 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import tech.bison.trainee2017.chess.Game.GameState;
-import tech.bison.trainee2017.chess.Piece.Color;
+import tech.bison.trainee2017.chess.pieces.Bishop;
+import tech.bison.trainee2017.chess.pieces.BlackPawn;
+import tech.bison.trainee2017.chess.pieces.King;
+import tech.bison.trainee2017.chess.pieces.Rook;
+import tech.bison.trainee2017.chess.pieces.WhitePawn;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class GameTest {
   @Test

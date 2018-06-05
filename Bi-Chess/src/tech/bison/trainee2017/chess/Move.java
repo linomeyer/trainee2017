@@ -1,5 +1,7 @@
 package tech.bison.trainee2017.chess;
 
+import tech.bison.trainee2017.chess.pieces.Piece;
+
 public class Move {
   final Piece piece;
   final Piece capturedPiece;

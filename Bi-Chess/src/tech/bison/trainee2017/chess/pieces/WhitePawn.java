@@ -1,23 +1,24 @@
-package tech.bison.trainee2017.chess;
+package tech.bison.trainee2017.chess.pieces;
 
-public class BlackPawn extends Pawn {
+import tech.bison.trainee2017.chess.Movement;
 
-  public BlackPawn() {
-    color = Color.BLACK;
+public class WhitePawn extends Pawn {
+  public WhitePawn() {
+    color = Color.WHITE;
   }
 
   @Override
-  protected boolean isAValidMove(Movement movement) {
+  public boolean isAValidMove(Movement movement) {
     if (!super.isAMove(movement.y, movement.x)) {
       return false;
     } else {
       if (movement.x != 0) {
         return false;
       }
-      if (!hasMoved() && movement.y == -2) {
+      if (!hasMoved() && movement.y == 2) {
         return true;
       } else {
-        if (movement.y == -1) {
+        if (movement.y == 1) {
           return true;
         }
       }
@@ -27,6 +28,6 @@ public class BlackPawn extends Pawn {
 
   @Override
   public char getSymbol() {
-    return '\u265F';
+    return '\u2659';
   }
 }

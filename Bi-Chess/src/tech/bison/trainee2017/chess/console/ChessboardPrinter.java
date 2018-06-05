@@ -1,8 +1,8 @@
-package tech.bison.trainee2017.console;
+package tech.bison.trainee2017.chess.console;
 
 import tech.bison.trainee2017.chess.Chessboard;
-import tech.bison.trainee2017.chess.Piece;
 import tech.bison.trainee2017.chess.Square;
+import tech.bison.trainee2017.chess.pieces.Piece;
 
 public class ChessboardPrinter {
   private static final String THREE_PER_EM_SPACE = "\u2004";
