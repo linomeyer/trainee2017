@@ -1,6 +1,7 @@
 package tech.bison.trainee2017.chess;
 
 import tech.bison.trainee2017.chess.pieces.Piece;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class Move {
   final Piece piece;
@@ -14,17 +15,26 @@ public class Move {
   }
 
   public static Move movePiece(Chessboard chessboard, Movement movement)
-      throws InvalidMoveException, InvalidSquareException {
+      throws InvalidMoveException, InvalidSquareException, WhiteBeginsException {
+    return movePiece(chessboard, movement, null);
+  }
+
+  public static Move movePiece(Chessboard chessboard, Movement movement, Move lastMove)
+      throws InvalidMoveException, InvalidSquareException, WhiteBeginsException {
     Square start = movement.start;
 
     try {
+      if (lastMove == null && chessboard.getPiece(start).color.equals(Color.BLACK)) {
+        throw new WhiteBeginsException();
+      }
+
       Piece pieceToMove = chessboard.getPiece(start);
 
       boolean isAValidMove = pieceToMove.isAValidMove(movement);
 
       if (isAValidMove) {
         try {
-          if (pieceToMove.color == chessboard.getPiece(movement.end).color) {
+          if (pieceToMove.hasSameColor(chessboard.getPiece(movement.end))) {
             throw new InvalidMoveException();
           } else {
             Piece capturedPiece = chessboard.movePiece(movement);

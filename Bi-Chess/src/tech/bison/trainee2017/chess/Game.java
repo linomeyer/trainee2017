@@ -9,7 +9,7 @@ public class Game {
   private final ArrayList<Move> moves;
 
   public enum GameState {
-    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE, PIECE_ADDED, SQUARE_OCCUPIED, EMPTY_SQUARE, PIECE_REMOVED
+    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE, PIECE_ADDED, SQUARE_OCCUPIED, EMPTY_SQUARE, PIECE_REMOVED, WHITE_BEGINS
   }
 
   public Game() {
@@ -28,7 +28,11 @@ public class Game {
 
   public GameState movePiece(Movement movement) {
     try {
-      moves.add(Move.movePiece(chessboard, movement));
+      if (moves.size() == 0) {
+        moves.add(Move.movePiece(chessboard, movement));
+      } else {
+        moves.add(Move.movePiece(chessboard, movement, moves.get(moves.size() - 1)));
+      }
       if (moves.get(moves.size() - 1).capturedPiece == null) {
         return GameState.PIECE_MOVED;
       } else {
@@ -38,6 +42,8 @@ public class Game {
       return GameState.INVALID_MOVE;
     } catch (InvalidSquareException e) {
       return GameState.INVALID_SQUARE;
+    } catch (WhiteBeginsException e) {
+      return GameState.WHITE_BEGINS;
     }
   }
 

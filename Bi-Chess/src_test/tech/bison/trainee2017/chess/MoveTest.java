@@ -10,8 +10,8 @@ import org.junit.rules.ExpectedException;
 
 import tech.bison.trainee2017.chess.pieces.BlackPawn;
 import tech.bison.trainee2017.chess.pieces.Knight;
-import tech.bison.trainee2017.chess.pieces.WhitePawn;
 import tech.bison.trainee2017.chess.pieces.Piece.Color;
+import tech.bison.trainee2017.chess.pieces.WhitePawn;
 
 public class MoveTest {
 
@@ -80,9 +80,9 @@ public class MoveTest {
     thrown.expect(InvalidMoveException.class);
     Chessboard chessboard = new Chessboard();
 
-    Movement movement = new Movement(new Square("g8"), new Square("f6")); // Move Knight in the Way of the black Pawn
+    Movement movement = new Movement(new Square("g1"), new Square("f3")); // Move Knight in the Way of the black Pawn
     Move.movePiece(chessboard, movement);
-    movement = new Movement(new Square("F7"), new Square("F5"));
+    movement = new Movement(new Square("F2"), new Square("F4"));
     Move.movePiece(chessboard, movement);
   }
 
@@ -109,7 +109,17 @@ public class MoveTest {
     thrown.expect(InvalidMoveException.class);
     Chessboard chessboard = new Chessboard();
 
-    Movement movement = new Movement(new Square("D8"), new Square("D2"));
+    Movement movement = new Movement(new Square("D1"), new Square("D4"));
+    Move.movePiece(chessboard, movement);
+  }
+
+  @Test
+  public void chessboard_moveBlackPiece_WhiteBeginsException() throws Exception {
+    thrown.expect(WhiteBeginsException.class);
+    Chessboard chessboard = new Chessboard();
+
+    Movement movement = new Movement(new Square("d7"), new Square("d5"));
+
     Move.movePiece(chessboard, movement);
   }
   /*
