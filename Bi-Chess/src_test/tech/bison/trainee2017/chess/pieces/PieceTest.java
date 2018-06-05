@@ -46,6 +46,10 @@ public class PieceTest {
 
   class TestFigure extends Piece {
 
+    public TestFigure() {
+      super(Color.WHITE);
+    }
+
     @Override
     public boolean isAValidMove(Movement movement) {
       return false;

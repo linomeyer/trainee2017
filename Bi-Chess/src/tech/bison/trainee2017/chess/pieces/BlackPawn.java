@@ -5,7 +5,7 @@ import tech.bison.trainee2017.chess.Movement;
 public class BlackPawn extends Pawn {
 
   public BlackPawn() {
-    color = Color.BLACK;
+    super(Color.BLACK);
   }
 
   @Override

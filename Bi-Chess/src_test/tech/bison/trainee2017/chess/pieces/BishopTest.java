@@ -13,8 +13,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import tech.bison.trainee2017.chess.pieces.Bishop;
-
 @RunWith(Enclosed.class)
 public class BishopTest {
 

@@ -5,10 +5,11 @@ import tech.bison.trainee2017.chess.Movement;
 public class King extends Piece {
 
   public King() {
+    super(Color.WHITE);
   }
 
   public King(Color color) {
-    this.color = color;
+    super(color);
   }
 
   @Override

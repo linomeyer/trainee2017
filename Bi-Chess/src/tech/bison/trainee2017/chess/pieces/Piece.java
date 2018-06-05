@@ -4,11 +4,15 @@ import tech.bison.trainee2017.chess.Movement;
 import tech.bison.trainee2017.chess.Square;
 
 public abstract class Piece {
-  public Color color;
+  public final Color color;
   private int moveCounter = 0;
 
   public enum Color {
     WHITE, BLACK
+  }
+
+  public Piece(Color color) {
+    this.color = color;
   }
 
   public boolean isAValidMove(String startSquare, String endSquare) {
