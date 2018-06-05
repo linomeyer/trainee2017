@@ -9,7 +9,7 @@ public class Game {
   private final ArrayList<Move> moves;
 
   public enum GameState {
-    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE, PIECE_ADDED, SQUARE_OCCUPIED, EMPTY_SQUARE, PIECE_REMOVED, WHITE_BEGINS
+    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE, PIECE_ADDED, SQUARE_OCCUPIED, EMPTY_SQUARE, PIECE_REMOVED, WHITE_BEGINS, MOVE_ALTERNATELY
   }
 
   public Game() {
@@ -39,11 +39,9 @@ public class Game {
         return GameState.PIECE_CAPTURED;
       }
     } catch (InvalidMoveException e) {
-      return GameState.INVALID_MOVE;
+      return e.state;
     } catch (InvalidSquareException e) {
       return GameState.INVALID_SQUARE;
-    } catch (WhiteBeginsException e) {
-      return GameState.WHITE_BEGINS;
     }
   }
 

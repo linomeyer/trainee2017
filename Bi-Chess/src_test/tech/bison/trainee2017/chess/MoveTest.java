@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.pieces.BlackPawn;
 import tech.bison.trainee2017.chess.pieces.Knight;
 import tech.bison.trainee2017.chess.pieces.Piece.Color;
@@ -115,12 +116,20 @@ public class MoveTest {
 
   @Test
   public void chessboard_moveBlackPiece_WhiteBeginsException() throws Exception {
-    thrown.expect(WhiteBeginsException.class);
-    Chessboard chessboard = new Chessboard();
+    try {
+      Chessboard chessboard = new Chessboard();
 
-    Movement movement = new Movement(new Square("d7"), new Square("d5"));
+      Movement movement = new Movement(new Square("d7"), new Square("d5"));
 
-    Move.movePiece(chessboard, movement);
+      Move.movePiece(chessboard, movement);
+    } catch (InvalidMoveException e) {
+      assertThat(e.state, is(GameState.WHITE_BEGINS));
+    }
+  }
+
+  @Test
+  public void chessboard_moveWhitePieceTwice_MoveAlternatelyException() throws Exception {
+
   }
   /*
    * next gamerule to implement: Pawn can capture Pieces only diagonal

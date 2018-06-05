@@ -1,5 +1,6 @@
 package tech.bison.trainee2017.chess;
 
+import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.pieces.Piece;
 import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
@@ -15,17 +16,17 @@ public class Move {
   }
 
   public static Move movePiece(Chessboard chessboard, Movement movement)
-      throws InvalidMoveException, InvalidSquareException, WhiteBeginsException {
+      throws InvalidMoveException, InvalidSquareException {
     return movePiece(chessboard, movement, null);
   }
 
   public static Move movePiece(Chessboard chessboard, Movement movement, Move lastMove)
-      throws InvalidMoveException, InvalidSquareException, WhiteBeginsException {
+      throws InvalidMoveException, InvalidSquareException {
     Square start = movement.start;
 
     try {
       if (lastMove == null && chessboard.getPiece(start).color.equals(Color.BLACK)) {
-        throw new WhiteBeginsException();
+        throw new InvalidMoveException(GameState.WHITE_BEGINS);
       }
 
       Piece pieceToMove = chessboard.getPiece(start);
@@ -35,7 +36,7 @@ public class Move {
       if (isAValidMove) {
         try {
           if (pieceToMove.hasSameColor(chessboard.getPiece(movement.end))) {
-            throw new InvalidMoveException();
+            throw new InvalidMoveException(GameState.INVALID_MOVE);
           } else {
             Piece capturedPiece = chessboard.movePiece(movement);
             return new Move(pieceToMove, capturedPiece, movement);
@@ -45,10 +46,10 @@ public class Move {
           return new Move(pieceToMove, capturedPiece, movement);
         }
       } else {
-        throw new InvalidMoveException();
+        throw new InvalidMoveException(GameState.INVALID_MOVE);
       }
     } catch (NullPointerException e) {
-      throw new InvalidMoveException();
+      throw new InvalidMoveException(GameState.INVALID_MOVE);
     }
   }
 
