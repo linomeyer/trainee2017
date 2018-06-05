@@ -2,11 +2,11 @@ package tech.bison.trainee2017.chess.console;
 
 import tech.bison.trainee2017.chess.Chessboard;
 import tech.bison.trainee2017.chess.Square;
+import tech.bison.trainee2017.chess.UTF8;
 import tech.bison.trainee2017.chess.pieces.Piece;
 
 public class ChessboardPrinter {
-  private static final String THREE_PER_EM_SPACE = "\u2004";
-  private static final String FOUR_PER_EM_SPACE = "\u2005";
+
   private Chessboard chessboard;
 
   public ChessboardPrinter(Chessboard chessboard) {
@@ -33,21 +33,21 @@ public class ChessboardPrinter {
 
     printedChessboard += "\n";
     for (int y = chessboardArray[0].length - 1; y >= 0; y--) {
-      printedChessboard += y + 1 + FOUR_PER_EM_SPACE + "|";//$NON-NLS-1$
+      printedChessboard += y + 1 + UTF8.FOUR_PER_EM_SPACE + "|";//$NON-NLS-1$
       for (int x = 0; x < chessboardArray.length; x++) {
         Piece piece = chessboardArray[x][y];
         try {
-          printedChessboard += piece.getSymbol() + THREE_PER_EM_SPACE + "|";
+          printedChessboard += piece.getSymbol() + UTF8.THREE_PER_EM_SPACE + "|";
         } catch (NullPointerException e) {
-          printedChessboard += FOUR_PER_EM_SPACE + FOUR_PER_EM_SPACE + "|"; //$NON-NLS-1$
+          printedChessboard += UTF8.FOUR_PER_EM_SPACE + UTF8.FOUR_PER_EM_SPACE + "|"; //$NON-NLS-1$
         }
       }
       printedChessboard += "\n";
     }
-    printedChessboard += FOUR_PER_EM_SPACE + FOUR_PER_EM_SPACE + FOUR_PER_EM_SPACE; // $NON-NLS-1$
+    printedChessboard += UTF8.FOUR_PER_EM_SPACE + UTF8.FOUR_PER_EM_SPACE + UTF8.FOUR_PER_EM_SPACE; // $NON-NLS-1$
     char width = 'A';
     for (int i = 0; i < chessboardArray.length; i++) {
-      printedChessboard += width++ + FOUR_PER_EM_SPACE + FOUR_PER_EM_SPACE; // $NON-NLS-1$
+      printedChessboard += width++ + UTF8.FOUR_PER_EM_SPACE + UTF8.FOUR_PER_EM_SPACE; // $NON-NLS-1$
     }
     printedChessboard += "\n"; //$NON-NLS-1$
     return printedChessboard;

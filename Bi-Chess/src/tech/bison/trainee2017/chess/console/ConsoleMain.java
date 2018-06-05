@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import tech.bison.trainee2017.chess.Game;
+import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.Movement;
 import tech.bison.trainee2017.chess.Square;
-import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.console.InputValidator.ValidationState;
 
 public class ConsoleMain {
