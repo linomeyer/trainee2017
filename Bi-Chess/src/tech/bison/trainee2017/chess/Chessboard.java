@@ -91,7 +91,7 @@ public class Chessboard {
     if (isAValidSquare(movement.end)) {
       for (Square square : movement.getWay()) {
         if (chessboard.get(square) != null) {
-          throw new InvalidMoveException(GameState.INVALID_MOVE);
+          throw new InvalidMoveException(GameState.CANT_JUMP);
         }
       }
       Piece piece = chessboard.get(movement.start);

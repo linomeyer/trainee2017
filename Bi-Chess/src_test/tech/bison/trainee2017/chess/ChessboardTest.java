@@ -8,12 +8,13 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.pieces.King;
 import tech.bison.trainee2017.chess.pieces.Piece;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 import tech.bison.trainee2017.chess.pieces.Queen;
 import tech.bison.trainee2017.chess.pieces.Rook;
 import tech.bison.trainee2017.chess.pieces.WhitePawn;
-import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class ChessboardTest {
 
@@ -99,5 +100,17 @@ public class ChessboardTest {
     Piece removedPiece = chessboard.removePiece(new Square("F4"));
 
     assertThat(removedPiece, is(nullValue()));
+  }
+
+  @Test
+  public void chessboard_tryToJumpAboveOtherPieces_InvalidMoveException_CANT_JUMP() throws Exception {
+    Chessboard chessboard = new Chessboard();
+    Movement movement = new Movement(new Square("a1"), new Square("a4"));
+
+    try {
+      chessboard.movePiece(movement);
+    } catch (InvalidMoveException e) {
+      assertThat(e.state, is(GameState.CANT_JUMP));
+    }
   }
 }

@@ -4,9 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.pieces.BlackPawn;
@@ -15,9 +13,6 @@ import tech.bison.trainee2017.chess.pieces.Piece.Color;
 import tech.bison.trainee2017.chess.pieces.WhitePawn;
 
 public class MoveTest {
-
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
 
   @Test
   public void piece_move_pieceIsOnANewSquare() throws Exception {
@@ -29,11 +24,14 @@ public class MoveTest {
 
   @Test
   public void chessBoard_movePiece_whiteRookCapturesWhitePawn() throws Exception {
-    thrown.expect(InvalidMoveException.class);
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("A1"), new Square("A2"));
-    Move.movePiece(chessboard, movement);
+    try {
+      Move.movePiece(chessboard, movement);
+    } catch (InvalidMoveException e) {
+      assertThat(e.state, is(GameState.FRIENDED_COLOR));
+    }
   }
 
   @Test
@@ -66,52 +64,53 @@ public class MoveTest {
   }
 
   @Test
-  public void chessBoard_movePiece_whitePawnCanNotJump() throws Exception {
-    thrown.expect(InvalidMoveException.class);
+  public void chessBoard_movePiece_pawnCanNotJump() throws Exception {
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("B1"), new Square("C3")); // Knight is in the Way of the white Pawn
     Move.movePiece(chessboard, movement);
-    movement = new Movement(new Square("b2"), new Square("c4"));
-    Move.movePiece(chessboard, movement);
-  }
-
-  @Test
-  public void chessBoard_movePiece_blackPawnCanNotJump() throws Exception {
-    thrown.expect(InvalidMoveException.class);
-    Chessboard chessboard = new Chessboard();
-
-    Movement movement = new Movement(new Square("g1"), new Square("f3")); // Move Knight in the Way of the black Pawn
-    Move.movePiece(chessboard, movement);
-    movement = new Movement(new Square("F2"), new Square("F4"));
-    Move.movePiece(chessboard, movement);
+    movement = new Movement(new Square("c2"), new Square("c4"));
+    try {
+      Move.movePiece(chessboard, movement);
+    } catch (InvalidMoveException e) {
+      assertThat(e.state, is(GameState.CANT_JUMP));
+    }
   }
 
   @Test
   public void chessBoard_movePiece_rookCanNotJump() throws Exception {
-    thrown.expect(InvalidMoveException.class);
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("A1"), new Square("A5"));
-    Move.movePiece(chessboard, movement);
+    try {
+      Move.movePiece(chessboard, movement);
+    } catch (InvalidMoveException e) {
+      assertThat(e.state, is(GameState.CANT_JUMP));
+    }
   }
 
   @Test
   public void chessBoard_movePiece_bishopCanNotJump() throws Exception {
-    thrown.expect(InvalidMoveException.class);
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("C1"), new Square("E3"));
-    Move.movePiece(chessboard, movement);
+    try {
+      Move.movePiece(chessboard, movement);
+    } catch (InvalidMoveException e) {
+      assertThat(e.state, is(GameState.CANT_JUMP));
+    }
   }
 
   @Test
   public void chessBoard_movePiece_queenCanNotJump() throws Exception {
-    thrown.expect(InvalidMoveException.class);
     Chessboard chessboard = new Chessboard();
 
     Movement movement = new Movement(new Square("D1"), new Square("D4"));
-    Move.movePiece(chessboard, movement);
+    try {
+      Move.movePiece(chessboard, movement);
+    } catch (InvalidMoveException e) {
+      assertThat(e.state, is(GameState.CANT_JUMP));
+    }
   }
 
   @Test

@@ -36,7 +36,7 @@ public class Move {
       if (isAValidMove) {
         try {
           if (pieceToMove.hasSameColor(chessboard.getPiece(movement.end))) {
-            throw new InvalidMoveException(GameState.INVALID_MOVE);
+            throw new InvalidMoveException(GameState.FRIENDED_COLOR);
           } else {
             Piece capturedPiece = chessboard.movePiece(movement);
             return new Move(pieceToMove, capturedPiece, movement);
@@ -49,7 +49,7 @@ public class Move {
         throw new InvalidMoveException(GameState.INVALID_MOVE);
       }
     } catch (NullPointerException e) {
-      throw new InvalidMoveException(GameState.INVALID_MOVE);
+      throw new InvalidMoveException(GameState.EMPTY_SQUARE);
     }
   }
 
