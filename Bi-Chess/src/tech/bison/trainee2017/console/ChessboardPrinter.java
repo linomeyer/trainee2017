@@ -6,6 +6,7 @@ import tech.bison.trainee2017.chess.Square;
 
 public class ChessboardPrinter {
   private static final String THREE_PER_EM_SPACE = "\u2004";
+  private static final String FOUR_PER_EM_SPACE = "\u2005";
   private Chessboard chessboard;
 
   public ChessboardPrinter(Chessboard chessboard) {
@@ -32,21 +33,21 @@ public class ChessboardPrinter {
 
     printedChessboard += "\n";
     for (int y = chessboardArray[0].length - 1; y >= 0; y--) {
-      printedChessboard += y + 1 + " |";//$NON-NLS-1$
+      printedChessboard += y + 1 + FOUR_PER_EM_SPACE + "|";//$NON-NLS-1$
       for (int x = 0; x < chessboardArray.length; x++) {
         Piece piece = chessboardArray[x][y];
         try {
           printedChessboard += piece.getSymbol() + THREE_PER_EM_SPACE + "|";
         } catch (NullPointerException e) {
-          printedChessboard += "  |"; //$NON-NLS-1$
+          printedChessboard += FOUR_PER_EM_SPACE + FOUR_PER_EM_SPACE + "|"; //$NON-NLS-1$
         }
       }
       printedChessboard += "\n";
     }
-    printedChessboard += "   "; //$NON-NLS-1$
+    printedChessboard += FOUR_PER_EM_SPACE + FOUR_PER_EM_SPACE + FOUR_PER_EM_SPACE; // $NON-NLS-1$
     char width = 'A';
     for (int i = 0; i < chessboardArray.length; i++) {
-      printedChessboard += width++ + "  "; //$NON-NLS-1$
+      printedChessboard += width++ + FOUR_PER_EM_SPACE + FOUR_PER_EM_SPACE; // $NON-NLS-1$
     }
     printedChessboard += "\n"; //$NON-NLS-1$
     return printedChessboard;

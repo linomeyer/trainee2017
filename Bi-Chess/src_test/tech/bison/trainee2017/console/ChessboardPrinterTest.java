@@ -18,6 +18,7 @@ import tech.bison.trainee2017.chess.Square;
 public class ChessboardPrinterTest {
   @Test
   public void customChessboard_addPieces_constituteAsArray() throws Exception {
+
     Chessboard chessboard = new Chessboard(2, 2);
     ChessboardPrinter chessboardPrinter = new ChessboardPrinter(chessboard);
 
@@ -38,15 +39,15 @@ public class ChessboardPrinterTest {
     String printedChessboard = chessboardPrinter.print();
 
     assertThat(printedChessboard, is("\n" +
-        "8 |\u265C |\u265E |\u265D |\u265B |\u265A |\u265D |\u265E |\u265C |\n" +
-        "7 |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\n" +
-        "6 |  |  |  |  |  |  |  |  |\n" +
-        "5 |  |  |  |  |  |  |  |  |\n" +
-        "4 |  |  |  |  |  |  |  |  |\n" +
-        "3 |  |  |  |  |  |  |  |  |\n" +
-        "2 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\n" +
-        "1 |\u2656 |\u2658 |\u2657 |\u2655 |\u2654 |\u2657 |\u2658 |\u2656 |\n" +
-        "   A  B  C  D  E  F  G  H  \n"));
+        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
+        "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
+        "6 |  |  |  |  |  |  |  |  |\n" +
+        "5 |  |  |  |  |  |  |  |  |\n" +
+        "4 |  |  |  |  |  |  |  |  |\n" +
+        "3 |  |  |  |  |  |  |  |  |\n" +
+        "2 |♙ |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
+        "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
+        "   A  B  C  D  E  F  G  H  \n"));
   }
 
   @Test // refactoring
@@ -57,15 +58,15 @@ public class ChessboardPrinterTest {
     String printedChessboard = chessboardPrinter.print();
 
     assertThat(printedChessboard, is("\n" +
-        "8 |\u265C |\u265E |\u265D |\u265B |\u265A |\u265D |\u265E |\u265C |\n" +
-        "7 |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\u265F |\n" +
-        "6 |  |  |  |  |  |  |  |  |\n" +
-        "5 |  |  |  |  |  |  |  |  |\n" +
-        "4 |\u2659 |  |  |  |  |  |  |  |\n" +
-        "3 |  |  |  |  |  |  |  |  |\n" +
-        "2 |  |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\u2659 |\n" +
-        "1 |\u2656 |\u2658 |\u2657 |\u2655 |\u2654 |\u2657 |\u2658 |\u2656 |\n" +
-        "   A  B  C  D  E  F  G  H  \n"));
+        "8 |♜ |♞ |♝ |♛ |♚ |♝ |♞ |♜ |\n" +
+        "7 |♟ |♟ |♟ |♟ |♟ |♟ |♟ |♟ |\n" +
+        "6 |  |  |  |  |  |  |  |  |\n" +
+        "5 |  |  |  |  |  |  |  |  |\n" +
+        "4 |♙ |  |  |  |  |  |  |  |\n" +
+        "3 |  |  |  |  |  |  |  |  |\n" +
+        "2 |  |♙ |♙ |♙ |♙ |♙ |♙ |♙ |\n" +
+        "1 |♖ |♘ |♗ |♕ |♔ |♗ |♘ |♖ |\n" +
+        "   A  B  C  D  E  F  G  H  \n"));
   }
 
 }
