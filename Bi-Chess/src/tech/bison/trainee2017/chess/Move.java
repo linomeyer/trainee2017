@@ -22,14 +22,13 @@ public class Move {
 
   public static Move movePiece(Chessboard chessboard, Movement movement, Move lastMove)
       throws InvalidMoveException, InvalidSquareException {
-    Square start = movement.start;
 
     try {
-      if (lastMove == null && chessboard.getPiece(start).color.equals(Color.BLACK)) {
+      if (lastMove == null && chessboard.getPiece(movement.start).color.equals(Color.BLACK)) {
         throw new InvalidMoveException(GameState.WHITE_BEGINS);
       }
 
-      Piece pieceToMove = chessboard.getPiece(start);
+      Piece pieceToMove = chessboard.getPiece(movement.start);
 
       boolean isAValidMove = pieceToMove.isAValidMove(movement);
 
