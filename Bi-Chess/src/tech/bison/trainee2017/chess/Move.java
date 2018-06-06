@@ -1,8 +1,10 @@
 package tech.bison.trainee2017.chess;
 
 import tech.bison.trainee2017.chess.Game.GameState;
+import tech.bison.trainee2017.chess.pieces.BlackPawn;
 import tech.bison.trainee2017.chess.pieces.Piece;
 import tech.bison.trainee2017.chess.pieces.Piece.Color;
+import tech.bison.trainee2017.chess.pieces.WhitePawn;
 
 public class Move {
   final Piece piece;
@@ -30,11 +32,24 @@ public class Move {
 
       Piece pieceToMove = chessboard.getPiece(movement.start);
 
+      Piece pieceToCatch = chessboard.getPiece(movement.end);
+
       boolean isAValidMove = pieceToMove.isAValidMove(movement);
+
+      // Pawn catches diagonal
+      if (pieceToMove.getClass() == WhitePawn.class || pieceToMove.getClass() == BlackPawn.class) {
+        if (pieceToCatch != null) {
+          if (movement.x == 1 && movement.y == 1) {
+            isAValidMove = true;
+          } else {
+            throw new InvalidMoveException(GameState.CATCH_DIAGONAL);
+          }
+        }
+      }
 
       if (isAValidMove) {
         try {
-          if (pieceToMove.hasSameColor(chessboard.getPiece(movement.end))) {
+          if (pieceToMove.hasSameColor(pieceToCatch)) {
             throw new InvalidMoveException(GameState.FRIENDED_COLOR);
           } else {
             Piece capturedPiece = chessboard.movePiece(movement);
@@ -47,7 +62,9 @@ public class Move {
       } else {
         throw new InvalidMoveException(GameState.INVALID_MOVE);
       }
-    } catch (NullPointerException e) {
+    } catch (
+
+    NullPointerException e) {
       throw new InvalidMoveException(GameState.EMPTY_SQUARE);
     }
   }
