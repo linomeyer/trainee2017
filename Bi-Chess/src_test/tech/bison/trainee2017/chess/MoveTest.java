@@ -237,7 +237,7 @@ public class MoveTest {
 
       fail("No Exception throwed");
     } catch (InvalidMoveException e) {
-      assertThat(e.state, is(GameState.KING_IN_CHECK));
+      assertThat(e.state, is(GameState.KING_MOVES_IN_CHECK));
     }
   }
 }

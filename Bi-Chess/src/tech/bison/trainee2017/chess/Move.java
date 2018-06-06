@@ -66,11 +66,9 @@ public class Move {
 
       if (pieceToMove.getClass() == King.class) {
         if (kingMovesInCheck(chessboard, movement)) {
-          throw new InvalidMoveException(GameState.KING_IN_CHECK);
+          throw new InvalidMoveException(GameState.KING_MOVES_IN_CHECK);
         }
-      }
-
-      if (lastMove != null) {
+      } else if (lastMove != null) {
         if (lastMove.kingInCheck) {
           Movement lastMovement = lastMove.movement;
           Square squareOfKing = chessboard.getSquareOfKing(lastMove.piece.getEnemyColor());
