@@ -12,6 +12,7 @@ import tech.bison.trainee2017.chess.pieces.BlackPawn;
 import tech.bison.trainee2017.chess.pieces.King;
 import tech.bison.trainee2017.chess.pieces.Knight;
 import tech.bison.trainee2017.chess.pieces.Piece.Color;
+import tech.bison.trainee2017.chess.pieces.Queen;
 import tech.bison.trainee2017.chess.pieces.Rook;
 import tech.bison.trainee2017.chess.pieces.WhitePawn;
 
@@ -239,5 +240,19 @@ public class MoveTest {
     } catch (InvalidMoveException e) {
       assertThat(e.state, is(GameState.KING_MOVES_IN_CHECK));
     }
+  }
+
+  @Test
+  public void chessBoard_movePice_isKingInCheckMate() throws Exception {
+    Chessboard chessboard = new Chessboard(8, 8);
+
+    chessboard.addPiece(new Square("D4"), new King(Color.BLACK));
+    chessboard.addPiece(new Square("C6"), new Rook(Color.WHITE));
+    chessboard.addPiece(new Square("E6"), new Rook(Color.WHITE));
+    chessboard.addPiece(new Square("E7"), new Queen(Color.WHITE));
+
+    Move move = Move.movePiece(chessboard, new Movement(new Square("E7"), new Square("D6")));
+
+    assertThat(move.kingInCheckMate, is(true));
   }
 }

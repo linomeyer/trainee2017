@@ -15,16 +15,22 @@ public class Move {
   public final Piece capturedPiece;
   public final Movement movement;
   public final boolean kingInCheck;
+  public final boolean kingInCheckMate;
 
-  private Move(Piece piece, Piece capturedPiece, Movement movement, boolean kingInCheck) {
+  private Move(Piece piece, Piece capturedPiece, Movement movement, boolean kingInCheck, boolean kingInCheckMate) {
     this.piece = piece;
     this.capturedPiece = capturedPiece;
     this.movement = movement;
     this.kingInCheck = kingInCheck;
+    this.kingInCheckMate = kingInCheckMate;
+  }
+
+  private Move(Piece piece, Piece capturedPiece, Movement movement, boolean kingInCheck) {
+    this(piece, capturedPiece, movement, kingInCheck, false);
   }
 
   private Move(Piece piece, Piece capturedPiece, Movement movement) {
-    this(piece, capturedPiece, movement, false);
+    this(piece, capturedPiece, movement, false, false);
   }
 
   public static Move movePiece(Chessboard chessboard, Movement movement)
@@ -89,7 +95,8 @@ public class Move {
         } finally {
           Piece capturedPiece = chessboard.movePiece(movement);
           boolean kingInCheck = isKingInCheck(chessboard, pieceToMove, movement.end);
-          return new Move(pieceToMove, capturedPiece, movement, kingInCheck);
+          boolean kingInCheckMate = isKingInCheckMate(chessboard, pieceToMove);
+          return new Move(pieceToMove, capturedPiece, movement, kingInCheck, kingInCheckMate);
         }
       } else {
         throw new InvalidMoveException(GameState.INVALID_MOVE);
@@ -124,4 +131,32 @@ public class Move {
     return false;
   }
 
+  public static boolean isKingInCheckMate(Chessboard chessboard, Piece piece) {
+    Color enemyColor = piece.getEnemyColor();
+    Square squareOfKing = chessboard.getSquareOfKing(enemyColor);
+    if (squareOfKing == null) {
+      return false;
+    }
+    for (Square square : getSurroundingSquares(squareOfKing)) {
+      boolean kingMovesInCheck = kingMovesInCheck(chessboard, new Movement(squareOfKing, square));
+      boolean squareOccupied = square != null;
+      if (!kingMovesInCheck || !squareOccupied) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public static ArrayList<Square> getSurroundingSquares(Square square) {
+    ArrayList<Square> surroundingSquares = new ArrayList<Square>();
+    surroundingSquares.add(new Square(square.x, square.y + 1));
+    surroundingSquares.add(new Square(square.x + 1, square.y + 1));
+    surroundingSquares.add(new Square(square.x + 1, square.y));
+    surroundingSquares.add(new Square(square.x + 1, square.y - 1));
+    surroundingSquares.add(new Square(square.x, square.y - 1));
+    surroundingSquares.add(new Square(square.x - 1, square.y - 1));
+    surroundingSquares.add(new Square(square.x - 1, square.y));
+    surroundingSquares.add(new Square(square.x - 1, square.y + 1));
+    return surroundingSquares;
+  }
 }
