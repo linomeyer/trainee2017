@@ -1,5 +1,7 @@
 package tech.bison.trainee2017.chess;
 
+import java.util.ArrayList;
+
 import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.pieces.BlackPawn;
 import tech.bison.trainee2017.chess.pieces.Piece;
@@ -34,7 +36,9 @@ public class Move {
 
     try {
       Piece pieceToMove = chessboard.getPiece(movement.start);
-
+      if (pieceToMove == null) {
+        throw new InvalidMoveException(GameState.EMPTY_SQUARE);
+      }
       Piece pieceToCatch = chessboard.getPiece(movement.end);
 
       if (lastMove == null) {
@@ -58,6 +62,18 @@ public class Move {
         }
       }
 
+      if (lastMove != null) {
+        if (lastMove.kingInCheck) {
+          Movement lastMovement = lastMove.movement;
+          Square squareOfKing = chessboard.getSquareOfKing(lastMove.piece.getEnemyColor());
+          Movement movementToKing = new Movement(lastMovement.end, squareOfKing);
+          ArrayList<Square> wayToKing = movementToKing.getWay();
+          if (!wayToKing.contains(movement.end)) {
+            throw new InvalidMoveException(GameState.KING_IN_CHECK);
+          }
+        }
+      }
+
       if (isAValidMove) {
         try {
           if (pieceToMove.hasSameColor(pieceToCatch)) {
@@ -73,15 +89,12 @@ public class Move {
         throw new InvalidMoveException(GameState.INVALID_MOVE);
       }
     } catch (NullPointerException e) {
-      throw new InvalidMoveException(GameState.EMPTY_SQUARE);
+      throw new InvalidMoveException(GameState.INVALID_MOVE);
     }
   }
 
   public static boolean isKingInCheck(Chessboard chessboard, Piece piece, Square square) {
-    Color color = piece.color;
-
-    color = color.equals(Color.WHITE) ? Color.BLACK : Color.WHITE;
-
+    Color color = piece.getEnemyColor();
     Square squareOfKing = chessboard.getSquareOfKing(color);
     return piece.isAValidMove(square, squareOfKing);
   }

@@ -48,6 +48,10 @@ public abstract class Piece {
     return moveCounter > 0;
   }
 
+  public Color getEnemyColor() {
+    return color.equals(Color.WHITE) ? Color.BLACK : Color.WHITE;
+  }
+
   @Override
   public boolean equals(Object obj) {
     if (this == obj)

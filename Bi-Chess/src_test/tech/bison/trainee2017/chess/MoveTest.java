@@ -191,6 +191,7 @@ public class MoveTest {
       movement = new Movement(new Square("A4"), new Square("A5"));
       move = Move.movePiece(chessboard, movement, move);
 
+      fail("No Exception throwed");
     } catch (InvalidMoveException e) {
       assertThat(e.state, is(GameState.CATCH_DIAGONAL));
     }
@@ -206,5 +207,22 @@ public class MoveTest {
     Move move = Move.movePiece(chessboard, new Movement(new Square("B3"), new Square("A3")));
 
     assertThat(move.kingInCheck, is(true));
+  }
+
+  @Test
+  public void chessBoard_kingInCheck_pieceMovesInWay() throws Exception {
+    Chessboard chessboard = new Chessboard(8, 8);
+
+    chessboard.addPiece(new Square("A1"), new King(Color.BLACK));
+    chessboard.addPiece(new Square("B6"), new Rook(Color.WHITE));
+    chessboard.addPiece(new Square("C2"), new Rook(Color.BLACK));
+    try {
+      Move move = Move.movePiece(chessboard, new Movement(new Square("B6"), new Square("A6")));
+      Move.movePiece(chessboard, new Movement(new Square("C2"), new Square("B2")), move);
+
+      fail("No Exception throwed");
+    } catch (InvalidMoveException e) {
+      assertThat(e.state, is(GameState.KING_IN_CHECK));
+    }
   }
 }
