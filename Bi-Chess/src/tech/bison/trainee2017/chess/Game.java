@@ -3,6 +3,7 @@ package tech.bison.trainee2017.chess;
 import java.util.ArrayList;
 
 import tech.bison.trainee2017.chess.pieces.Piece;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class Game {
   private final Chessboard chessboard;
@@ -38,6 +39,11 @@ public class Game {
       if (move.kingInCheck) {
         if (move.kingInCheckMate) {
           gameStates.add(GameState.CHECKMATE);
+          if (move.piece.color == Color.WHITE) {
+            gameStates.add(GameState.WHITE_WON_GAME);
+          } else {
+            gameStates.add(GameState.BLACK_WON_GAME);
+          }
         } else {
           gameStates.add(GameState.CHECK);
         }
