@@ -2,9 +2,7 @@ package tech.bison.trainee2017.chess;
 
 import java.util.ArrayList;
 
-import tech.bison.trainee2017.chess.pieces.King;
 import tech.bison.trainee2017.chess.pieces.Piece;
-import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class Game {
   private final Chessboard chessboard;
@@ -38,11 +36,6 @@ public class Game {
       if (moves.get(moves.size() - 1).capturedPiece == null) {
         return GameState.PIECE_MOVED;
       } else {
-        if (moves.get(moves.size() - 1).capturedPiece.equals(new King(Color.WHITE))) {
-          return GameState.BLACK_WON_GAME;
-        } else if (moves.get(moves.size() - 1).capturedPiece.equals(new King(Color.BLACK))) {
-          return GameState.WHITE_WON_GAME;
-        }
         return GameState.PIECE_CAPTURED;
       }
     } catch (InvalidMoveException e) {

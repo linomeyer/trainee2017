@@ -60,6 +60,9 @@ public class ConsoleMain {
           if (state.get(0).equals(ValidationState.OK)) {
             Square[] squares = gameController.getSquares(input);
             gameState = game.movePiece(new Movement(squares[0], squares[1]));
+            if (gameState.equals(GameState.WHITE_WON_GAME) || gameState.equals(GameState.BLACK_WON_GAME)) {
+              repeat = false;
+            }
             System.out.println("\n" + Messages.getString(gameState.toString())); //$NON-NLS-1$
           } else {
             for (ValidationState s : state) {
