@@ -2,14 +2,16 @@ package tech.bison.trainee2017.chess;
 
 import java.util.ArrayList;
 
+import tech.bison.trainee2017.chess.pieces.King;
 import tech.bison.trainee2017.chess.pieces.Piece;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class Game {
   private final Chessboard chessboard;
   private final ArrayList<Move> moves;
 
   public enum GameState {
-    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE, PIECE_ADDED, SQUARE_OCCUPIED, EMPTY_SQUARE, PIECE_REMOVED, WHITE_BEGINS, MOVE_ALTERNATELY, CANT_JUMP, FRIENDED_COLOR, CATCH_DIAGONAL
+    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE, PIECE_ADDED, SQUARE_OCCUPIED, EMPTY_SQUARE, PIECE_REMOVED, WHITE_BEGINS, MOVE_ALTERNATELY, CANT_JUMP, FRIENDED_COLOR, CATCH_DIAGONAL, WHITE_WON_GAME, BLACK_WON_GAME
   }
 
   public Game() {
@@ -36,6 +38,11 @@ public class Game {
       if (moves.get(moves.size() - 1).capturedPiece == null) {
         return GameState.PIECE_MOVED;
       } else {
+        if (moves.get(moves.size() - 1).capturedPiece.equals(new King(Color.WHITE))) {
+          return GameState.BLACK_WON_GAME;
+        } else if (moves.get(moves.size() - 1).capturedPiece.equals(new King(Color.BLACK))) {
+          return GameState.WHITE_WON_GAME;
+        }
         return GameState.PIECE_CAPTURED;
       }
     } catch (InvalidMoveException e) {
