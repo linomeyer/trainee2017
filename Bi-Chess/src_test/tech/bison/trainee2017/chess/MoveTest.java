@@ -3,6 +3,7 @@ package tech.bison.trainee2017.chess;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -72,6 +73,8 @@ public class MoveTest {
     movement = new Movement(new Square("c2"), new Square("c4"));
     try {
       Move.movePiece(chessboard, movement);
+
+      fail("No Exception throwed");
     } catch (InvalidMoveException e) {
       assertThat(e.state, is(GameState.CANT_JUMP));
     }
@@ -84,6 +87,8 @@ public class MoveTest {
     Movement movement = new Movement(new Square("A1"), new Square("A5"));
     try {
       Move.movePiece(chessboard, movement);
+
+      fail("No Exception throwed");
     } catch (InvalidMoveException e) {
       assertThat(e.state, is(GameState.CANT_JUMP));
     }
@@ -96,6 +101,8 @@ public class MoveTest {
     Movement movement = new Movement(new Square("C1"), new Square("E3"));
     try {
       Move.movePiece(chessboard, movement);
+
+      fail("No Exception throwed");
     } catch (InvalidMoveException e) {
       assertThat(e.state, is(GameState.CANT_JUMP));
     }
@@ -108,6 +115,8 @@ public class MoveTest {
     Movement movement = new Movement(new Square("D1"), new Square("D4"));
     try {
       Move.movePiece(chessboard, movement);
+
+      fail("No Exception throwed");
     } catch (InvalidMoveException e) {
       assertThat(e.state, is(GameState.CANT_JUMP));
     }
@@ -121,24 +130,27 @@ public class MoveTest {
       Movement movement = new Movement(new Square("d7"), new Square("d5"));
 
       Move.movePiece(chessboard, movement);
+
+      fail("No Exception throwed");
     } catch (InvalidMoveException e) {
       assertThat(e.state, is(GameState.WHITE_BEGINS));
     }
   }
 
   @Test
-  public void chessboard_moveWhitePieceTwice_MoveAlternatelyException() throws Exception {
+  public void chessboard_moveWhitePieceTwice_InvalidMoveException_MOVE_ALTERNATELY() throws Exception {
     try {
       Chessboard chessboard = new Chessboard();
 
       Movement movement = new Movement(new Square("e2"), new Square("e4"));
-      Move.movePiece(chessboard, movement);
+      Move move = Move.movePiece(chessboard, movement);
 
       movement = new Movement(new Square("f2"), new Square("f4"));
-      Move.movePiece(chessboard, movement);
+      Move.movePiece(chessboard, movement, move);
 
+      fail("No Exception throwed");
     } catch (InvalidMoveException e) {
-      assertThat(e.state, is(GameState.WHITE_BEGINS));
+      assertThat(e.state, is(GameState.MOVE_ALTERNATELY));
     }
   }
 

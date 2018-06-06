@@ -26,20 +26,24 @@ public class Move {
       throws InvalidMoveException, InvalidSquareException {
 
     try {
-      if (lastMove == null && chessboard.getPiece(movement.start).color.equals(Color.BLACK)) {
-        throw new InvalidMoveException(GameState.WHITE_BEGINS);
-      }
-
       Piece pieceToMove = chessboard.getPiece(movement.start);
 
       Piece pieceToCatch = chessboard.getPiece(movement.end);
+
+      if (lastMove == null) {
+        if (pieceToMove.color.equals(Color.BLACK)) {
+          throw new InvalidMoveException(GameState.WHITE_BEGINS);
+        }
+      } else if (pieceToMove.hasSameColor(lastMove.piece)) {
+        throw new InvalidMoveException(GameState.MOVE_ALTERNATELY);
+      }
 
       boolean isAValidMove = pieceToMove.isAValidMove(movement);
 
       // Pawn catches diagonal
       if (pieceToMove.getClass() == WhitePawn.class || pieceToMove.getClass() == BlackPawn.class) {
         if (pieceToCatch != null) {
-          if (movement.x == 1 && movement.y == 1) {
+          if (Math.abs(movement.x) == 1 && Math.abs(movement.y) == 1) {
             isAValidMove = true;
           } else {
             throw new InvalidMoveException(GameState.CATCH_DIAGONAL);

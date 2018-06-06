@@ -10,9 +10,9 @@ import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.pieces.Bishop;
 import tech.bison.trainee2017.chess.pieces.BlackPawn;
 import tech.bison.trainee2017.chess.pieces.King;
+import tech.bison.trainee2017.chess.pieces.Piece.Color;
 import tech.bison.trainee2017.chess.pieces.Rook;
 import tech.bison.trainee2017.chess.pieces.WhitePawn;
-import tech.bison.trainee2017.chess.pieces.Piece.Color;
 
 public class GameTest {
   @Test
@@ -64,5 +64,18 @@ public class GameTest {
     GameState gameState = game.addPiece(new Square("a2"), new BlackPawn());
 
     assertThat(gameState, is(GameState.PIECE_ADDED));
+  }
+
+  @Test
+  public void game_moveWhitePieceTwice_InvalidMoveException_MOVE_ALTERNATELY() throws Exception {
+    Game game = new Game();
+
+    Movement movement = new Movement(new Square("e2"), new Square("e4"));
+    game.movePiece(movement);
+
+    movement = new Movement(new Square("f2"), new Square("f4"));
+    GameState state = game.movePiece(movement);
+
+    assertThat(state, is(GameState.MOVE_ALTERNATELY));
   }
 }
