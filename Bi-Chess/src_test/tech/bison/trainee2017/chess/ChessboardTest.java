@@ -113,4 +113,13 @@ public class ChessboardTest {
       assertThat(e.state, is(GameState.CANT_JUMP));
     }
   }
+
+  @Test
+  public void chessBoard_addKing_getSquareOfKing() throws Exception {
+    Chessboard chessboard = new Chessboard(8, 8);
+
+    chessboard.addPiece(new Square("A3"), new King(Color.WHITE));
+
+    assertThat(chessboard.getSquareOfKing(Color.WHITE), is(new Square("A3")));
+  }
 }

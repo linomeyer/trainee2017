@@ -1,6 +1,7 @@
 package tech.bison.trainee2017.chess;
 
 import java.util.HashMap;
+import java.util.Set;
 
 import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.pieces.Bishop;
@@ -119,6 +120,16 @@ public class Chessboard {
 
   public boolean isAValidSquare(Square square) {
     return square.x <= width && square.x > 0 && square.y <= length && square.y > 0;
+  }
+
+  public Square getSquareOfKing(Color color) {
+    Set<Square> keySet = chessboard.keySet();
+    for (Square square : keySet) {
+      if (chessboard.get(square).equals(new King(color))) {
+        return square;
+      }
+    }
+    return null;
   }
 
   @Override

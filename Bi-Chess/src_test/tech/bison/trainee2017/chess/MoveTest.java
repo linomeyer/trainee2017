@@ -9,8 +9,10 @@ import org.junit.Test;
 
 import tech.bison.trainee2017.chess.Game.GameState;
 import tech.bison.trainee2017.chess.pieces.BlackPawn;
+import tech.bison.trainee2017.chess.pieces.King;
 import tech.bison.trainee2017.chess.pieces.Knight;
 import tech.bison.trainee2017.chess.pieces.Piece.Color;
+import tech.bison.trainee2017.chess.pieces.Rook;
 import tech.bison.trainee2017.chess.pieces.WhitePawn;
 
 public class MoveTest {
@@ -194,4 +196,15 @@ public class MoveTest {
     }
   }
 
+  @Test
+  public void chessBoard_movePiece_isKingInCheck() throws Exception {
+    Chessboard chessboard = new Chessboard(8, 8);
+
+    chessboard.addPiece(new Square("A1"), new King(Color.BLACK));
+    chessboard.addPiece(new Square("B3"), new Rook(Color.WHITE));
+
+    Move move = Move.movePiece(chessboard, new Movement(new Square("B3"), new Square("A3")));
+
+    assertThat(move.kingInCheck, is(true));
+  }
 }

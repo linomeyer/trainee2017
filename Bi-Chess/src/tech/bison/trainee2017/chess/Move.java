@@ -7,14 +7,20 @@ import tech.bison.trainee2017.chess.pieces.Piece.Color;
 import tech.bison.trainee2017.chess.pieces.WhitePawn;
 
 public class Move {
-  final Piece piece;
-  final Piece capturedPiece;
-  final Movement movement;
+  public final Piece piece;
+  public final Piece capturedPiece;
+  public final Movement movement;
+  public final boolean kingInCheck;
 
-  private Move(Piece piece, Piece capturedPiece, Movement movement) {
+  private Move(Piece piece, Piece capturedPiece, Movement movement, boolean kingInCheck) {
     this.piece = piece;
     this.capturedPiece = capturedPiece;
     this.movement = movement;
+    this.kingInCheck = kingInCheck;
+  }
+
+  private Move(Piece piece, Piece capturedPiece, Movement movement) {
+    this(piece, capturedPiece, movement, false);
   }
 
   public static Move movePiece(Chessboard chessboard, Movement movement)
@@ -22,6 +28,7 @@ public class Move {
     return movePiece(chessboard, movement, null);
   }
 
+  @SuppressWarnings("finally")
   public static Move movePiece(Chessboard chessboard, Movement movement, Move lastMove)
       throws InvalidMoveException, InvalidSquareException {
 
@@ -55,22 +62,28 @@ public class Move {
         try {
           if (pieceToMove.hasSameColor(pieceToCatch)) {
             throw new InvalidMoveException(GameState.FRIENDED_COLOR);
-          } else {
-            Piece capturedPiece = chessboard.movePiece(movement);
-            return new Move(pieceToMove, capturedPiece, movement);
           }
         } catch (NullPointerException e) {
+        } finally {
           Piece capturedPiece = chessboard.movePiece(movement);
-          return new Move(pieceToMove, capturedPiece, movement);
+          boolean kingInCheck = isKingInCheck(chessboard, pieceToMove, movement.end);
+          return new Move(pieceToMove, capturedPiece, movement, kingInCheck);
         }
       } else {
         throw new InvalidMoveException(GameState.INVALID_MOVE);
       }
-    } catch (
-
-    NullPointerException e) {
+    } catch (NullPointerException e) {
       throw new InvalidMoveException(GameState.EMPTY_SQUARE);
     }
+  }
+
+  public static boolean isKingInCheck(Chessboard chessboard, Piece piece, Square square) {
+    Color color = piece.color;
+
+    color = color.equals(Color.WHITE) ? Color.BLACK : Color.WHITE;
+
+    Square squareOfKing = chessboard.getSquareOfKing(color);
+    return piece.isAValidMove(square, squareOfKing);
   }
 
 }
