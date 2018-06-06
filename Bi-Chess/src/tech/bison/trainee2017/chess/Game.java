@@ -9,7 +9,7 @@ public class Game {
   private final ArrayList<Move> moves;
 
   public enum GameState {
-    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE, PIECE_ADDED, SQUARE_OCCUPIED, EMPTY_SQUARE, PIECE_REMOVED, WHITE_BEGINS, MOVE_ALTERNATELY, CANT_JUMP, FRIENDED_COLOR, CATCH_DIAGONAL, WHITE_WON_GAME, BLACK_WON_GAME, KING_IN_CHECK, KING_MOVES_IN_CHECK
+    PIECE_MOVED, PIECE_CAPTURED, INVALID_MOVE, INVALID_SQUARE, PIECE_ADDED, SQUARE_OCCUPIED, EMPTY_SQUARE, PIECE_REMOVED, WHITE_BEGINS, MOVE_ALTERNATELY, CANT_JUMP, FRIENDED_COLOR, CATCH_DIAGONAL, WHITE_WON_GAME, BLACK_WON_GAME, KING_IN_CHECK, KING_MOVES_IN_CHECK, CHECK
   }
 
   public Game() {
@@ -26,23 +26,24 @@ public class Game {
     return chessboard;
   }
 
-  public GameState movePiece(Movement movement) {
+  public ArrayList<GameState> movePiece(Movement movement) {
+    ArrayList<GameState> gameStates = new ArrayList<GameState>();
     try {
-      if (moves.size() == 0) {
-        moves.add(Move.movePiece(chessboard, movement));
-      } else {
-        moves.add(Move.movePiece(chessboard, movement, moves.get(moves.size() - 1)));
+      Move move = Move.movePiece(chessboard, movement, getLastMove());
+      moves.add(move);
+      gameStates.add(GameState.PIECE_MOVED);
+      if (move.capturedPiece != null) {
+        gameStates.add(GameState.PIECE_CAPTURED);
       }
-      if (moves.get(moves.size() - 1).capturedPiece == null) {
-        return GameState.PIECE_MOVED;
-      } else {
-        return GameState.PIECE_CAPTURED;
+      if (move.kingInCheck) {
+        gameStates.add(GameState.CHECK);
       }
     } catch (InvalidMoveException e) {
-      return e.state;
+      gameStates.add(e.state);
     } catch (InvalidSquareException e) {
-      return GameState.INVALID_SQUARE;
+      gameStates.add(GameState.INVALID_SQUARE);
     }
+    return gameStates;
   }
 
   public Move getLastMove() {

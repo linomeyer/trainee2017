@@ -56,16 +56,19 @@ public class ConsoleMain {
         if (input.equals("quit")) { //$NON-NLS-1$
           repeat = false;
         } else {
-          ArrayList<ValidationState> state = inputValidator.validateMove(input);
-          if (state.get(0).equals(ValidationState.OK)) {
+          ArrayList<ValidationState> states = inputValidator.validateMove(input);
+          if (states.get(0).equals(ValidationState.OK)) {
             Square[] squares = gameController.getSquares(input);
-            gameState = game.movePiece(new Movement(squares[0], squares[1]));
-            if (gameState.equals(GameState.WHITE_WON_GAME) || gameState.equals(GameState.BLACK_WON_GAME)) {
+            ArrayList<GameState> gameStates = game.movePiece(new Movement(squares[0], squares[1]));
+            if (gameStates.contains(GameState.WHITE_WON_GAME) || gameStates.contains(GameState.BLACK_WON_GAME)) {
               repeat = false;
             }
-            System.out.println("\n" + Messages.getString(gameState.toString())); //$NON-NLS-1$
+            System.out.println();
+            for (GameState state : gameStates) {
+              System.out.println(Messages.getString(state.toString()));
+            }
           } else {
-            for (ValidationState s : state) {
+            for (ValidationState s : states) {
               System.out.println(Messages.getString(s.toString()));
             }
           }
