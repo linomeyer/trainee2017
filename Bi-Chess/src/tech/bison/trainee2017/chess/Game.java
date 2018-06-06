@@ -46,7 +46,10 @@ public class Game {
   }
 
   public Move getLastMove() {
-    return moves.get(moves.size() - 1);
+    if (moves.size() != 0) {
+      return moves.get(moves.size() - 1);
+    }
+    return null;
   }
 
   public Piece getPiece(Square square) {

@@ -96,6 +96,9 @@ public class Move {
   public static boolean isKingInCheck(Chessboard chessboard, Piece piece, Square square) {
     Color color = piece.getEnemyColor();
     Square squareOfKing = chessboard.getSquareOfKing(color);
+    if (squareOfKing == null) {
+      return false;
+    }
     return piece.isAValidMove(square, squareOfKing);
   }
 
