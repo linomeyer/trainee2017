@@ -15,18 +15,20 @@ public class ConsoleMain {
 
   public static void main(String[] args) {
     boolean repeat = true;
-    Game game = new Game();
+    Game game;
     GameState gameState;
     InputValidator inputValidator = new InputValidator();
     GameController gameController = new GameController();
+    ChessboardPrinter chessboardPrinter;
 
     try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
       System.out.print(Messages.getString("createGame")); //$NON-NLS-1$
       String input = br.readLine();
       if (input.equals("c")) { //$NON-NLS-1$
         game = gameController.createCustomGame();
+        chessboardPrinter = new ChessboardPrinter(game.getChessboard());
         while (repeat) {
-          System.out.println(new ChessboardPrinter(game.getChessboard()).print());
+          System.out.println(chessboardPrinter.print());
           System.out.print(Messages.getString("editPieces"));
           input = br.readLine();
           ArrayList<ValidationState> states = inputValidator.validateAddPiece(input);
@@ -41,10 +43,13 @@ public class ConsoleMain {
             }
           }
         }
+      } else {
+        game = new Game();
+        chessboardPrinter = new ChessboardPrinter(game.getChessboard());
       }
       repeat = true;
       while (repeat) {
-        System.out.println(new ChessboardPrinter(game.getChessboard()).print());
+        System.out.println(chessboardPrinter.print());
         System.out.print(Messages.getString("executeMove")); //$NON-NLS-1$
         input = br.readLine();
 
