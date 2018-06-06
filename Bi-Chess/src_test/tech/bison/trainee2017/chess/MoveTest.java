@@ -225,4 +225,19 @@ public class MoveTest {
       assertThat(e.state, is(GameState.KING_IN_CHECK));
     }
   }
+
+  @Test
+  public void chessBoard_moveKing_kingIsInCheck() throws Exception {
+    Chessboard chessboard = new Chessboard(8, 8);
+
+    chessboard.addPiece(new Square("A1"), new King(Color.WHITE));
+    chessboard.addPiece(new Square("B6"), new Rook(Color.BLACK));
+    try {
+      Move.movePiece(chessboard, new Movement(new Square("A1"), new Square("B1")));
+
+      fail("No Exception throwed");
+    } catch (InvalidMoveException e) {
+      assertThat(e.state, is(GameState.KING_IN_CHECK));
+    }
+  }
 }

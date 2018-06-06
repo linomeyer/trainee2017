@@ -132,6 +132,10 @@ public class Chessboard {
     return null;
   }
 
+  public Set<Square> getSquares() {
+    return chessboard.keySet();
+  }
+
   @Override
   public boolean equals(Object obj) {
     if (this == obj)
