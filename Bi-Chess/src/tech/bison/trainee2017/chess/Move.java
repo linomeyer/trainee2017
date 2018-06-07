@@ -111,15 +111,15 @@ public class Move {
     }
   }
 
-  public static boolean enPassent(Move lastMove, Movement movement) {
-    if (lastMove.movement.getWay() != null) {
-      Square enPassent = lastMove.movement.getWay().get(0);
-      if (enPassent == movement.end) {
-        return true;
-      }
-    }
-    return false;
-  }
+  // public static boolean enPassent(Move lastMove, Movement movement) {
+  // if (lastMove.movement.getWay() != null) {
+  // Square enPassent = lastMove.movement.getWay().get(0);
+  // if (enPassent == movement.end) {
+  // return true;
+  // }
+  // }
+  // return false;
+  // }
 
   public static boolean isKingInCheck(Chessboard chessboard, Piece piece, Square square) {
     Color enemyColor = piece.getEnemyColor();
