@@ -104,9 +104,21 @@ public class Move {
       } else {
         throw new InvalidMoveException(GameState.INVALID_MOVE);
       }
-    } catch (NullPointerException e) {
+    } catch (
+
+    NullPointerException e) {
       throw new InvalidMoveException(GameState.INVALID_MOVE);
     }
+  }
+
+  public static boolean enPassent(Move lastMove, Movement movement) {
+    if (lastMove.movement.getWay() != null) {
+      Square enPassent = lastMove.movement.getWay().get(0);
+      if (enPassent == movement.end) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public static boolean isKingInCheck(Chessboard chessboard, Piece piece, Square square) {
