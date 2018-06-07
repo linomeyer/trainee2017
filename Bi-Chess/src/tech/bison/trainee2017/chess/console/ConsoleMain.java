@@ -61,6 +61,7 @@ public class ConsoleMain {
             Square[] squares = gameController.getSquares(input);
             ArrayList<GameState> gameStates = game.movePiece(new Movement(squares[0], squares[1]));
             if (gameStates.contains(GameState.WHITE_WON_GAME) || gameStates.contains(GameState.BLACK_WON_GAME)) {
+              System.out.println(chessboardPrinter.print());
               repeat = false;
             }
             System.out.println();
