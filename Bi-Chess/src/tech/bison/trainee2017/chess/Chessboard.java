@@ -84,23 +84,50 @@ public class Chessboard {
     return chessboard;
   }
 
-  public Piece getPiece(Square square) {
-    return chessboard.get(square);
+  public Piece getPiece(Square square) throws InvalidSquareException {
+    if (isAValidSquare(square)) {
+      return chessboard.get(square);
+    } else {
+      throw new InvalidSquareException();
+    }
+  }
+
+  public boolean isWayEmpty(Movement movement) {
+    for (Square square : movement.getWay()) {
+      if (chessboard.get(square) != null) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public boolean isWayEmpty(Movement movement, Square exception) {
+    for (Square square : movement.getWay()) {
+      if (!square.equals(exception)) {
+        if (chessboard.get(square) != null) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  public boolean isAValidMove(Movement movement) {
+    return isAValidSquare(movement.end) && isWayEmpty(movement);
   }
 
   public Piece movePiece(Movement movement) throws InvalidMoveException, InvalidSquareException {
-    if (isAValidSquare(movement.end)) {
-      for (Square square : movement.getWay()) {
-        if (chessboard.get(square) != null) {
-          throw new InvalidMoveException(GameState.CANT_JUMP);
-        }
+    if (isAValidSquare(movement.start) && isAValidSquare(movement.end)) {
+      if (isWayEmpty(movement)) {
+        Piece piece = chessboard.get(movement.start);
+        Piece capturedPiece = chessboard.get(movement.end);
+        chessboard.remove(movement.start);
+        chessboard.put(movement.end, piece);
+        piece.incrementMoveCounter();
+        return capturedPiece;
+      } else {
+        throw new InvalidMoveException(GameState.CANT_JUMP);
       }
-      Piece piece = chessboard.get(movement.start);
-      Piece capturedPiece = chessboard.get(movement.end);
-      chessboard.remove(movement.start);
-      chessboard.put(movement.end, piece);
-      piece.incrementMoveCounter();
-      return capturedPiece;
     } else {
       throw new InvalidSquareException();
     }

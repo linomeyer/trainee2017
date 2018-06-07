@@ -1,6 +1,7 @@
 package tech.bison.trainee2017.chess.console;
 
 import tech.bison.trainee2017.chess.Chessboard;
+import tech.bison.trainee2017.chess.InvalidSquareException;
 import tech.bison.trainee2017.chess.Square;
 import tech.bison.trainee2017.chess.UTF8;
 import tech.bison.trainee2017.chess.pieces.Piece;
@@ -21,7 +22,10 @@ public class ChessboardPrinter {
 
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < length; y++) {
-        chessboard[x][y] = this.chessboard.getPiece(new Square(x + 1, y + 1));
+        try {
+          chessboard[x][y] = this.chessboard.getPiece(new Square(x + 1, y + 1));
+        } catch (InvalidSquareException e) {
+        }
       }
     }
     return chessboard;

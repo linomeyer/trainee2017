@@ -63,10 +63,6 @@ public class Game {
     return null;
   }
 
-  public Piece getPiece(Square square) {
-    return chessboard.getPiece(square);
-  }
-
   public GameState addPiece(Square square, Piece piece) {
     try {
       chessboard.addPiece(square, piece);

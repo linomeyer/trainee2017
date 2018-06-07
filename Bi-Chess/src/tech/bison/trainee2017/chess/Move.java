@@ -119,19 +119,27 @@ public class Move {
   }
 
   public static boolean kingMovesInCheck(Chessboard chessboard, Movement movement) {
-    Color enemyColor = chessboard.getPiece(movement.start).getEnemyColor();
-    Set<Square> squares = chessboard.getSquares();
-    for (Square square : squares) {
-      Piece piece = chessboard.getPiece(square);
-      if (piece != null) {
-        if (piece.color.equals(enemyColor)) {
-          if (piece.isAValidMove(new Movement(square, movement.end))) {
-            return true;
+    try {
+      Color enemyColor = chessboard.getPiece(movement.start).getEnemyColor();
+      Color colorOfKing = chessboard.getPiece(movement.start).color;
+      Set<Square> squares = chessboard.getSquares();
+      for (Square square : squares) {
+        Piece piece = chessboard.getPiece(square);
+        if (piece != null) {
+          if (piece.color.equals(enemyColor)) {
+            Movement movementToKing = new Movement(square, movement.end);
+            if (piece.isAValidMove(movementToKing)
+                && chessboard.isWayEmpty(movementToKing, chessboard.getSquareOfKing(colorOfKing))
+                && chessboard.isAValidSquare(square)) {
+              return true;
+            }
           }
         }
       }
+      return false;
+    } catch (InvalidSquareException e) {
+      return true;
     }
-    return false;
   }
 
   public static boolean isKingInCheckMate(Chessboard chessboard, Piece piece) {
@@ -142,16 +150,20 @@ public class Move {
     }
     for (Square square : getSurroundingSquares(squareOfKing)) {
       boolean kingMovesInCheck = kingMovesInCheck(chessboard, new Movement(squareOfKing, square));
-      boolean squareEmpty = square == null;
-      // if (squareOccupied) {
-      // boolean squareOccupiedByEnemyPiece
-      // chessboard.getPiece(square).color.equals(enemyColor);
-      // if (!kingMovesInCheck && squareOccupiedByEnemyPiece) {
-      // return false;
-      // }
-      // }
-      if (!kingMovesInCheck && squareEmpty) {
-        return false;
+      boolean squareEmpty;
+      try {
+        Piece pieceOnGoal = chessboard.getPiece(square);
+        squareEmpty = pieceOnGoal == null;
+        if (!kingMovesInCheck && squareEmpty) {
+          return false;
+
+        } else if (!kingMovesInCheck && !squareEmpty) {
+          boolean squareOccupiedByEnemyPiece = pieceOnGoal.getEnemyColor().equals(enemyColor);
+          if (squareOccupiedByEnemyPiece) {
+            return false;
+          }
+        }
+      } catch (InvalidSquareException e) {
       }
     }
     return true;

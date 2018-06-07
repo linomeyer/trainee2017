@@ -41,8 +41,8 @@ public class GameTest {
 
     ArrayList<GameState> states = game.movePiece(new Movement(new Square("b2"), new Square("b4")));
 
-    assertThat(game.getPiece(new Square("b4")), is(new WhitePawn()));
-    assertThat(game.getPiece(new Square("b2")), is(nullValue()));
+    assertThat(game.getChessboard().getPiece(new Square("b4")), is(new WhitePawn()));
+    assertThat(game.getChessboard().getPiece(new Square("b2")), is(nullValue()));
     assertThat(states.toArray(), is(new GameState[] { GameState.PIECE_MOVED }));
   }
 
