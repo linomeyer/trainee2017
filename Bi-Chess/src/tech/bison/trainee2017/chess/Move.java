@@ -79,7 +79,7 @@ public class Move {
           Square squareOfKing = chessboard.getSquareOfKing(lastMove.piece.getEnemyColor());
           Movement movementToKing = new Movement(lastMovement.end, squareOfKing);
           ArrayList<Square> wayToKing = movementToKing.getWay();
-          if (!wayToKing.contains(movement.end)) {
+          if (!wayToKing.contains(movement.end) && !lastMovement.end.equals(movement.end)) {
             throw new InvalidMoveException(GameState.KING_IN_CHECK);
           }
         }
@@ -127,7 +127,8 @@ public class Move {
     if (squareOfKing == null) {
       return false;
     }
-    return piece.isAValidMove(square, squareOfKing);
+    Movement movement = new Movement(square, squareOfKing);
+    return piece.isAValidMove(movement) && chessboard.isAValidMove(movement);
   }
 
   public static boolean kingMovesInCheck(Chessboard chessboard, Movement movement) {
