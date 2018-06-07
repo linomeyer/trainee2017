@@ -244,7 +244,7 @@ public class MoveTest {
   }
 
   @Test
-  public void chessBoard_movePiece_isKingInCheckMate() throws Exception {
+  public void chessBoardWithKingOnTheEdge_movePiece_isKingInCheckMate() throws Exception {
     Chessboard chessboard = new Chessboard(8, 8);
 
     chessboard.addPiece(new Square("D4"), new King(Color.BLACK));
@@ -258,7 +258,7 @@ public class MoveTest {
   }
 
   @Test
-  public void chessboard_movePiece_kingIsInCheckmate() throws Exception {
+  public void chessboardAllyBlockingKing_movePiece_kingIsInCheckmate() throws Exception {
     Chessboard chessboard = new Chessboard(8, 8);
 
     chessboard.addPiece(new Square("D4"), new King(Color.BLACK));
@@ -274,7 +274,7 @@ public class MoveTest {
   }
 
   @Test
-  public void chessboard_movePiece_isKingInCheckmate() throws Exception {
+  public void chessboardWithKingInCentre_movePiece_KingIsInCheckmate() throws Exception {
     Chessboard chessboard = new Chessboard(8, 8);
 
     chessboard.addPiece(new Square("A1"), new King(Color.BLACK));
