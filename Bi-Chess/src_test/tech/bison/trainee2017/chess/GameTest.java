@@ -93,17 +93,4 @@ public class GameTest {
 
     assertThat(states.toArray(), is(new GameState[] { GameState.PIECE_MOVED, GameState.CHECK }));
   }
-
-  // @Test
-  // public void game_captureBlackKing_whiteWon() throws Exception {
-  // Game game = new Game(new Chessboard(8, 8));
-  //
-  // game.addPiece(new Square("A1"), new King(Color.BLACK));
-  // game.addPiece(new Square("A2"), new Rook(Color.WHITE));
-  //
-  // GameState state = game.movePiece(new Movement(new Square("A2"), new
-  // Square("A1")));
-  //
-  // assertThat(state, is(GameState.WHITE_WON_GAME));
-  // }
 }
