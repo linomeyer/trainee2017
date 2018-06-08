@@ -67,6 +67,9 @@ public abstract class Piece {
   }
 
   public boolean hasSameColor(Piece piece) {
+    if (piece == null) {
+      return false;
+    }
     return this.color.equals(piece.color);
   }
 

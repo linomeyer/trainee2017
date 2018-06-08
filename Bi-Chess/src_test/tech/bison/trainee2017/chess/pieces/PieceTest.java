@@ -67,6 +67,17 @@ public class PieceTest {
     assertThat(hasSameColor, is(false));
   }
 
+  @Test
+  public void onlyOnePiece_hasSameColor_false() throws Exception {
+    Piece piece1 = new TestPiece(Color.WHITE);
+
+    Piece piece2 = null;
+
+    boolean hasSameColor = piece1.hasSameColor(piece2);
+
+    assertThat(hasSameColor, is(false));
+  }
+
   class TestPiece extends Piece {
 
     public TestPiece() {
