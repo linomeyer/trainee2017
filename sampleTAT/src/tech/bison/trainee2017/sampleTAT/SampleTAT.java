@@ -1,4 +1,4 @@
-package tech.bison.trainee17.arbeitsbuch;
+package tech.bison.trainee2017.sampleTAT;
 
 public class SampleTAT {
   public static void main(String[] args) {
