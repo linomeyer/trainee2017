@@ -297,14 +297,10 @@ public class MoveTest {
     chessboard.addPiece(new Square("B8"), new Rook(Color.WHITE));
     chessboard.addPiece(new Square("H8"), new Queen(Color.BLACK));
 
-    try {
-      Move move = Move.movePiece(chessboard, new Movement(new Square("B8"), new Square("A8")));
-      move = Move.movePiece(chessboard, new Movement(new Square("H8"), new Square("A8")), move);
+    Move move = Move.movePiece(chessboard, new Movement(new Square("B8"), new Square("A8")));
+    move = Move.movePiece(chessboard, new Movement(new Square("H8"), new Square("A8")), move);
 
-      assertThat(move.kingInCheck, is(false));
-    } catch (InvalidMoveException e) {
-      fail("InvalidMoveException" + e.state);
-    }
+    assertThat(move.kingInCheck, is(false));
   }
 
   @Test
@@ -314,13 +310,10 @@ public class MoveTest {
     chessboard.addPiece(new Square("A1"), new King(Color.BLACK));
     chessboard.addPiece(new Square("B8"), new Rook(Color.WHITE));
     chessboard.addPiece(new Square("H5"), new Queen(Color.BLACK));
-    try {
-      Move move = Move.movePiece(chessboard, new Movement(new Square("B8"), new Square("A8")));
-      move = Move.movePiece(chessboard, new Movement(new Square("H5"), new Square("A5")), move);
 
-      assertThat(move.kingInCheck, is(false));
-    } catch (InvalidMoveException e) {
-      fail("InvalidMoveException" + e.state);
-    }
+    Move move = Move.movePiece(chessboard, new Movement(new Square("B8"), new Square("A8")));
+    move = Move.movePiece(chessboard, new Movement(new Square("H5"), new Square("A5")), move);
+
+    assertThat(move.kingInCheck, is(false));
   }
 }
